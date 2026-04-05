@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p ~/OneDrive/Desktop/mcdesignbackground/projects/assets)",
+      "Bash(mkdir -p ~/OneDrive/Desktop/mcdesignbackground/projects/carmel-valley-new)",
+      "Bash(mkdir -p ~/OneDrive/Desktop/mcdesignbackground/projects/north-florida)",
+      "Bash(mkdir -p ~/OneDrive/Desktop/mcdesignbackground/projects/coastal-mountain)",
+      "Bash(mkdir -p ~/OneDrive/Desktop/mcdesignbackground/projects/carmel-knolls)",
+      "Bash(git ls-tree:*)",
+      "Bash(curl:*)",
+      "Bash(for dir in \"carmel-knolls\" \"carmel-valley-new\" \"coastal-mountain\" \"coastal-restoration\" \"development-civil\" \"hillside-cleanup\" \"hospitality-pool\" \"laguna-grande\" \"montana\" \"north-florida\" \"pacific-grove\" \"syracuse-final\")",
+      "Bash(do echo \"=== projects/$dir ===\")",
+      "Read(//c/Users/roryu/OneDrive/Desktop/mcdesignbackground/projects/**)",
+      "Bash(done)",
+      "Bash(git:*)",
+      "Bash(unzip:*)"
+    ]
+  }
+}

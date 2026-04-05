@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michael Chandler — Strategic Construction Executive</title>
+    <meta name="description"
+        content="Michael Chandler — 37+ years of design-build excellence across residential, commercial, and civil construction. $500M+ portfolio spanning the US and Caribbean." />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            50:  '#F4F0E8',
+                            100: '#EBE6DC',
+                            200: '#DDD8CF',
+                            400: '#9C978E',
+                            500: '#6B6660',
+                            600: '#4A4640',
+                            700: '#2E2B26',
+                            800: '#232018',
+                            900: '#1C1916',
+                            950: '#100E0B',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&display=swap"
+        rel="stylesheet" />
+    <!-- GSAP + ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* ─── Reset & base ─── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg:          #F4F0E8;
+            --bg-alt:      #EBE6DC;
+            --bg-card:     #FAF8F4;
+            --bg-muted:    #E5E0D6;
+            --border:      #D8D3CA;
+            --border-lt:   #E5E0D6;
+            --text:        #1C1916;
+            --text-muted:  #6B6660;
+            --text-faint:  #9C978E;
+        }
+        html {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+        /* ─── Loading overlay ─── */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            transition: opacity .6s ease, visibility .6s ease;
+        }
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #loader-logo {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+        #loader-track {
+            width: 220px;
+            height: 1px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        #loader-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--text);
+            border-radius: 2px;
+            transition: width .12s linear;
+        }
+        #loader-pct {
+            font-size: .75rem;
+            font-weight: 500;
+            color: #aaa;
+            letter-spacing: .06em;
+        }
+        /* ─── Canvas section ─── */
+        #canvas-section {
+            position: relative;
+            /* height set by JS = 400vh */
+        }
+        #sticky-canvas {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--bg-alt);
+        }
+        #hero-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        /* thin top accent line */
+        #sticky-canvas::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200, 200, 200, .7) 40%, transparent);
+            z-index: 2;
+            pointer-events: none;
+        }
+        /* ─── Text panels ─── */
+        .text-panel {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 5vw 7vh;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(18px);
+            /* CSS transition for ease-in-out smoothness between GSAP ticks */
+            transition: opacity .45s cubic-bezier(.4, 0, .2, 1), transform .45s cubic-bezier(.4, 0, .2, 1);
+            will-change: opacity, transform;
+        }
+        .text-panel.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .panel-inner {
+            max-width: 520px;
+            background: rgba(244, 240, 232, .9);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(200, 194, 183, .55);
+            border-radius: 18px;
+            padding: 34px 38px 38px;
+            box-shadow: 0 6px 36px rgba(0, 0, 0, .1);
+        }
+        .panel-eyebrow {
+            display: block;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 10px;
+        }
+        .panel-heading {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            letter-spacing: -.025em;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .panel-body {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 28px;
+        }
+        /* ─── Scroll cue ─── */
+        #scroll-cue {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+            transition: opacity .5s ease;
+        }
+        #scroll-cue span {
+            font-size: .65rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: rgba(100, 100, 100, .7);
+        }
+        .scroll-line {
+            width: 1px;
+            height: 36px;
+            background: linear-gradient(to bottom, rgba(100, 100, 100, .5), transparent);
+            animation: scrollBob 1.8s ease-in-out infinite;
+        }
+        @keyframes scrollBob {
+            0%,
+            100% {
+                transform: scaleY(1);
+                opacity: .7;
+            }
+            50% {
+                transform: scaleY(.6);
+                opacity: .3;
+            }
+        }
+        /* ─── Progress dots ─── */
+        #progress-dots {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity .4s ease;
+        }
+        #progress-dots.visible {
+            opacity: 1;
+        }
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background .3s ease, transform .3s ease;
+        }
+        .dot.active {
+            background: #111;
+            transform: scale(1.6);
+        }
+        /* ─── Navbar ─── */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 40;
+            transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
+        }
+        #navbar.scrolled {
+            background: rgba(244, 240, 232, .92);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border-bottom: 1px solid rgba(200, 194, 183, .55);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: .95rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: .01em;
+            transition: opacity .2s;
+        }
+        .nav-logo:hover {
+            opacity: .65;
+        }
+        .nav-links {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 32px;
+            }
+        }
+        .nav-link {
+            font-size: .825rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            position: relative;
+            transition: color .22s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text);
+            transition: width .28s ease;
+        }
+        .nav-link:hover {
+            color: var(--text);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* ─── Buttons ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 22px;
+            border-radius: 100px;
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: .025em;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: background .22s, transform .18s, box-shadow .22s;
+        }
+        .btn-dark {
+            background: #111;
+            color: #fff;
+        }
+        .btn-dark:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
+        }
+        .btn-dark:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        .btn-outline {
+            background: transparent;
+            color: #111;
+            border: 1.5px solid #d0d0d0;
+        }
+        .btn-outline:hover {
+            border-color: #111;
+            transform: translateY(-1px);
+        }
+        /* ─── Section layout helpers ─── */
+        .site-max {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+        .section-label {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .rule {
+            width: 40px;
+            height: 1px;
+            background: #e0e0e0;
+            margin-bottom: 22px;
+        }
+        /* ─── Services grid ─── */
+        .service-card {
+            border: 1px solid #ebebeb;
+            border-radius: 16px;
+            padding: 36px 32px;
+            background: #fff;
+            transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+            cursor: default;
+        }
+        .service-card:hover {
+            border-color: #d0d0d0;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, .06);
+            transform: translateY(-3px);
+        }
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #f4f4f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            transition: background .22s;
+        }
+        .service-card:hover .service-icon {
+            background: #eeeeeb;
+        }
+        .service-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -.015em;
+            color: #111;
+            margin-bottom: 10px;
+        }
+        .service-desc {
+            font-size: .9rem;
+            color: #777;
+            line-height: 1.65;
+            margin-bottom: 22px;
+        }
+        .service-tag {
+            display: inline-block;
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            color: #999;
+            background: #f5f5f3;
+            border-radius: 100px;
+            padding: 4px 12px;
+        }
+        /* ─── Quote form ─── */
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-label {
+            font-size: .775rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            color: #555;
+        }
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 10px;
+            font-size: .9rem;
+            font-family: inherit;
+            color: #111;
+            background: #fff;
+            outline: none;
+            transition: border-color .22s ease, box-shadow .22s ease;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: #bbb;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, .05);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+        .form-select-wrap {
+            position: relative;
+        }
+        .form-select-wrap::after {
+            content: '';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #999;
+            pointer-events: none;
+        }
+        /* ─── Scroll reveals ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+        }
+        /* ─── Portfolio grid ─── */
+        #portfolio {
+            padding: 80px 0 96px;
+        }
+        .portfolio-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+        .filter-btn {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            color: #999;
+            background: #f5f5f3;
+            border: none;
+            border-radius: 100px;
+            padding: 7px 16px;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+        .filter-btn:hover {
+            background: #eee;
+            color: #555;
+        }
+        .filter-btn.active {
+            background: #111;
+            color: #fff;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .portfolio-card {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #ebebeb;
+            background: #fff;
+            transition: border-color .25s, box-shadow .25s, transform .25s;
+            cursor: default;
+        }
+        .portfolio-card:hover {
+            border-color: #d0d0d0;
+            box-shadow: 0 16px 44px rgba(0,0,0,.08);
+            transform: translateY(-4px);
+        }
+        .portfolio-card[hidden] {
+            display: none;
+        }
+        .portfolio-img-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #f4f4f2;
+        }
+        .portfolio-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .45s ease;
+        }
+        .portfolio-card:hover .portfolio-img-wrap img {
+            transform: scale(1.04);
+        }
+        .portfolio-cat-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            background: rgba(255,255,255,.92);
+            backdrop-filter: blur(6px);
+            border-radius: 100px;
+            padding: 4px 12px;
+            color: #555;
+        }
+        .portfolio-card-body {
+            padding: 22px 24px 26px;
+        }
+        .portfolio-location {
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #bbb;
+            margin-bottom: 6px;
+        }
+        .portfolio-title {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -.015em;
+            color: #111;
+            margin-bottom: 2px;
+        }
+        .portfolio-subtitle {
+            font-size: .85rem;
+            color: #888;
+            line-height: 1.5;
+        }
+        .portfolio-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+        }
+        /* ─── About section ─── */
+        #about .grid > div img {
+            transition: transform .5s ease;
+        }
+        /* ─── Footer ─── */
+        .footer-link {
+            font-size: .8rem;
+            color: #999;
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .footer-link:hover {
+            color: #555;
+        }
+
+        /* ── LIGHTBOX ─────────────────────────────────────── */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,.92);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #lightbox.open { display: flex; }
+
+        #lb-header {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            background: linear-gradient(to bottom,rgba(0,0,0,.7) 0%,transparent 100%);
+            z-index: 10;
+        }
+        #lb-title {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+        #lb-counter {
+            color: rgba(255,255,255,.65);
+            font-size: .85rem;
+            margin-left: 16px;
+        }
+        #lb-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+            opacity: .75;
+            transition: opacity .2s;
+            padding: 0 4px;
+        }
+        #lb-close:hover { opacity: 1; }
+
+        #lb-img-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90vw;
+            max-height: 72vh;
+        }
+        #lb-img {
+            max-width: 90vw;
+            max-height: 72vh;
+            object-fit: contain;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+        #lb-img.loaded { opacity: 1; }
+
+        .lb-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,.45);
+            border: 1px solid rgba(255,255,255,.2);
+            color: #fff;
+            font-size: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s;
+            z-index: 10;
+            user-select: none;
+        }
+        .lb-arrow:hover { background: rgba(0,0,0,.75); }
+        #lb-prev { left: -60px; }
+        #lb-next { right: -60px; }
+
+        #lb-thumbs {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            display: flex;
+            gap: 6px;
+            padding: 10px 16px;
+            overflow-x: auto;
+            background: linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 100%);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,.3) transparent;
+        }
+        #lb-thumbs::-webkit-scrollbar { height: 4px; }
+        #lb-thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.3); border-radius: 2px; }
+
+        .lb-thumb {
+            flex-shrink: 0;
+            width: 60px;
+            height: 44px;
+            object-fit: cover;
+            border-radius: 3px;
+            cursor: pointer;
+            opacity: .5;
+            border: 2px solid transparent;
+            transition: opacity .2s, border-color .2s;
+        }
+        .lb-thumb.active {
+            opacity: 1;
+            border-color: #fff;
+        }
+        .lb-thumb:hover { opacity: .85; }
+
+        /* hover gallery hint on portfolio cards */
+        .portfolio-img-wrap { position: relative; }
+        .gallery-hint {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.65) 0%, transparent 100%);
+            color: #fff;
+            font-size: .72rem;
+            letter-spacing: .08em;
+            text-align: center;
+            padding: 18px 0 8px;
+            opacity: 0;
+            transition: opacity .25s;
+            pointer-events: none;
+        }
+        .portfolio-card:hover .gallery-hint { opacity: 1; }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- ═══════════════════════════════════════════════
+       LOADING OVERLAY
+  ═══════════════════════════════════════════════ -->
+    <div id="loader" role="status" aria-label="Loading animation frames">
+        <div id="loader-logo">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="1" y="1" width="8" height="8" rx="2" fill="#111" />
+                <rect x="11" y="1" width="8" height="8" rx="2" fill="#111" opacity=".3" />
+                <rect x="1" y="11" width="8" height="8" rx="2" fill="#111" opacity=".3" />
+                <rect x="11" y="11" width="8" height="8" rx="2" fill="#111" />
+            </svg>
+            mcdesign
+        </div>
+        <div id="loader-track">
+            <div id="loader-bar"></div>
+        </div>
+        <p id="loader-pct">0%</p>
+    </div>
+    <!-- ═══════════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════════ -->
+    <header id="navbar" aria-label="Site navigation">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" aria-label="mcdesign home">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <rect x="1" y="1" width="8" height="8" rx="2" fill="#111" />
+                    <rect x="11" y="1" width="8" height="8" rx="2" fill="#111" opacity=".3" />
+                    <rect x="1" y="11" width="8" height="8" rx="2" fill="#111" opacity=".3" />
+                    <rect x="11" y="11" width="8" height="8" rx="2" fill="#111" />
+                </svg>
+                mcdesign
+            </a>
+            <nav class="nav-links">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#portfolio" class="nav-link">Work</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <a href="#contact" class="btn btn-dark">Get In Touch</a>
+        </div>
+    </header>
+    <!-- ═══════════════════════════════════════════════
+       CANVAS HERO  (pinned 400vh)
+  ═══════════════════════════════════════════════ -->
+    <section id="canvas-section" aria-label="Construction portfolio showcase animation">
+        <div id="sticky-canvas">
+            <!-- Main canvas — frames rendered here -->
+            <canvas id="hero-canvas" role="img" aria-label="Construction portfolio cinematic sequence"></canvas>
+            <!-- ── Panel 1: The Blueprint (0% checkpoint) ── -->
+            <div class="text-panel" id="panel-1">
+                <div class="panel-inner">
+                    <span class="panel-eyebrow">Michael Chandler</span>
+                    <h2 class="panel-heading">37 Years.<br>Built by Hand.</h2>
+                    <p class="panel-body">Strategic Construction Executive. $500M+ portfolio across residential, commercial, and civil construction — from California's coastline to the Bahamas.</p>
+                    <div style="display:flex;gap:10px;pointer-events:auto;">
+                        <a href="#portfolio" class="btn btn-dark">View Work</a>
+                        <a href="#about" class="btn btn-outline">About Me</a>
+                    </div>
+                </div>
+            </div>
+            <!-- ── Panel 2: The Build (33% checkpoint) ── -->
+            <div class="text-panel" id="panel-2">
+                <div class="panel-inner">
+                    <span class="panel-eyebrow">Design & Build</span>
+                    <h2 class="panel-heading">Uncompromising<br>Precision.</h2>
+                    <p class="panel-body">From hand-picked craftsmen to world-class millworkers — every project is executed with microscopic attention to structural integrity and finish quality.</p>
+                    <a href="#portfolio" class="btn btn-dark" style="pointer-events:auto;">See Projects</a>
+                </div>
+            </div>
+            <!-- ── Panel 3: The Space (66% checkpoint) ── -->
+            <div class="text-panel" id="panel-3">
+                <div class="panel-inner">
+                    <span class="panel-eyebrow">The Legacy</span>
+                    <h2 class="panel-heading">Built to<br>Last Generations.</h2>
+                    <p class="panel-body">Monumental spaces — ocean-side high-rises, alpine retreats, coastal estates. Every environment is a testament to craft, built on time and on budget.</p>
+                    <a href="#about" class="btn btn-dark" style="pointer-events:auto;">About Me</a>
+                </div>
+            </div>
+            <!-- Scroll cue -->
+            <div id="scroll-cue" aria-hidden="true">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div><!-- /sticky-canvas -->
+    </section>
+    <!-- Sidebar progress dots -->
+    <nav id="progress-dots" aria-label="Animation progress">
+        <div class="dot active" data-section="0" title="The Blueprint"></div>
+        <div class="dot" data-section="1" title="The Build"></div>
+        <div class="dot" data-section="2" title="The Space"></div>
+    </nav>
+    <!-- ═══════════════════════════════════════════════
+       INTRO STATEMENT
+  ═══════════════════════════════════════════════ -->
+    <section class="py-28">
+        <div class="site-max">
+            <div class="rule reveal"></div>
+            <p class="text-4xl md:text-5xl font-light tracking-tight leading-snug text-gray-800 max-w-3xl reveal" style="letter-spacing:-.022em;">
+                Exceptional results come from exceptional teams.<br class="hidden md:block" />
+                37 years. $500M+ delivered.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+       SERVICES / CAPABILITIES SECTION
+  ═══════════════════════════════════════════════ -->
+    <section id="services" class="border-t border-gray-100 py-24">
+        <div class="site-max">
+            <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <div class="reveal">
+                    <span class="section-label">Capabilities</span>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight" style="letter-spacing:-.02em;">
+                        End-to-end expertise.
+                    </h2>
+                </div>
+                <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
+                    From coastal estates to high-rises — every project managed with precision, accountability, and a relentless commitment to craft.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Design-Build -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M3 17L7 13M10 4L16 10L12 14L6 8L10 4Z" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 2L18 6" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <p class="service-title">Design-Build</p>
+                    <p class="service-desc">Integrated design and construction delivery — single-source accountability from concept through certificate of occupancy, on time and on budget.</p>
+                    <span class="service-tag">Residential</span>
+                    <span class="service-tag" style="margin-left:6px;">Commercial</span>
+                </div>
+                <!-- Construction Management -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <rect x="2" y="10" width="16" height="8" rx="1.5" stroke="#555" stroke-width="1.5"/>
+                            <path d="M5 10V7C5 4.79 7.24 3 10 3C12.76 3 15 4.79 15 7V10" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="10" cy="14" r="1.5" fill="#555"/>
+                        </svg>
+                    </div>
+                    <p class="service-title">Construction Management</p>
+                    <p class="service-desc">Owner-representative oversight across all project phases — budget control, scheduling, quality assurance, and subcontractor coordination.</p>
+                    <span class="service-tag">High-Rise</span>
+                    <span class="service-tag" style="margin-left:6px;">Hospitality</span>
+                </div>
+                <!-- Civil & Site Work -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M2 16C2 16 5 10 10 10C15 10 18 16 18 16" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M2 16H18" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M10 10V4" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M7 7L10 4L13 7" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <p class="service-title">Civil &amp; Site Work</p>
+                    <p class="service-desc">Large-scale grading, coastal restoration, infrastructure development, and environmental site improvements across challenging terrain.</p>
+                    <span class="service-tag">Coastal</span>
+                    <span class="service-tag" style="margin-left:6px;">45+ Acres</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ═══════════════════════════════════════════════
+       PORTFOLIO SECTION
+  ═══════════════════════════════════════════════ -->
+    <section id="portfolio" class="border-t border-gray-100">
+        <div class="site-max">
+            <!-- Section header -->
+            <div class="pt-24 mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <div class="reveal">
+                    <span class="section-label">Our Work</span>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight"
+                        style="letter-spacing:-.02em;">
+                        Projects that<br />speak for themselves.
+                    </h2>
+                </div>
+                <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
+                    37+ years, $500M+ portfolio. Every project is a testament to precision, craftsmanship, and uncompromising standards.
+                </p>
+            </div>
+            <!-- Filters -->
+            <div class="portfolio-filters reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Residential Construction">Residential</button>
+                <button class="filter-btn" data-filter="Design Build">Design Build</button>
+                <button class="filter-btn" data-filter="Civil">Civil</button>
+                <button class="filter-btn" data-filter="Hospitality">Hospitality</button>
+                <button class="filter-btn" data-filter="Residential Development">Development</button>
+            </div>
+            <!-- Grid -->
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- 1. S. Florida High Rise Luxe Condo -->
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="miami-beach-condo" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/miami-beach-cover.webp"
+                            alt="S. Florida High Rise Luxe Condo" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Construction</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">S. Florida</p>
+                        <p class="portfolio-title">High Rise Luxe Condo</p>
+                        <p class="portfolio-subtitle">Oceanfront Luxury Renovation</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">4,200 sqft</span>
+                            <span class="service-tag">5 months</span>
+                            <span class="service-tag">4 bed · 4 bath</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. High Alpine Ranch -->
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="high-alpine-ranch" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/alpine-ranch-cover.webp"
+                            alt="High Alpine Mtn. Ranch Luxe Retreat" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Construction</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Montana</p>
+                        <p class="portfolio-title">High Alpine Mtn.</p>
+                        <p class="portfolio-subtitle">Ranch Luxe Retreat</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">2,300 sqft</span>
+                            <span class="service-tag">24 months</span>
+                            <span class="service-tag">5 bed · 2 bath</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3. Syracuse House -->
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/syracuse-cover.png"
+                            alt="Syracuse House — N. Utah Craftsman Estate" loading="lazy" />
+                        <span class="portfolio-cat-badge">Design Build</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">N. Utah</p>
+                        <p class="portfolio-title">Syracuse House</p>
+                        <p class="portfolio-subtitle">N. Utah Craftsman Estate</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">6,200 sqft</span>
+                            <span class="service-tag">18 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4. Montana Condo -->
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="montana-condo" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/montana-cover.webp"
+                            alt="Mtn. Mid-Rise Luxe Condo" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Construction</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Montana</p>
+                        <p class="portfolio-title">Mtn. Mid-Rise Luxe</p>
+                        <p class="portfolio-subtitle">Condo</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">2,800 sqft</span>
+                            <span class="service-tag">8 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 5. Hospitality Pool -->
+                <div class="portfolio-card reveal" data-category="Hospitality" data-project="hospitality-pool" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/hospitality-pool-cover-v2.jpg"
+                            alt="Ultra Luxe Private Club Resort Pool" loading="lazy" />
+                        <span class="portfolio-cat-badge">Hospitality</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">SE Texas</p>
+                        <p class="portfolio-title">Ultra Luxe Private Club</p>
+                        <p class="portfolio-subtitle">Resort Pool</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">189,000 gal</span>
+                            <span class="service-tag">18 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6. South Coast Renovation -->
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="southcoast-remodel" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/southcoast-cover.webp"
+                            alt="South Coast Renovation" loading="lazy" />
+                        <span class="portfolio-cat-badge">Design Build</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Big Sur, CA</p>
+                        <p class="portfolio-title">South Coast Renovation</p>
+                        <p class="portfolio-subtitle">Complete Remodel</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">3,800 sqft</span>
+                            <span class="service-tag">16 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 7. Carmel Valley New -->
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="carmel-valley-new" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/carmel-valley-new/carmel_valley_new1%20cover.png"
+                            alt="Carmel Valley New Custom Residence" loading="lazy" />
+                        <span class="portfolio-cat-badge">Design Build</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Carmel Valley, CA</p>
+                        <p class="portfolio-title">Carmel Valley New</p>
+                        <p class="portfolio-subtitle">Custom Residence</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">4,800 sqft</span>
+                            <span class="service-tag">20 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 8. North Florida Renovation -->
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="north-florida-renovation" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/north-florida/NIMG_9178.jpg"
+                            alt="North Florida Renovation and Addition" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Construction</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">N. Florida</p>
+                        <p class="portfolio-title">North Florida Renovation</p>
+                        <p class="portfolio-subtitle">Addition</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">3,600 + 1,200 sqft</span>
+                            <span class="service-tag">10 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 9. Abaco Luxe Boat House -->
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="bahamas-abaco-development" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/abaco-luxe-boathouse-cover.webp"
+                            alt="Abaco Luxe Boat House" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Construction</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Abaco, Bahamas</p>
+                        <p class="portfolio-title">Abaco Luxe Boat House</p>
+                        <p class="portfolio-subtitle">Construction</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">1,800 sqft</span>
+                            <span class="service-tag">6 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 10. Carmel Forest to Ocean View -->
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-2" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/carmel-2-cover.webp"
+                            alt="Carmel Forest to Ocean View Custom Addition" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Construction</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Carmel By the Sea, CA</p>
+                        <p class="portfolio-title">Carmel Forest to Ocean View</p>
+                        <p class="portfolio-subtitle">Custom Addition</p>
+                    </div>
+                </div>
+                <!-- 11. Coastal Mountain Residence -->
+                <div class="portfolio-card reveal" data-category="Civil" data-project="bigsur-mountain-remodel" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/coastal-mountain/001%20COVER.JPG"
+                            alt="Coastal Mountain Residence Civil Site Work" loading="lazy" />
+                        <span class="portfolio-cat-badge">Civil</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Big Sur, CA</p>
+                        <p class="portfolio-title">Coastal Mountain Residence</p>
+                        <p class="portfolio-subtitle">Civil Site Work</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">11 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 12. Carmel Knolls -->
+                <div class="portfolio-card reveal" data-category="Civil" data-project="carmel-knolls" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/carmel-knolls/001.10%20COVER.jpg"
+                            alt="Carmel Knolls Remodel" loading="lazy" />
+                        <span class="portfolio-cat-badge">Civil</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Carmel, CA</p>
+                        <p class="portfolio-title">Carmel Knolls</p>
+                        <p class="portfolio-subtitle">More Than Lipstick on an Old Lady!</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">2,200 sqft</span>
+                            <span class="service-tag">12 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 13. Coastal Restoration -->
+                <div class="portfolio-card reveal" data-category="Civil" data-project="coastal-restoration" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/coastal-restoration/001%20COVER.JPG"
+                            alt="Coastal Restoration Erosion Repair" loading="lazy" />
+                        <span class="portfolio-cat-badge">Civil</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Monterey Peninsula, CA</p>
+                        <p class="portfolio-title">Coastal Restoration</p>
+                        <p class="portfolio-subtitle">Erosion Repair</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">9 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 14. Beachfront Estate -->
+                <div class="portfolio-card reveal" data-category="Residential Development" data-project="bahamas-beachfront-estate" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/beachfront-1.webp"
+                            alt="Beachfront Estate Residence" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Development</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Abaco, Bahamas</p>
+                        <p class="portfolio-title">Beachfront Estate</p>
+                        <p class="portfolio-subtitle">Residence</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">6,800 sqft</span>
+                            <span class="service-tag">2.5 Acres</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 15. Development Civil -->
+                <div class="portfolio-card reveal" data-category="Residential Development" data-project="development-civil" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/development-civil/development%20(1).jpg"
+                            alt="Development Civil Construction" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Development</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">SE Texas</p>
+                        <p class="portfolio-title">Development Civil</p>
+                        <p class="portfolio-subtitle">Construction</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">45 Acres</span>
+                            <span class="service-tag">36 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 16. Pacific Grove Design Build -->
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="pacific-grove-design-build" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/pacific-grove/001%20COVER.JPG"
+                            alt="New Residential Construction In Historic Neighborhood" loading="lazy" />
+                        <span class="portfolio-cat-badge">Design Build</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Central Coast, CA</p>
+                        <p class="portfolio-title">New Residential Construction</p>
+                        <p class="portfolio-subtitle">In Historic Neighborhood</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">2,600 sqft</span>
+                            <span class="service-tag">14 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 17. Hillside Cleanup -->
+                <div class="portfolio-card reveal" data-category="Civil" data-project="hillside-cleanup" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/hillside-cleanup/001%20COVER.jpg"
+                            alt="Hillside Restoration and Environmental Cleanup" loading="lazy" />
+                        <span class="portfolio-cat-badge">Civil</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Carmel, CA</p>
+                        <p class="portfolio-title">Hillside Restoration</p>
+                        <p class="portfolio-subtitle">Environmental Cleanup</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">4 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 18. Laguna Grande -->
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="laguna-grande-design-build" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png"
+                            alt="Laguna Grande Spanish Revival Commercial" loading="lazy" />
+                        <span class="portfolio-cat-badge">Design Build</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Seaside, CA</p>
+                        <p class="portfolio-title">Laguna Grande</p>
+                        <p class="portfolio-subtitle">Spanish Revival Commercial</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">12,000 sqft</span>
+                            <span class="service-tag">22 months</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 19. Carmel House Remodel No.23 -->
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-3" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/carmel-3-cover.webp"
+                            alt="Carmel House Remodel No.23" loading="lazy" />
+                        <span class="portfolio-cat-badge">Residential Construction</span>
+                        <span class="gallery-hint">View Gallery</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Carmel By the Sea, CA</p>
+                        <p class="portfolio-title">Carmel House Remodel No.23</p>
+                        <p class="portfolio-subtitle">Complete Renovation</p>
+                    </div>
+                </div>
+            </div><!-- /portfolio-grid -->
+        </div>
+    </section>
+    <!-- ═══════════════════════════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════════════════════════ -->
+    <section id="about" class="bg-gray-50 border-t border-gray-100 py-28">
+        <div class="site-max">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <!-- Left: bio -->
+                <div>
+                    <span class="section-label reveal">About</span>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 reveal"
+                        style="letter-spacing:-.02em;">
+                        Who I Am
+                    </h2>
+                    <div class="rule reveal"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6 reveal">
+                        Through my experience of 37 years as a Business, Design, and Construction professional, I have found that exceptional results come from exceptional teams.
+                    </p>
+                    <p class="text-base text-gray-500 leading-relaxed mb-6 reveal">
+                        My approach is simple: bring together the right people, create an environment built on mutual respect, and stay closely attuned to client feedback throughout every phase of a project.
+                    </p>
+                    <p class="text-base text-gray-500 leading-relaxed mb-10 reveal">
+                        I've built my career on the universal business principle that quality construction isn't just about meeting standards — it's about exceeding them, by combining rigorous processes with forward-thinking design.
+                    </p>
+                    <!-- Signature -->
+                    <div class="flex items-center gap-4 reveal">
+                        <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #e0e0e0;flex-shrink:0;">
+                            <img src="mike-profile.jpeg" alt="Michael Chandler" style="width:100%;height:100%;object-fit:cover;" />
+                        </div>
+                        <div>
+                            <p style="font-weight:700;font-size:1.05rem;color:#111;letter-spacing:-.01em;">Michael Chandler</p>
+                            <p style="font-size:.8rem;color:#aaa;letter-spacing:.04em;text-transform:uppercase;">Founder &amp; Master Builder</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: image grid -->
+                <div class="grid grid-cols-2 gap-4 reveal">
+                    <div class="space-y-4">
+                        <div style="aspect-ratio:4/5;overflow:hidden;border-radius:12px;">
+                            <img src="projects/syracuse-cover.png" alt="Syracuse House" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+                        </div>
+                        <div style="aspect-ratio:1/1;overflow:hidden;border-radius:12px;">
+                            <img src="projects/coastal-mountain/001 COVER.JPG" alt="Coastal Mountain" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+                        </div>
+                    </div>
+                    <div class="space-y-4" style="padding-top:2rem;">
+                        <div style="aspect-ratio:1/1;overflow:hidden;border-radius:12px;">
+                            <img src="projects/carmel-valley-new/carmel_valley_new1 cover.png" alt="Carmel Valley" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+                        </div>
+                        <div style="aspect-ratio:4/5;overflow:hidden;border-radius:12px;">
+                            <img src="projects/hospitality-pool-cover-v2.jpg" alt="Private Club Pool" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-gray-100">
+                <div class="text-center reveal">
+                    <p class="text-5xl font-bold tracking-tight text-gray-900 mb-2 stat-counter" style="letter-spacing:-.03em;" data-target="37" data-prefix="" data-suffix="+">37+</p>
+                    <p class="text-xs font-600 text-gray-400 uppercase tracking-widest">Years Experience</p>
+                </div>
+                <div class="text-center reveal">
+                    <p class="text-5xl font-bold tracking-tight text-gray-900 mb-2 stat-counter" style="letter-spacing:-.03em;" data-target="500" data-prefix="$" data-suffix="M+">$500M+</p>
+                    <p class="text-xs font-600 text-gray-400 uppercase tracking-widest">Portfolio Value</p>
+                </div>
+                <div class="text-center reveal">
+                    <p class="text-5xl font-bold tracking-tight text-gray-900 mb-2 stat-counter" style="letter-spacing:-.03em;" data-target="500" data-prefix="" data-suffix="+">500+</p>
+                    <p class="text-xs font-600 text-gray-400 uppercase tracking-widest">Projects Completed</p>
+                </div>
+                <div class="text-center reveal">
+                    <p class="text-5xl font-bold tracking-tight text-gray-900 mb-2 stat-counter" style="letter-spacing:-.03em;" data-target="100" data-prefix="" data-suffix="%">100%</p>
+                    <p class="text-xs font-600 text-gray-400 uppercase tracking-widest">Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ═══════════════════════════════════════════════
+       CTA BAND
+  ═══════════════════════════════════════════════ -->
+    <section id="contact" class="bg-gray-950 text-white py-24 px-6 text-center">
+        <span class="section-label reveal" style="color:#555;">Get in touch</span>
+        <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8 reveal" style="letter-spacing:-.025em;">
+            Let's build something<br />extraordinary.
+        </h2>
+        <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="btn reveal"
+            style="display:inline-flex;background:#fff;color:#111;padding:14px 28px;font-size:.875rem;">
+            Visit Full Portfolio
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </a>
+    </section>
+    <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+    <footer class="border-t border-gray-100 py-10">
+        <div class="site-max flex flex-col md:flex-row items-center justify-between gap-5">
+            <p class="text-xs text-gray-400">&copy; 2026 Michael Chandler — mcdesign. All rights reserved.</p>
+            <nav class="flex gap-6">
+                <a href="#portfolio" class="footer-link">Work</a>
+                <a href="#about" class="footer-link">About</a>
+                <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="footer-link">mcdesign.bio</a>
+            </nav>
+        </div>
+    </footer>
+    <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════ -->
+    <script>
+        (() => {
+            'use strict';
+            // ─────────────────────────────────────────────────────────────────────
+            //  CONFIG
+            // ─────────────────────────────────────────────────────────────────────
+            const TOTAL_FRAMES = 294;
+            /**
+             * Generate the array of relative frame paths.
+             * Files: ezgif-frame-001.jpg … ezgif-frame-294.jpg
+             */
+            const FRAME_URLS = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
+                const n = String(i + 1).padStart(3, '0');
+                return `ezgif-frame-${n}.jpg`;
+            });
+            // ─────────────────────────────────────────────────────────────────────
+            //  DOM REFS
+            // ─────────────────────────────────────────────────────────────────────
+            const loaderEl = document.getElementById('loader');
+            const loaderBar = document.getElementById('loader-bar');
+            const loaderPct = document.getElementById('loader-pct');
+            const canvasSec = document.getElementById('canvas-section');
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            const panels = [
+                document.getElementById('panel-1'),
+                document.getElementById('panel-2'),
+                document.getElementById('panel-3'),
+            ];
+            const dots = document.querySelectorAll('.dot');
+            const progressEl = document.getElementById('progress-dots');
+            const scrollCue = document.getElementById('scroll-cue');
+            const navbar = document.getElementById('navbar');
+            // ─────────────────────────────────────────────────────────────────────
+            //  CANVAS SIZING
+            // ─────────────────────────────────────────────────────────────────────
+            canvasSec.style.height = '400vh';
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                drawFrameIndex(currentFrameIndex);
+            });
+            // ─────────────────────────────────────────────────────────────────────
+            //  IMAGE CACHE
+            // ─────────────────────────────────────────────────────────────────────
+            /** @type {(HTMLImageElement|null)[]} */
+            const cache = new Array(TOTAL_FRAMES).fill(null);
+            let loaded = 0;
+            let currentFrameIndex = 0;
+            /**
+             * Draws a cached frame using object-fit:cover semantics.
+             * @param {number} idx – frame index (float ok, will be rounded+clamped)
+             */
+            function drawFrameIndex(idx) {
+                const i = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(idx)));
+                currentFrameIndex = i;
+                const img = cache[i];
+                if (!img) return;
+                const cw = canvas.width, ch = canvas.height;
+                const iw = img.naturalWidth, ih = img.naturalHeight;
+                if (!iw || !ih) return;
+                const scale = Math.max(cw / iw, ch / ih);
+                const sw = iw * scale, sh = ih * scale;
+                const sx = (cw - sw) / 2, sy = (ch - sh) / 2;
+                ctx.clearRect(0, 0, cw, ch);
+                ctx.drawImage(img, sx, sy, sw, sh);
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  PRELOAD WITH PROGRESS
+            //  Loads all frames concurrently and tracks progress for the loader bar.
+            // ─────────────────────────────────────────────────────────────────────
+            function preloadFrames(onComplete) {
+                // Paint first frame as early as possible for instant gratification
+                const seed = new Image();
+                seed.onload = () => { cache[0] = seed; drawFrameIndex(0); };
+                seed.src = FRAME_URLS[0];
+                let done = 0;
+                FRAME_URLS.forEach((url, i) => {
+                    const img = new Image();
+                    const tick = () => {
+                        done++;
+                        const pct = Math.round((done / TOTAL_FRAMES) * 100);
+                        loaderBar.style.width = pct + '%';
+                        loaderPct.textContent = pct + '%';
+                        if (done === TOTAL_FRAMES) onComplete();
+                    };
+                    img.onload = () => {
+                        cache[i] = img;
+                        // Draw immediately if it's close to current visible position
+                        if (i === 0) drawFrameIndex(0);
+                        tick();
+                    };
+                    img.onerror = () => tick(); // graceful fallback
+                    img.src = url;
+                });
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  TEXT PANEL TRANSITIONS
+            //
+            //  We use CSS class toggling (is-visible) paired with CSS transitions
+            //  (cubic-bezier ease-in-out) instead of GSAP.set() per-tick, so the
+            //  browser's compositor handles the interpolation smoothly.
+            //
+            //  Checkpoints (progress 0→1):
+            //   Panel 1: visible from  0.00 → 0.30
+            //   Panel 2: visible from  0.33 → 0.62
+            //   Panel 3: visible from  0.66 → 0.90
+            // ─────────────────────────────────────────────────────────────────────
+            const CHECKPOINTS = [
+                { panel: panels[0], start: 0.00, end: 0.30 },
+                { panel: panels[1], start: 0.33, end: 0.62 },
+                { panel: panels[2], start: 0.66, end: 0.90 },
+            ];
+            function updatePanels(progress) {
+                CHECKPOINTS.forEach(({ panel, start, end }) => {
+                    const visible = progress >= start && progress < end;
+                    panel.classList.toggle('is-visible', visible);
+                    // If visible, ensure pointer-events propagate for CTAs
+                    panel.style.pointerEvents = visible ? 'auto' : 'none';
+                });
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  SIDEBAR DOTS
+            // ─────────────────────────────────────────────────────────────────────
+            function updateDots(progress) {
+                let active = 0;
+                if (progress >= 0.66) active = 2;
+                else if (progress >= 0.33) active = 1;
+                dots.forEach((d, i) => d.classList.toggle('active', i === active));
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  SMOOTH FRAME SCRUBBING
+            //
+            //  Strategy: ScrollTrigger drives a gsap-tweened "scrub proxy" object.
+            //  We lerp toward the raw progress value each rAF tick, then map to
+            //  a frame index. This gives buttery-smooth canvas updates even when
+            //  the user scrubs quickly.
+            // ─────────────────────────────────────────────────────────────────────
+            const proxy = { progress: 0 };  // GSAP-tweened progress target
+            let rAFid = null;
+            function renderLoop() {
+                drawFrameIndex(proxy.progress * (TOTAL_FRAMES - 1));
+                updatePanels(proxy.progress);
+                updateDots(proxy.progress);
+                rAFid = requestAnimationFrame(renderLoop);
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  BELOW-FOLD SCROLL REVEALS
+            // ─────────────────────────────────────────────────────────────────────
+            function initRevealAnimations() {
+                gsap.utils.toArray('.reveal').forEach(el => {
+                    gsap.fromTo(el,
+                        { opacity: 0, y: 24 },
+                        {
+                            opacity: 1, y: 0,
+                            duration: .85,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: el,
+                                start: 'top 90%',
+                                toggleActions: 'play none none reverse',
+                            },
+                        }
+                    );
+                });
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  ANIMATED STAT COUNTERS
+            // ─────────────────────────────────────────────────────────────────────
+            function initCounters() {
+                document.querySelectorAll('.stat-counter').forEach(el => {
+                    const target  = parseFloat(el.dataset.target);
+                    const prefix  = el.dataset.prefix  || '';
+                    const suffix  = el.dataset.suffix  || '';
+                    const obj     = { val: 0 };
+                    ScrollTrigger.create({
+                        trigger: el,
+                        start: 'top 85%',
+                        once: true,
+                        onEnter: () => {
+                            gsap.to(obj, {
+                                val: target,
+                                duration: 2,
+                                ease: 'power2.out',
+                                onUpdate() {
+                                    el.textContent = prefix + Math.round(obj.val) + suffix;
+                                },
+                            });
+                        },
+                    });
+                });
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  MAIN SCROLL TRIGGER
+            // ─────────────────────────────────────────────────────────────────────
+            function initScrollTrigger() {
+                // Navbar frosted glass on scroll
+                ScrollTrigger.create({
+                    start: 60,
+                    onEnter: () => navbar.classList.add('scrolled'),
+                    onLeaveBack: () => navbar.classList.remove('scrolled'),
+                });
+                // Canvas pin + scroll-driven scrub
+                ScrollTrigger.create({
+                    trigger: '#canvas-section',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    pin: '#sticky-canvas',
+                    pinSpacing: false,
+                    // scrub: .8 → GSAP smoothly animates the proxy.progress value
+                    // over 0.8 seconds behind the raw scroll position.
+                    scrub: 0.8,
+                    onUpdate(self) {
+                        // Tween the proxy to match scroll progress — GSAP handles easing
+                        gsap.to(proxy, {
+                            progress: self.progress,
+                            duration: 0.4,
+                            ease: 'power1.out',
+                            overwrite: true,
+                        });
+                    },
+                    onEnter() {
+                        progressEl.classList.add('visible');
+                        gsap.to(scrollCue, { opacity: 0, duration: .5 });
+                        // Start render loop when entering canvas section
+                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
+                    },
+                    onLeave() {
+                        progressEl.classList.remove('visible');
+                        cancelAnimationFrame(rAFid); rAFid = null;
+                    },
+                    onEnterBack() {
+                        progressEl.classList.add('visible');
+                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
+                    },
+                    onLeaveBack() {
+                        progressEl.classList.remove('visible');
+                        gsap.to(scrollCue, { opacity: 1, duration: .5 });
+                        cancelAnimationFrame(rAFid); rAFid = null;
+                    },
+                });
+                // Initial panel 1 visibility at page load
+                updatePanels(0);
+            }
+            // ─────────────────────────────────────────────────────────────────────
+            //  SPIN KEYFRAME (for submit button loader)
+            // ─────────────────────────────────────────────────────────────────────
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+            document.head.appendChild(styleSheet);
+            // ─────────────────────────────────────────────────────────────────────
+            //  INIT SEQUENCE
+            // ─────────────────────────────────────────────────────────────────────
+            gsap.registerPlugin(ScrollTrigger);
+            // Gray placeholder while loading
+            ctx.fillStyle = '#f5f5f3';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            preloadFrames(() => {
+                // All frames loaded — hide loader, init GSAP, init reveals
+                loaderEl.classList.add('hidden');
+                drawFrameIndex(0);
+                initScrollTrigger();
+                initRevealAnimations();
+                initCounters();
+            });
+        })();
+    </script>
+    <!-- Portfolio filter logic -->
+    <script>
+        (() => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.portfolio-card');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.dataset.filter;
+                    cards.forEach(card => {
+                        const match = filter === 'all' || card.dataset.category === filter;
+                        card.hidden = !match;
+                    });
+                });
+            });
+        })();
+    </script>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery">
+        <div id="lb-header">
+            <div style="display:flex;align-items:center;gap:0;">
+                <span id="lb-title"></span>
+                <span id="lb-counter"></span>
+            </div>
+            <button id="lb-close" aria-label="Close gallery">&times;</button>
+        </div>
+        <div id="lb-img-wrap">
+            <button class="lb-arrow" id="lb-prev" aria-label="Previous image">&#8249;</button>
+            <img id="lb-img" src="" alt="" />
+            <button class="lb-arrow" id="lb-next" aria-label="Next image">&#8250;</button>
+        </div>
+        <div id="lb-thumbs"></div>
+    </div>
+
+    <!-- Lightbox + Gallery Data Script -->
+    <script>
+    (() => {
+        /* ── Gallery data ───────────────────────────────────────────── */
+        const BASE = 'projects/assets/';
+        const BPRJ = 'projects/';
+
+        function a(base, ...files) {
+            return files.map(f => base + f);
+        }
+
+        const GALLERIES = {
+            'miami-beach-condo': {
+                title: 'S. Florida High Rise Luxe Condo',
+                images: [
+                    BASE + 'miami-beach-cover.webp',
+                    ...Array.from({length:46}, (_,i) => BASE + 'miami-beach-' + (i+1) + '.webp'),
+                    BASE + 'detail-wood-paneling.png'
+                ]
+            },
+            'high-alpine-ranch': {
+                title: 'High Alpine Mtn. Ranch Luxe Retreat',
+                images: [
+                    BASE + 'alpine-ranch-cover.webp',
+                    ...Array.from({length:12}, (_,i) => BASE + 'alpine-ranch-' + (i+1) + '.webp')
+                ]
+            },
+            'syracuse-house': {
+                title: 'Syracuse House — N. Utah Craftsman Estate',
+                images: [
+                    BPRJ + 'syracuse-cover.png',
+                    ...Array.from({length:53}, (_,i) => BPRJ + 'syracuse-final/syracuse-' + (i+1) + '.png')
+                ]
+            },
+            'montana-condo': {
+                title: 'Mtn. Mid-Rise Luxe Condo',
+                images: [
+                    BASE + 'montana-cover.webp',
+                    BASE + 'montana-1.webp',
+                    BPRJ + 'montana/montana-detail.jpg',
+                    ...Array.from({length:9}, (_,i) => BASE + 'montana-' + (i+3) + '.webp')
+                ]
+            },
+            'hospitality-pool': {
+                title: 'Ultra Luxe Private Club Resort Pool',
+                images: [
+                    BPRJ + 'hospitality-pool-cover-v2.jpg',
+                    BPRJ + 'hospitality-pool/pool-10.webp',
+                    BPRJ + 'hospitality-pool/pool-12.webp',
+                    ...Array.from({length:24}, (_,i) => BPRJ + 'hospitality-pool/pool-' + (i+14) + '.webp')
+                ]
+            },
+            'southcoast-remodel': {
+                title: 'South Coast Renovation',
+                images: [
+                    BASE + 'southcoast-cover.webp',
+                    ...Array.from({length:52}, (_,i) => BASE + 'southcoast-' + (i+2) + '.webp')
+                ]
+            },
+            'carmel-valley-new': {
+                title: 'Carmel Valley New Custom Residence',
+                images: [
+                    BPRJ + 'carmel-valley-new/carmel_valley_new1%20cover.png',
+                    BPRJ + 'carmel-valley-new/carmel_valley_new2.png',
+                    BPRJ + 'carmel-valley-new/carmel_valley_new3.jpg',
+                    BPRJ + 'carmel-valley-new/carmel_valley_new4.png',
+                    BPRJ + 'carmel-valley-new/carmel_valley_new5.png'
+                ]
+            },
+            'north-florida-renovation': {
+                title: 'North Florida Renovation & Addition',
+                images: [
+                    BPRJ + 'north-florida/NIMG_9178.jpg',
+                    BPRJ + 'north-florida/NIMG_9179.jpg',
+                    BPRJ + 'north-florida/NIMG_9180.jpg',
+                    BPRJ + 'north-florida/NIMG_9182.jpg',
+                    BPRJ + 'north-florida/NIMG_9184.jpg',
+                    BPRJ + 'north-florida/NIMG_9185.jpg',
+                    BPRJ + 'north-florida/NIMG_9890.jpg',
+                    BPRJ + 'north-florida/NIMG_9892.jpg',
+                    BPRJ + 'north-florida/NIMG_9893.jpg',
+                    BPRJ + 'north-florida/NIMG_9894.jpg',
+                    BPRJ + 'north-florida/NIMG_9895.jpg',
+                    BPRJ + 'north-florida/NScreenshot%202025-10-30%20001316.png',
+                    BPRJ + 'north-florida/NScreenshot%202025-10-31%20222048.png'
+                ]
+            },
+            'bahamas-abaco-development': {
+                title: 'Abaco Luxe Boat House',
+                images: [
+                    BASE + 'abaco-luxe-boathouse-cover.webp',
+                    BASE + 'abaco-luxe-boathouse-1.webp'
+                ]
+            },
+            'carmel-house-2': {
+                title: 'Carmel Forest to Ocean View Custom Addition',
+                images: [
+                    BASE + 'carmel-2-cover.webp',
+                    ...Array.from({length:5}, (_,i) => BASE + 'carmel-2-' + (i+1) + '.webp')
+                ]
+            },
+            'bigsur-mountain-remodel': {
+                title: 'Coastal Mountain Residence — Civil Site Work',
+                images: [
+                    BPRJ + 'coastal-mountain/001%20COVER.JPG',
+                    BPRJ + 'coastal-mountain/002.JPG',
+                    BPRJ + 'coastal-mountain/003.JPG',
+                    BPRJ + 'coastal-mountain/004.JPG',
+                    BPRJ + 'coastal-mountain/005.JPG',
+                    BPRJ + 'coastal-mountain/006.JPG',
+                    BPRJ + 'coastal-mountain/007.jpg',
+                    BPRJ + 'coastal-mountain/008.jpg',
+                    BPRJ + 'coastal-mountain/009.JPG',
+                    BPRJ + 'coastal-mountain/010.JPG',
+                    BPRJ + 'coastal-mountain/011.JPG',
+                    BPRJ + 'coastal-mountain/012.jpg',
+                    BPRJ + 'coastal-mountain/013.jpg',
+                    BPRJ + 'coastal-mountain/014.JPG',
+                    BPRJ + 'coastal-mountain/015.JPG',
+                    BPRJ + 'coastal-mountain/016.JPG'
+                ]
+            },
+            'carmel-knolls': {
+                title: 'Carmel Knolls Remodel',
+                images: [
+                    BPRJ + 'carmel-knolls/001.10%20COVER.jpg',
+                    BPRJ + 'carmel-knolls/001%20Cover%20Carmel%20Knolls%2C%20CA%20Remodel%2C%20Before%20%26%20After.png',
+                    BPRJ + 'carmel-knolls/002.JPG',
+                    BPRJ + 'carmel-knolls/003.JPG',
+                    BPRJ + 'carmel-knolls/004.JPG',
+                    BPRJ + 'carmel-knolls/005.JPG',
+                    BPRJ + 'carmel-knolls/006.JPG',
+                    BPRJ + 'carmel-knolls/007.JPG',
+                    BPRJ + 'carmel-knolls/008.JPG',
+                    BPRJ + 'carmel-knolls/009.JPG',
+                    BPRJ + 'carmel-knolls/0010.JPG',
+                    BPRJ + 'carmel-knolls/0011.JPG',
+                    BPRJ + 'carmel-knolls/0012.JPG',
+                    BPRJ + 'carmel-knolls/0013.JPG',
+                    BPRJ + 'carmel-knolls/0014.JPG',
+                    BPRJ + 'carmel-knolls/0015.JPG',
+                    BPRJ + 'carmel-knolls/0016.JPG',
+                    BPRJ + 'carmel-knolls/0017.JPG',
+                    BPRJ + 'carmel-knolls/0018.JPG',
+                    BPRJ + 'carmel-knolls/0019.JPG',
+                    BPRJ + 'carmel-knolls/0020.JPG',
+                    BPRJ + 'carmel-knolls/0021.JPG',
+                    BPRJ + 'carmel-knolls/0022.JPG',
+                    BPRJ + 'carmel-knolls/0023.JPG',
+                    BPRJ + 'carmel-knolls/0024.JPG',
+                    BPRJ + 'carmel-knolls/0025.JPG',
+                    BPRJ + 'carmel-knolls/0026.JPG'
+                ]
+            },
+            'coastal-restoration': {
+                title: 'Coastal Restoration — Erosion Repair',
+                images: [
+                    BPRJ + 'coastal-restoration/001%20COVER.JPG',
+                    BPRJ + 'coastal-restoration/002.JPG',
+                    BPRJ + 'coastal-restoration/003.JPG',
+                    BPRJ + 'coastal-restoration/004.JPG',
+                    BPRJ + 'coastal-restoration/005.JPG',
+                    BPRJ + 'coastal-restoration/006.JPG',
+                    BPRJ + 'coastal-restoration/007.JPG',
+                    BPRJ + 'coastal-restoration/008.JPG',
+                    BPRJ + 'coastal-restoration/009.JPG',
+                    BPRJ + 'coastal-restoration/0010.JPG',
+                    BPRJ + 'coastal-restoration/0011.JPG',
+                    BPRJ + 'coastal-restoration/0012.JPG',
+                    BPRJ + 'coastal-restoration/0013.JPG',
+                    BPRJ + 'coastal-restoration/0014.JPG',
+                    BPRJ + 'coastal-restoration/0015.jpg',
+                    BPRJ + 'coastal-restoration/0016.jpg'
+                ]
+            },
+            'bahamas-beachfront-estate': {
+                title: 'Beachfront Estate Residence',
+                images: Array.from({length:7}, (_,i) => BASE + 'beachfront-' + (i+1) + '.webp')
+            },
+            'development-civil': {
+                title: 'Development Civil Construction',
+                images: [
+                    BPRJ + 'development-civil/development%20(1).jpg',
+                    BPRJ + 'development-civil/development%20(1).png',
+                    ...Array.from({length:19}, (_,i) => BPRJ + 'development-civil/development%20(' + (i+2) + ').jpg')
+                ]
+            },
+            'pacific-grove-design-build': {
+                title: 'New Residential Construction In Historic Neighborhood',
+                images: [
+                    BPRJ + 'pacific-grove/001%20COVER.JPG',
+                    BPRJ + 'pacific-grove/002.JPG',
+                    BPRJ + 'pacific-grove/003.png',
+                    BPRJ + 'pacific-grove/004.png',
+                    BPRJ + 'pacific-grove/005.JPG',
+                    BPRJ + 'pacific-grove/006.JPG',
+                    BPRJ + 'pacific-grove/007.JPG',
+                    BPRJ + 'pacific-grove/008.JPG',
+                    BPRJ + 'pacific-grove/009.JPG',
+                    BPRJ + 'pacific-grove/0010.JPG',
+                    BPRJ + 'pacific-grove/0011.JPG'
+                ]
+            },
+            'hillside-cleanup': {
+                title: 'Hillside Restoration — Environmental Cleanup',
+                images: [
+                    BPRJ + 'hillside-cleanup/001%20COVER.jpg',
+                    BPRJ + 'hillside-cleanup/002.JPG',
+                    BPRJ + 'hillside-cleanup/003.JPG',
+                    BPRJ + 'hillside-cleanup/004.JPG',
+                    BPRJ + 'hillside-cleanup/005.JPG',
+                    BPRJ + 'hillside-cleanup/006.JPG',
+                    BPRJ + 'hillside-cleanup/007.JPG',
+                    BPRJ + 'hillside-cleanup/008.JPG',
+                    BPRJ + 'hillside-cleanup/009.JPG',
+                    BPRJ + 'hillside-cleanup/0010.JPG',
+                    BPRJ + 'hillside-cleanup/0011.JPG',
+                    BPRJ + 'hillside-cleanup/0012.JPG',
+                    BPRJ + 'hillside-cleanup/0013.JPG',
+                    BPRJ + 'hillside-cleanup/0014.JPG',
+                    BPRJ + 'hillside-cleanup/0015.jpg',
+                    BPRJ + 'hillside-cleanup/0016.jpg'
+                ]
+            },
+            'laguna-grande-design-build': {
+                title: 'Laguna Grande — Spanish Revival Commercial',
+                images: [
+                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png',
+                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_002_(2).png',
+                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_003.png',
+                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_004.png',
+                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_004.100.png',
+                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_005.png',
+                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_006.png'
+                ]
+            },
+            'carmel-house-3': {
+                title: 'Carmel House Remodel No.23',
+                images: [
+                    'projects/assets/carmel-3-cover.webp',
+                    ...Array.from({length:14}, (_,i) => BASE + 'carmel-3-' + (i+1) + '.webp')
+                ]
+            }
+        };
+
+        /* ── State ──────────────────────────────────────────────────── */
+        let currentImages = [];
+        let currentIndex  = 0;
+        let preloadImg    = new Image();
+
+        /* ── Elements ───────────────────────────────────────────────── */
+        const lb       = document.getElementById('lightbox');
+        const lbImg    = document.getElementById('lb-img');
+        const lbTitle  = document.getElementById('lb-title');
+        const lbCtr    = document.getElementById('lb-counter');
+        const lbThumbs = document.getElementById('lb-thumbs');
+        const lbClose  = document.getElementById('lb-close');
+        const lbPrev   = document.getElementById('lb-prev');
+        const lbNext   = document.getElementById('lb-next');
+
+        /* ── Open / close ───────────────────────────────────────────── */
+        function openLightbox(projectId) {
+            const data = GALLERIES[projectId];
+            if (!data) return;
+            currentImages = data.images;
+            currentIndex  = 0;
+            lbTitle.textContent = data.title;
+            buildThumbs();
+            showImage(0);
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            lb.focus();
+        }
+
+        function closeLightbox() {
+            lb.classList.remove('open');
+            document.body.style.overflow = '';
+            lbImg.classList.remove('loaded');
+            lbImg.src = '';
+        }
+
+        /* ── Image display ──────────────────────────────────────────── */
+        function showImage(idx) {
+            idx = (idx + currentImages.length) % currentImages.length;
+            currentIndex = idx;
+            lbCtr.textContent = ' \u2014 ' + (idx + 1) + ' / ' + currentImages.length;
+
+            lbImg.classList.remove('loaded');
+            const src = currentImages[idx];
+            lbImg.alt = lbTitle.textContent + ' — image ' + (idx + 1);
+
+            const tmp = new Image();
+            tmp.onload = () => {
+                lbImg.src = src;
+                lbImg.classList.add('loaded');
+            };
+            tmp.onerror = () => {
+                lbImg.src = src; // show broken img rather than nothing
+                lbImg.classList.add('loaded');
+            };
+            tmp.src = src;
+
+            // Preload next
+            const nextSrc = currentImages[(idx + 1) % currentImages.length];
+            preloadImg.src = nextSrc;
+
+            // Sync thumbs
+            const thumbEls = lbThumbs.querySelectorAll('.lb-thumb');
+            thumbEls.forEach((t, i) => {
+                t.classList.toggle('active', i === idx);
+            });
+            // Scroll active thumb into view
+            if (thumbEls[idx]) {
+                thumbEls[idx].scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+            }
+        }
+
+        function navigate(dir) {
+            showImage(currentIndex + dir);
+        }
+
+        /* ── Thumbnails ─────────────────────────────────────────────── */
+        function buildThumbs() {
+            lbThumbs.innerHTML = '';
+            currentImages.forEach((src, i) => {
+                const img = document.createElement('img');
+                img.className = 'lb-thumb';
+                img.src = src;
+                img.alt = 'Thumbnail ' + (i + 1);
+                img.addEventListener('click', () => showImage(i));
+                lbThumbs.appendChild(img);
+            });
+        }
+
+        /* ── Event listeners ────────────────────────────────────────── */
+        // Card clicks
+        document.querySelectorAll('.portfolio-card[data-project]').forEach(card => {
+            card.addEventListener('click', () => openLightbox(card.dataset.project));
+        });
+
+        lbClose.addEventListener('click', closeLightbox);
+        lbPrev.addEventListener('click',  (e) => { e.stopPropagation(); navigate(-1); });
+        lbNext.addEventListener('click',  (e) => { e.stopPropagation(); navigate(1);  });
+
+        // Click overlay to close (but not image itself)
+        lb.addEventListener('click', (e) => {
+            if (e.target === lb || e.target === document.getElementById('lb-img-wrap')) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard
+        document.addEventListener('keydown', (e) => {
+            if (!lb.classList.contains('open')) return;
+            if (e.key === 'ArrowLeft')  navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+            if (e.key === 'Escape')     closeLightbox();
+        });
+
+        // Touch / swipe support
+        let touchStartX = 0;
+        lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, {passive:true});
+        lb.addEventListener('touchend',   (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 40) navigate(dx < 0 ? 1 : -1);
+        }, {passive:true});
+    })();
+    </script>
+</body>
+</html>
