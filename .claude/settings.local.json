@@ -16,7 +16,11 @@
       "Bash(unzip:*)",
       "Skill(sc:analyze)",
       "Bash(start \"http://localhost:8080\")",
-      "Bash(npx serve:*)"
+      "Bash(npx serve:*)",
+      "Read(//c/Users/roryu/mcdesign/src/**)",
+      "Read(//c/Users/roryu/mcdesign/**)",
+      "Bash(cp \"c:/Users/roryu/mcdesign/constructiondesignnew/src/assets/projects/\"* \"c:/Users/roryu/OneDrive/Desktop/mcdesignbackground/projects/assets/\")",
+      "Bash(echo \"Done: $?\")"
     ]
   }
 }

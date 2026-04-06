@@ -148,6 +148,7 @@
             inset: 0;
             display: flex;
             align-items: flex-end;
+            justify-content: flex-end;
             padding: 0 5vw 7vh;
             pointer-events: none;
             opacity: 0;
@@ -608,19 +609,38 @@
         .portfolio-img-wrap {
             position: relative;
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 3 / 2;
             overflow: hidden;
-            background: #f4f4f2;
+            background: #1a1a18;
+        }
+        .portfolio-img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 40%,
+                rgba(0,0,0,.28) 100%
+            );
+            opacity: 0;
+            transition: opacity .45s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .portfolio-card:hover .portfolio-img-wrap::after {
+            opacity: 1;
         }
         .portfolio-img-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform .45s ease;
+            transition: transform .65s cubic-bezier(.25,.46,.45,.94), filter .65s ease;
+            filter: brightness(.97) saturate(.95);
         }
         .portfolio-card:hover .portfolio-img-wrap img {
-            transform: scale(1.04);
+            transform: scale(1.06);
+            filter: brightness(1.03) saturate(1.05);
         }
         .portfolio-cat-badge {
             position: absolute;
@@ -884,6 +904,14 @@
         #portfolio {
             padding: 80px 0 96px;
         }
+        /* ─── The Chandler Process ─── */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 64px; }
+        .process-card { background: #fff; padding: 48px; border: 1px solid var(--border); transition: transform .4s ease, box-shadow .4s ease; display: flex; flex-direction: column; height: 100%; border-radius: 4px; }
+        .process-card:hover { transform: translateY(-8px); border-color: var(--text-faint); box-shadow: 0 20px 40px rgba(0,0,0,.04); }
+        .process-step { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .2em; color: var(--text-faint); margin-bottom: 24px; display: block; }
+        .process-card h3 { font-size: 1.8rem; font-weight: 400; letter-spacing: -.02em; margin-bottom: 20px; color: var(--text); line-height: 1.2; }
+        .process-card p { font-size: .95rem; color: var(--text-muted); line-height: 1.7; flex-grow: 1; margin-bottom: 0; }
+        .process-icon { width: 40px; height: 40px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; background: var(--bg-alt); border-radius: 50%; color: var(--text); }
     </style>
 </head>
 <body class="antialiased">
@@ -925,7 +953,7 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
-            <a href="#contact" class="btn btn-dark">Get In Touch</a>
+            <a href="#contact" class="btn btn-dark">Discovery Call</a>
         </div>
     </header>
     <!-- ═══════════════════════════════════════════════
@@ -942,8 +970,8 @@
                     <h2 class="panel-heading">37 Years.<br>Built by Hand.</h2>
                     <p class="panel-body">Strategic Construction Executive. $500M+ portfolio across residential, commercial, and civil construction — from California's coastline to the Bahamas.</p>
                     <div style="display:flex;gap:10px;pointer-events:auto;">
-                        <a href="#portfolio" class="btn btn-dark">View Work</a>
-                        <a href="#about" class="btn btn-outline">About Me</a>
+                        <a href="#contact" class="btn btn-dark">Discovery Call</a>
+                        <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
                     </div>
                 </div>
             </div>
@@ -953,7 +981,7 @@
                     <span class="panel-eyebrow">Design & Build</span>
                     <h2 class="panel-heading">Uncompromising<br>Precision.</h2>
                     <p class="panel-body">From hand-picked craftsmen to world-class millworkers — every project is executed with microscopic attention to structural integrity and finish quality.</p>
-                    <a href="#portfolio" class="btn btn-dark" style="pointer-events:auto;">See Projects</a>
+                    <a href="#contact" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
                 </div>
             </div>
             <!-- ── Panel 3: The Space (66% checkpoint) ── -->
@@ -962,7 +990,7 @@
                     <span class="panel-eyebrow">The Legacy</span>
                     <h2 class="panel-heading">Built to<br>Last Generations.</h2>
                     <p class="panel-body">Monumental spaces — ocean-side high-rises, alpine retreats, coastal estates. Every environment is a testament to craft, built on time and on budget.</p>
-                    <a href="#about" class="btn btn-dark" style="pointer-events:auto;">About Me</a>
+                    <a href="#contact" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
                 </div>
             </div>
             <!-- Scroll cue -->
@@ -1054,6 +1082,60 @@
             </div>
         </div>
     </section>
+    
+    <!-- ═══════════════════════════════════════════════
+       THE CHANDLER PROCESS
+  ═══════════════════════════════════════════════ -->
+    <section id="process" class="py-32" style="background:#fff;">
+        <div class="site-max">
+            <div class="max-w-2xl reveal">
+                <span class="section-label">Our Methodology</span>
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8 section-h2">
+                    The Chandler<br />Design-Build Process
+                </h2>
+                <div class="rule mb-12"></div>
+            </div>
+            
+            <div class="process-grid">
+                <!-- Step 1 -->
+                <div class="process-card reveal">
+                    <span class="process-step">Phase 01</span>
+                    <div class="process-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10L8 14L16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Vision &amp; Planning</h3>
+                    <p>We begin with a deep exploration of your objectives, translating complex requirements into a rigorous execution roadmap. Every variable — from environmental impact to structural feasibility — is accounted for before the first stone is moved.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-card reveal">
+                    <span class="process-step">Phase 02</span>
+                    <div class="process-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 17L7 13M10 4L16 10L12 14L6 8L10 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Precision Execution</h3>
+                    <p>Construction is an exercise in microscopic accuracy. Our teams manage every subcontractor with relentless quality oversight, ensuring world-class standards across architectural, mechanical, and finish layers.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-card reveal">
+                    <span class="process-step">Phase 03</span>
+                    <div class="process-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 3V17M3 10H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>The Legacy Delivery</h3>
+                    <p>A project is only complete when it transcends its structural requirements to become a legacy asset. We deliver turnkey environments that are built to perform for generations, backed by 37 years of accountability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══════════════════════════════════════════════
        PORTFOLIO SECTION
   ═══════════════════════════════════════════════ -->
@@ -1263,7 +1345,7 @@
                 <!-- 11. Coastal Mountain Residence -->
                 <div class="portfolio-card reveal" data-category="Civil" data-project="bigsur-mountain-remodel" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/coastal-mountain/001%20COVER.JPG"
+                        <img src="projects/assets/bigsur-cover.webp"
                             alt="Coastal Mountain Residence Civil Site Work" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -1851,7 +1933,7 @@
                 title: 'S. Florida High Rise Luxe Condo',
                 images: [
                     BASE + 'miami-beach-cover.webp',
-                    ...Array.from({length:46}, (_,i) => BASE + 'miami-beach-' + (i+1) + '.webp'),
+                    ...Array.from({length:47}, (_,i) => BASE + 'miami-beach-' + (i+1) + '.webp'),
                     BASE + 'detail-wood-paneling.png'
                 ]
             },
@@ -1865,26 +1947,31 @@
             'syracuse-house': {
                 title: 'Syracuse House — N. Utah Craftsman Estate',
                 images: [
-                    BPRJ + 'syracuse-cover.png',
-                    ...Array.from({length:53}, (_,i) => BPRJ + 'syracuse-final/syracuse-' + (i+1) + '.png')
+                    BASE + 'syracuse-cover.webp',
+                    ...Array.from({length:46}, (_,i) => BASE + 'syracuse-' + (i+1) + '.webp')
                 ]
             },
             'montana-condo': {
                 title: 'Mtn. Mid-Rise Luxe Condo',
                 images: [
                     BASE + 'montana-cover.webp',
-                    BASE + 'montana-1.webp',
-                    BPRJ + 'montana/montana-detail.jpg',
-                    ...Array.from({length:9}, (_,i) => BASE + 'montana-' + (i+3) + '.webp')
+                    ...Array.from({length:10}, (_,i) => BASE + 'montana-' + (i+1) + '.webp'),
+                    BASE + 'montana-11.jpg'
                 ]
             },
             'hospitality-pool': {
                 title: 'Ultra Luxe Private Club Resort Pool',
                 images: [
-                    BPRJ + 'hospitality-pool-cover-v2.jpg',
-                    BPRJ + 'hospitality-pool/pool-10.webp',
-                    BPRJ + 'hospitality-pool/pool-12.webp',
-                    ...Array.from({length:24}, (_,i) => BPRJ + 'hospitality-pool/pool-' + (i+14) + '.webp')
+                    BASE + 'pool-design-cover.webp',
+                    BASE + 'pool-design-1.png',
+                    BASE + 'pool-design-2.png',
+                    BASE + 'pool-design-3.png',
+                    BASE + 'pool-design-4.png',
+                    BASE + 'pool-design-5.png',
+                    BASE + 'pool-design-6.png',
+                    BASE + 'pool-design-9.png',
+                    ...Array.from({length:28}, (_,i) => BASE + 'pool-design-' + (i+10) + '.webp'),
+                    BASE + 'hospitality-pool-1.webp'
                 ]
             },
             'southcoast-remodel': {
@@ -1897,29 +1984,15 @@
             'carmel-valley-new': {
                 title: 'Carmel Valley New Custom Residence',
                 images: [
-                    BPRJ + 'carmel-valley-new/carmel_valley_new1%20cover.png',
-                    BPRJ + 'carmel-valley-new/carmel_valley_new2.png',
-                    BPRJ + 'carmel-valley-new/carmel_valley_new3.jpg',
-                    BPRJ + 'carmel-valley-new/carmel_valley_new4.png',
-                    BPRJ + 'carmel-valley-new/carmel_valley_new5.png'
+                    BASE + 'carmel-valley-new-cover.webp',
+                    ...Array.from({length:4}, (_,i) => BASE + 'carmel-valley-new-' + (i+1) + '.webp')
                 ]
             },
             'north-florida-renovation': {
                 title: 'North Florida Renovation & Addition',
                 images: [
-                    BPRJ + 'north-florida/NIMG_9178.jpg',
-                    BPRJ + 'north-florida/NIMG_9179.jpg',
-                    BPRJ + 'north-florida/NIMG_9180.jpg',
-                    BPRJ + 'north-florida/NIMG_9182.jpg',
-                    BPRJ + 'north-florida/NIMG_9184.jpg',
-                    BPRJ + 'north-florida/NIMG_9185.jpg',
-                    BPRJ + 'north-florida/NIMG_9890.jpg',
-                    BPRJ + 'north-florida/NIMG_9892.jpg',
-                    BPRJ + 'north-florida/NIMG_9893.jpg',
-                    BPRJ + 'north-florida/NIMG_9894.jpg',
-                    BPRJ + 'north-florida/NIMG_9895.jpg',
-                    BPRJ + 'north-florida/NScreenshot%202025-10-30%20001316.png',
-                    BPRJ + 'north-florida/NScreenshot%202025-10-31%20222048.png'
+                    BASE + 'north-florida-cover.webp',
+                    ...Array.from({length:14}, (_,i) => BASE + 'north-florida-' + (i+1) + '.webp')
                 ]
             },
             'bahamas-abaco-development': {
@@ -1939,75 +2012,22 @@
             'bigsur-mountain-remodel': {
                 title: 'Coastal Mountain Residence — Civil Site Work',
                 images: [
-                    BPRJ + 'coastal-mountain/001%20COVER.JPG',
-                    BPRJ + 'coastal-mountain/002.JPG',
-                    BPRJ + 'coastal-mountain/003.JPG',
-                    BPRJ + 'coastal-mountain/004.JPG',
-                    BPRJ + 'coastal-mountain/005.JPG',
-                    BPRJ + 'coastal-mountain/006.JPG',
-                    BPRJ + 'coastal-mountain/007.jpg',
-                    BPRJ + 'coastal-mountain/008.jpg',
-                    BPRJ + 'coastal-mountain/009.JPG',
-                    BPRJ + 'coastal-mountain/010.JPG',
-                    BPRJ + 'coastal-mountain/011.JPG',
-                    BPRJ + 'coastal-mountain/012.jpg',
-                    BPRJ + 'coastal-mountain/013.jpg',
-                    BPRJ + 'coastal-mountain/014.JPG',
-                    BPRJ + 'coastal-mountain/015.JPG',
-                    BPRJ + 'coastal-mountain/016.JPG'
+                    BASE + 'bigsur-cover.webp',
+                    ...Array.from({length:15}, (_,i) => BASE + 'bigsur-' + (i+1) + '.webp')
                 ]
             },
             'carmel-knolls': {
                 title: 'Carmel Knolls Remodel',
                 images: [
-                    BPRJ + 'carmel-knolls/001.10%20COVER.jpg',
-                    BPRJ + 'carmel-knolls/001%20Cover%20Carmel%20Knolls%2C%20CA%20Remodel%2C%20Before%20%26%20After.png',
-                    BPRJ + 'carmel-knolls/002.JPG',
-                    BPRJ + 'carmel-knolls/003.JPG',
-                    BPRJ + 'carmel-knolls/004.JPG',
-                    BPRJ + 'carmel-knolls/005.JPG',
-                    BPRJ + 'carmel-knolls/006.JPG',
-                    BPRJ + 'carmel-knolls/007.JPG',
-                    BPRJ + 'carmel-knolls/008.JPG',
-                    BPRJ + 'carmel-knolls/009.JPG',
-                    BPRJ + 'carmel-knolls/0010.JPG',
-                    BPRJ + 'carmel-knolls/0011.JPG',
-                    BPRJ + 'carmel-knolls/0012.JPG',
-                    BPRJ + 'carmel-knolls/0013.JPG',
-                    BPRJ + 'carmel-knolls/0014.JPG',
-                    BPRJ + 'carmel-knolls/0015.JPG',
-                    BPRJ + 'carmel-knolls/0016.JPG',
-                    BPRJ + 'carmel-knolls/0017.JPG',
-                    BPRJ + 'carmel-knolls/0018.JPG',
-                    BPRJ + 'carmel-knolls/0019.JPG',
-                    BPRJ + 'carmel-knolls/0020.JPG',
-                    BPRJ + 'carmel-knolls/0021.JPG',
-                    BPRJ + 'carmel-knolls/0022.JPG',
-                    BPRJ + 'carmel-knolls/0023.JPG',
-                    BPRJ + 'carmel-knolls/0024.JPG',
-                    BPRJ + 'carmel-knolls/0025.JPG',
-                    BPRJ + 'carmel-knolls/0026.JPG'
+                    BASE + 'carmel-knolls-cover.webp',
+                    ...Array.from({length:25}, (_,i) => BASE + 'carmel-knolls-' + (i+1) + '.webp')
                 ]
             },
             'coastal-restoration': {
                 title: 'Coastal Restoration — Erosion Repair',
                 images: [
-                    BPRJ + 'coastal-restoration/001%20COVER.JPG',
-                    BPRJ + 'coastal-restoration/002.JPG',
-                    BPRJ + 'coastal-restoration/003.JPG',
-                    BPRJ + 'coastal-restoration/004.JPG',
-                    BPRJ + 'coastal-restoration/005.JPG',
-                    BPRJ + 'coastal-restoration/006.JPG',
-                    BPRJ + 'coastal-restoration/007.JPG',
-                    BPRJ + 'coastal-restoration/008.JPG',
-                    BPRJ + 'coastal-restoration/009.JPG',
-                    BPRJ + 'coastal-restoration/0010.JPG',
-                    BPRJ + 'coastal-restoration/0011.JPG',
-                    BPRJ + 'coastal-restoration/0012.JPG',
-                    BPRJ + 'coastal-restoration/0013.JPG',
-                    BPRJ + 'coastal-restoration/0014.JPG',
-                    BPRJ + 'coastal-restoration/0015.jpg',
-                    BPRJ + 'coastal-restoration/0016.jpg'
+                    BASE + 'coastal-restoration-cover.webp',
+                    ...Array.from({length:15}, (_,i) => BASE + 'coastal-restoration-' + (i+1) + '.webp')
                 ]
             },
             'bahamas-beachfront-estate': {
@@ -2017,65 +2037,36 @@
             'development-civil': {
                 title: 'Development Civil Construction',
                 images: [
-                    BPRJ + 'development-civil/development%20(1).jpg',
-                    BPRJ + 'development-civil/development%20(1).png',
-                    ...Array.from({length:19}, (_,i) => BPRJ + 'development-civil/development%20(' + (i+2) + ').jpg')
+                    BASE + 'civil-cover.webp',
+                    ...Array.from({length:21}, (_,i) => BASE + 'civil-' + (i+1) + '.webp')
                 ]
             },
             'pacific-grove-design-build': {
                 title: 'New Residential Construction In Historic Neighborhood',
                 images: [
-                    BPRJ + 'pacific-grove/001%20COVER.JPG',
-                    BPRJ + 'pacific-grove/002.JPG',
-                    BPRJ + 'pacific-grove/003.png',
-                    BPRJ + 'pacific-grove/004.png',
-                    BPRJ + 'pacific-grove/005.JPG',
-                    BPRJ + 'pacific-grove/006.JPG',
-                    BPRJ + 'pacific-grove/007.JPG',
-                    BPRJ + 'pacific-grove/008.JPG',
-                    BPRJ + 'pacific-grove/009.JPG',
-                    BPRJ + 'pacific-grove/0010.JPG',
-                    BPRJ + 'pacific-grove/0011.JPG'
+                    BASE + 'pg-cover.webp',
+                    ...Array.from({length:10}, (_,i) => BASE + 'pg-' + (i+1) + '.webp')
                 ]
             },
             'hillside-cleanup': {
                 title: 'Hillside Restoration — Environmental Cleanup',
                 images: [
-                    BPRJ + 'hillside-cleanup/001%20COVER.jpg',
-                    BPRJ + 'hillside-cleanup/002.JPG',
-                    BPRJ + 'hillside-cleanup/003.JPG',
-                    BPRJ + 'hillside-cleanup/004.JPG',
-                    BPRJ + 'hillside-cleanup/005.JPG',
-                    BPRJ + 'hillside-cleanup/006.JPG',
-                    BPRJ + 'hillside-cleanup/007.JPG',
-                    BPRJ + 'hillside-cleanup/008.JPG',
-                    BPRJ + 'hillside-cleanup/009.JPG',
-                    BPRJ + 'hillside-cleanup/0010.JPG',
-                    BPRJ + 'hillside-cleanup/0011.JPG',
-                    BPRJ + 'hillside-cleanup/0012.JPG',
-                    BPRJ + 'hillside-cleanup/0013.JPG',
-                    BPRJ + 'hillside-cleanup/0014.JPG',
-                    BPRJ + 'hillside-cleanup/0015.jpg',
-                    BPRJ + 'hillside-cleanup/0016.jpg'
+                    BASE + 'hillside-cleanup-cover.webp',
+                    ...Array.from({length:15}, (_,i) => BASE + 'hillside-cleanup-' + (i+1) + '.webp')
                 ]
             },
             'laguna-grande-design-build': {
                 title: 'Laguna Grande — Spanish Revival Commercial',
                 images: [
-                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png',
-                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_002_(2).png',
-                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_003.png',
-                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_004.png',
-                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_004.100.png',
-                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_005.png',
-                    BPRJ + 'laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_006.png'
+                    BASE + 'laguna-grande-cover.webp',
+                    ...Array.from({length:6}, (_,i) => BASE + 'laguna-grande-' + (i+1) + '.webp')
                 ]
             },
             'carmel-house-3': {
                 title: 'Carmel House Remodel No.23',
                 images: [
-                    'projects/assets/carmel-3-cover.webp',
-                    ...Array.from({length:14}, (_,i) => BASE + 'carmel-3-' + (i+1) + '.webp')
+                    BASE + 'carmel-3-cover.webp',
+                    ...Array.from({length:25}, (_,i) => BASE + 'carmel-3-' + (i+1) + '.webp')
                 ]
             }
         };

@@ -1,6 +1,7 @@
 # Competitive Analysis: Luxury Design-Build
 
 ## Top Competitors identified
+
 1. **HartmanBaldwin** (Integrated Architecture & Build)
 2. **Botero Homes** (Luxury Custom Homes)
 3. **David Lewis Builder** (Bespoke Estates)
@@ -12,7 +13,7 @@
 ## Comparison Table
 
 | Criterion | HartmanBaldwin | Botero Homes | Michael Chandler (Current) |
-|-----------|----------------|--------------|-------------------|
+| :--- | :--- | :--- | :--- |
 | Search visibility | High (SEO-rich areas) | Mid-High | Low-Mid |
 | Visual design | Multi-page, rich media | Modern, image-focused | Cinematic, Single-page scroll |
 | Mobile responsive | Very Good | Good | Excellent |
@@ -34,8 +35,8 @@
 ## Recommended Design Direction (Michael Chandler)
 
 - **Preserve:** The premium black/beige aesthetic and the frame-based GSAP scroll animation.
-- **Enhance:** 
-    - **"The Chandler Process":** A 3-step visual guide (Vision -> Execution -> Legacy).
-    - **Consultative CTA:** Change "Get in Touch" to "Request a Project Discovery Call".
-    - **Social Proof:** Transition the stats into a more interactive "Impact" section with quotes.
-    - **Filtering:** Improve the portfolio filter UX for mobile.
+- **Enhance:**
+  - **"The Chandler Process":** A 3-step visual guide (Vision -> Execution -> Legacy).
+  - **Consultative CTA:** Change "Get in Touch" to "Request a Project Discovery Call".
+  - **Social Proof:** Transition the stats into a more interactive "Impact" section with quotes.
+  - **Filtering:** Improve the portfolio filter UX for mobile.
