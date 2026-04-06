@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Chandler — Competitive Intelligence Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ink: #1C1916;
+            --paper: #f6f4f0;
+            --accent: #c45d3e;
+            --accent-light: #e8a48e;
+            --muted: #8a8580;
+            --divider: #d6d2cc;
+            --card: #fffefa;
+            --shadow: rgba(10, 10, 10, 0.06);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Grain overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        header {
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--accent));
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 em {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+            margin: 4rem auto;
+        }
+
+        /* Report Sections */
+        .section-header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--divider);
+            padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+        }
+
+        /* Competitor Grid */
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .competitor-card {
+            background: var(--card);
+            border: 1px solid var(--divider);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .competitor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px var(--shadow);
+        }
+
+        .competitor-card.client {
+            border: 2px solid var(--accent);
+        }
+
+        .client-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: #white;
+            font-size: 0.65rem;
+            padding: 4px 12px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .comp-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .comp-logo-placeholder {
+            width: 48px;
+            height: 48px;
+            background: var(--paper);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.2rem;
+            color: var(--accent);
+            border: 1px solid var(--divider);
+        }
+
+        .comp-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .comp-stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .comp-stat {
+            border-left: 2px solid var(--accent-light);
+            padding-left: 0.75rem;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            display: block;
+        }
+
+        .stat-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.88rem;
+            color: #3b3a36;
+        }
+
+        .bullet-dot {
+            color: var(--accent);
+            margin-top: 0.1rem;
+        }
+
+        /* Comparison Table */
+        .table-wrap {
+            overflow-x: auto;
+            margin-bottom: 5rem;
+            border-radius: 16px;
+            border: 1px solid var(--divider);
+            background: var(--card);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--paper);
+            padding: 1.25rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .score-pill {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .score-high { background: #e7f5ed; color: #1e6b43; }
+        .score-mid { background: #fff8e6; color: #b28a1a; }
+        .score-low { background: #fdf2f2; color: #9b1c1c; }
+
+        /* Patterns Section */
+        .pattern-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .pattern-card {
+            background: var(--card);
+            border: 1px solid var(--divider);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .pattern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .pattern-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid var(--divider);
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+        }
+
+        @media print {
+            body { background: white; }
+            .container { max-width: 100%; }
+            .competitor-card { break-inside: avoid; border: 1px solid #eee; }
+            @page { margin: 2cm; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <p class="eyebrow">Strategic Analysis</p>
+            <h1>Michael <em>Chandler</em><br>Website Intelligence</h1>
+            <p class="subtitle">Competitive research report for high-end design-build construction. Analyzing the patterns of market leaders to inform the next phase of growth.</p>
+        </header>
+
+        <div class="divider"></div>
+
+        <!-- Executive Summary -->
+        <section style="margin-bottom: 6rem;">
+            <div class="section-header">
+                <h2 class="section-title">Executive Summary</h2>
+            </div>
+            <p style="font-size: 1.1rem; color: #3b3a36; max-width: 800px;">
+                The luxury residential design-build market is shifting from "commodity building" to "experience management." Market leaders like HartmanBaldwin have institutionalized their **Process** as the core product. Michael Chandler's unique advantage lies in his **hand-crafted precision** and massive $500M portfolio, which currently outpaces competitor metrics in experience but lags slightly in "Process" clarity.
+            </p>
+        </section>
+
+        <!-- Competitor Analysis -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Competitor Profiles</h2>
+            </div>
+            <div class="competitor-grid">
+                
+                <!-- Client: Michael Chandler -->
+                <div class="competitor-card client">
+                    <span class="client-badge">Existing Site</span>
+                    <div class="comp-header">
+                        <div class="comp-logo-placeholder">MC</div>
+                        <span class="comp-name">Michael Chandler</span>
+                    </div>
+                    <div class="comp-stat-grid">
+                        <div class="comp-stat">
+                            <span class="stat-label">Portfolio</span>
+                            <span class="stat-value">$500M+</span>
+                        </div>
+                        <div class="comp-stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">37 Years</span>
+                        </div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><span class="bullet-dot">●</span> Premium single-page scroll</li>
+                        <li><span class="bullet-dot">●</span> Cinematic frame animations</li>
+                        <li><span class="bullet-dot">●</span> High technical authority</li>
+                    </ul>
+                </div>
+
+                <!-- Competitor 1: HartmanBaldwin -->
+                <div class="competitor-card">
+                    <div class="comp-header">
+                        <div class="comp-logo-placeholder">HB</div>
+                        <span class="comp-name">HartmanBaldwin</span>
+                    </div>
+                    <div class="comp-stat-grid">
+                        <div class="comp-stat">
+                            <span class="stat-label">Focus</span>
+                            <span class="stat-value">Integrated Prc.</span>
+                        </div>
+                        <div class="comp-stat">
+                            <span class="stat-label">Region</span>
+                            <span class="stat-value">So. California</span>
+                        </div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><span class="bullet-dot">●</span> Heavy emphasis on "The Discovery Phase"</li>
+                        <li><span class="bullet-dot">●</span> 150+ national remodeling ranking</li>
+                        <li><span class="bullet-dot">●</span> Multi-page content depth (ADU guides)</li>
+                    </ul>
+                </div>
+
+                <!-- Competitor 2: Botero Homes -->
+                <div class="competitor-card">
+                    <div class="comp-header">
+                        <div class="comp-logo-placeholder">BH</div>
+                        <span class="comp-name">Botero Homes</span>
+                    </div>
+                    <div class="comp-stat-grid">
+                        <div class="comp-stat">
+                            <span class="stat-label">Focus</span>
+                            <span class="stat-value">Land + Budget</span>
+                        </div>
+                        <div class="comp-stat">
+                            <span class="stat-label">Region</span>
+                            <span class="stat-value">VA / MD</span>
+                        </div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><span class="bullet-dot">●</span> Simplifies "land acquisition" friction</li>
+                        <li><span class="bullet-dot">●</span> Personalized budgeting transparency</li>
+                        <li><span class="bullet-dot">●</span> Modern, clean white-space design</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Patterns Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Patterns of the Top 10%</h2>
+            </div>
+            <div class="pattern-list">
+                
+                <div class="pattern-card">
+                    <h3 class="pattern-title">01 — Integrated Process Visualization</h3>
+                    <p>Winners jangan sell "building"; they sell a frictionless methodology. They use infographics or multi-step visualizers to show how they manage architecture, design, and construction under one roof. This removes the "fear of the unknown" for the client.</p>
+                </div>
+
+                <div class="pattern-card">
+                    <h3 class="pattern-title">02 — The Complimentary Consultation CTA</h3>
+                    <p>Instead of a standard contact form, top sites use "Start Your Journey" or "Book a Project Discovery Call." This positions the firm as a consultant and advisor from the first interaction, rather than just a contractor bidding on work.</p>
+                </div>
+
+                <div class="pattern-card">
+                    <h3 class="pattern-title">03 — SEO Area Dominance</h3>
+                    <p>Top firms use specific landing pages or footer sections to list high-value zip codes and cities they serve. This captures localized "luxury home builder in [City]" search traffic which is the primary source of organic leads.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Final Recommendation -->
+        <section style="margin-bottom: 6rem; background: #1c1916; color: white; padding: 4rem; border-radius: 20px;">
+            <h2 style="font-family: 'Instrument Serif', serif; font-size: 2.5rem; margin-bottom: 1.5rem;">The Winning Path</h2>
+            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem;">
+                To outperform the competitive landscape, the Chandler site must bridge the gap between **Cinematic Flare** and **Conversion Strategy**.
+            </p>
+            <ul class="bullet-list" style="color: white; opacity: 0.9;">
+                <li><span class="bullet-dot" style="color: var(--accent-light);">●</span> <strong>Interactive Process Map:</strong> Turn the $500M portfolio into a "Legacy Timeline."</li>
+                <li><span class="bullet-dot" style="color: var(--accent-light);">●</span> <strong>Consultative Form:</strong> Replace "Get in Touch" with a discovery-focused inquiry.</li>
+                <li><span class="bullet-dot" style="color: var(--accent-light);">●</span> <strong>Authority Content:</strong> Add sections for "Historic Restorations" and "Coastal Infrastructure."</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>WEBSITE INTELLIGENCE ANALYSIS &mdash; 2026 &copy; MICHAEL CHANDLER</p>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -13,7 +13,10 @@
       "Read(//c/Users/roryu/OneDrive/Desktop/mcdesignbackground/projects/**)",
       "Bash(done)",
       "Bash(git:*)",
-      "Bash(unzip:*)"
+      "Bash(unzip:*)",
+      "Skill(sc:analyze)",
+      "Bash(start \"http://localhost:8080\")",
+      "Bash(npx serve:*)"
     ]
   }
 }
