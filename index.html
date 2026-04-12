@@ -13,6 +13,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Michael Chandler — Strategic Construction Executive" />
     <meta name="twitter:description" content="Ultra-luxury custom homes, coastal restorations, design-build construction. California • Bahamas • Texas • Montana." />
+    <link rel="canonical" href="https://mcdesign.bio" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -553,7 +554,7 @@
             width: 100%;
             padding: 13px 16px;
             border: 1.5px solid #e5e5e5;
-            border-radius: 10px;
+            border-radius: 0;
             font-size: .9rem;
             font-family: inherit;
             color: #111;
@@ -751,8 +752,11 @@
             display: block;
             width: 22px;
             height: 1.5px;
+            background: #fff;
+            transition: transform .3s ease, opacity .3s ease, background .4s ease;
+        }
+        #navbar.scrolled #nav-hamburger span {
             background: var(--text);
-            transition: transform .3s ease, opacity .3s ease;
         }
         #nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
         #nav-hamburger.open span:nth-child(2) { opacity: 0; }
@@ -910,6 +914,10 @@
         .lb-arrow:hover { background: rgba(0,0,0,.75); }
         #lb-prev { left: -60px; }
         #lb-next { right: -60px; }
+        @media (max-width: 768px) {
+            #lb-prev { left: 8px; }
+            #lb-next { right: 8px; }
+        }
 
         #lb-thumbs {
             position: absolute;
@@ -1122,7 +1130,7 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
             <div style="display:flex;align-items:center;gap:16px;">
-                <a href="#contact" class="btn btn-dark hidden md:inline-flex">Discovery Call</a>
+                <a href="#form-section" class="btn btn-dark hidden md:inline-flex">Discovery Call</a>
                 <button id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
@@ -1139,7 +1147,7 @@
         <div class="mobile-nav-footer">
             <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="mobile-nav-sub">mcdesign.bio</a>
             <span class="mobile-nav-sub" style="opacity:.3;">·</span>
-            <a href="#contact" class="mobile-nav-sub">Request a Call</a>
+            <a href="#form-section" class="mobile-nav-sub">Request a Call</a>
         </div>
     </nav>
     <!-- ═══════════════════════════════════════════════
@@ -1156,7 +1164,7 @@
                     <h2 class="panel-heading">37 Years.<br>Built by Hand.</h2>
                     <p class="panel-body">Strategic Construction Executive. $500M+ portfolio across residential, commercial, and civil construction — from California's coastline to the Bahamas.</p>
                     <div style="display:flex;gap:10px;pointer-events:auto;">
-                        <a href="#contact" class="btn btn-dark">Discovery Call</a>
+                        <a href="#form-section" class="btn btn-dark">Discovery Call</a>
                         <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
                     </div>
                 </div>
@@ -1167,7 +1175,7 @@
                     <span class="panel-eyebrow">Design & Build</span>
                     <h2 class="panel-heading">Uncompromising<br>Precision.</h2>
                     <p class="panel-body">From hand-picked craftsmen to world-class millworkers — every project is executed with microscopic attention to structural integrity and finish quality.</p>
-                    <a href="#contact" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
+                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
                 </div>
             </div>
             <!-- ── Panel 3: The Space (66% checkpoint) ── -->
@@ -1176,7 +1184,7 @@
                     <span class="panel-eyebrow">The Legacy</span>
                     <h2 class="panel-heading">Built to<br>Last Generations.</h2>
                     <p class="panel-body">Monumental spaces — ocean-side high-rises, alpine retreats, coastal estates. Every environment is a testament to craft, built on time and on budget.</p>
-                    <a href="#contact" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
+                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
                 </div>
             </div>
             <!-- Scroll cue -->
@@ -1463,7 +1471,7 @@
                 <!-- 7. Carmel Valley New -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="carmel-valley-new" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/carmel-valley-new/carmel_valley_new1%20cover.png"
+                        <img src="projects/assets/carmel-valley-new-cover.webp"
                             alt="Carmel Valley New Custom Residence" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -1731,7 +1739,7 @@
                     </div>
                     <div class="space-y-3" style="padding-top:2.5rem;">
                         <div style="aspect-ratio:1/1;overflow:hidden;">
-                            <img src="projects/carmel-valley-new/carmel_valley_new1 cover.png" alt="Carmel Valley" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                            <img src="projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
                         </div>
                         <div style="aspect-ratio:4/5;overflow:hidden;">
                             <img src="projects/hospitality-pool-cover-v2.jpg" alt="Private Club Pool" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
@@ -1865,7 +1873,7 @@
         <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-10 reveal" style="letter-spacing:-.025em;line-height:1.05;text-transform:uppercase;">
             Ready to discuss your<br />next legacy project?
         </h2>
-        <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="btn reveal"
+        <a href="#form-section" class="btn reveal"
             style="display:inline-flex;background:#fff;color:#111;padding:14px 32px;font-size:.78rem;">
             Request a Discovery Call
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
