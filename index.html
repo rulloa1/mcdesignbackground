@@ -430,19 +430,31 @@
             background: var(--border);
             margin-bottom: 28px;
         }
-        /* ─── Services grid ─── */
+        /* ─── Services grid — glassmorphism ─── */
         .service-card {
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 0;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 2px;
             padding: 36px 32px;
-            background: rgba(255,255,255,.04);
-            transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            transition: border-color .3s ease, box-shadow .3s ease, background .3s ease, transform .3s ease;
             cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,.08) 0%, transparent 60%);
+            pointer-events: none;
         }
         .service-card:hover {
-            border-color: rgba(255,255,255,.16);
-            box-shadow: 0 14px 40px rgba(0, 0, 0, .3);
-            background: rgba(255,255,255,.07);
+            border-color: rgba(255,255,255,.26);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255,255,255,.15);
+            background: rgba(255,255,255,.10);
+            transform: translateY(-4px);
         }
         .service-icon {
             width: 44px;
@@ -1749,6 +1761,103 @@
         </div>
     </section>
     <!-- ═══════════════════════════════════════════════
+       PROJECT DISCOVERY FORM
+  ═══════════════════════════════════════════════ -->
+    <section id="form-section">
+        <div class="site-max">
+            <div class="max-w-2xl mb-16 reveal">
+                <span class="section-label">Start a Conversation</span>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2 mb-4">
+                    Request a Project<br />Discovery Call
+                </h2>
+                <p class="text-base text-gray-500 leading-relaxed">
+                    Tell us about your project. We'll match you with the right expertise and reach out within 24 hours.
+                </p>
+            </div>
+
+            <div class="multistep-form reveal">
+                <!-- Step indicators -->
+                <div class="step-indicator" id="step-indicator">
+                    <div class="step-pip active" data-step="0"></div>
+                    <div class="step-pip" data-step="1"></div>
+                    <div class="step-pip" data-step="2"></div>
+                </div>
+
+                <!-- Step 1: Budget Range -->
+                <div class="form-step active" id="step-1">
+                    <p class="step-heading">What is your project budget?</p>
+                    <p class="step-sub">This helps us understand the scope and assign the right team.</p>
+                    <div class="option-grid" id="budget-grid">
+                        <button class="option-btn" data-value="$500K – $1M">$500K – $1M</button>
+                        <button class="option-btn" data-value="$1M – $3M">$1M – $3M</button>
+                        <button class="option-btn" data-value="$3M – $10M">$3M – $10M</button>
+                        <button class="option-btn" data-value="$10M+">$10M+</button>
+                    </div>
+                    <div class="form-nav">
+                        <button class="btn btn-dark" id="step1-next" disabled>Next &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Project Type -->
+                <div class="form-step" id="step-2">
+                    <p class="step-heading">What type of project?</p>
+                    <p class="step-sub">Select the category that best describes your vision.</p>
+                    <div class="option-grid" id="type-grid">
+                        <button class="option-btn" data-value="Ultra-Luxury Custom Home">Ultra-Luxury Custom Home</button>
+                        <button class="option-btn" data-value="Historic / Coastal Restoration">Historic / Coastal Restoration</button>
+                        <button class="option-btn" data-value="Design-Build Construction Mgmt">Design-Build Construction Mgmt</button>
+                        <button class="option-btn" data-value="Civil &amp; Site Development">Civil &amp; Site Development</button>
+                        <button class="option-btn" data-value="Hospitality / Commercial">Hospitality / Commercial</button>
+                        <button class="option-btn" data-value="Other">Other</button>
+                    </div>
+                    <div class="form-nav">
+                        <button class="btn-back" id="step2-back">&larr; Back</button>
+                        <button class="btn btn-dark" id="step2-next" disabled>Next &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Contact -->
+                <div class="form-step" id="step-3">
+                    <p class="step-heading">How do we reach you?</p>
+                    <p class="step-sub">We'll be in touch within one business day.</p>
+                    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+                        <div class="form-field">
+                            <label class="form-label" for="disc-name">Full Name</label>
+                            <input id="disc-name" type="text" class="form-input" placeholder="Michael Chandler" autocomplete="name" />
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="disc-email">Email Address</label>
+                            <input id="disc-email" type="email" class="form-input" placeholder="you@email.com" autocomplete="email" />
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="disc-phone">Phone (optional)</label>
+                            <input id="disc-phone" type="tel" class="form-input" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="disc-notes">Brief Project Notes (optional)</label>
+                            <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key priorities…" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-nav">
+                        <button class="btn-back" id="step3-back">&larr; Back</button>
+                        <button class="btn btn-dark" id="step3-submit">Request Discovery Call &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Success state -->
+                <div id="form-success">
+                    <div class="success-check">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10L8 14L16 6" stroke="#1C1916" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <p style="font-size:1.25rem;font-weight:700;letter-spacing:-.01em;color:var(--text);margin-bottom:8px;">Request Received</p>
+                    <p style="font-size:.9rem;color:var(--text-muted);">We'll be in touch within one business day to discuss your project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ═══════════════════════════════════════════════
        CTA BAND
   ═══════════════════════════════════════════════ -->
     <section id="contact" class="bg-gray-950 text-white py-32 px-6 text-center">
@@ -1955,6 +2064,40 @@
                 });
             }
             // ─────────────────────────────────────────────────────────────────────
+            //  TYPED MICRO-INTERACTIONS
+            //  Section labels (.section-label) type themselves in on scroll
+            // ─────────────────────────────────────────────────────────────────────
+            function initTypedLabels() {
+                document.querySelectorAll('.section-label').forEach(el => {
+                    const original = el.textContent.trim();
+                    el.textContent = '';
+                    el.classList.add('typed-init');
+                    // Add blinking cursor
+                    const cursor = document.createElement('span');
+                    cursor.className = 'type-cursor';
+                    el.appendChild(cursor);
+                    ScrollTrigger.create({
+                        trigger: el,
+                        start: 'top 88%',
+                        once: true,
+                        onEnter: () => {
+                            el.style.opacity = '1';
+                            let i = 0;
+                            const interval = setInterval(() => {
+                                el.textContent = original.slice(0, i + 1);
+                                el.appendChild(cursor);
+                                i++;
+                                if (i >= original.length) {
+                                    clearInterval(interval);
+                                    // Remove cursor after a short pause
+                                    setTimeout(() => cursor.remove(), 900);
+                                }
+                            }, 38);
+                        },
+                    });
+                });
+            }
+            // ─────────────────────────────────────────────────────────────────────
             //  ANIMATED STAT COUNTERS
             // ─────────────────────────────────────────────────────────────────────
             function initCounters() {
@@ -2052,8 +2195,73 @@
                 initScrollTrigger();
                 initRevealAnimations();
                 initCounters();
+                initTypedLabels();
             });
         })();
+    </script>
+    <!-- Multi-step discovery form logic -->
+    <script>
+    (() => {
+        let selectedBudget = '';
+        let selectedType   = '';
+        let currentStep    = 1;
+
+        const steps = [
+            document.getElementById('step-1'),
+            document.getElementById('step-2'),
+            document.getElementById('step-3'),
+        ];
+        const pips = document.querySelectorAll('.step-pip');
+
+        function showStep(n) {
+            currentStep = n;
+            steps.forEach((s, i) => s.classList.toggle('active', i === n - 1));
+            pips.forEach((p, i) => {
+                p.classList.remove('active', 'done');
+                if (i < n - 1) p.classList.add('done');
+                else if (i === n - 1) p.classList.add('active');
+            });
+        }
+
+        // Step 1 — budget selection
+        document.querySelectorAll('#budget-grid .option-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#budget-grid .option-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedBudget = btn.dataset.value;
+                document.getElementById('step1-next').disabled = false;
+            });
+        });
+        document.getElementById('step1-next').addEventListener('click', () => showStep(2));
+
+        // Step 2 — project type selection
+        document.querySelectorAll('#type-grid .option-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#type-grid .option-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedType = btn.dataset.value;
+                document.getElementById('step2-next').disabled = false;
+            });
+        });
+        document.getElementById('step2-back').addEventListener('click', () => showStep(1));
+        document.getElementById('step2-next').addEventListener('click', () => showStep(3));
+
+        // Step 3 — contact & submit
+        document.getElementById('step3-back').addEventListener('click', () => showStep(2));
+        document.getElementById('step3-submit').addEventListener('click', () => {
+            const name  = document.getElementById('disc-name').value.trim();
+            const email = document.getElementById('disc-email').value.trim();
+            if (!name || !email) {
+                document.getElementById('disc-name').style.borderColor = name ? '' : '#d44';
+                document.getElementById('disc-email').style.borderColor = email ? '' : '#d44';
+                return;
+            }
+            // Simulate submission
+            document.querySelector('.multistep-form').querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step-indicator').style.display = 'none';
+            document.getElementById('form-success').classList.add('visible');
+        });
+    })();
     </script>
     <!-- Mobile nav toggle -->
     <script>
