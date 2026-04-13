@@ -40,6 +40,48 @@
             z-index: 9999;
         }
 
+        /* Sticky Nav */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(246, 244, 240, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--divider);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-nav.visible { transform: translateY(0); }
+
+        .nav-brand {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1rem;
+            color: var(--ink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -95,12 +137,70 @@
             line-height: 1.7;
         }
 
+        /* Hero CTA */
+        .hero-cta {
+            margin-top: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.85rem 2rem;
+            border-radius: 100px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .hero-cta:hover {
+            background: #a84d31;
+            transform: translateY(-2px);
+        }
+
+        .hero-cta svg { flex-shrink: 0; }
+
         /* Divider */
         .divider {
             width: 60px;
             height: 1px;
             background: var(--accent);
             margin: 4rem auto;
+        }
+
+        /* TL;DR strip */
+        .tldr {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--divider);
+            border: 1px solid var(--divider);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 6rem;
+        }
+
+        .tldr-item {
+            background: var(--card);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .tldr-number {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.4rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .tldr-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         /* Report Sections */
@@ -122,7 +222,7 @@
         /* Competitor Grid */
         .competitor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 5rem;
         }
@@ -141,9 +241,7 @@
             box-shadow: 0 12px 40px var(--shadow);
         }
 
-        .competitor-card.client {
-            border: 2px solid var(--accent);
-        }
+        .competitor-card.client { border: 2px solid var(--accent); }
 
         .client-badge {
             position: absolute;
@@ -178,6 +276,7 @@
             font-size: 1.2rem;
             color: var(--accent);
             border: 1px solid var(--divider);
+            flex-shrink: 0;
         }
 
         .comp-name {
@@ -229,6 +328,7 @@
         .bullet-dot {
             color: var(--accent);
             margin-top: 0.1rem;
+            flex-shrink: 0;
         }
 
         /* Comparison Table */
@@ -252,27 +352,30 @@
             padding: 1.25rem;
             font-weight: 600;
             border-bottom: 1px solid var(--divider);
+            white-space: nowrap;
         }
 
         td {
             padding: 1.25rem;
             border-bottom: 1px solid var(--divider);
+            vertical-align: middle;
         }
 
-        tr:last-child td {
-            border-bottom: none;
-        }
+        tr:last-child td { border-bottom: none; }
+
+        tr:hover td { background: rgba(196, 93, 62, 0.03); }
 
         .score-pill {
             padding: 4px 10px;
             border-radius: 6px;
             font-weight: 700;
             font-size: 0.8rem;
+            white-space: nowrap;
         }
 
         .score-high { background: #e7f5ed; color: #1e6b43; }
-        .score-mid { background: #fff8e6; color: #b28a1a; }
-        .score-low { background: #fdf2f2; color: #9b1c1c; }
+        .score-mid  { background: #fff8e6; color: #b28a1a; }
+        .score-low  { background: #fdf2f2; color: #9b1c1c; }
 
         /* Patterns Section */
         .pattern-list {
@@ -307,6 +410,29 @@
             margin-bottom: 1rem;
         }
 
+        /* Winning Path */
+        .winning-path {
+            margin-bottom: 6rem;
+            background: #1c1916;
+            color: white;
+            padding: 4rem;
+            border-radius: 20px;
+        }
+
+        .winning-path h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .winning-path .lead {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .winning-path .bullet-list { color: white; opacity: 0.9; }
+
         /* Footer */
         footer {
             text-align: center;
@@ -320,44 +446,151 @@
             letter-spacing: 0.1em;
         }
 
+        /* Scroll indicator */
+        .scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+            opacity: 0.5;
+            animation: fadeInUp 1.2s ease 0.8s both;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .scroll-mouse {
+            width: 22px;
+            height: 34px;
+            border: 1.5px solid var(--muted);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-mouse::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: scrollWheel 1.6s ease-in-out infinite;
+        }
+
+        @keyframes scrollWheel {
+            0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+            80%  { opacity: 0; transform: translateX(-50%) translateY(12px); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 0.5; transform: translateY(0); }
+        }
+
+        /* Scroll-triggered reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .tldr { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .winning-path { padding: 2.5rem 1.75rem; }
+            .competitor-grid { grid-template-columns: 1fr; }
+        }
+
         @media print {
             body { background: white; }
             .container { max-width: 100%; }
             .competitor-card { break-inside: avoid; border: 1px solid #eee; }
+            .sticky-nav { display: none; }
             @page { margin: 2cm; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Sticky navigation -->
+    <nav class="sticky-nav" id="stickyNav" aria-label="Page navigation">
+        <span class="nav-brand">Michael Chandler — Intelligence Report</span>
+        <ul class="nav-links">
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#profiles">Profiles</a></li>
+            <li><a href="#scorecard">Scorecard</a></li>
+            <li><a href="#patterns">Patterns</a></li>
+            <li><a href="#path">The Path</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <header>
             <p class="eyebrow">Strategic Analysis</p>
             <h1>Michael <em>Chandler</em><br>Website Intelligence</h1>
             <p class="subtitle">Competitive research report for high-end design-build construction. Analyzing the patterns of market leaders to inform the next phase of growth.</p>
+            <a href="#path" class="hero-cta">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                View Recommendations
+            </a>
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-mouse"></div>
+                <span>Scroll</span>
+            </div>
         </header>
 
         <div class="divider"></div>
 
+        <!-- TL;DR Stats -->
+        <div class="tldr reveal">
+            <div class="tldr-item">
+                <div class="tldr-number">3</div>
+                <div class="tldr-label">Competitors Analyzed</div>
+            </div>
+            <div class="tldr-item">
+                <div class="tldr-number">$500M</div>
+                <div class="tldr-label">Chandler Portfolio</div>
+            </div>
+            <div class="tldr-item">
+                <div class="tldr-number">3</div>
+                <div class="tldr-label">Winning Patterns Found</div>
+            </div>
+        </div>
+
         <!-- Executive Summary -->
-        <section style="margin-bottom: 6rem;">
-            <div class="section-header">
+        <section id="summary" style="margin-bottom: 6rem;">
+            <div class="section-header reveal">
                 <h2 class="section-title">Executive Summary</h2>
             </div>
-            <p style="font-size: 1.1rem; color: #3b3a36; max-width: 800px;">
-                The luxury residential design-build market is shifting from "commodity building" to "experience management." Market leaders like HartmanBaldwin have institutionalized their **Process** as the core product. Michael Chandler's unique advantage lies in his **hand-crafted precision** and massive $500M portfolio, which currently outpaces competitor metrics in experience but lags slightly in "Process" clarity.
+            <p class="reveal" style="font-size: 1.1rem; color: #3b3a36; max-width: 800px;">
+                The luxury residential design-build market is shifting from "commodity building" to "experience management." Market leaders like HartmanBaldwin have institutionalized their <strong>Process</strong> as the core product. Michael Chandler's unique advantage lies in his <strong>hand-crafted precision</strong> and massive $500M portfolio, which currently outpaces competitor metrics in experience but lags slightly in "Process" clarity.
             </p>
         </section>
 
-        <!-- Competitor Analysis -->
-        <section>
-            <div class="section-header">
+        <!-- Competitor Profiles -->
+        <section id="profiles">
+            <div class="section-header reveal">
                 <h2 class="section-title">Competitor Profiles</h2>
             </div>
             <div class="competitor-grid">
-                
+
                 <!-- Client: Michael Chandler -->
-                <div class="competitor-card client">
+                <div class="competitor-card client reveal">
                     <span class="client-badge">Existing Site</span>
                     <div class="comp-header">
                         <div class="comp-logo-placeholder">MC</div>
@@ -381,7 +614,7 @@
                 </div>
 
                 <!-- Competitor 1: HartmanBaldwin -->
-                <div class="competitor-card">
+                <div class="competitor-card reveal">
                     <div class="comp-header">
                         <div class="comp-logo-placeholder">HB</div>
                         <span class="comp-name">HartmanBaldwin</span>
@@ -398,13 +631,13 @@
                     </div>
                     <ul class="bullet-list">
                         <li><span class="bullet-dot">●</span> Heavy emphasis on "The Discovery Phase"</li>
-                        <li><span class="bullet-dot">●</span> 150+ national remodeling ranking</li>
+                        <li><span class="bullet-dot">●</span> Top 150 national remodeling ranking</li>
                         <li><span class="bullet-dot">●</span> Multi-page content depth (ADU guides)</li>
                     </ul>
                 </div>
 
                 <!-- Competitor 2: Botero Homes -->
-                <div class="competitor-card">
+                <div class="competitor-card reveal">
                     <div class="comp-header">
                         <div class="comp-logo-placeholder">BH</div>
                         <span class="comp-name">Botero Homes</span>
@@ -429,24 +662,71 @@
             </div>
         </section>
 
+        <!-- Scorecard Table -->
+        <section id="scorecard">
+            <div class="section-header reveal">
+                <h2 class="section-title">Competitive Scorecard</h2>
+            </div>
+            <div class="table-wrap reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Firm</th>
+                            <th>Visual Design</th>
+                            <th>Process Clarity</th>
+                            <th>Portfolio Depth</th>
+                            <th>CTA Strategy</th>
+                            <th>SEO Presence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Michael Chandler</strong></td>
+                            <td><span class="score-pill score-high">Strong</span></td>
+                            <td><span class="score-pill score-mid">Moderate</span></td>
+                            <td><span class="score-pill score-high">Strong</span></td>
+                            <td><span class="score-pill score-low">Weak</span></td>
+                            <td><span class="score-pill score-mid">Moderate</span></td>
+                        </tr>
+                        <tr>
+                            <td>HartmanBaldwin</td>
+                            <td><span class="score-pill score-mid">Moderate</span></td>
+                            <td><span class="score-pill score-high">Strong</span></td>
+                            <td><span class="score-pill score-mid">Moderate</span></td>
+                            <td><span class="score-pill score-high">Strong</span></td>
+                            <td><span class="score-pill score-high">Strong</span></td>
+                        </tr>
+                        <tr>
+                            <td>Botero Homes</td>
+                            <td><span class="score-pill score-high">Strong</span></td>
+                            <td><span class="score-pill score-mid">Moderate</span></td>
+                            <td><span class="score-pill score-low">Weak</span></td>
+                            <td><span class="score-pill score-mid">Moderate</span></td>
+                            <td><span class="score-pill score-mid">Moderate</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <!-- Patterns Section -->
-        <section>
-            <div class="section-header">
+        <section id="patterns">
+            <div class="section-header reveal">
                 <h2 class="section-title">Patterns of the Top 10%</h2>
             </div>
             <div class="pattern-list">
-                
-                <div class="pattern-card">
+
+                <div class="pattern-card reveal">
                     <h3 class="pattern-title">01 — Integrated Process Visualization</h3>
-                    <p>Winners jangan sell "building"; they sell a frictionless methodology. They use infographics or multi-step visualizers to show how they manage architecture, design, and construction under one roof. This removes the "fear of the unknown" for the client.</p>
+                    <p>Winners don't sell "building" — they sell a frictionless methodology. They use infographics or multi-step visualizers to show how they manage architecture, design, and construction under one roof. This removes the "fear of the unknown" for the client.</p>
                 </div>
 
-                <div class="pattern-card">
-                    <h3 class="pattern-title">02 — The Complimentary Consultation CTA</h3>
+                <div class="pattern-card reveal">
+                    <h3 class="pattern-title">02 — The Consultative CTA</h3>
                     <p>Instead of a standard contact form, top sites use "Start Your Journey" or "Book a Project Discovery Call." This positions the firm as a consultant and advisor from the first interaction, rather than just a contractor bidding on work.</p>
                 </div>
 
-                <div class="pattern-card">
+                <div class="pattern-card reveal">
                     <h3 class="pattern-title">03 — SEO Area Dominance</h3>
                     <p>Top firms use specific landing pages or footer sections to list high-value zip codes and cities they serve. This captures localized "luxury home builder in [City]" search traffic which is the primary source of organic leads.</p>
                 </div>
@@ -455,12 +735,12 @@
         </section>
 
         <!-- Final Recommendation -->
-        <section style="margin-bottom: 6rem; background: #1c1916; color: white; padding: 4rem; border-radius: 20px;">
-            <h2 style="font-family: 'Instrument Serif', serif; font-size: 2.5rem; margin-bottom: 1.5rem;">The Winning Path</h2>
-            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem;">
-                To outperform the competitive landscape, the Chandler site must bridge the gap between **Cinematic Flare** and **Conversion Strategy**.
+        <section id="path" class="winning-path reveal">
+            <h2>The Winning Path</h2>
+            <p class="lead">
+                To outperform the competitive landscape, the Chandler site must bridge the gap between <strong>Cinematic Flair</strong> and <strong>Conversion Strategy</strong>.
             </p>
-            <ul class="bullet-list" style="color: white; opacity: 0.9;">
+            <ul class="bullet-list">
                 <li><span class="bullet-dot" style="color: var(--accent-light);">●</span> <strong>Interactive Process Map:</strong> Turn the $500M portfolio into a "Legacy Timeline."</li>
                 <li><span class="bullet-dot" style="color: var(--accent-light);">●</span> <strong>Consultative Form:</strong> Replace "Get in Touch" with a discovery-focused inquiry.</li>
                 <li><span class="bullet-dot" style="color: var(--accent-light);">●</span> <strong>Authority Content:</strong> Add sections for "Historic Restorations" and "Coastal Infrastructure."</li>
@@ -471,6 +751,24 @@
             <p>WEBSITE INTELLIGENCE ANALYSIS &mdash; 2026 &copy; MICHAEL CHANDLER</p>
         </footer>
     </div>
+
+    <script>
+        // Sticky nav — show after scrolling past hero
+        const nav = document.getElementById('stickyNav');
+        const hero = document.querySelector('header');
+        const navObserver = new IntersectionObserver(
+            ([entry]) => nav.classList.toggle('visible', !entry.isIntersecting),
+            { threshold: 0 }
+        );
+        navObserver.observe(hero);
+
+        // Scroll-triggered reveal
+        const revealObserver = new IntersectionObserver(
+            (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObserver.unobserve(e.target); } }),
+            { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
 
 </body>
 </html>
