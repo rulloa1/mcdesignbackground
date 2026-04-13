@@ -235,6 +235,10 @@
             padding: 12px;
             border-radius: 50%;
             user-select: none;
+            z-index: 10;
+            background: transparent;
+            border: none;
+            font-family: inherit;
         }
         #scroll-cue:hover {
             opacity: 1 !important;
@@ -2209,6 +2213,9 @@
             function initScrollCueButton() {
                 const scrollCueBtn = document.getElementById('scroll-cue');
                 if (!scrollCueBtn) return;
+
+                // Make sure it's visible initially
+                scrollCueBtn.style.opacity = '1';
 
                 scrollCueBtn.addEventListener('click', (e) => {
                     e.preventDefault();
