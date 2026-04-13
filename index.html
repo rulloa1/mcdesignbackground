@@ -67,11 +67,27 @@
             --text-muted:  #6B6660;
             --text-faint:  #9C978E;
         }
+        /* ─── Spin animation (moved from inline JS) ─── */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* ─── Form validation error state ─── */
+        .form-input.error,
+        .form-textarea.error {
+            border-color: #d44 !important;
+        }
         html {
             font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             -webkit-font-smoothing: antialiased;
+        }
+        /* ─── Image zoom effect (about section) ─── */
+        .img-zoom {
+            transition: transform .6s ease;
+        }
+        .img-zoom:hover {
+            transform: scale(1.04);
         }
         /* ─── Loading overlay ─── */
         #loader {
@@ -1731,18 +1747,18 @@
                 <div class="grid grid-cols-2 gap-3 reveal">
                     <div class="space-y-3">
                         <div style="aspect-ratio:4/5;overflow:hidden;">
-                            <img src="projects/syracuse-cover.png" alt="Syracuse House" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                            <img class="img-zoom" src="projects/syracuse-cover.png" alt="Syracuse House" style="width:100%;height:100%;object-fit:cover;" />
                         </div>
                         <div style="aspect-ratio:1/1;overflow:hidden;">
-                            <img src="projects/coastal-mountain/001 COVER.JPG" alt="Coastal Mountain" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                            <img class="img-zoom" src="projects/coastal-mountain/001 COVER.JPG" alt="Coastal Mountain" style="width:100%;height:100%;object-fit:cover;" />
                         </div>
                     </div>
                     <div class="space-y-3" style="padding-top:2.5rem;">
                         <div style="aspect-ratio:1/1;overflow:hidden;">
-                            <img src="projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                            <img class="img-zoom" src="projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley" style="width:100%;height:100%;object-fit:cover;" />
                         </div>
                         <div style="aspect-ratio:4/5;overflow:hidden;">
-                            <img src="projects/hospitality-pool-cover-v2.jpg" alt="Private Club Pool" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                            <img class="img-zoom" src="projects/hospitality-pool-cover-v2.jpg" alt="Private Club Pool" style="width:100%;height:100%;object-fit:cover;" />
                         </div>
                     </div>
                 </div>
@@ -1905,14 +1921,35 @@
         (() => {
             'use strict';
             // ─────────────────────────────────────────────────────────────────────
-            //  CONFIG
+            //  CONFIG - Centralized magic numbers and thresholds
             // ─────────────────────────────────────────────────────────────────────
-            const TOTAL_FRAMES = 294;
+            const CONFIG = {
+                TOTAL_FRAMES: 294,
+                PRELOAD_TIMEOUT: 8000, // 8s timeout for frame loading
+                REVEAL_DURATION: 0.85,
+                REVEAL_EASE: 'power3.out',
+                SCROLL_TRIGGER_OFFSET: 0.9, // 90% from top
+                PANEL_CHECKPOINTS: [
+                    { index: 0, start: 0.00, end: 0.30 },
+                    { index: 1, start: 0.33, end: 0.62 },
+                    { index: 2, start: 0.66, end: 0.90 },
+                ],
+                DOT_THRESHOLDS: [
+                    { index: 0, min: 0.00 },
+                    { index: 1, min: 0.33 },
+                    { index: 2, min: 0.66 },
+                ],
+                SCRUB_DURATION: 0.8,
+                NAVBAR_SCROLL_OFFSET: 60,
+                TYPE_SPEED_MS: 38, // ms per character
+                TYPE_CURSOR_REMOVAL_MS: 900,
+            };
+
             /**
              * Generate the array of relative frame paths.
              * Files: ezgif-frame-001.jpg … ezgif-frame-294.jpg
              */
-            const FRAME_URLS = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
+            const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
                 return `ezgif-frame-${n}.jpg`;
             });
@@ -1959,7 +1996,7 @@
              * @param {number} idx – frame index (float ok, will be rounded+clamped)
              */
             function drawFrameIndex(idx) {
-                const i = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(idx)));
+                const i = Math.max(0, Math.min(CONFIG.TOTAL_FRAMES - 1, Math.round(idx)));
                 currentFrameIndex = i;
                 const img = cache[i];
                 if (!img) return;
@@ -1973,56 +2010,68 @@
                 ctx.drawImage(img, sx, sy, sw, sh);
             }
             // ─────────────────────────────────────────────────────────────────────
-            //  PRELOAD WITH PROGRESS
-            //  Loads all frames concurrently and tracks progress for the loader bar.
+            //  PRELOAD WITH PROGRESS & ERROR HANDLING
+            //  Loads all frames concurrently, tracks progress, with timeout fallback.
             // ─────────────────────────────────────────────────────────────────────
             function preloadFrames(onComplete) {
-                // Paint first frame as early as possible for instant gratification
+                let done = 0;
+                let hasError = false;
+
+                // Timeout safety net: if loading takes too long, proceed anyway
+                const timeoutId = setTimeout(() => {
+                    if (done < CONFIG.TOTAL_FRAMES && !hasError) {
+                        console.warn(`Frame preload incomplete after ${CONFIG.PRELOAD_TIMEOUT}ms, proceeding with ${done}/${CONFIG.TOTAL_FRAMES} frames`);
+                        onComplete();
+                    }
+                }, CONFIG.PRELOAD_TIMEOUT);
+
+                // Paint first frame as early as possible
                 const seed = new Image();
                 seed.onload = () => { cache[0] = seed; drawFrameIndex(0); };
+                seed.onerror = () => {
+                    hasError = true;
+                    clearTimeout(timeoutId);
+                    console.error('Failed to load first frame');
+                    onComplete(); // Proceed anyway
+                };
                 seed.src = FRAME_URLS[0];
-                let done = 0;
+
+                let done_count = 0;
+                const tick = () => {
+                    done_count++;
+                    const pct = Math.round((done_count / CONFIG.TOTAL_FRAMES) * 100);
+                    loaderBar.style.width = pct + '%';
+                    loaderPct.textContent = pct + '%';
+                    if (done_count === CONFIG.TOTAL_FRAMES) {
+                        clearTimeout(timeoutId);
+                        onComplete();
+                    }
+                };
+
                 FRAME_URLS.forEach((url, i) => {
                     const img = new Image();
-                    const tick = () => {
-                        done++;
-                        const pct = Math.round((done / TOTAL_FRAMES) * 100);
-                        loaderBar.style.width = pct + '%';
-                        loaderPct.textContent = pct + '%';
-                        if (done === TOTAL_FRAMES) onComplete();
-                    };
                     img.onload = () => {
                         cache[i] = img;
-                        // Draw immediately if it's close to current visible position
                         if (i === 0) drawFrameIndex(0);
                         tick();
                     };
-                    img.onerror = () => tick(); // graceful fallback
+                    img.onerror = () => {
+                        // Mark as loaded but leave as null — canvas will skip it
+                        tick();
+                    };
                     img.src = url;
                 });
             }
             // ─────────────────────────────────────────────────────────────────────
             //  TEXT PANEL TRANSITIONS
-            //
-            //  We use CSS class toggling (is-visible) paired with CSS transitions
-            //  (cubic-bezier ease-in-out) instead of GSAP.set() per-tick, so the
-            //  browser's compositor handles the interpolation smoothly.
-            //
-            //  Checkpoints (progress 0→1):
-            //   Panel 1: visible from  0.00 → 0.30
-            //   Panel 2: visible from  0.33 → 0.62
-            //   Panel 3: visible from  0.66 → 0.90
+            //  CSS class toggling (is-visible) with CSS transitions for smooth
+            //  interpolation handled by the browser's compositor.
             // ─────────────────────────────────────────────────────────────────────
-            const CHECKPOINTS = [
-                { panel: panels[0], start: 0.00, end: 0.30 },
-                { panel: panels[1], start: 0.33, end: 0.62 },
-                { panel: panels[2], start: 0.66, end: 0.90 },
-            ];
             function updatePanels(progress) {
-                CHECKPOINTS.forEach(({ panel, start, end }) => {
+                CONFIG.PANEL_CHECKPOINTS.forEach(({ index, start, end }) => {
+                    const panel = panels[index];
                     const visible = progress >= start && progress < end;
                     panel.classList.toggle('is-visible', visible);
-                    // If visible, ensure pointer-events propagate for CTAs
                     panel.style.pointerEvents = visible ? 'auto' : 'none';
                 });
             }
@@ -2031,8 +2080,9 @@
             // ─────────────────────────────────────────────────────────────────────
             function updateDots(progress) {
                 let active = 0;
-                if (progress >= 0.66) active = 2;
-                else if (progress >= 0.33) active = 1;
+                for (const { index, min } of CONFIG.DOT_THRESHOLDS) {
+                    if (progress >= min) active = index;
+                }
                 dots.forEach((d, i) => d.classList.toggle('active', i === active));
             }
             // ─────────────────────────────────────────────────────────────────────
@@ -2060,11 +2110,11 @@
                         { opacity: 0, y: 24 },
                         {
                             opacity: 1, y: 0,
-                            duration: .85,
-                            ease: 'power3.out',
+                            duration: CONFIG.REVEAL_DURATION,
+                            ease: CONFIG.REVEAL_EASE,
                             scrollTrigger: {
                                 trigger: el,
-                                start: 'top 90%',
+                                start: `top ${CONFIG.SCROLL_TRIGGER_OFFSET * 100}%`,
                                 toggleActions: 'play none none reverse',
                             },
                         }
@@ -2072,38 +2122,45 @@
                 });
             }
             // ─────────────────────────────────────────────────────────────────────
-            //  TYPED MICRO-INTERACTIONS
+            //  TYPED MICRO-INTERACTIONS (Named function for debugging)
             //  Section labels (.section-label) type themselves in on scroll
             // ─────────────────────────────────────────────────────────────────────
+            function typeCharacters(el, text, cursor) {
+                let i = 0;
+                const interval = setInterval(() => {
+                    el.textContent = text.slice(0, i + 1);
+                    el.appendChild(cursor);
+                    i++;
+                    if (i >= text.length) {
+                        clearInterval(interval);
+                        setTimeout(() => cursor.remove(), CONFIG.TYPE_CURSOR_REMOVAL_MS);
+                    }
+                }, CONFIG.TYPE_SPEED_MS);
+                return interval; // Return for potential cleanup
+            }
+
             function initTypedLabels() {
+                const typeIntervals = [];
                 document.querySelectorAll('.section-label').forEach(el => {
                     const original = el.textContent.trim();
                     el.textContent = '';
                     el.classList.add('typed-init');
-                    // Add blinking cursor
                     const cursor = document.createElement('span');
                     cursor.className = 'type-cursor';
                     el.appendChild(cursor);
+
                     ScrollTrigger.create({
                         trigger: el,
                         start: 'top 88%',
                         once: true,
                         onEnter: () => {
                             el.style.opacity = '1';
-                            let i = 0;
-                            const interval = setInterval(() => {
-                                el.textContent = original.slice(0, i + 1);
-                                el.appendChild(cursor);
-                                i++;
-                                if (i >= original.length) {
-                                    clearInterval(interval);
-                                    // Remove cursor after a short pause
-                                    setTimeout(() => cursor.remove(), 900);
-                                }
-                            }, 38);
+                            const intervalId = typeCharacters(el, original, cursor);
+                            typeIntervals.push(intervalId);
                         },
                     });
                 });
+                return typeIntervals; // For cleanup if needed
             }
             // ─────────────────────────────────────────────────────────────────────
             //  ANIMATED STAT COUNTERS
@@ -2132,27 +2189,27 @@
                 });
             }
             // ─────────────────────────────────────────────────────────────────────
-            //  MAIN SCROLL TRIGGER
+            //  MAIN SCROLL TRIGGER (Named function for debugging)
             // ─────────────────────────────────────────────────────────────────────
+            const scrollTriggers = []; // Track for cleanup
+
             function initScrollTrigger() {
                 // Navbar frosted glass on scroll
-                ScrollTrigger.create({
-                    start: 60,
+                scrollTriggers.push(ScrollTrigger.create({
+                    start: CONFIG.NAVBAR_SCROLL_OFFSET,
                     onEnter: () => navbar.classList.add('scrolled'),
                     onLeaveBack: () => navbar.classList.remove('scrolled'),
-                });
+                }));
+
                 // Canvas pin + scroll-driven scrub
-                ScrollTrigger.create({
+                scrollTriggers.push(ScrollTrigger.create({
                     trigger: '#canvas-section',
                     start: 'top top',
                     end: 'bottom bottom',
                     pin: '#sticky-canvas',
                     pinSpacing: false,
-                    // scrub: .8 → GSAP smoothly animates the proxy.progress value
-                    // over 0.8 seconds behind the raw scroll position.
-                    scrub: 0.8,
+                    scrub: CONFIG.SCRUB_DURATION,
                     onUpdate(self) {
-                        // Tween the proxy to match scroll progress — GSAP handles easing
                         gsap.to(proxy, {
                             progress: self.progress,
                             duration: 0.4,
@@ -2163,7 +2220,6 @@
                     onEnter() {
                         progressEl.classList.add('visible');
                         gsap.to(scrollCue, { opacity: 0, duration: .5 });
-                        // Start render loop when entering canvas section
                         if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
                     },
                     onLeave() {
@@ -2179,16 +2235,10 @@
                         gsap.to(scrollCue, { opacity: 1, duration: .5 });
                         cancelAnimationFrame(rAFid); rAFid = null;
                     },
-                });
-                // Initial panel 1 visibility at page load
+                }));
+
                 updatePanels(0);
             }
-            // ─────────────────────────────────────────────────────────────────────
-            //  SPIN KEYFRAME (for submit button loader)
-            // ─────────────────────────────────────────────────────────────────────
-            const styleSheet = document.createElement('style');
-            styleSheet.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
-            document.head.appendChild(styleSheet);
             // ─────────────────────────────────────────────────────────────────────
             //  INIT SEQUENCE
             // ─────────────────────────────────────────────────────────────────────
@@ -2197,7 +2247,7 @@
             ctx.fillStyle = '#f5f5f3';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             preloadFrames(() => {
-                // All frames loaded — hide loader, init GSAP, init reveals
+                // All frames loaded — hide loader, init animations
                 loaderEl.classList.add('hidden');
                 drawFrameIndex(0);
                 initScrollTrigger();
@@ -2210,9 +2260,11 @@
     <!-- Multi-step discovery form logic -->
     <script>
     (() => {
+        'use strict';
         let selectedBudget = '';
         let selectedType   = '';
         let currentStep    = 1;
+        const listeners = []; // Track for cleanup
 
         const steps = [
             document.getElementById('step-1'),
@@ -2220,6 +2272,20 @@
             document.getElementById('step-3'),
         ];
         const pips = document.querySelectorAll('.step-pip');
+
+        // Cache frequently accessed elements
+        const budgetGrid = document.getElementById('budget-grid');
+        const typeGrid = document.getElementById('type-grid');
+        const step1NextBtn = document.getElementById('step1-next');
+        const step2BackBtn = document.getElementById('step2-back');
+        const step2NextBtn = document.getElementById('step2-next');
+        const step3BackBtn = document.getElementById('step3-back');
+        const step3SubmitBtn = document.getElementById('step3-submit');
+        const nameInput = document.getElementById('disc-name');
+        const emailInput = document.getElementById('disc-email');
+        const formContainer = document.querySelector('.multistep-form');
+        const stepIndicator = document.getElementById('step-indicator');
+        const formSuccess = document.getElementById('form-success');
 
         function showStep(n) {
             currentStep = n;
@@ -2231,82 +2297,156 @@
             });
         }
 
+        // Helper: attach listener and track for cleanup
+        function on(el, event, handler) {
+            if (el) {
+                el.addEventListener(event, handler);
+                listeners.push({ el, event, handler });
+            }
+        }
+
+        // Helper: validate and display error state
+        function setFieldError(input, isError) {
+            if (isError) {
+                input.classList.add('error');
+            } else {
+                input.classList.remove('error');
+            }
+        }
+
         // Step 1 — budget selection
-        document.querySelectorAll('#budget-grid .option-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#budget-grid .option-btn').forEach(b => b.classList.remove('selected'));
+        budgetGrid.querySelectorAll('.option-btn').forEach(btn => {
+            on(btn, 'click', () => {
+                budgetGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
                 selectedBudget = btn.dataset.value;
-                document.getElementById('step1-next').disabled = false;
+                step1NextBtn.disabled = false;
             });
         });
-        document.getElementById('step1-next').addEventListener('click', () => showStep(2));
+        on(step1NextBtn, 'click', () => showStep(2));
 
         // Step 2 — project type selection
-        document.querySelectorAll('#type-grid .option-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#type-grid .option-btn').forEach(b => b.classList.remove('selected'));
+        typeGrid.querySelectorAll('.option-btn').forEach(btn => {
+            on(btn, 'click', () => {
+                typeGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
                 selectedType = btn.dataset.value;
-                document.getElementById('step2-next').disabled = false;
+                step2NextBtn.disabled = false;
             });
         });
-        document.getElementById('step2-back').addEventListener('click', () => showStep(1));
-        document.getElementById('step2-next').addEventListener('click', () => showStep(3));
+        on(step2BackBtn, 'click', () => showStep(1));
+        on(step2NextBtn, 'click', () => showStep(3));
 
-        // Step 3 — contact & submit
-        document.getElementById('step3-back').addEventListener('click', () => showStep(2));
-        document.getElementById('step3-submit').addEventListener('click', () => {
-            const name  = document.getElementById('disc-name').value.trim();
-            const email = document.getElementById('disc-email').value.trim();
-            if (!name || !email) {
-                document.getElementById('disc-name').style.borderColor = name ? '' : '#d44';
-                document.getElementById('disc-email').style.borderColor = email ? '' : '#d44';
-                return;
-            }
+        // Step 3 — contact & submit with improved validation
+        on(step3BackBtn, 'click', () => showStep(2));
+        on(nameInput, 'input', () => setFieldError(nameInput, false));
+        on(emailInput, 'input', () => setFieldError(emailInput, false));
+
+        on(step3SubmitBtn, 'click', () => {
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const hasNameError = !name;
+            const hasEmailError = !email;
+
+            setFieldError(nameInput, hasNameError);
+            setFieldError(emailInput, hasEmailError);
+
+            if (hasNameError || hasEmailError) return;
+
             // Simulate submission
-            document.querySelector('.multistep-form').querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-            document.getElementById('step-indicator').style.display = 'none';
-            document.getElementById('form-success').classList.add('visible');
+            formContainer.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            stepIndicator.style.display = 'none';
+            formSuccess.classList.add('visible');
+
+            // Optional: Reset form after success display
+            setTimeout(() => {
+                nameInput.value = '';
+                emailInput.value = '';
+                selectedBudget = '';
+                selectedType = '';
+            }, 100);
         });
+
+        // Cleanup function for when form is destroyed
+        function cleanup() {
+            listeners.forEach(({ el, event, handler }) => {
+                el.removeEventListener(event, handler);
+            });
+            listeners.length = 0;
+        }
+
+        // Attach cleanup to window for potential SPA navigation
+        window.formCleanup = cleanup;
     })();
     </script>
     <!-- Mobile nav toggle -->
     <script>
         (() => {
+            'use strict';
             const hamburger = document.getElementById('nav-hamburger');
             const mobileNav = document.getElementById('mobile-nav');
             const mobileLinks = mobileNav.querySelectorAll('a');
+            const listeners = [];
+
             function closeMenu() {
                 hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
                 mobileNav.classList.remove('open');
                 document.body.style.overflow = '';
             }
-            hamburger.addEventListener('click', () => {
+
+            const toggleMenu = () => {
                 const isOpen = mobileNav.classList.toggle('open');
                 hamburger.classList.toggle('open', isOpen);
                 hamburger.setAttribute('aria-expanded', String(isOpen));
                 document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            hamburger.addEventListener('click', toggleMenu);
+            listeners.push({ el: hamburger, event: 'click', handler: toggleMenu });
+
+            mobileLinks.forEach(l => {
+                l.addEventListener('click', closeMenu);
+                listeners.push({ el: l, event: 'click', handler: closeMenu });
             });
-            mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
+
+            // Cleanup function
+            window.mobileNavCleanup = () => {
+                listeners.forEach(({ el, event, handler }) => {
+                    el.removeEventListener(event, handler);
+                });
+                listeners.length = 0;
+            };
         })();
     </script>
     <!-- Portfolio filter logic -->
     <script>
         (() => {
+            'use strict';
+            // Cache DOM queries for performance
             const filterBtns = document.querySelectorAll('.filter-btn');
             const cards = document.querySelectorAll('.portfolio-card');
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
+            const filterBtnsArray = Array.from(filterBtns); // Convert to array once
+            const cardsArray = Array.from(cards);
+
+            function handleFilterClick(btn) {
+                return () => {
+                    // Remove active state from all buttons
+                    filterBtnsArray.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
+
+                    // Filter cards
                     const filter = btn.dataset.filter;
-                    cards.forEach(card => {
+                    cardsArray.forEach(card => {
                         const match = filter === 'all' || card.dataset.category === filter;
                         card.hidden = !match;
                     });
-                });
+                };
+            }
+
+            // Attach click listeners
+            filterBtnsArray.forEach(btn => {
+                btn.addEventListener('click', handleFilterClick(btn));
             });
         })();
     </script>
@@ -2331,13 +2471,9 @@
     <!-- Lightbox + Gallery Data Script -->
     <script>
     (() => {
+        'use strict';
         /* ── Gallery data ───────────────────────────────────────────── */
         const BASE = 'projects/assets/';
-        const BPRJ = 'projects/';
-
-        function a(base, ...files) {
-            return files.map(f => base + f);
-        }
 
         const GALLERIES = {
             'miami-beach-condo': {
@@ -2485,7 +2621,9 @@
         /* ── State ──────────────────────────────────────────────────── */
         let currentImages = [];
         let currentIndex  = 0;
-        let preloadImg    = new Image();
+        // Reuse single preload image instead of creating new ones
+        const preloadImg  = new Image();
+        const listeners   = []; // Track for cleanup
 
         /* ── Elements ───────────────────────────────────────────────── */
         const lb       = document.getElementById('lightbox');
@@ -2496,6 +2634,12 @@
         const lbClose  = document.getElementById('lb-close');
         const lbPrev   = document.getElementById('lb-prev');
         const lbNext   = document.getElementById('lb-next');
+
+        // Helper: attach and track listeners
+        function on(el, event, handler, options = {}) {
+            el.addEventListener(event, handler, options);
+            listeners.push({ el, event, handler, options });
+        }
 
         /* ── Open / close ───────────────────────────────────────────── */
         function openLightbox(projectId) {
@@ -2518,7 +2662,7 @@
             lbImg.src = '';
         }
 
-        /* ── Image display ──────────────────────────────────────────── */
+        /* ── Image display (optimized with single preload image) ─────── */
         function showImage(idx) {
             idx = (idx + currentImages.length) % currentImages.length;
             currentIndex = idx;
@@ -2528,20 +2672,34 @@
             const src = currentImages[idx];
             lbImg.alt = lbTitle.textContent + ' — image ' + (idx + 1);
 
-            const tmp = new Image();
-            tmp.onload = () => {
+            // Use single preload image, reuse it for loading check
+            let loadTimeout;
+            const handleLoad = () => {
+                clearTimeout(loadTimeout);
                 lbImg.src = src;
                 lbImg.classList.add('loaded');
             };
-            tmp.onerror = () => {
-                lbImg.src = src; // show broken img rather than nothing
+            const handleError = () => {
+                clearTimeout(loadTimeout);
+                console.warn(`Failed to load image: ${src}`);
+                lbImg.src = src; // Show broken image rather than nothing
                 lbImg.classList.add('loaded');
             };
-            tmp.src = src;
 
-            // Preload next
+            // Timeout safety for slow/failed loads
+            loadTimeout = setTimeout(() => {
+                lbImg.src = src;
+                lbImg.classList.add('loaded');
+            }, 3000);
+
+            preloadImg.onload = handleLoad;
+            preloadImg.onerror = handleError;
+            preloadImg.src = src;
+
+            // Preload next image for smooth navigation
             const nextSrc = currentImages[(idx + 1) % currentImages.length];
-            preloadImg.src = nextSrc;
+            const nextPreload = new Image();
+            nextPreload.src = nextSrc;
 
             // Sync thumbs
             const thumbEls = lbThumbs.querySelectorAll('.lb-thumb');
@@ -2574,35 +2732,46 @@
         /* ── Event listeners ────────────────────────────────────────── */
         // Card clicks
         document.querySelectorAll('.portfolio-card[data-project]').forEach(card => {
-            card.addEventListener('click', () => openLightbox(card.dataset.project));
+            on(card, 'click', () => openLightbox(card.dataset.project));
         });
 
-        lbClose.addEventListener('click', closeLightbox);
-        lbPrev.addEventListener('click',  (e) => { e.stopPropagation(); navigate(-1); });
-        lbNext.addEventListener('click',  (e) => { e.stopPropagation(); navigate(1);  });
+        on(lbClose, 'click', closeLightbox);
+        on(lbPrev, 'click', (e) => { e.stopPropagation(); navigate(-1); });
+        on(lbNext, 'click', (e) => { e.stopPropagation(); navigate(1); });
 
         // Click overlay to close (but not image itself)
-        lb.addEventListener('click', (e) => {
+        on(lb, 'click', (e) => {
             if (e.target === lb || e.target === document.getElementById('lb-img-wrap')) {
                 closeLightbox();
             }
         });
 
-        // Keyboard
-        document.addEventListener('keydown', (e) => {
+        // Keyboard navigation
+        const handleKeydown = (e) => {
             if (!lb.classList.contains('open')) return;
             if (e.key === 'ArrowLeft')  navigate(-1);
             if (e.key === 'ArrowRight') navigate(1);
             if (e.key === 'Escape')     closeLightbox();
-        });
+        };
+        on(document, 'keydown', handleKeydown);
 
         // Touch / swipe support
         let touchStartX = 0;
-        lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, {passive:true});
-        lb.addEventListener('touchend',   (e) => {
+        on(lb, 'touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        on(lb, 'touchend', (e) => {
             const dx = e.changedTouches[0].clientX - touchStartX;
             if (Math.abs(dx) > 40) navigate(dx < 0 ? 1 : -1);
-        }, {passive:true});
+        }, { passive: true });
+
+        // Cleanup function for SPA navigation
+        window.lightboxCleanup = () => {
+            listeners.forEach(({ el, event, handler, options }) => {
+                el.removeEventListener(event, handler, options);
+            });
+            listeners.length = 0;
+        };
     })();
     </script>
 </body>
