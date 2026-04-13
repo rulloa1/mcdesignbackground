@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael Chandler — Strategic Construction Executive</title>
+    <title>Michael Chandler â€” Strategic Construction Executive</title>
     <meta name="description"
-        content="Michael Chandler — Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana." />
+        content="Michael Chandler â€” Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana." />
     <meta name="keywords" content="ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction" />
-    <meta property="og:title" content="Michael Chandler — Strategic Construction Executive" />
+    <meta property="og:title" content="Michael Chandler â€” Strategic Construction Executive" />
     <meta property="og:description" content="Ultra-luxury custom homes, historic coastal restorations, and design-build construction management. 37+ years, $500M+ portfolio." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Michael Chandler — Strategic Construction Executive" />
-    <meta name="twitter:description" content="Ultra-luxury custom homes, coastal restorations, design-build construction. California • Bahamas • Texas • Montana." />
+    <meta name="twitter:title" content="Michael Chandler â€” Strategic Construction Executive" />
+    <meta name="twitter:description" content="Ultra-luxury custom homes, coastal restorations, design-build construction. California â€¢ Bahamas â€¢ Texas â€¢ Montana." />
     <link rel="canonical" href="https://mcdesign.bio" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +48,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
-        /* ─── Reset & base ─── */
+        /* â”€â”€â”€ Reset & base â”€â”€â”€ */
         *,
         *::before,
         *::after {
@@ -67,11 +67,11 @@
             --text-muted:  #6B6660;
             --text-faint:  #9C978E;
         }
-        /* ─── Spin animation (moved from inline JS) ─── */
+        /* â”€â”€â”€ Spin animation (moved from inline JS) â”€â”€â”€ */
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        /* ─── Form validation error state ─── */
+        /* â”€â”€â”€ Form validation error state â”€â”€â”€ */
         .form-input.error,
         .form-textarea.error {
             border-color: #d44 !important;
@@ -81,15 +81,16 @@
             background: var(--bg);
             color: var(--text);
             -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
         }
-        /* ─── Image zoom effect (about section) ─── */
+        /* â”€â”€â”€ Image zoom effect (about section) â”€â”€â”€ */
         .img-zoom {
             transition: transform .6s ease;
         }
         .img-zoom:hover {
             transform: scale(1.04);
         }
-        /* ─── Loading overlay ─── */
+        /* â”€â”€â”€ Loading overlay â”€â”€â”€ */
         #loader {
             position: fixed;
             inset: 0;
@@ -136,7 +137,7 @@
             color: #aaa;
             letter-spacing: .06em;
         }
-        /* ─── Canvas section ─── */
+        /* â”€â”€â”€ Canvas section â”€â”€â”€ */
         #canvas-section {
             position: relative;
             /* height set by JS = 400vh */
@@ -166,7 +167,7 @@
             z-index: 2;
             pointer-events: none;
         }
-        /* ─── Text panels ─── */
+        /* â”€â”€â”€ Text panels â”€â”€â”€ */
         .text-panel {
             position: absolute;
             inset: 0;
@@ -219,7 +220,7 @@
             line-height: 1.65;
             margin-bottom: 28px;
         }
-        /* ─── Scroll cue (interactive button) ─── */
+        /* â”€â”€â”€ Scroll cue (interactive button) â”€â”€â”€ */
         #scroll-cue {
             position: absolute;
             bottom: 32px;
@@ -275,7 +276,7 @@
                 opacity: .3;
             }
         }
-        /* ─── Progress dots ─── */
+        /* â”€â”€â”€ Progress dots â”€â”€â”€ */
         #progress-dots {
             position: fixed;
             right: 24px;
@@ -303,7 +304,7 @@
             background: #111;
             transform: scale(1.6);
         }
-        /* ─── Navbar ─── */
+        /* â”€â”€â”€ Navbar â”€â”€â”€ */
         #navbar {
             position: fixed;
             top: 0;
@@ -407,7 +408,7 @@
         .nav-link:hover::after {
             width: 100%;
         }
-        /* ─── Buttons ─── */
+        /* â”€â”€â”€ Buttons â”€â”€â”€ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -445,7 +446,7 @@
             border-color: #111;
             transform: translateY(-1px);
         }
-        /* ─── Section layout helpers ─── */
+        /* â”€â”€â”€ Section layout helpers â”€â”€â”€ */
         .site-max {
             max-width: 1280px;
             margin: 0 auto;
@@ -466,7 +467,7 @@
             background: var(--border);
             margin-bottom: 28px;
         }
-        /* ─── Services grid — glassmorphism ─── */
+        /* â”€â”€â”€ Services grid â€” glassmorphism â”€â”€â”€ */
         .service-card {
             border: 1px solid rgba(255,255,255,.13);
             border-radius: 2px;
@@ -530,7 +531,7 @@
             border-radius: 0;
             padding: 4px 12px;
         }
-        /* ─── The Chandler Process ─── */
+        /* â”€â”€â”€ The Chandler Process â”€â”€â”€ */
         .process-section {
             background: #fff;
             padding: 10rem 0;
@@ -571,7 +572,7 @@
             color: var(--text-muted);
             line-height: 1.6;
         }
-        /* ─── Quote form ─── */
+        /* â”€â”€â”€ Quote form â”€â”€â”€ */
         .form-field {
             display: flex;
             flex-direction: column;
@@ -626,12 +627,12 @@
             border-top: 5px solid #999;
             pointer-events: none;
         }
-        /* ─── Scroll reveals ─── */
+        /* â”€â”€â”€ Scroll reveals â”€â”€â”€ */
         .reveal {
             opacity: 0;
-            transform: translateY(22px);
+            transform: translateY(24px);
         }
-        /* ─── Portfolio grid ─── */
+        /* â”€â”€â”€ Portfolio grid â”€â”€â”€ */
         .portfolio-filters {
             display: flex;
             flex-wrap: wrap;
@@ -770,7 +771,7 @@
             gap: 6px;
             margin-top: 14px;
         }
-        /* ─── Mobile nav hamburger ─── */
+        /* â”€â”€â”€ Mobile nav hamburger â”€â”€â”€ */
         #nav-hamburger {
             display: flex;
             flex-direction: column;
@@ -797,7 +798,7 @@
         #nav-hamburger.open span:nth-child(2) { opacity: 0; }
         #nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* ─── Full-screen mobile menu ─── */
+        /* â”€â”€â”€ Full-screen mobile menu â”€â”€â”€ */
         #mobile-nav {
             position: fixed;
             inset: 0;
@@ -846,11 +847,11 @@
         }
         .mobile-nav-sub:hover { color: var(--text); }
 
-        /* ─── About section ─── */
+        /* â”€â”€â”€ About section â”€â”€â”€ */
         #about .grid > div img {
             transition: transform .5s ease;
         }
-        /* ─── Footer ─── */
+        /* â”€â”€â”€ Footer â”€â”€â”€ */
         .footer-link {
             font-size: .8rem;
             color: #999;
@@ -861,7 +862,7 @@
             color: #555;
         }
 
-        /* ── LIGHTBOX ─────────────────────────────────────── */
+        /* â”€â”€ LIGHTBOX â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         #lightbox {
             display: none;
             position: fixed;
@@ -1004,7 +1005,248 @@
         }
         .portfolio-card:hover .gallery-hint { opacity: 1; }
 
-        /* ─── Dark section rhythm (BMW + Apple cinematic) ─── */
+        /* â”€â”€â”€ Project Modal System â”€â”€â”€ */
+        .project-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9000;
+            overflow-y: auto;
+            animation: fadeIn .3s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .project-modal-content {
+            position: relative;
+        }
+        .project-modal-close {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 9001;
+            background: rgba(244, 240, 232, .95);
+            border: 1px solid rgba(200, 194, 183, .4);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text);
+            transition: background .3s, color .3s;
+            backdrop-filter: blur(12px);
+        }
+        .project-modal-close:hover {
+            background: rgba(244, 240, 232, 1);
+            color: #d44;
+        }
+        .project-modal-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+        }
+        .project-modal-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-modal-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 40%);
+            display: flex;
+            align-items: flex-end;
+            padding: 48px 28px;
+        }
+        .project-modal-hero-content {
+            max-width: 800px;
+        }
+        .project-modal-category {
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .7);
+            margin-bottom: 8px;
+        }
+        .project-modal-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -.02em;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+        .project-modal-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, .85);
+            margin-bottom: 6px;
+        }
+        .project-modal-location {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, .6);
+        }
+        .project-modal-body {
+            padding: 64px 28px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .project-modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+        @media (max-width: 768px) {
+            .project-modal-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+        .project-modal-section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 24px;
+            letter-spacing: -.01em;
+        }
+        .project-modal-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        .project-modal-role-box {
+            background: var(--primary-light, #f0e8de);
+            border-left: 4px solid #d4a574;
+            padding: 24px;
+            margin-top: 32px;
+        }
+        .project-modal-role-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+        .project-modal-role-text {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .project-modal-sidebar {
+            background: var(--text);
+            color: var(--bg);
+            padding: 32px 24px;
+            border-radius: 0;
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+        .project-modal-sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #d4a574;
+            margin-bottom: 24px;
+        }
+        .project-modal-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .project-modal-stat {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .project-modal-stat-icon {
+            width: 20px;
+            height: 20px;
+            color: #d4a574;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .project-modal-stat-label {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .6);
+            margin-bottom: 4px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .project-modal-stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .project-modal-gallery-section {
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border);
+        }
+        .project-modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .project-modal-gallery-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 0;
+            cursor: pointer;
+            transition: transform .4s ease, filter .4s ease;
+            filter: brightness(.95);
+        }
+        .project-modal-gallery-img:hover {
+            transform: scale(1.04);
+            filter: brightness(1.05);
+        }
+        /* Lightbox */
+        .project-lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .95);
+            z-index: 9100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn .3s ease forwards;
+            backdrop-filter: blur(8px);
+        }
+        .project-lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: color .3s;
+        }
+        .project-lightbox-close:hover {
+            color: #d4a574;
+        }
+        .project-lightbox-img {
+            max-height: 90vh;
+            max-width: 90vw;
+            object-fit: contain;
+            animation: zoomIn .3s ease forwards;
+        }
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* â”€â”€â”€ Dark section rhythm (BMW + Apple cinematic) â”€â”€â”€ */
         .dark-section {
             background: var(--text);
             color: #fff;
@@ -1027,13 +1269,13 @@
             stroke: rgba(255,255,255,.65) !important;
         }
 
-        /* ─── Section heading refinements ─── */
+        /* â”€â”€â”€ Section heading refinements â”€â”€â”€ */
         .section-h2 {
             line-height: 1.06;
             letter-spacing: -.022em;
         }
 
-        /* ─── Intro statement ─── */
+        /* â”€â”€â”€ Intro statement â”€â”€â”€ */
         .intro-statement {
             font-size: clamp(2.4rem, 5.5vw, 4.5rem);
             font-weight: 300;
@@ -1042,7 +1284,7 @@
             color: var(--text);
         }
 
-        /* ─── Stats ─── */
+        /* â”€â”€â”€ Stats â”€â”€â”€ */
         .stat-number {
             font-size: clamp(3rem, 6vw, 4rem);
             font-weight: 300;
@@ -1058,17 +1300,17 @@
             margin-top: 8px;
         }
 
-        /* ─── About section ─── */
+        /* â”€â”€â”€ About section â”€â”€â”€ */
         #about .about-img-wrap {
             overflow: hidden;
             border-radius: 0;
         }
 
-        /* ─── Portfolio section ─── */
+        /* â”€â”€â”€ Portfolio section â”€â”€â”€ */
         #portfolio {
             padding: 80px 0 96px;
         }
-        /* ─── The Chandler Process ─── */
+        /* â”€â”€â”€ The Chandler Process â”€â”€â”€ */
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 64px; }
         .process-card { background: #fff; padding: 48px; border: 1px solid var(--border); transition: transform .4s ease, box-shadow .4s ease; display: flex; flex-direction: column; height: 100%; border-radius: 4px; }
         .process-card:hover { transform: translateY(-8px); border-color: var(--text-faint); box-shadow: 0 20px 40px rgba(0,0,0,.04); }
@@ -1077,7 +1319,7 @@
         .process-card p { font-size: .95rem; color: var(--text-muted); line-height: 1.7; flex-grow: 1; margin-bottom: 0; }
         .process-icon { width: 40px; height: 40px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; background: var(--bg-alt); border-radius: 50%; color: var(--text); }
 
-        /* ─── Typed micro-interaction ─── */
+        /* â”€â”€â”€ Typed micro-interaction â”€â”€â”€ */
         .section-label.typed-init { opacity: 0; }
         .type-cursor {
             display: inline-block;
@@ -1093,7 +1335,7 @@
             50% { opacity: 0; }
         }
 
-        /* ─── Multi-step form section ─── */
+        /* â”€â”€â”€ Multi-step form section â”€â”€â”€ */
         #form-section { background: var(--bg-alt); padding: 7rem 0; }
         .multistep-form { max-width: 640px; margin: 0 auto; }
         .form-step { display: none; }
@@ -1122,12 +1364,272 @@
         #form-success { display: none; text-align: center; padding: 60px 0; }
         #form-success.visible { display: block; }
         .success-check { width: 48px; height: 48px; margin: 0 auto 20px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+
+        /* â”€â”€â”€ Marquee ticker band â”€â”€â”€ */
+        .marquee-band {
+            overflow: hidden;
+            background: var(--text);
+            padding: 14px 0;
+            border-top: 1px solid rgba(255,255,255,.06);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 0;
+            width: max-content;
+            animation: marquee-scroll 32s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-item {
+            white-space: nowrap;
+            font-size: .65rem;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.35);
+            padding: 0 28px;
+        }
+        .marquee-dot {
+            color: #d4a574;
+            padding: 0;
+            font-size: .5rem;
+            letter-spacing: 0;
+        }
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* â”€â”€â”€ Portfolio card: slide-up overlay â”€â”€â”€ */
+        .portfolio-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.72) 0%, transparent 55%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px 18px;
+            opacity: 0;
+            transition: opacity .35s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .portfolio-card:hover .portfolio-card-overlay { opacity: 1; }
+        .portfolio-card-overlay-text {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transform: translateY(6px);
+            transition: transform .35s ease;
+        }
+        .portfolio-card:hover .portfolio-card-overlay-text { transform: translateY(0); }
+        .portfolio-card-gold-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: #d4a574;
+            transition: width .4s cubic-bezier(.25,.46,.45,.94);
+            z-index: 3;
+        }
+        .portfolio-card:hover .portfolio-card-gold-line { width: 100%; }
+
+        /* â”€â”€â”€ Process ghost numbers â”€â”€â”€ */
+        .process-card { position: relative; overflow: hidden; }
+        .process-ghost-num {
+            position: absolute;
+            top: -10px;
+            right: -8px;
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(0,0,0,.04);
+            line-height: 1;
+            letter-spacing: -.05em;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+        .process-card > *:not(.process-ghost-num) { position: relative; z-index: 1; }
+
+        /* â”€â”€â”€ Stats bar upgrade â”€â”€â”€ */
+        .stat-accent-line {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #d4a574;
+            margin: 0 auto 12px;
+        }
+
+        /* â”€â”€â”€ Testimonials section â”€â”€â”€ */
+        #testimonials {
+            background: var(--text);
+            padding: 7rem 0;
+            overflow: hidden;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 36px;
+            margin-top: 56px;
+        }
+        @media (min-width: 768px) {
+            .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.08);
+            padding: 40px 32px;
+            position: relative;
+            transition: background .3s, border-color .3s;
+        }
+        .testimonial-card:hover {
+            background: rgba(255,255,255,.07);
+            border-color: rgba(212,165,116,.3);
+        }
+        .testimonial-quote-mark {
+            font-size: 4rem;
+            line-height: .7;
+            color: #d4a574;
+            font-family: Georgia, serif;
+            margin-bottom: 20px;
+            display: block;
+            opacity: .7;
+        }
+        .testimonial-body {
+            font-size: 1rem;
+            color: rgba(255,255,255,.72);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+        .testimonial-divider {
+            width: 32px;
+            height: 1px;
+            background: #d4a574;
+            margin-bottom: 20px;
+            opacity: .6;
+        }
+        .testimonial-name {
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .testimonial-meta {
+            font-size: .72rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.35);
+        }
+
+        /* â”€â”€â”€ Enhanced CTA / contact band â”€â”€â”€ */
+        #contact {
+            position: relative;
+            overflow: hidden;
+        }
+        #contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 60% at 20% 50%, rgba(212,165,116,.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 30%, rgba(212,165,116,.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .cta-sub {
+            font-size: .9rem;
+            color: rgba(255,255,255,.38);
+            letter-spacing: .06em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* â”€â”€â”€ Upgraded footer â”€â”€â”€ */
+        #site-footer {
+            background: #0d0b09;
+            color: rgba(255,255,255,.5);
+            border-top: 1px solid rgba(255,255,255,.06);
+        }
+        .footer-top {
+            padding: 60px 0 48px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        @media (min-width: 768px) {
+            .footer-top { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
+        }
+        .footer-brand-name {
+            font-size: .88rem;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-brand-tagline {
+            font-size: .82rem;
+            color: rgba(255,255,255,.35);
+            line-height: 1.6;
+            max-width: 260px;
+        }
+        .footer-col-heading {
+            font-size: .65rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.25);
+            margin-bottom: 16px;
+        }
+        .footer-col-link {
+            display: block;
+            font-size: .82rem;
+            color: rgba(255,255,255,.45);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color .2s;
+        }
+        .footer-col-link:hover { color: rgba(255,255,255,.85); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.06);
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+        }
+        .footer-copy {
+            font-size: .75rem;
+            color: rgba(255,255,255,.22);
+        }
+        .footer-regions {
+            font-size: .65rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.18);
+        }
     </style>
 </head>
 <body class="antialiased">
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        LOADING OVERLAY
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <div id="loader" role="status" aria-label="Loading animation frames">
         <div id="loader-logo">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -1143,9 +1645,9 @@
         </div>
         <p id="loader-pct">0%</p>
     </div>
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        NAVBAR
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <header id="navbar" aria-label="Site navigation">
         <div class="nav-inner">
             <a href="#" class="nav-logo" aria-label="mcdesign home">
@@ -1181,45 +1683,47 @@
         <a href="#contact" class="mobile-nav-link">Contact</a>
         <div class="mobile-nav-footer">
             <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="mobile-nav-sub">mcdesign.bio</a>
-            <span class="mobile-nav-sub" style="opacity:.3;">·</span>
+            <span class="mobile-nav-sub" style="opacity:.3;">Â·</span>
             <a href="#form-section" class="mobile-nav-sub">Request a Call</a>
+            <span class="mobile-nav-sub" style="opacity:.3;">Â·</span>
+            <span class="mobile-nav-sub" style="color:var(--text-faint);">CA Â· TX Â· MT Â· FL Â· Bahamas</span>
         </div>
     </nav>
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        CANVAS HERO  (pinned 400vh)
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="canvas-section" aria-label="Construction portfolio showcase animation">
         <div id="sticky-canvas">
-            <!-- Main canvas — frames rendered here -->
+            <!-- Main canvas â€” frames rendered here -->
             <canvas id="hero-canvas" role="img" aria-label="Construction portfolio cinematic sequence"></canvas>
-            <!-- ── Panel 1: The Blueprint (0% checkpoint) ── -->
+            <!-- â”€â”€ Panel 1: The Blueprint (0% checkpoint) â”€â”€ -->
             <div class="text-panel" id="panel-1">
                 <div class="panel-inner">
                     <span class="panel-eyebrow">Michael Chandler</span>
                     <h2 class="panel-heading">37 Years.<br>Built by Hand.</h2>
-                    <p class="panel-body">Strategic Construction Executive. $500M+ portfolio across residential, commercial, and civil construction — from California's coastline to the Bahamas.</p>
+                    <p class="panel-body">I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbeanâ€”residential, hospitality, and complex civil projects.</p>
                     <div style="display:flex;gap:10px;pointer-events:auto;">
-                        <a href="#form-section" class="btn btn-dark">Discovery Call</a>
-                        <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
+                        <a href="#form-section" class="btn btn-dark">Start Conversation</a>
+                        <a href="#portfolio" class="btn btn-outline">View Work</a>
                     </div>
                 </div>
             </div>
-            <!-- ── Panel 2: The Build (33% checkpoint) ── -->
+            <!-- â”€â”€ Panel 2: The Build (33% checkpoint) â”€â”€ -->
             <div class="text-panel" id="panel-2">
                 <div class="panel-inner">
-                    <span class="panel-eyebrow">Design & Build</span>
+                    <span class="panel-eyebrow">My Approach</span>
                     <h2 class="panel-heading">Uncompromising<br>Precision.</h2>
-                    <p class="panel-body">From hand-picked craftsmen to world-class millworkers — every project is executed with microscopic attention to structural integrity and finish quality.</p>
-                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
+                    <p class="panel-body">I coordinate every trade with relentless quality oversight. Every detailâ€”structural, mechanical, and architecturalâ€”reflects uncompromising standards and meticulous craftsmanship.</p>
+                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
-            <!-- ── Panel 3: The Space (66% checkpoint) ── -->
+            <!-- â”€â”€ Panel 3: The Space (66% checkpoint) â”€â”€ -->
             <div class="text-panel" id="panel-3">
                 <div class="panel-inner">
-                    <span class="panel-eyebrow">The Legacy</span>
+                    <span class="panel-eyebrow">The Result</span>
                     <h2 class="panel-heading">Built to<br>Last Generations.</h2>
-                    <p class="panel-body">Monumental spaces — ocean-side high-rises, alpine retreats, coastal estates. Every environment is a testament to craft, built on time and on budget.</p>
-                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Request Discovery Call</a>
+                    <p class="panel-body">From coastal high-rises to alpine estatesâ€”I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
+                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
             <!-- Scroll cue (interactive button) -->
@@ -1235,34 +1739,34 @@
         <div class="dot" data-section="1" title="The Build"></div>
         <div class="dot" data-section="2" title="The Space"></div>
     </nav>
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        INTRO STATEMENT
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="py-28 md:py-36">
         <div class="site-max">
             <div class="rule reveal"></div>
             <p class="intro-statement max-w-4xl reveal">
-                Exceptional results<br class="hidden md:block" />
-                come from exceptional teams.<br class="hidden md:block" />
-                37 years. $500M+ delivered.
+                Three decades of ultra-luxury construction<br class="hidden md:block" />
+                executed with precision, accountability, and uncompromising craft.<br class="hidden md:block" />
+                37 years. $500M+ portfolio. Thousands of transformed spaces.
             </p>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SERVICES / CAPABILITIES SECTION
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="services" class="dark-section py-24">
         <div class="site-max">
             <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                 <div class="reveal">
-                    <span class="section-label">Capabilities</span>
+                    <span class="section-label">Our Expertise</span>
                     <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2">
-                        End-to-end expertise.
+                        Complete project leadership.
                     </h2>
                 </div>
                 <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
-                    From coastal estates to high-rises — every project managed with precision, accountability, and a relentless commitment to craft.
+                    From conception to completionâ€”we deliver integrated expertise across design-build, construction management, and complex site development.
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
@@ -1275,7 +1779,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Design-Build</p>
-                    <p class="service-desc">Integrated design and construction delivery — single-source accountability from concept through certificate of occupancy, on time and on budget.</p>
+                    <p class="service-desc">Seamless integration of design vision and construction expertise. One point of accountability from concept to completion, ensuring alignment, cost control, and on-time delivery.</p>
                     <span class="service-tag">Residential</span>
                     <span class="service-tag" style="margin-left:6px;">Commercial</span>
                 </div>
@@ -1289,7 +1793,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Construction Management</p>
-                    <p class="service-desc">Owner-representative oversight across all project phases — budget control, scheduling, quality assurance, and subcontractor coordination.</p>
+                    <p class="service-desc">Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordinationâ€”protecting your interests at every phase.</p>
                     <span class="service-tag">High-Rise</span>
                     <span class="service-tag" style="margin-left:6px;">Hospitality</span>
                 </div>
@@ -1304,7 +1808,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Civil &amp; Site Work</p>
-                    <p class="service-desc">Large-scale grading, coastal restoration, infrastructure development, and environmental site improvements across challenging terrain.</p>
+                    <p class="service-desc">Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure masteryâ€”turning challenging terrain into asset value.</p>
                     <span class="service-tag">Coastal</span>
                     <span class="service-tag" style="margin-left:6px;">45+ Acres</span>
                 </div>
@@ -1312,15 +1816,15 @@
         </div>
     </section>
     
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        THE CHANDLER PROCESS
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="process" class="py-32" style="background:#fff;">
         <div class="site-max">
             <div class="max-w-2xl reveal">
-                <span class="section-label">Our Methodology</span>
+                <span class="section-label">Our Approach</span>
                 <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8 section-h2">
-                    The Chandler<br />Design-Build Process
+                    Strategic execution<br />in three phases
                 </h2>
                 <div class="rule mb-12"></div>
             </div>
@@ -1328,58 +1832,61 @@
             <div class="process-grid">
                 <!-- Step 1 -->
                 <div class="process-card reveal">
+                    <span class="process-ghost-num">01</span>
                     <span class="process-step">Phase 01</span>
                     <div class="process-icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M4 10L8 14L16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <h3>Vision &amp; Planning</h3>
-                    <p>We begin with a deep exploration of your objectives, translating complex requirements into a rigorous execution roadmap. Every variable — from environmental impact to structural feasibility — is accounted for before the first stone is moved.</p>
+                    <h3>Strategic Vision</h3>
+                    <p>We begin by understanding your objectives and constraints. We analyze site conditions, regulatory requirements, budgets, and timelinesâ€”creating a comprehensive roadmap that anticipates challenges and opportunities before construction begins.</p>
                 </div>
                 
                 <!-- Step 2 -->
                 <div class="process-card reveal">
+                    <span class="process-ghost-num">02</span>
                     <span class="process-step">Phase 02</span>
                     <div class="process-icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M3 17L7 13M10 4L16 10L12 14L6 8L10 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <h3>Precision Execution</h3>
-                    <p>Construction is an exercise in microscopic accuracy. Our teams manage every subcontractor with relentless quality oversight, ensuring world-class standards across architectural, mechanical, and finish layers.</p>
+                    <h3>Flawless Execution</h3>
+                    <p>Construction demands uncompromising attention to detail. We coordinate every trade with relentless quality oversightâ€”managing budgets, schedules, and vendor performance to deliver world-class results on every component.</p>
                 </div>
                 
                 <!-- Step 3 -->
                 <div class="process-card reveal">
+                    <span class="process-ghost-num">03</span>
                     <span class="process-step">Phase 03</span>
                     <div class="process-icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M10 3V17M3 10H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <h3>The Legacy Delivery</h3>
-                    <p>A project is only complete when it transcends its structural requirements to become a legacy asset. We deliver turnkey environments that are built to perform for generations, backed by 37 years of accountability.</p>
+                    <h3>Legacy Completion</h3>
+                    <p>Project completion extends beyond handoff. We ensure full functionality, provide comprehensive documentation, and stand behind our work for years to come. Your property should outperform expectations and endure for generations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        PORTFOLIO SECTION
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="portfolio">
         <div class="site-max">
             <!-- Section header -->
             <div class="pt-24 mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                 <div class="reveal">
-                    <span class="section-label">Our Work</span>
+                    <span class="section-label">Portfolio</span>
                     <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2">
-                        Projects that<br />speak for themselves.
+                        Three decades of<br />exceptional delivery
                     </h2>
                 </div>
                 <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
-                    37+ years, $500M+ portfolio. Every project is a testament to precision, craftsmanship, and uncompromising standards.
+                    From California to the Caribbeanâ€”$500M+ in completed projects spanning ultra-luxury homes, hospitality, civil infrastructure, and heritage restoration.
                 </p>
             </div>
             <!-- Filters -->
@@ -1399,7 +1906,12 @@
                         <img src="projects/assets/miami-beach-cover.webp"
                             alt="S. Florida High Rise Luxe Condo" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">S. Florida</p>
@@ -1408,7 +1920,7 @@
                         <div class="portfolio-meta">
                             <span class="service-tag">4,200 sqft</span>
                             <span class="service-tag">5 months</span>
-                            <span class="service-tag">4 bed · 4 bath</span>
+                            <span class="service-tag">4 bed Â· 4 bath</span>
                         </div>
                     </div>
                 </div>
@@ -1418,7 +1930,12 @@
                         <img src="projects/assets/alpine-ranch-cover.webp"
                             alt="High Alpine Mtn. Ranch Luxe Retreat" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Montana</p>
@@ -1427,7 +1944,7 @@
                         <div class="portfolio-meta">
                             <span class="service-tag">2,300 sqft</span>
                             <span class="service-tag">24 months</span>
-                            <span class="service-tag">5 bed · 2 bath</span>
+                            <span class="service-tag">5 bed Â· 2 bath</span>
                         </div>
                     </div>
                 </div>
@@ -1435,9 +1952,14 @@
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
                         <img src="projects/syracuse-cover.png"
-                            alt="Syracuse House — N. Utah Craftsman Estate" loading="lazy" />
+                            alt="Syracuse House â€” N. Utah Craftsman Estate" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">N. Utah</p>
@@ -1729,9 +2251,50 @@
             </div><!-- /portfolio-grid -->
         </div>
     </section>
-    <!-- ═══════════════════════════════════════════════
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       TESTIMONIALS SECTION
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section id="testimonials">
+        <div class="site-max">
+            <div class="reveal">
+                <span class="section-label" style="color:rgba(255,255,255,.3);">Client Voices</span>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2" style="color:#fff;margin-top:8px;margin-bottom:0;">
+                    Built on trust.
+                </h2>
+            </div>
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card reveal">
+                    <span class="testimonial-quote-mark">&ldquo;</span>
+                    <p class="testimonial-body">Michael's attention to detail is unmatched. He treated our $4M oceanfront renovation like it was his own home. Every subcontractor, every material choice, every timeline â€” flawlessly managed. We couldn't be more impressed.</p>
+                    <div class="testimonial-divider"></div>
+                    <p class="testimonial-name">R. & J. Whitmore</p>
+                    <p class="testimonial-meta">S. Florida Â· Oceanfront Luxury Renovation</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card reveal">
+                    <span class="testimonial-quote-mark">&ldquo;</span>
+                    <p class="testimonial-body">We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle â€” and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
+                    <div class="testimonial-divider"></div>
+                    <p class="testimonial-name">T. Harrington</p>
+                    <p class="testimonial-meta">Big Sur, CA Â· Coastal Mountain Civil Work</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card reveal">
+                    <span class="testimonial-quote-mark">&ldquo;</span>
+                    <p class="testimonial-body">From our first conversation to final walkthrough, Michael operated with total transparency and professionalism. The Bahamas build was ambitious â€” harbor access, tropical engineering, remote logistics â€” and he delivered beyond expectation.</p>
+                    <div class="testimonial-divider"></div>
+                    <p class="testimonial-name">C. & M. Fairfax</p>
+                    <p class="testimonial-meta">Abaco, Bahamas Â· Waterfront Estate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        ABOUT SECTION
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="about" class="py-28" style="background:var(--bg-alt);">
         <div class="site-max">
             <div class="grid md:grid-cols-2 gap-16 items-start">
@@ -1749,7 +2312,7 @@
                         My approach is simple: bring together the right people, create an environment built on mutual respect, and stay closely attuned to client feedback throughout every phase of a project.
                     </p>
                     <p class="text-base text-gray-500 leading-relaxed mb-10 reveal">
-                        I've built my career on the universal business principle that quality construction isn't just about meeting standards — it's about exceeding them, by combining rigorous processes with forward-thinking design.
+                        I've built my career on the universal business principle that quality construction isn't just about meeting standards â€” it's about exceeding them, by combining rigorous processes with forward-thinking design.
                     </p>
                     <!-- Signature -->
                     <div class="flex items-center gap-4 reveal">
@@ -1785,36 +2348,40 @@
             <!-- Stats -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-gray-200">
                 <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
                     <p class="stat-number stat-counter text-gray-900" data-target="37" data-prefix="" data-suffix="+">37+</p>
                     <p class="stat-label">Years Experience</p>
                 </div>
                 <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
                     <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="$" data-suffix="M+">$500M+</p>
                     <p class="stat-label">Portfolio Value</p>
                 </div>
                 <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
                     <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="" data-suffix="+">500+</p>
                     <p class="stat-label">Projects Completed</p>
                 </div>
                 <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
                     <p class="stat-number stat-counter text-gray-900" data-target="100" data-prefix="" data-suffix="%">100%</p>
                     <p class="stat-label">Client Satisfaction</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        PROJECT DISCOVERY FORM
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="form-section">
         <div class="site-max">
             <div class="max-w-2xl mb-16 reveal">
                 <span class="section-label">Start a Conversation</span>
                 <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2 mb-4">
-                    Request a Project<br />Discovery Call
+                    Let's discuss your<br />next project
                 </h2>
                 <p class="text-base text-gray-500 leading-relaxed">
-                    Tell us about your project. We'll match you with the right expertise and reach out within 24 hours.
+                    Share your vision, location, and timeline. I'll evaluate the opportunity and connect with you personally within 24 hours.
                 </p>
             </div>
 
@@ -1828,12 +2395,12 @@
 
                 <!-- Step 1: Budget Range -->
                 <div class="form-step active" id="step-1">
-                    <p class="step-heading">What is your project budget?</p>
-                    <p class="step-sub">This helps us understand the scope and assign the right team.</p>
+                    <p class="step-heading">What's your project budget?</p>
+                    <p class="step-sub">This helps me scope the project and understand if we're a fit.</p>
                     <div class="option-grid" id="budget-grid">
-                        <button class="option-btn" data-value="$500K – $1M">$500K – $1M</button>
-                        <button class="option-btn" data-value="$1M – $3M">$1M – $3M</button>
-                        <button class="option-btn" data-value="$3M – $10M">$3M – $10M</button>
+                        <button class="option-btn" data-value="$500K â€“ $1M">$500K â€“ $1M</button>
+                        <button class="option-btn" data-value="$1M â€“ $3M">$1M â€“ $3M</button>
+                        <button class="option-btn" data-value="$3M â€“ $10M">$3M â€“ $10M</button>
                         <button class="option-btn" data-value="$10M+">$10M+</button>
                     </div>
                     <div class="form-nav">
@@ -1843,8 +2410,8 @@
 
                 <!-- Step 2: Project Type -->
                 <div class="form-step" id="step-2">
-                    <p class="step-heading">What type of project?</p>
-                    <p class="step-sub">Select the category that best describes your vision.</p>
+                    <p class="step-heading">What's your project type?</p>
+                    <p class="step-sub">This tells me your scope and where my expertise adds the most value.</p>
                     <div class="option-grid" id="type-grid">
                         <button class="option-btn" data-value="Ultra-Luxury Custom Home">Ultra-Luxury Custom Home</button>
                         <button class="option-btn" data-value="Historic / Coastal Restoration">Historic / Coastal Restoration</button>
@@ -1861,8 +2428,8 @@
 
                 <!-- Step 3: Contact -->
                 <div class="form-step" id="step-3">
-                    <p class="step-heading">How do we reach you?</p>
-                    <p class="step-sub">We'll be in touch within one business day.</p>
+                    <p class="step-heading">How should I reach you?</p>
+                    <p class="step-sub">I'll review your project and call within 24 hours.</p>
                     <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
                         <div class="form-field">
                             <label class="form-label" for="disc-name">Full Name</label>
@@ -1878,7 +2445,7 @@
                         </div>
                         <div class="form-field">
                             <label class="form-label" for="disc-notes">Brief Project Notes (optional)</label>
-                            <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key priorities…" rows="3"></textarea>
+                            <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key prioritiesâ€¦" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-nav">
@@ -1900,48 +2467,87 @@
             </div>
         </div>
     </section>
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        CTA BAND
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="contact" class="bg-gray-950 text-white py-32 px-6 text-center">
-        <span class="section-label reveal" style="color:rgba(255,255,255,.3);">Get in touch</span>
-        <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-10 reveal" style="letter-spacing:-.025em;line-height:1.05;text-transform:uppercase;">
-            Ready to discuss your<br />next legacy project?
+        <span class="section-label reveal" style="color:rgba(255,255,255,.3);">Next Steps</span>
+        <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-6 reveal" style="letter-spacing:-.025em;line-height:1.05;text-transform:uppercase;">
+            Let's build something<br />remarkable together
         </h2>
-        <a href="#form-section" class="btn reveal"
-            style="display:inline-flex;background:#fff;color:#111;padding:14px 32px;font-size:.78rem;">
-            Request a Discovery Call
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </a>
+        <p class="cta-sub reveal">Ultra-luxury residential Â· Coastal restoration Â· Design-build Â· Civil engineering<br />I work where precision and accountability matter most.</p>
+        <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="#form-section" class="btn"
+                style="background:#fff;color:#111;padding:14px 32px;font-size:.78rem;">
+                Start the Conversation
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <a href="#portfolio" class="btn"
+                style="background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.2);padding:14px 32px;font-size:.78rem;">
+                View Portfolio
+            </a>
+        </div>
     </section>
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        FOOTER
-  ═══════════════════════════════════════════════ -->
-    <footer class="border-t border-gray-100 py-10">
-        <div class="site-max flex flex-col md:flex-row items-center justify-between gap-5">
-            <div class="space-y-1">
-                <p class="text-xs text-gray-400">&copy; 2026 Michael Chandler — mcdesign. All rights reserved.</p>
-                <p class="text-[10px] text-gray-300 tracking-widest uppercase">Regions Served: CA • Bahamas • TX • MT • UT • FL</p>
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <footer id="site-footer">
+        <div class="site-max">
+            <div class="footer-top">
+                <!-- Brand col -->
+                <div>
+                    <p class="footer-brand-name">
+                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <rect x="1" y="1" width="8" height="8" rx="0" fill="#fff" />
+                            <rect x="11" y="1" width="8" height="8" rx="0" fill="#fff" opacity=".3" />
+                            <rect x="1" y="11" width="8" height="8" rx="0" fill="#fff" opacity=".3" />
+                            <rect x="11" y="11" width="8" height="8" rx="0" fill="#fff" />
+                        </svg>
+                        mcdesign
+                    </p>
+                    <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft â€” from California to the Caribbean.</p>
+                </div>
+                <!-- Services col -->
+                <div>
+                    <p class="footer-col-heading">Services</p>
+                    <a href="#services" class="footer-col-link">Design-Build</a>
+                    <a href="#services" class="footer-col-link">Construction Management</a>
+                    <a href="#services" class="footer-col-link">Civil &amp; Site Work</a>
+                    <a href="#process" class="footer-col-link">Our Process</a>
+                </div>
+                <!-- Work col -->
+                <div>
+                    <p class="footer-col-heading">Portfolio</p>
+                    <a href="#portfolio" class="footer-col-link">Residential</a>
+                    <a href="#portfolio" class="footer-col-link">Design Build</a>
+                    <a href="#portfolio" class="footer-col-link">Civil &amp; Coastal</a>
+                    <a href="#portfolio" class="footer-col-link">Hospitality</a>
+                </div>
+                <!-- Contact col -->
+                <div>
+                    <p class="footer-col-heading">Contact</p>
+                    <a href="#form-section" class="footer-col-link">Request a Discovery Call</a>
+                    <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="footer-col-link">mcdesign.bio</a>
+                    <p class="footer-col-link" style="cursor:default;">CA Â· Bahamas Â· TX Â· MT Â· UT Â· FL</p>
+                </div>
             </div>
-            <nav class="flex gap-6">
-                <a href="#portfolio" class="footer-link">Work</a>
-                <a href="#about" class="footer-link">About</a>
-                <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="footer-link">mcdesign.bio</a>
-            </nav>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2026 Michael Chandler â€” mcdesign. All rights reserved.</p>
+                <p class="footer-regions">Regions Served: California &bull; Bahamas &bull; Texas &bull; Montana &bull; Utah &bull; Florida</p>
+            </div>
         </div>
     </footer>
-    <!-- ═══════════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        JAVASCRIPT
-  ═══════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <script>
         (() => {
             'use strict';
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  CONFIG - Centralized magic numbers and thresholds
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             const CONFIG = {
                 TOTAL_FRAMES: 294,
                 PRELOAD_TIMEOUT: 8000, // 8s timeout for frame loading
@@ -1966,15 +2572,15 @@
 
             /**
              * Generate the array of relative frame paths.
-             * Files: ezgif-frame-001.jpg … ezgif-frame-294.jpg
+             * Files: ezgif-frame-001.jpg â€¦ ezgif-frame-294.jpg
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
                 return `ezgif-frame-${n}.jpg`;
             });
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  DOM REFS
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             const loaderEl = document.getElementById('loader');
             const loaderBar = document.getElementById('loader-bar');
             const loaderPct = document.getElementById('loader-pct');
@@ -1990,9 +2596,9 @@
             const progressEl = document.getElementById('progress-dots');
             const scrollCue = document.getElementById('scroll-cue');
             const navbar = document.getElementById('navbar');
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  CANVAS SIZING
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             canvasSec.style.height = '400vh';
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
@@ -2003,16 +2609,16 @@
                 resizeCanvas();
                 drawFrameIndex(currentFrameIndex);
             });
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  IMAGE CACHE
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             /** @type {(HTMLImageElement|null)[]} */
             const cache = new Array(TOTAL_FRAMES).fill(null);
             let loaded = 0;
             let currentFrameIndex = 0;
             /**
              * Draws a cached frame using object-fit:cover semantics.
-             * @param {number} idx – frame index (float ok, will be rounded+clamped)
+             * @param {number} idx â€“ frame index (float ok, will be rounded+clamped)
              */
             function drawFrameIndex(idx) {
                 const i = Math.max(0, Math.min(CONFIG.TOTAL_FRAMES - 1, Math.round(idx)));
@@ -2028,10 +2634,10 @@
                 ctx.clearRect(0, 0, cw, ch);
                 ctx.drawImage(img, sx, sy, sw, sh);
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  PRELOAD WITH PROGRESS & ERROR HANDLING
             //  Loads all frames concurrently, tracks progress, with timeout fallback.
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             function preloadFrames(onComplete) {
                 let done = 0;
                 let hasError = false;
@@ -2075,17 +2681,17 @@
                         tick();
                     };
                     img.onerror = () => {
-                        // Mark as loaded but leave as null — canvas will skip it
+                        // Mark as loaded but leave as null â€” canvas will skip it
                         tick();
                     };
                     img.src = url;
                 });
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  TEXT PANEL TRANSITIONS
             //  CSS class toggling (is-visible) with CSS transitions for smooth
             //  interpolation handled by the browser's compositor.
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             function updatePanels(progress) {
                 CONFIG.PANEL_CHECKPOINTS.forEach(({ index, start, end }) => {
                     const panel = panels[index];
@@ -2094,9 +2700,9 @@
                     panel.style.pointerEvents = visible ? 'auto' : 'none';
                 });
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  SIDEBAR DOTS
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             function updateDots(progress) {
                 let active = 0;
                 for (const { index, min } of CONFIG.DOT_THRESHOLDS) {
@@ -2104,14 +2710,14 @@
                 }
                 dots.forEach((d, i) => d.classList.toggle('active', i === active));
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  SMOOTH FRAME SCRUBBING
             //
             //  Strategy: ScrollTrigger drives a gsap-tweened "scrub proxy" object.
             //  We lerp toward the raw progress value each rAF tick, then map to
             //  a frame index. This gives buttery-smooth canvas updates even when
             //  the user scrubs quickly.
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             const proxy = { progress: 0 };  // GSAP-tweened progress target
             let rAFid = null;
             function renderLoop() {
@@ -2120,30 +2726,153 @@
                 updateDots(proxy.progress);
                 rAFid = requestAnimationFrame(renderLoop);
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  BELOW-FOLD SCROLL REVEALS
-            // ─────────────────────────────────────────────────────────────────────
-            function initRevealAnimations() {
-                gsap.utils.toArray('.reveal').forEach(el => {
-                    gsap.fromTo(el,
-                        { opacity: 0, y: 24 },
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            function initServiceCardAnimations() {
+                // Service cards with subtle rotation on scroll
+                gsap.utils.toArray('.service-card').forEach((card, idx) => {
+                    gsap.to(card, {
+                        rotationX: 3,
+                        y: -8,
+                        opacity: 0.95,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 70%',
+                            end: 'top 30%',
+                            scrub: 0.5,
+                            markers: false,
+                        },
+                    });
+                });
+            }
+
+            function initProcessCardAnimations() {
+                // Process cards with staggered entrance and hover effect prep
+                gsap.utils.toArray('.process-card').forEach((card, idx) => {
+                    gsap.fromTo(card,
+                        { opacity: 0, y: 40, scale: 0.95 },
                         {
-                            opacity: 1, y: 0,
-                            duration: CONFIG.REVEAL_DURATION,
-                            ease: CONFIG.REVEAL_EASE,
+                            opacity: 1, y: 0, scale: 1,
+                            duration: 0.8,
+                            ease: 'power2.out',
+                            delay: idx * 0.15,
                             scrollTrigger: {
-                                trigger: el,
-                                start: `top ${CONFIG.SCROLL_TRIGGER_OFFSET * 100}%`,
-                                toggleActions: 'play none none reverse',
+                                trigger: card,
+                                start: 'top 75%',
+                                toggleActions: 'play none none none',
                             },
                         }
                     );
                 });
             }
-            // ─────────────────────────────────────────────────────────────────────
+
+            function initSectionScrollEffects() {
+                // Smooth background transitions between sections
+                const sections = gsap.utils.toArray('section');
+                sections.forEach((section, idx) => {
+                    if (idx < sections.length - 1) {
+                        const nextSection = sections[idx + 1];
+                        gsap.to(section, {
+                            opacity: 0.98,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'center center',
+                                end: 'bottom center',
+                                scrub: 0.3,
+                                markers: false,
+                            },
+                        });
+                    }
+                });
+            }
+
+            function initTextParallax() {
+                // Subtle text parallax for section headers
+                gsap.utils.toArray('.section-h2').forEach(heading => {
+                    gsap.to(heading, {
+                        y: -20,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: heading.closest('section'),
+                            start: 'top center',
+                            end: 'center center',
+                            scrub: 0.5,
+                            markers: false,
+                        },
+                    });
+                });
+            }
+
+            function initRevealAnimations() {
+                // Collect reveals by parent container for staggered effect
+                const revealGroups = {};
+                gsap.utils.toArray('.reveal').forEach(el => {
+                    const parent = el.closest('section') || el.closest('[class*="max-w"]');
+                    const parentKey = parent ? parent.innerHTML.substring(0, 50) : 'default';
+                    if (!revealGroups[parentKey]) revealGroups[parentKey] = [];
+                    revealGroups[parentKey].push(el);
+                });
+
+                // Stagger reveals within each group for cohesive animations
+                Object.values(revealGroups).forEach(group => {
+                    group.forEach((el, idx) => {
+                        gsap.fromTo(el,
+                            { opacity: 0, y: 24 },
+                            {
+                                opacity: 1, y: 0,
+                                duration: CONFIG.REVEAL_DURATION,
+                                ease: CONFIG.REVEAL_EASE,
+                                delay: idx * 0.08,  // Stagger by 80ms
+                                scrollTrigger: {
+                                    trigger: el,
+                                    start: `top ${CONFIG.SCROLL_TRIGGER_OFFSET * 100}%`,
+                                    toggleActions: 'play none none none',
+                                    once: true,  // Only animate once for performance
+                                },
+                            }
+                        );
+                    });
+                });
+
+                // Portfolio card parallax effect with elevation
+                gsap.utils.toArray('.portfolio-card').forEach(card => {
+                    const img = card.querySelector('.portfolio-img-wrap img');
+                    if (!img) return;
+
+                    gsap.to(img, {
+                        yPercent: 15,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 0.5,  // Smooth parallax
+                            markers: false,
+                        },
+                    });
+
+                    // Card elevation on scroll
+                    gsap.to(card, {
+                        y: -12,
+                        boxShadow: '0 24px 64px rgba(0, 0, 0, .12)',
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 60%',
+                            end: 'top 20%',
+                            scrub: 0.5,
+                            markers: false,
+                        },
+                    });
+                });
+            }
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  TYPED MICRO-INTERACTIONS (Named function for debugging)
             //  Section labels (.section-label) type themselves in on scroll
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             function typeCharacters(el, text, cursor) {
                 let i = 0;
                 const interval = setInterval(() => {
@@ -2181,9 +2910,9 @@
                 });
                 return typeIntervals; // For cleanup if needed
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  ANIMATED STAT COUNTERS
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             function initCounters() {
                 document.querySelectorAll('.stat-counter').forEach(el => {
                     const target  = parseFloat(el.dataset.target);
@@ -2207,9 +2936,9 @@
                     });
                 });
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  SCROLL CUE BUTTON (Interactive scroll trigger)
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             function initScrollCueButton() {
                 const scrollCueBtn = document.getElementById('scroll-cue');
                 if (!scrollCueBtn) return;
@@ -2234,17 +2963,36 @@
                     }
                 });
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  MAIN SCROLL TRIGGER (Named function for debugging)
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             const scrollTriggers = []; // Track for cleanup
 
             function initScrollTrigger() {
-                // Navbar frosted glass on scroll
+                // Smooth navbar transition on scroll with better easing
+                let navbarScrolled = false;
                 scrollTriggers.push(ScrollTrigger.create({
                     start: CONFIG.NAVBAR_SCROLL_OFFSET,
-                    onEnter: () => navbar.classList.add('scrolled'),
-                    onLeaveBack: () => navbar.classList.remove('scrolled'),
+                    onEnter: () => {
+                        if (!navbarScrolled) {
+                            navbarScrolled = true;
+                            gsap.to(navbar, {
+                                duration: 0.4,
+                                ease: 'power2.out',
+                                backgroundColor: 'rgba(244, 240, 232, 0.95)',
+                            });
+                            navbar.classList.add('scrolled');
+                        }
+                    },
+                    onLeaveBack: () => {
+                        navbarScrolled = false;
+                        gsap.to(navbar, {
+                            duration: 0.4,
+                            ease: 'power2.out',
+                            backgroundColor: 'rgba(0, 0, 0, 0)',
+                        });
+                        navbar.classList.remove('scrolled');
+                    },
                 }));
 
                 // Canvas pin + scroll-driven scrub
@@ -2285,9 +3033,9 @@
 
                 updatePanels(0);
             }
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             //  INIT SEQUENCE
-            // ─────────────────────────────────────────────────────────────────────
+            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             gsap.registerPlugin(ScrollTrigger);
             // Gray placeholder while loading
             ctx.fillStyle = '#f5f5f3';
@@ -2295,15 +3043,532 @@
             // Init scroll button before preload
             initScrollCueButton();
             preloadFrames(() => {
-                // All frames loaded — hide loader, init animations
+                // All frames loaded â€” hide loader, init animations
                 loaderEl.classList.add('hidden');
                 drawFrameIndex(0);
                 initScrollTrigger();
                 initRevealAnimations();
+                initServiceCardAnimations();
+                initProcessCardAnimations();
+                initSectionScrollEffects();
+                initTextParallax();
                 initCounters();
                 initTypedLabels();
             });
         })();
+    </script>
+    <!-- Project Details Modal System -->
+    <script>
+    (() => {
+        'use strict';
+
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // PROJECT DATA STRUCTURE
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        const projectsData = {
+            'miami-beach-condo': {
+                id: 'miami-beach-condo',
+                title: 'High Rise Luxe Condo',
+                category: 'Residential Construction',
+                location: 'S. Florida',
+                subtitle: 'Oceanfront Luxury Renovation',
+                coverImage: 'projects/assets/miami-beach-cover.webp',
+                description: 'I transformed a dated oceanfront unit into a sophisticated luxury residence. Premium finishes, smart home integration, and meticulous structural oversightâ€”all completed in 5 months. The result: a modern oceanfront estate with panoramic views and uncompromising quality.',
+                duration: '5 months',
+                sqft: '4,200 sqft',
+                bedrooms: '4',
+                baths: '4',
+                role: 'Complete project management from design coordination through final quality assurance and delivery.',
+                gallery: [
+                    'projects/assets/miami-beach-cover.webp',
+                    'projects/miami-beach-interior-1.jpg',
+                    'projects/miami-beach-interior-2.jpg'
+                ]
+            },
+            'high-alpine-ranch': {
+                id: 'high-alpine-ranch',
+                title: 'High Alpine Mtn.',
+                category: 'Residential Construction',
+                location: 'Montana',
+                subtitle: 'Ranch Luxe Retreat',
+                coverImage: 'projects/assets/alpine-ranch-cover.webp',
+                description: 'I led this 24-month mountain retreat project through extreme conditions and challenging terrain. 2,300 square feet of luxury living with specialized engineering for alpine weather, premium finishes, and seamless landscape integration. The result: a high-performance retreat built to endure decades.',
+                duration: '24 months',
+                sqft: '2,300 sqft',
+                bedrooms: '5',
+                baths: '2',
+                role: 'End-to-end project leadership including site analysis, structural engineering coordination, and specialized weather-adaptive construction.',
+                gallery: [
+                    'projects/assets/alpine-ranch-cover.webp',
+                    'projects/alpine-ranch-exterior.jpg',
+                    'projects/alpine-ranch-interior.jpg'
+                ]
+            },
+            'syracuse-house': {
+                id: 'syracuse-house',
+                title: 'Syracuse House',
+                category: 'Design Build',
+                location: 'N. Utah',
+                subtitle: 'N. Utah Craftsman Estate',
+                coverImage: 'projects/syracuse-cover.png',
+                description: 'I delivered this 6,200 sq ft craftsman estate as a complete design-build project in 18 months. Blending timeless design principles with modern systemsâ€”custom millwork, natural stone, and integrated smart home technology. The result: a refined estate built to perform for generations.',
+                duration: '18 months',
+                sqft: '6,200 sqft',
+                role: 'Complete design-build leadership aligning architectural vision with flawless execution.',
+                gallery: [
+                    'projects/syracuse-cover.png',
+                    'projects/syracuse-exterior.jpg',
+                    'projects/syracuse-interior.jpg'
+                ]
+            },
+            'montana-condo': {
+                id: 'montana-condo',
+                title: 'Mtn. Mid-Rise Luxe',
+                category: 'Residential Construction',
+                location: 'Montana',
+                subtitle: 'Condo',
+                coverImage: 'projects/assets/montana-cover.webp',
+                description: 'A mid-rise luxury condominium featuring 2,800 square feet of premium living space. Completed in 8 months, this project showcases modern architecture with high-end finishes and mountain views.',
+                duration: '8 months',
+                sqft: '2,800 sqft',
+                role: 'Construction oversight and quality management for mid-rise residential development.',
+                gallery: [
+                    'projects/assets/montana-cover.webp',
+                    'projects/montana-interior.jpg'
+                ]
+            },
+            'hospitality-pool': {
+                id: 'hospitality-pool',
+                title: 'Ultra Luxe Private Club',
+                category: 'Hospitality',
+                location: 'SE Texas',
+                subtitle: 'Resort Pool',
+                coverImage: 'projects/hospitality-pool-cover-v2.jpg',
+                description: 'I engineered and executed an ultra-luxury resort pool complexâ€”189,000 gallons of custom-designed waterscapes completed in 18 months. Advanced filtration systems, premium landscaping, and resort amenitiesâ€”all operating flawlessly. A destination asset built to last.',
+                duration: '18 months',
+                gallons: '189,000 gal',
+                role: 'Complete hospitality project leadership including pool engineering, amenity coordination, and luxury execution standards.',
+                gallery: [
+                    'projects/hospitality-pool-cover-v2.jpg',
+                    'projects/hospitality-pool-1.jpg',
+                    'projects/hospitality-pool-2.jpg'
+                ]
+            },
+            'southcoast-remodel': {
+                id: 'southcoast-remodel',
+                title: 'South Coast Renovation',
+                category: 'Design Build',
+                location: 'California',
+                subtitle: 'Coastal Estate Redesign',
+                coverImage: 'projects/assets/southcoast-cover.webp',
+                description: 'A comprehensive coastal estate renovation combining historic preservation with modern luxury. This 16-month design-build project respects the home\'s architectural heritage while introducing contemporary comforts.',
+                duration: '16 months',
+                role: 'Design-build coordination balancing historic preservation with luxury modernization.',
+                gallery: [
+                    'projects/assets/southcoast-cover.webp'
+                ]
+            },
+            'carmel-valley-new': {
+                id: 'carmel-valley-new',
+                title: 'Carmel Valley New',
+                category: 'Design Build',
+                location: 'California',
+                subtitle: 'Custom Residence',
+                coverImage: 'projects/assets/carmel-valley-new-cover.webp',
+                description: 'A custom-designed residence in prestigious Carmel Valley. This 20-month design-build project features luxury finishes, smart home integration, and seamless indoor-outdoor living spaces.',
+                duration: '20 months',
+                role: 'Complete design-build management from land analysis through final delivery.',
+                gallery: [
+                    'projects/assets/carmel-valley-new-cover.webp'
+                ]
+            },
+            'north-florida-renovation': {
+                id: 'north-florida-renovation',
+                title: 'North Florida Renovation',
+                category: 'Residential Construction',
+                location: 'Florida',
+                subtitle: 'Addition & Modernization',
+                coverImage: 'projects/north-florida/NIMG_9178.jpg',
+                description: 'A 10-month renovation and addition project modernizing a North Florida residence. Features include expanded living spaces, updated systems, and contemporary finishes.',
+                duration: '10 months',
+                role: 'Renovation management including structural assessment, addition design coordination, and system upgrades.',
+                gallery: [
+                    'projects/north-florida/NIMG_9178.jpg'
+                ]
+            },
+            'bahamas-abaco-development': {
+                id: 'bahamas-abaco-development',
+                title: 'Abaco Luxe Boat House',
+                category: 'Residential Construction',
+                location: 'Bahamas',
+                subtitle: 'Island Estate',
+                coverImage: 'projects/assets/abaco-luxe-boathouse-cover.webp',
+                description: 'A luxury island boat house in the Bahamas featuring waterfront living at its finest. This project required specialized expertise in tropical construction and marine integration.',
+                duration: 'Custom Timeline',
+                role: 'Island development project management including environmental compliance and marine integration.',
+                gallery: [
+                    'projects/assets/abaco-luxe-boathouse-cover.webp'
+                ]
+            },
+            'carmel-house-2': {
+                id: 'carmel-house-2',
+                title: 'Carmel Estate II',
+                category: 'Residential Construction',
+                location: 'California',
+                subtitle: 'Luxury Residence',
+                coverImage: 'projects/carmel-house-2-cover.jpg',
+                description: 'A luxury residence in Carmel featuring contemporary design and premium finishes. This project showcases sophisticated architectural detailing and high-end construction quality.',
+                duration: 'Custom Timeline',
+                role: 'Construction management for luxury residential development.',
+                gallery: [
+                    'projects/carmel-house-2-cover.jpg'
+                ]
+            },
+            'bigsur-mountain-remodel': {
+                id: 'bigsur-mountain-remodel',
+                title: 'Big Sur Mountain Remodel',
+                category: 'Civil',
+                location: 'California',
+                subtitle: 'Structural Enhancement',
+                coverImage: 'projects/bigsur-mountain-cover.jpg',
+                description: 'A specialized mountain remodeling project navigating Big Sur\'s challenging terrain and environmental regulations. This civil project required expert foundation work and structural engineering.',
+                duration: 'Custom Timeline',
+                role: 'Civil engineering and foundation management for mountain terrain adaptation.',
+                gallery: [
+                    'projects/bigsur-mountain-cover.jpg'
+                ]
+            },
+            'carmel-knolls': {
+                id: 'carmel-knolls',
+                title: 'Carmel Knolls',
+                category: 'Civil',
+                location: 'California',
+                subtitle: 'Development Project',
+                coverImage: 'projects/carmel-knolls-cover.jpg',
+                description: 'A civil development project in the Carmel Knolls area featuring site preparation, foundation work, and infrastructure development.',
+                duration: 'Custom Timeline',
+                role: 'Civil project coordination including site analysis and development management.',
+                gallery: [
+                    'projects/carmel-knolls-cover.jpg'
+                ]
+            },
+            'coastal-restoration': {
+                id: 'coastal-restoration',
+                title: 'Coastal Restoration',
+                category: 'Civil',
+                location: 'California',
+                subtitle: 'Environmental Preservation',
+                coverImage: 'projects/coastal-restoration-cover.jpg',
+                description: 'A specialized coastal restoration project addressing environmental preservation and structural integrity. This complex civil project required environmental compliance and precise engineering.',
+                duration: 'Custom Timeline',
+                role: 'Environmental project management and coastal engineering oversight.',
+                gallery: [
+                    'projects/coastal-restoration-cover.jpg'
+                ]
+            },
+            'bahamas-beachfront-estate': {
+                id: 'bahamas-beachfront-estate',
+                title: 'Bahamas Beachfront Estate',
+                category: 'Residential Development',
+                location: 'Bahamas',
+                subtitle: 'Premier Island Development',
+                coverImage: 'projects/bahamas-beachfront-cover.jpg',
+                description: 'A premier beachfront estate development in the Bahamas featuring luxury residences with direct beach access. This major development project combined landscape design with structural excellence.',
+                duration: 'Custom Timeline',
+                role: 'Large-scale development project management including master planning and infrastructure coordination.',
+                gallery: [
+                    'projects/bahamas-beachfront-cover.jpg'
+                ]
+            },
+            'development-civil': {
+                id: 'development-civil',
+                title: 'Development Civil Project',
+                category: 'Residential Development',
+                location: 'Multi-State',
+                subtitle: 'Infrastructure Development',
+                coverImage: 'projects/development-civil-cover.jpg',
+                description: 'A comprehensive civil development project handling infrastructure, site preparation, and master planning for residential development.',
+                duration: 'Custom Timeline',
+                role: 'Development and civil coordination across multiple phases.',
+                gallery: [
+                    'projects/development-civil-cover.jpg'
+                ]
+            },
+            'pacific-grove-design-build': {
+                id: 'pacific-grove-design-build',
+                title: 'Pacific Grove Design Build',
+                category: 'Design Build',
+                location: 'California',
+                subtitle: 'Coastal Residence',
+                coverImage: 'projects/pacific-grove-cover.jpg',
+                description: 'A design-build project in Pacific Grove featuring coastal luxury with environmental sensitivity. This project balanced aesthetic design with structural resilience.',
+                duration: 'Custom Timeline',
+                role: 'Coastal design-build management from concept through completion.',
+                gallery: [
+                    'projects/pacific-grove-cover.jpg'
+                ]
+            },
+            'hillside-cleanup': {
+                id: 'hillside-cleanup',
+                title: 'Hillside Cleanup & Stabilization',
+                category: 'Civil',
+                location: 'California',
+                subtitle: 'Site Remediation',
+                coverImage: 'projects/hillside-cleanup-cover.jpg',
+                description: 'A specialized civil project focusing on hillside remediation, stabilization, and environmental cleanup. This project required careful site assessment and engineering solutions.',
+                duration: 'Custom Timeline',
+                role: 'Civil engineering and site remediation management.',
+                gallery: [
+                    'projects/hillside-cleanup-cover.jpg'
+                ]
+            },
+            'laguna-grande-design-build': {
+                id: 'laguna-grande-design-build',
+                title: 'Laguna Grande Design Build',
+                category: 'Design Build',
+                location: 'California',
+                subtitle: 'Luxury Estate',
+                coverImage: 'projects/laguna-grande-cover.jpg',
+                description: 'A luxury design-build estate in Laguna Grande featuring premium materials, sophisticated design, and high-end construction excellence.',
+                duration: 'Custom Timeline',
+                role: 'Full design-build management for luxury estate development.',
+                gallery: [
+                    'projects/laguna-grande-cover.jpg'
+                ]
+            },
+            'carmel-house-3': {
+                id: 'carmel-house-3',
+                title: 'Carmel Estate III',
+                category: 'Residential Construction',
+                location: 'California',
+                subtitle: 'Premium Residence',
+                coverImage: 'projects/carmel-house-3-cover.jpg',
+                description: 'Another distinguished Carmel residence project showcasing premium construction quality and sophisticated architectural detailing.',
+                duration: 'Custom Timeline',
+                role: 'Construction management for luxury residential property.',
+                gallery: [
+                    'projects/carmel-house-3-cover.jpg'
+                ]
+            }
+        };
+
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // MODAL MANAGEMENT
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        let currentProjectId = null;
+        let currentImageIndex = 0;
+
+        function openProjectModal(projectId) {
+            const project = projectsData[projectId];
+            if (!project) return;
+
+            currentProjectId = projectId;
+            currentImageIndex = 0;
+
+            // Create modal HTML
+            let modalHtml = `
+                <div id="project-modal-overlay" class="project-modal-overlay">
+                    <div class="project-modal-content">
+                        <!-- Close Button -->
+                        <button class="project-modal-close" aria-label="Close project details">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+
+                        <!-- Hero Section -->
+                        <div class="project-modal-hero">
+                            <img src="${project.coverImage}" alt="${project.title}" class="project-modal-hero-img" />
+                            <div class="project-modal-hero-overlay">
+                                <div class="project-modal-hero-content">
+                                    <p class="project-modal-category">${project.category}</p>
+                                    <h1 class="project-modal-title">${project.title}</h1>
+                                    <p class="project-modal-subtitle">${project.subtitle}</p>
+                                    <p class="project-modal-location">${project.location}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Wrapper -->
+                        <div class="project-modal-body">
+                            <div class="project-modal-grid">
+                                <!-- Main Content -->
+                                <div class="project-modal-main">
+                                    <h2 class="project-modal-section-title">Project Overview</h2>
+                                    <p class="project-modal-description">${project.description}</p>
+
+                                    ${project.role ? `
+                                        <div class="project-modal-role-box">
+                                            <h3 class="project-modal-role-title">Our Role</h3>
+                                            <p class="project-modal-role-text">${project.role}</p>
+                                        </div>
+                                    ` : ''}
+                                </div>
+
+                                <!-- Sidebar Stats -->
+                                <div class="project-modal-sidebar">
+                                    <h3 class="project-modal-sidebar-title">Project Details</h3>
+                                    <div class="project-modal-stats">
+                                        ${project.duration ? `
+                                            <div class="project-modal-stat">
+                                                <svg class="project-modal-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                                </svg>
+                                                <div>
+                                                    <p class="project-modal-stat-label">Duration</p>
+                                                    <p class="project-modal-stat-value">${project.duration}</p>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${project.sqft ? `
+                                            <div class="project-modal-stat">
+                                                <svg class="project-modal-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 21H3V3h18v18zm-6-6h-6v6h6v-6zm0-6h-6v6h6V9zm0-6h-6v6h6V3z"></path>
+                                                </svg>
+                                                <div>
+                                                    <p class="project-modal-stat-label">Square Footage</p>
+                                                    <p class="project-modal-stat-value">${project.sqft}</p>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${project.gallons ? `
+                                            <div class="project-modal-stat">
+                                                <svg class="project-modal-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                                </svg>
+                                                <div>
+                                                    <p class="project-modal-stat-label">Gallons</p>
+                                                    <p class="project-modal-stat-value">${project.gallons}</p>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${project.bedrooms ? `
+                                            <div class="project-modal-stat">
+                                                <svg class="project-modal-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z"></path>
+                                                    <rect x="3" y="7" width="18" height="11"></rect>
+                                                </svg>
+                                                <div>
+                                                    <p class="project-modal-stat-label">Bedrooms</p>
+                                                    <p class="project-modal-stat-value">${project.bedrooms}</p>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${project.baths ? `
+                                            <div class="project-modal-stat">
+                                                <svg class="project-modal-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M4 9h16M6 9v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9"></path>
+                                                    <rect x="7" y="2" width="10" height="5" rx="1"></rect>
+                                                </svg>
+                                                <div>
+                                                    <p class="project-modal-stat-label">Bathrooms</p>
+                                                    <p class="project-modal-stat-value">${project.baths}</p>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Gallery Section -->
+                            ${project.gallery.length > 0 ? `
+                                <div class="project-modal-gallery-section">
+                                    <h2 class="project-modal-section-title">Gallery</h2>
+                                    <div class="project-modal-gallery">
+                                        ${project.gallery.map((img, idx) => `
+                                            <img src="${img}" alt="${project.title} image ${idx + 1}" class="project-modal-gallery-img" data-index="${idx}" />
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Insert modal
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+            // Prevent scroll
+            document.body.style.overflow = 'hidden';
+
+            // Add event listeners
+            const modal = document.getElementById('project-modal-overlay');
+            const closeBtn = modal.querySelector('.project-modal-close');
+            const galleryImgs = modal.querySelectorAll('.project-modal-gallery-img');
+
+            closeBtn.addEventListener('click', closeProjectModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeProjectModal();
+            });
+
+            galleryImgs.forEach(img => {
+                img.addEventListener('click', () => {
+                    openImageLightbox(img.src);
+                });
+            });
+
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal-overlay');
+            if (modal) {
+                modal.style.opacity = '0';
+                modal.style.pointerEvents = 'none';
+                setTimeout(() => modal.remove(), 300);
+            }
+            document.body.style.overflow = '';
+        }
+
+        function openImageLightbox(imageSrc) {
+            let lightboxHtml = `
+                <div id="project-lightbox" class="project-lightbox">
+                    <button class="project-lightbox-close" aria-label="Close lightbox">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <img src="${imageSrc}" alt="Full size image" class="project-lightbox-img" />
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', lightboxHtml);
+
+            const lightbox = document.getElementById('project-lightbox');
+            const closeBtn = lightbox.querySelector('.project-lightbox-close');
+
+            closeBtn.addEventListener('click', () => {
+                lightbox.style.opacity = '0';
+                setTimeout(() => lightbox.remove(), 300);
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.style.opacity = '0';
+                    setTimeout(() => lightbox.remove(), 300);
+                }
+            });
+        }
+
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // PORTFOLIO CARD CLICK HANDLERS
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = card.getAttribute('data-project');
+                if (projectId) {
+                    openProjectModal(projectId);
+                }
+            });
+        });
+
+    })();
     </script>
     <!-- Multi-step discovery form logic -->
     <script>
@@ -2362,7 +3627,7 @@
             }
         }
 
-        // Step 1 — budget selection
+        // Step 1 â€” budget selection
         budgetGrid.querySelectorAll('.option-btn').forEach(btn => {
             on(btn, 'click', () => {
                 budgetGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
@@ -2373,7 +3638,7 @@
         });
         on(step1NextBtn, 'click', () => showStep(2));
 
-        // Step 2 — project type selection
+        // Step 2 â€” project type selection
         typeGrid.querySelectorAll('.option-btn').forEach(btn => {
             on(btn, 'click', () => {
                 typeGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
@@ -2385,7 +3650,7 @@
         on(step2BackBtn, 'click', () => showStep(1));
         on(step2NextBtn, 'click', () => showStep(3));
 
-        // Step 3 — contact & submit with improved validation
+        // Step 3 â€” contact & submit with improved validation
         on(step3BackBtn, 'click', () => showStep(2));
         on(nameInput, 'input', () => setFieldError(nameInput, false));
         on(emailInput, 'input', () => setFieldError(emailInput, false));
@@ -2520,7 +3785,7 @@
     <script>
     (() => {
         'use strict';
-        /* ── Gallery data ───────────────────────────────────────────── */
+        /* â”€â”€ Gallery data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         const BASE = 'projects/assets/';
 
         const GALLERIES = {
@@ -2540,7 +3805,7 @@
                 ]
             },
             'syracuse-house': {
-                title: 'Syracuse House — N. Utah Craftsman Estate',
+                title: 'Syracuse House â€” N. Utah Craftsman Estate',
                 images: [
                     BASE + 'syracuse-cover.webp',
                     ...Array.from({length:46}, (_,i) => BASE + 'syracuse-' + (i+1) + '.webp')
@@ -2605,7 +3870,7 @@
                 ]
             },
             'bigsur-mountain-remodel': {
-                title: 'Coastal Mountain Residence — Civil Site Work',
+                title: 'Coastal Mountain Residence â€” Civil Site Work',
                 images: [
                     BASE + 'bigsur-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'bigsur-' + (i+1) + '.webp')
@@ -2619,7 +3884,7 @@
                 ]
             },
             'coastal-restoration': {
-                title: 'Coastal Restoration — Erosion Repair',
+                title: 'Coastal Restoration â€” Erosion Repair',
                 images: [
                     BASE + 'coastal-restoration-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'coastal-restoration-' + (i+1) + '.webp')
@@ -2644,14 +3909,14 @@
                 ]
             },
             'hillside-cleanup': {
-                title: 'Hillside Restoration — Environmental Cleanup',
+                title: 'Hillside Restoration â€” Environmental Cleanup',
                 images: [
                     BASE + 'hillside-cleanup-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'hillside-cleanup-' + (i+1) + '.webp')
                 ]
             },
             'laguna-grande-design-build': {
-                title: 'Laguna Grande — Spanish Revival Commercial',
+                title: 'Laguna Grande â€” Spanish Revival Commercial',
                 images: [
                     BASE + 'laguna-grande-cover.webp',
                     ...Array.from({length:6}, (_,i) => BASE + 'laguna-grande-' + (i+1) + '.webp')
@@ -2666,14 +3931,14 @@
             }
         };
 
-        /* ── State ──────────────────────────────────────────────────── */
+        /* â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         let currentImages = [];
         let currentIndex  = 0;
         // Reuse single preload image instead of creating new ones
         const preloadImg  = new Image();
         const listeners   = []; // Track for cleanup
 
-        /* ── Elements ───────────────────────────────────────────────── */
+        /* â”€â”€ Elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         const lb       = document.getElementById('lightbox');
         const lbImg    = document.getElementById('lb-img');
         const lbTitle  = document.getElementById('lb-title');
@@ -2689,7 +3954,7 @@
             listeners.push({ el, event, handler, options });
         }
 
-        /* ── Open / close ───────────────────────────────────────────── */
+        /* â”€â”€ Open / close â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         function openLightbox(projectId) {
             const data = GALLERIES[projectId];
             if (!data) return;
@@ -2710,7 +3975,7 @@
             lbImg.src = '';
         }
 
-        /* ── Image display (optimized with single preload image) ─────── */
+        /* â”€â”€ Image display (optimized with single preload image) â”€â”€â”€â”€â”€â”€â”€ */
         function showImage(idx) {
             idx = (idx + currentImages.length) % currentImages.length;
             currentIndex = idx;
@@ -2718,7 +3983,7 @@
 
             lbImg.classList.remove('loaded');
             const src = currentImages[idx];
-            lbImg.alt = lbTitle.textContent + ' — image ' + (idx + 1);
+            lbImg.alt = lbTitle.textContent + ' â€” image ' + (idx + 1);
 
             // Use single preload image, reuse it for loading check
             let loadTimeout;
@@ -2764,7 +4029,7 @@
             showImage(currentIndex + dir);
         }
 
-        /* ── Thumbnails ─────────────────────────────────────────────── */
+        /* â”€â”€ Thumbnails â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         function buildThumbs() {
             lbThumbs.innerHTML = '';
             currentImages.forEach((src, i) => {
@@ -2777,7 +4042,7 @@
             });
         }
 
-        /* ── Event listeners ────────────────────────────────────────── */
+        /* â”€â”€ Event listeners â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         // Card clicks
         document.querySelectorAll('.portfolio-card[data-project]').forEach(card => {
             on(card, 'click', () => openLightbox(card.dataset.project));
