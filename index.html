@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael Chandler â€” Strategic Construction Executive</title>
-    <meta name="description"
-        content="Michael Chandler â€” Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana." />
-    <meta name="keywords" content="ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction" />
-    <meta property="og:title" content="Michael Chandler â€” Strategic Construction Executive" />
-    <meta property="og:description" content="Ultra-luxury custom homes, historic coastal restorations, and design-build construction management. 37+ years, $500M+ portfolio." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Michael Chandler â€” Strategic Construction Executive" />
-    <meta name="twitter:description" content="Ultra-luxury custom homes, coastal restorations, design-build construction. California â€¢ Bahamas â€¢ Texas â€¢ Montana." />
+    <title>Michael Chandler &mdash; Strategic Construction Executive</title>
+    <meta name=”description”
+        content=”Michael Chandler &mdash; Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana.” />
+    <meta name=”keywords” content=”ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction” />
+    <meta property=”og:title” content=”Michael Chandler &mdash; Strategic Construction Executive” />
+    <meta property=”og:description” content=”Ultra-luxury custom homes, historic coastal restorations, and design-build construction management. 37+ years, $500M+ portfolio.” />
+    <meta property=”og:type” content=”website” />
+    <meta name=”twitter:card” content=”summary_large_image” />
+    <meta name=”twitter:title” content=”Michael Chandler &mdash; Strategic Construction Executive” />
+    <meta name=”twitter:description” content=”Ultra-luxury custom homes, coastal restorations, design-build construction. California &bullet; Bahamas &bullet; Texas &bullet; Montana.” />
     <link rel="canonical" href="https://mcdesign.bio" />
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -44,11 +44,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&display=swap"
         rel="stylesheet" />
-    <!-- GSAP + ScrollTrigger CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- GSAP + ScrollTrigger CDN with SRI hashes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-MOoERQ9E0lkVw1MdjiUZA9fsmB0NVl4+r4HS5Pz0Tho3dJFjn76QBKtZFfVPb4Tr5GXUFi2YMrwT9j17YfaYA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-sTZ0n5S0f3GEHp3VfVGSVKz6mKQCfaMr9Jl6dQ+aM1eSiSdOTGiDUcBjB2h2i6qqDL1ylIEXEU8f+sBN0TojQ==" crossorigin="anonymous"></script>
     <style>
-        /* â”€â”€â”€ Reset & base â”€â”€â”€ */
+        /* === Reset & base === */
         *,
         *::before,
         *::after {
@@ -67,11 +67,22 @@
             --text-muted:  #6B6660;
             --text-faint:  #9C978E;
         }
-        /* â”€â”€â”€ Spin animation (moved from inline JS) â”€â”€â”€ */
+        /* === Accessibility: Respect user motion preferences === */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        /* === Spin animation (moved from inline JS) === */
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        /* â”€â”€â”€ Form validation error state â”€â”€â”€ */
+        /* === Form validation error state === */
         .form-input.error,
         .form-textarea.error {
             border-color: #d44 !important;
@@ -83,14 +94,14 @@
             -webkit-font-smoothing: antialiased;
             scroll-behavior: smooth;
         }
-        /* â”€â”€â”€ Image zoom effect (about section) â”€â”€â”€ */
+        /* === Image zoom effect (about section) === */
         .img-zoom {
             transition: transform .6s ease;
         }
         .img-zoom:hover {
             transform: scale(1.04);
         }
-        /* â”€â”€â”€ Loading overlay â”€â”€â”€ */
+        /* === Loading overlay === */
         #loader {
             position: fixed;
             inset: 0;
@@ -137,7 +148,7 @@
             color: #aaa;
             letter-spacing: .06em;
         }
-        /* â”€â”€â”€ Canvas section â”€â”€â”€ */
+        /* === Canvas section === */
         #canvas-section {
             position: relative;
             /* height set by JS = 400vh */
@@ -167,7 +178,7 @@
             z-index: 2;
             pointer-events: none;
         }
-        /* â”€â”€â”€ Text panels â”€â”€â”€ */
+        /* === Text panels === */
         .text-panel {
             position: absolute;
             inset: 0;
@@ -220,7 +231,7 @@
             line-height: 1.65;
             margin-bottom: 28px;
         }
-        /* â”€â”€â”€ Scroll cue (interactive button) â”€â”€â”€ */
+        /* === Scroll cue (interactive button) === */
         #scroll-cue {
             position: absolute;
             bottom: 32px;
@@ -265,18 +276,92 @@
         #scroll-cue:hover .scroll-line {
             background: linear-gradient(to bottom, rgba(60, 60, 60, .8), transparent);
         }
+        /* === Scroll notification (animated chevron + text) === */
+        .scroll-notification {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+            user-select: none;
+            z-index: 10;
+        }
+        .scroll-label {
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(100, 100, 100, .6);
+            transition: color .3s ease;
+        }
+        .chevron-down {
+            width: 28px;
+            height: 28px;
+            color: rgba(100, 100, 100, .5);
+            animation: chevronBounce 2s ease-in-out infinite;
+            transition: color .3s ease;
+        }
+        @keyframes chevronBounce {
+            0%, 100% {
+                transform: translateY(0) opacity(0.5);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(8px);
+                opacity: 1;
+            }
+        }
+        /* ===Scroll to Top Button === */
+        #scroll-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: #1C1916;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        #scroll-to-top.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #scroll-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        #scroll-to-top::before {
+            content: '↑';
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+        }
         @keyframes scrollBob {
             0%,
             100% {
-                transform: scaleY(1);
-                opacity: .7;
+                transform: translateY(0) scaleY(1);
+                opacity: 0.8;
             }
             50% {
-                transform: scaleY(.6);
-                opacity: .3;
+                transform: translateY(8px) scaleY(0.95);
+                opacity: 0.5;
             }
         }
-        /* â”€â”€â”€ Progress dots â”€â”€â”€ */
+        /* === Progress dots === */
         #progress-dots {
             position: fixed;
             right: 24px;
@@ -304,7 +389,7 @@
             background: #111;
             transform: scale(1.6);
         }
-        /* â”€â”€â”€ Navbar â”€â”€â”€ */
+        /* === Navbar === */
         #navbar {
             position: fixed;
             top: 0;
@@ -319,8 +404,8 @@
         #navbar .btn-dark {
             color: #fff;
         }
-        #navbar .nav-logo svg rect {
-            fill: #fff;
+        #navbar .nav-logo {
+            color: #fff;
         }
         #navbar .nav-link::after {
             background: #fff;
@@ -334,9 +419,6 @@
         #navbar.scrolled .nav-logo,
         #navbar.scrolled .nav-link {
             color: var(--text-muted);
-        }
-        #navbar.scrolled .nav-logo svg rect {
-            fill: #111;
         }
         #navbar.scrolled .nav-link::after {
             background: var(--text);
@@ -408,7 +490,7 @@
         .nav-link:hover::after {
             width: 100%;
         }
-        /* â”€â”€â”€ Buttons â”€â”€â”€ */
+        /* === Buttons === */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -446,7 +528,7 @@
             border-color: #111;
             transform: translateY(-1px);
         }
-        /* â”€â”€â”€ Section layout helpers â”€â”€â”€ */
+        /* === Section layout helpers === */
         .site-max {
             max-width: 1280px;
             margin: 0 auto;
@@ -460,6 +542,22 @@
             color: var(--text-faint);
             margin-bottom: 16px;
             display: block;
+            position: relative;
+        }
+        .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 32px;
+            height: 1px;
+            background: var(--border);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+        }
+        .section-label.typed-complete::after {
+            transform: scaleX(1);
         }
         .rule {
             width: 32px;
@@ -467,7 +565,7 @@
             background: var(--border);
             margin-bottom: 28px;
         }
-        /* â”€â”€â”€ Services grid â€” glassmorphism â”€â”€â”€ */
+        /* Services grid &mdash; glassmorphism */
         .service-card {
             border: 1px solid rgba(255,255,255,.13);
             border-radius: 2px;
@@ -531,7 +629,7 @@
             border-radius: 0;
             padding: 4px 12px;
         }
-        /* â”€â”€â”€ The Chandler Process â”€â”€â”€ */
+        /* === The Chandler Process === */
         .process-section {
             background: #fff;
             padding: 10rem 0;
@@ -572,7 +670,7 @@
             color: var(--text-muted);
             line-height: 1.6;
         }
-        /* â”€â”€â”€ Quote form â”€â”€â”€ */
+        /* === Quote form === */
         .form-field {
             display: flex;
             flex-direction: column;
@@ -627,12 +725,12 @@
             border-top: 5px solid #999;
             pointer-events: none;
         }
-        /* â”€â”€â”€ Scroll reveals â”€â”€â”€ */
+        /* === Scroll reveals === */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
         }
-        /* â”€â”€â”€ Portfolio grid â”€â”€â”€ */
+        /* === Portfolio grid === */
         .portfolio-filters {
             display: flex;
             flex-wrap: wrap;
@@ -771,7 +869,7 @@
             gap: 6px;
             margin-top: 14px;
         }
-        /* â”€â”€â”€ Mobile nav hamburger â”€â”€â”€ */
+        /* === Mobile nav hamburger === */
         #nav-hamburger {
             display: flex;
             flex-direction: column;
@@ -798,7 +896,7 @@
         #nav-hamburger.open span:nth-child(2) { opacity: 0; }
         #nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* â”€â”€â”€ Full-screen mobile menu â”€â”€â”€ */
+        /* === Full-screen mobile menu === */
         #mobile-nav {
             position: fixed;
             inset: 0;
@@ -847,11 +945,12 @@
         }
         .mobile-nav-sub:hover { color: var(--text); }
 
-        /* â”€â”€â”€ About section â”€â”€â”€ */
+        /* === About section === */
         #about .grid > div img {
             transition: transform .5s ease;
         }
-        /* â”€â”€â”€ Footer â”€â”€â”€ */
+        /* === Transformation Showcase === */
+        /* === Footer === */
         .footer-link {
             font-size: .8rem;
             color: #999;
@@ -1005,7 +1104,7 @@
         }
         .portfolio-card:hover .gallery-hint { opacity: 1; }
 
-        /* â”€â”€â”€ Project Modal System â”€â”€â”€ */
+        /* === Project Modal System === */
         .project-modal-overlay {
             position: fixed;
             inset: 0;
@@ -1246,7 +1345,7 @@
             }
         }
 
-        /* â”€â”€â”€ Dark section rhythm (BMW + Apple cinematic) â”€â”€â”€ */
+        /* === Dark section rhythm (BMW + Apple cinematic) === */
         .dark-section {
             background: var(--text);
             color: #fff;
@@ -1269,13 +1368,13 @@
             stroke: rgba(255,255,255,.65) !important;
         }
 
-        /* â”€â”€â”€ Section heading refinements â”€â”€â”€ */
+        /* === Section heading refinements === */
         .section-h2 {
             line-height: 1.06;
             letter-spacing: -.022em;
         }
 
-        /* â”€â”€â”€ Intro statement â”€â”€â”€ */
+        /* === Intro statement === */
         .intro-statement {
             font-size: clamp(2.4rem, 5.5vw, 4.5rem);
             font-weight: 300;
@@ -1284,7 +1383,7 @@
             color: var(--text);
         }
 
-        /* â”€â”€â”€ Stats â”€â”€â”€ */
+        /* === Stats === */
         .stat-number {
             font-size: clamp(3rem, 6vw, 4rem);
             font-weight: 300;
@@ -1300,17 +1399,17 @@
             margin-top: 8px;
         }
 
-        /* â”€â”€â”€ About section â”€â”€â”€ */
+        /* === About section === */
         #about .about-img-wrap {
             overflow: hidden;
             border-radius: 0;
         }
 
-        /* â”€â”€â”€ Portfolio section â”€â”€â”€ */
+        /* === Portfolio section === */
         #portfolio {
             padding: 80px 0 96px;
         }
-        /* â”€â”€â”€ The Chandler Process â”€â”€â”€ */
+        /* === The Chandler Process === */
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 64px; }
         .process-card { background: #fff; padding: 48px; border: 1px solid var(--border); transition: transform .4s ease, box-shadow .4s ease; display: flex; flex-direction: column; height: 100%; border-radius: 4px; }
         .process-card:hover { transform: translateY(-8px); border-color: var(--text-faint); box-shadow: 0 20px 40px rgba(0,0,0,.04); }
@@ -1319,7 +1418,7 @@
         .process-card p { font-size: .95rem; color: var(--text-muted); line-height: 1.7; flex-grow: 1; margin-bottom: 0; }
         .process-icon { width: 40px; height: 40px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; background: var(--bg-alt); border-radius: 50%; color: var(--text); }
 
-        /* â”€â”€â”€ Typed micro-interaction â”€â”€â”€ */
+        /* === Typed micro-interaction === */
         .section-label.typed-init { opacity: 0; }
         .type-cursor {
             display: inline-block;
@@ -1335,7 +1434,7 @@
             50% { opacity: 0; }
         }
 
-        /* â”€â”€â”€ Multi-step form section â”€â”€â”€ */
+        /* === Multi-step form section === */
         #form-section { background: var(--bg-alt); padding: 7rem 0; }
         .multistep-form { max-width: 640px; margin: 0 auto; }
         .form-step { display: none; }
@@ -1365,7 +1464,7 @@
         #form-success.visible { display: block; }
         .success-check { width: 48px; height: 48px; margin: 0 auto 20px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
 
-        /* â”€â”€â”€ Marquee ticker band â”€â”€â”€ */
+        /* === Marquee ticker band === */
         .marquee-band {
             overflow: hidden;
             background: var(--text);
@@ -1400,7 +1499,7 @@
             to   { transform: translateX(-50%); }
         }
 
-        /* â”€â”€â”€ Portfolio card: slide-up overlay â”€â”€â”€ */
+        /* === Portfolio card: slide-up overlay === */
         .portfolio-card-overlay {
             position: absolute;
             inset: 0;
@@ -1439,7 +1538,7 @@
         }
         .portfolio-card:hover .portfolio-card-gold-line { width: 100%; }
 
-        /* â”€â”€â”€ Process ghost numbers â”€â”€â”€ */
+        /* === Process ghost numbers === */
         .process-card { position: relative; overflow: hidden; }
         .process-ghost-num {
             position: absolute;
@@ -1456,7 +1555,7 @@
         }
         .process-card > *:not(.process-ghost-num) { position: relative; z-index: 1; }
 
-        /* â”€â”€â”€ Stats bar upgrade â”€â”€â”€ */
+        /* === Stats bar upgrade === */
         .stat-accent-line {
             display: block;
             width: 24px;
@@ -1465,7 +1564,7 @@
             margin: 0 auto 12px;
         }
 
-        /* â”€â”€â”€ Testimonials section â”€â”€â”€ */
+        /* === Testimonials section === */
         #testimonials {
             background: var(--text);
             padding: 7rem 0;
@@ -1528,7 +1627,7 @@
             color: rgba(255,255,255,.35);
         }
 
-        /* â”€â”€â”€ Enhanced CTA / contact band â”€â”€â”€ */
+        /* === Enhanced CTA / contact band === */
         #contact {
             position: relative;
             overflow: hidden;
@@ -1553,7 +1652,7 @@
             margin-right: auto;
         }
 
-        /* â”€â”€â”€ Upgraded footer â”€â”€â”€ */
+        /* === Upgraded footer === */
         #site-footer {
             background: #0d0b09;
             color: rgba(255,255,255,.5);
@@ -1632,11 +1731,18 @@
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <div id="loader" role="status" aria-label="Loading animation frames">
         <div id="loader-logo">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <rect x="1" y="1" width="8" height="8" rx="2" fill="#111" />
-                <rect x="11" y="1" width="8" height="8" rx="2" fill="#111" opacity=".3" />
-                <rect x="1" y="11" width="8" height="8" rx="2" fill="#111" opacity=".3" />
-                <rect x="11" y="11" width="8" height="8" rx="2" fill="#111" />
+            <svg width="24" height="24" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+                <!-- Top Left: M Shape -->
+                <path d="M30 50 L30 130 L50 110 L70 130 L70 50" stroke="#FFC107" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <!-- Top Right: C Shape -->
+                <path d="M170 50 L150 50 L150 130 L170 130" stroke="#FFC107" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <!-- Center Divider -->
+                <line x1="120" y1="30" x2="120" y2="150" stroke="#1C1916" stroke-width="4"/>
+                <!-- Bottom Left: I and V Shapes -->
+                <line x1="40" y1="160" x2="40" y2="220" stroke="#FFC107" stroke-width="8" stroke-linecap="round"/>
+                <path d="M25 220 L40 160 L55 220" stroke="#FFC107" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <!-- Bottom Right: S Shape -->
+                <path d="M160 160 C160 170 170 175 180 175 C190 175 200 180 200 190 C200 200 190 210 180 210 C170 210 160 215 160 225" stroke="#FFC107" stroke-width="8" stroke-linecap="round" fill="none"/>
             </svg>
             mcdesign
         </div>
@@ -1651,11 +1757,18 @@
     <header id="navbar" aria-label="Site navigation">
         <div class="nav-inner">
             <a href="#" class="nav-logo" aria-label="mcdesign home">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <rect x="1" y="1" width="8" height="8" rx="0" fill="#111" />
-                    <rect x="11" y="1" width="8" height="8" rx="0" fill="#111" opacity=".3" />
-                    <rect x="1" y="11" width="8" height="8" rx="0" fill="#111" opacity=".3" />
-                    <rect x="11" y="11" width="8" height="8" rx="0" fill="#111" />
+                <svg width="24" height="24" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+                    <!-- Top Left: M Shape -->
+                    <path d="M30 50 L30 130 L50 110 L70 130 L70 50" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <!-- Top Right: C Shape -->
+                    <path d="M170 50 L150 50 L150 130 L170 130" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <!-- Center Divider -->
+                    <line x1="120" y1="30" x2="120" y2="150" stroke="currentColor" stroke-width="4"/>
+                    <!-- Bottom Left: I and V Shapes -->
+                    <line x1="40" y1="160" x2="40" y2="220" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M25 220 L40 160 L55 220" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <!-- Bottom Right: S Shape -->
+                    <path d="M160 160 C160 170 170 175 180 175 C190 175 200 180 200 190 C200 200 190 210 180 210 C170 210 160 215 160 225" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/>
                 </svg>
                 mcdesign
             </a>
@@ -1683,10 +1796,10 @@
         <a href="#contact" class="mobile-nav-link">Contact</a>
         <div class="mobile-nav-footer">
             <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="mobile-nav-sub">mcdesign.bio</a>
-            <span class="mobile-nav-sub" style="opacity:.3;">Â·</span>
+            <span class="mobile-nav-sub" style="opacity:.3;">&middot;</span>
             <a href="#form-section" class="mobile-nav-sub">Request a Call</a>
-            <span class="mobile-nav-sub" style="opacity:.3;">Â·</span>
-            <span class="mobile-nav-sub" style="color:var(--text-faint);">CA Â· TX Â· MT Â· FL Â· Bahamas</span>
+            <span class="mobile-nav-sub" style="opacity:.3;">&middot;</span>
+            <span class="mobile-nav-sub" style="color:var(--text-faint);">CA &middot; TX &middot; MT &middot; FL &middot; Bahamas</span>
         </div>
     </nav>
     <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -1694,37 +1807,44 @@
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section id="canvas-section" aria-label="Construction portfolio showcase animation">
         <div id="sticky-canvas">
-            <!-- Main canvas â€” frames rendered here -->
+            <!-- Main canvas &mdash; frames rendered here -->
             <canvas id="hero-canvas" role="img" aria-label="Construction portfolio cinematic sequence"></canvas>
-            <!-- â”€â”€ Panel 1: The Blueprint (0% checkpoint) â”€â”€ -->
-            <div class="text-panel" id="panel-1">
-                <div class="panel-inner">
-                    <span class="panel-eyebrow">Michael Chandler</span>
-                    <h2 class="panel-heading">37 Years.<br>Built by Hand.</h2>
-                    <p class="panel-body">I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbeanâ€”residential, hospitality, and complex civil projects.</p>
+            <!-- Panel 1: The Blueprint (0% checkpoint) -->
+            <div class=”text-panel” id=”panel-1”>
+                <div class=”panel-inner”>
+                    <span class=”panel-eyebrow”>Michael Chandler</span>
+                    <h2 class=”panel-heading”>37 Years.<br>Built by Hand.</h2>
+                    <p class=”panel-body”>I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbean&mdash;residential, hospitality, and complex civil projects.</p>
                     <div style="display:flex;gap:10px;pointer-events:auto;">
                         <a href="#form-section" class="btn btn-dark">Start Conversation</a>
                         <a href="#portfolio" class="btn btn-outline">View Work</a>
                     </div>
                 </div>
             </div>
-            <!-- â”€â”€ Panel 2: The Build (33% checkpoint) â”€â”€ -->
-            <div class="text-panel" id="panel-2">
-                <div class="panel-inner">
-                    <span class="panel-eyebrow">My Approach</span>
-                    <h2 class="panel-heading">Uncompromising<br>Precision.</h2>
-                    <p class="panel-body">I coordinate every trade with relentless quality oversight. Every detailâ€”structural, mechanical, and architecturalâ€”reflects uncompromising standards and meticulous craftsmanship.</p>
+            <!-- Panel 2: The Build (33% checkpoint) -->
+            <div class=”text-panel” id=”panel-2”>
+                <div class=”panel-inner”>
+                    <span class=”panel-eyebrow”>My Approach</span>
+                    <h2 class=”panel-heading”>Uncompromising<br>Precision.</h2>
+                    <p class=”panel-body”>I coordinate every trade with relentless quality oversight. Every detail&mdash;structural, mechanical, and architectural&mdash;reflects uncompromising standards and meticulous craftsmanship.</p>
                     <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
-            <!-- â”€â”€ Panel 3: The Space (66% checkpoint) â”€â”€ -->
-            <div class="text-panel" id="panel-3">
-                <div class="panel-inner">
-                    <span class="panel-eyebrow">The Result</span>
-                    <h2 class="panel-heading">Built to<br>Last Generations.</h2>
-                    <p class="panel-body">From coastal high-rises to alpine estatesâ€”I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
+            <!-- Panel 3: The Space (66% checkpoint) -->
+            <div class=”text-panel” id=”panel-3”>
+                <div class=”panel-inner”>
+                    <span class=”panel-eyebrow”>The Result</span>
+                    <h2 class=”panel-heading”>Built to<br>Last Generations.</h2>
+                    <p class=”panel-body”>From coastal high-rises to alpine estates&mdash;I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
                     <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
                 </div>
+            </div>
+            <!-- Scroll notification with animated chevron -->
+            <div class="scroll-notification" aria-label="Scroll to explore content">
+                <span class="scroll-label">Scroll to explore</span>
+                <svg class="chevron-down" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
             </div>
             <!-- Scroll cue (interactive button) -->
             <button id="scroll-cue" aria-label="Scroll down to explore" title="Click to scroll or keep scrolling">
@@ -1765,8 +1885,8 @@
                         Complete project leadership.
                     </h2>
                 </div>
-                <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
-                    From conception to completionâ€”we deliver integrated expertise across design-build, construction management, and complex site development.
+                <p class=”text-base text-gray-500 leading-relaxed max-w-sm reveal”>
+                    From conception to completion&mdash;we deliver integrated expertise across design-build, construction management, and complex site development.
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
@@ -1793,7 +1913,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Construction Management</p>
-                    <p class="service-desc">Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordinationâ€”protecting your interests at every phase.</p>
+                    <p class=”service-desc”>Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordination&mdash;protecting your interests at every phase.</p>
                     <span class="service-tag">High-Rise</span>
                     <span class="service-tag" style="margin-left:6px;">Hospitality</span>
                 </div>
@@ -1808,7 +1928,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Civil &amp; Site Work</p>
-                    <p class="service-desc">Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure masteryâ€”turning challenging terrain into asset value.</p>
+                    <p class=”service-desc”>Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure mastery&mdash;turning challenging terrain into asset value.</p>
                     <span class="service-tag">Coastal</span>
                     <span class="service-tag" style="margin-left:6px;">45+ Acres</span>
                 </div>
@@ -1840,7 +1960,7 @@
                         </svg>
                     </div>
                     <h3>Strategic Vision</h3>
-                    <p>We begin by understanding your objectives and constraints. We analyze site conditions, regulatory requirements, budgets, and timelinesâ€”creating a comprehensive roadmap that anticipates challenges and opportunities before construction begins.</p>
+                    <p>We begin by understanding your objectives and constraints. We analyze site conditions, regulatory requirements, budgets, and timelines&mdash;creating a comprehensive roadmap that anticipates challenges and opportunities before construction begins.</p>
                 </div>
                 
                 <!-- Step 2 -->
@@ -1853,7 +1973,7 @@
                         </svg>
                     </div>
                     <h3>Flawless Execution</h3>
-                    <p>Construction demands uncompromising attention to detail. We coordinate every trade with relentless quality oversightâ€”managing budgets, schedules, and vendor performance to deliver world-class results on every component.</p>
+                    <p>Construction demands uncompromising attention to detail. We coordinate every trade with relentless quality oversight&mdash;managing budgets, schedules, and vendor performance to deliver world-class results on every component.</p>
                 </div>
                 
                 <!-- Step 3 -->
@@ -1885,8 +2005,8 @@
                         Three decades of<br />exceptional delivery
                     </h2>
                 </div>
-                <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
-                    From California to the Caribbeanâ€”$500M+ in completed projects spanning ultra-luxury homes, hospitality, civil infrastructure, and heritage restoration.
+                <p class=”text-base text-gray-500 leading-relaxed max-w-sm reveal”>
+                    From California to the Caribbean&mdash;$500M+ in completed projects spanning ultra-luxury homes, hospitality, civil infrastructure, and heritage restoration.
                 </p>
             </div>
             <!-- Filters -->
@@ -1920,7 +2040,7 @@
                         <div class="portfolio-meta">
                             <span class="service-tag">4,200 sqft</span>
                             <span class="service-tag">5 months</span>
-                            <span class="service-tag">4 bed Â· 4 bath</span>
+                            <span class="service-tag">4 bed &middot; 4 bath</span>
                         </div>
                     </div>
                 </div>
@@ -1944,15 +2064,15 @@
                         <div class="portfolio-meta">
                             <span class="service-tag">2,300 sqft</span>
                             <span class="service-tag">24 months</span>
-                            <span class="service-tag">5 bed Â· 2 bath</span>
+                            <span class="service-tag">5 bed &middot; 2 bath</span>
                         </div>
                     </div>
                 </div>
                 <!-- 3. Syracuse House -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house" style="cursor:pointer;">
-                    <div class="portfolio-img-wrap">
-                        <img src="projects/syracuse-cover.png"
-                            alt="Syracuse House â€” N. Utah Craftsman Estate" loading="lazy" />
+                    <div class=”portfolio-img-wrap”>
+                        <img src=”projects/syracuse-cover.png”
+                            alt=”Syracuse House &mdash; N. Utah Craftsman Estate” loading=”lazy” />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <div class="portfolio-card-overlay">
                             <span class="portfolio-card-overlay-text">View Project
@@ -2267,26 +2387,26 @@
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class="testimonial-body">Michael's attention to detail is unmatched. He treated our $4M oceanfront renovation like it was his own home. Every subcontractor, every material choice, every timeline â€” flawlessly managed. We couldn't be more impressed.</p>
+                    <p class=”testimonial-body”>Michael's attention to detail is unmatched. He treated our $4M oceanfront renovation like it was his own home. Every subcontractor, every material choice, every timeline &mdash; flawlessly managed. We couldn't be more impressed.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">R. & J. Whitmore</p>
-                    <p class="testimonial-meta">S. Florida Â· Oceanfront Luxury Renovation</p>
+                    <p class="testimonial-meta">S. Florida &middot; Oceanfront Luxury Renovation</p>
                 </div>
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class="testimonial-body">We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle â€” and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
+                    <p class=”testimonial-body”>We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle &mdash; and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">T. Harrington</p>
-                    <p class="testimonial-meta">Big Sur, CA Â· Coastal Mountain Civil Work</p>
+                    <p class="testimonial-meta">Big Sur, CA &middot; Coastal Mountain Civil Work</p>
                 </div>
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class="testimonial-body">From our first conversation to final walkthrough, Michael operated with total transparency and professionalism. The Bahamas build was ambitious â€” harbor access, tropical engineering, remote logistics â€” and he delivered beyond expectation.</p>
+                    <p class=”testimonial-body”>From our first conversation to final walkthrough, Michael operated with total transparency and professionalism. The Bahamas build was ambitious &mdash; harbor access, tropical engineering, remote logistics &mdash; and he delivered beyond expectation.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">C. & M. Fairfax</p>
-                    <p class="testimonial-meta">Abaco, Bahamas Â· Waterfront Estate</p>
+                    <p class="testimonial-meta">Abaco, Bahamas &middot; Waterfront Estate</p>
                 </div>
             </div>
         </div>
@@ -2312,7 +2432,7 @@
                         My approach is simple: bring together the right people, create an environment built on mutual respect, and stay closely attuned to client feedback throughout every phase of a project.
                     </p>
                     <p class="text-base text-gray-500 leading-relaxed mb-10 reveal">
-                        I've built my career on the universal business principle that quality construction isn't just about meeting standards â€” it's about exceeding them, by combining rigorous processes with forward-thinking design.
+                        I've built my career on the universal business principle that quality construction isn't just about meeting standards &mdash; it's about exceeding them, by combining rigorous processes with forward-thinking design.
                     </p>
                     <!-- Signature -->
                     <div class="flex items-center gap-4 reveal">
@@ -2398,9 +2518,9 @@
                     <p class="step-heading">What's your project budget?</p>
                     <p class="step-sub">This helps me scope the project and understand if we're a fit.</p>
                     <div class="option-grid" id="budget-grid">
-                        <button class="option-btn" data-value="$500K â€“ $1M">$500K â€“ $1M</button>
-                        <button class="option-btn" data-value="$1M â€“ $3M">$1M â€“ $3M</button>
-                        <button class="option-btn" data-value="$3M â€“ $10M">$3M â€“ $10M</button>
+                        <button class=”option-btn” data-value=”$500K &ndash; $1M”>$500K &ndash; $1M</button>
+                        <button class=”option-btn” data-value=”$1M &ndash; $3M”>$1M &ndash; $3M</button>
+                        <button class=”option-btn” data-value=”$3M &ndash; $10M”>$3M &ndash; $10M</button>
                         <button class="option-btn" data-value="$10M+">$10M+</button>
                     </div>
                     <div class="form-nav">
@@ -2445,7 +2565,7 @@
                         </div>
                         <div class="form-field">
                             <label class="form-label" for="disc-notes">Brief Project Notes (optional)</label>
-                            <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key prioritiesâ€¦" rows="3"></textarea>
+                            <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key priorities&hellip;" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-nav">
@@ -2475,7 +2595,7 @@
         <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-6 reveal" style="letter-spacing:-.025em;line-height:1.05;text-transform:uppercase;">
             Let's build something<br />remarkable together
         </h2>
-        <p class="cta-sub reveal">Ultra-luxury residential Â· Coastal restoration Â· Design-build Â· Civil engineering<br />I work where precision and accountability matter most.</p>
+        <p class="cta-sub reveal">Ultra-luxury residential &middot; Coastal restoration &middot; Design-build &middot; Civil engineering<br />I work where precision and accountability matter most.</p>
         <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
             <a href="#form-section" class="btn"
                 style="background:#fff;color:#111;padding:14px 32px;font-size:.78rem;">
@@ -2507,7 +2627,7 @@
                         </svg>
                         mcdesign
                     </p>
-                    <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft â€” from California to the Caribbean.</p>
+                    <p class=”footer-brand-tagline”>Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft &mdash; from California to the Caribbean.</p>
                 </div>
                 <!-- Services col -->
                 <div>
@@ -2530,11 +2650,11 @@
                     <p class="footer-col-heading">Contact</p>
                     <a href="#form-section" class="footer-col-link">Request a Discovery Call</a>
                     <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="footer-col-link">mcdesign.bio</a>
-                    <p class="footer-col-link" style="cursor:default;">CA Â· Bahamas Â· TX Â· MT Â· UT Â· FL</p>
+                    <p class="footer-col-link" style="cursor:default;">CA &middot; Bahamas &middot; TX &middot; MT &middot; UT &middot; FL</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2026 Michael Chandler â€” mcdesign. All rights reserved.</p>
+                <p class=”footer-copy”>&copy; 2026 Michael Chandler &mdash; mcdesign. All rights reserved.</p>
                 <p class="footer-regions">Regions Served: California &bull; Bahamas &bull; Texas &bull; Montana &bull; Utah &bull; Florida</p>
             </div>
         </div>
@@ -2545,9 +2665,9 @@
     <script>
         (() => {
             'use strict';
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  CONFIG - Centralized magic numbers and thresholds
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             const CONFIG = {
                 TOTAL_FRAMES: 294,
                 PRELOAD_TIMEOUT: 8000, // 8s timeout for frame loading
@@ -2571,16 +2691,28 @@
             };
 
             /**
-             * Generate the array of relative frame paths.
-             * Files: ezgif-frame-001.jpg â€¦ ezgif-frame-294.jpg
+             * Detect WebP support for optimal compression
+             * WebP saves ~40% bandwidth vs JPEG
+             */
+            let supportsWebP = false;
+            const webpCanvas = document.createElement('canvas');
+            if (webpCanvas.getContext && webpCanvas.getContext('2d')) {
+                webpCanvas.width = webpCanvas.height = 1;
+                supportsWebP = webpCanvas.toDataURL('image/webp').indexOf('image/webp') === 5;
+            }
+
+            /**
+             * Generate the array of relative frame paths with format preference.
+             * Files: ezgif-frame-001.webp (if supported) or ezgif-frame-001.jpg
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
-                return `ezgif-frame-${n}.jpg`;
+                const ext = supportsWebP ? 'webp' : 'jpg';
+                return `ezgif-frame-${n}.${ext}`;
             });
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  DOM REFS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             const loaderEl = document.getElementById('loader');
             const loaderBar = document.getElementById('loader-bar');
             const loaderPct = document.getElementById('loader-pct');
@@ -2596,9 +2728,9 @@
             const progressEl = document.getElementById('progress-dots');
             const scrollCue = document.getElementById('scroll-cue');
             const navbar = document.getElementById('navbar');
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  CANVAS SIZING
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             canvasSec.style.height = '400vh';
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
@@ -2609,16 +2741,16 @@
                 resizeCanvas();
                 drawFrameIndex(currentFrameIndex);
             });
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  IMAGE CACHE
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             /** @type {(HTMLImageElement|null)[]} */
-            const cache = new Array(TOTAL_FRAMES).fill(null);
+            const cache = new Array(CONFIG.TOTAL_FRAMES).fill(null);
             let loaded = 0;
             let currentFrameIndex = 0;
             /**
              * Draws a cached frame using object-fit:cover semantics.
-             * @param {number} idx â€“ frame index (float ok, will be rounded+clamped)
+             * @param {number} idx &mdash; frame index (float ok, will be rounded+clamped)
              */
             function drawFrameIndex(idx) {
                 const i = Math.max(0, Math.min(CONFIG.TOTAL_FRAMES - 1, Math.round(idx)));
@@ -2634,10 +2766,10 @@
                 ctx.clearRect(0, 0, cw, ch);
                 ctx.drawImage(img, sx, sy, sw, sh);
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  PRELOAD WITH PROGRESS & ERROR HANDLING
             //  Loads all frames concurrently, tracks progress, with timeout fallback.
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             function preloadFrames(onComplete) {
                 let done = 0;
                 let hasError = false;
@@ -2645,7 +2777,8 @@
                 // Timeout safety net: if loading takes too long, proceed anyway
                 const timeoutId = setTimeout(() => {
                     if (done < CONFIG.TOTAL_FRAMES && !hasError) {
-                        console.warn(`Frame preload incomplete after ${CONFIG.PRELOAD_TIMEOUT}ms, proceeding with ${done}/${CONFIG.TOTAL_FRAMES} frames`);
+                        // Only log in development; comment out for production
+                        // console.warn(`Frame preload incomplete after ${CONFIG.PRELOAD_TIMEOUT}ms, proceeding with ${done}/${CONFIG.TOTAL_FRAMES} frames`);
                         onComplete();
                     }
                 }, CONFIG.PRELOAD_TIMEOUT);
@@ -2656,7 +2789,8 @@
                 seed.onerror = () => {
                     hasError = true;
                     clearTimeout(timeoutId);
-                    console.error('Failed to load first frame');
+                    // Only log in development
+                    // console.error('Failed to load first frame');
                     onComplete(); // Proceed anyway
                 };
                 seed.src = FRAME_URLS[0];
@@ -2681,17 +2815,17 @@
                         tick();
                     };
                     img.onerror = () => {
-                        // Mark as loaded but leave as null â€” canvas will skip it
+                        // Mark as loaded but leave as null &mdash; canvas will skip it
                         tick();
                     };
                     img.src = url;
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  TEXT PANEL TRANSITIONS
             //  CSS class toggling (is-visible) with CSS transitions for smooth
             //  interpolation handled by the browser's compositor.
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             function updatePanels(progress) {
                 CONFIG.PANEL_CHECKPOINTS.forEach(({ index, start, end }) => {
                     const panel = panels[index];
@@ -2700,9 +2834,9 @@
                     panel.style.pointerEvents = visible ? 'auto' : 'none';
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  SIDEBAR DOTS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             function updateDots(progress) {
                 let active = 0;
                 for (const { index, min } of CONFIG.DOT_THRESHOLDS) {
@@ -2710,32 +2844,39 @@
                 }
                 dots.forEach((d, i) => d.classList.toggle('active', i === active));
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  SMOOTH FRAME SCRUBBING
             //
             //  Strategy: ScrollTrigger drives a gsap-tweened "scrub proxy" object.
             //  We lerp toward the raw progress value each rAF tick, then map to
             //  a frame index. This gives buttery-smooth canvas updates even when
             //  the user scrubs quickly.
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             const proxy = { progress: 0 };  // GSAP-tweened progress target
             let rAFid = null;
+            let frameCount = 0;
+            const isMobile = window.innerWidth < 768; // Optimize for mobile
+            const frameSkip = isMobile ? 2 : 1; // Skip frames on mobile for performance
+
             function renderLoop() {
-                drawFrameIndex(proxy.progress * (TOTAL_FRAMES - 1));
-                updatePanels(proxy.progress);
-                updateDots(proxy.progress);
+                if (frameCount % frameSkip === 0) {
+                    drawFrameIndex(proxy.progress * (CONFIG.TOTAL_FRAMES - 1));
+                    updatePanels(proxy.progress);
+                    updateDots(proxy.progress);
+                }
+                frameCount++;
                 rAFid = requestAnimationFrame(renderLoop);
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  BELOW-FOLD SCROLL REVEALS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             function initServiceCardAnimations() {
+                if (!canAnimate()) return;
                 // Service cards with subtle rotation on scroll
                 gsap.utils.toArray('.service-card').forEach((card, idx) => {
                     gsap.to(card, {
                         rotationX: 3,
                         y: -8,
-                        opacity: 0.95,
                         ease: 'none',
                         scrollTrigger: {
                             trigger: card,
@@ -2749,6 +2890,7 @@
             }
 
             function initProcessCardAnimations() {
+                if (!canAnimate()) return;
                 // Process cards with staggered entrance and hover effect prep
                 gsap.utils.toArray('.process-card').forEach((card, idx) => {
                     gsap.fromTo(card,
@@ -2789,9 +2931,12 @@
                 });
             }
 
+            // Cache section headings for performance
+            const cachedHeadings = gsap.utils.toArray('.section-h2');
+
             function initTextParallax() {
-                // Subtle text parallax for section headers
-                gsap.utils.toArray('.section-h2').forEach(heading => {
+                // Subtle text parallax for section headers (using cached elements)
+                cachedHeadings.forEach(heading => {
                     gsap.to(heading, {
                         y: -20,
                         ease: 'none',
@@ -2807,6 +2952,7 @@
             }
 
             function initRevealAnimations() {
+                if (!canAnimate()) return;
                 // Collect reveals by parent container for staggered effect
                 const revealGroups = {};
                 gsap.utils.toArray('.reveal').forEach(el => {
@@ -2816,21 +2962,42 @@
                     revealGroups[parentKey].push(el);
                 });
 
-                // Stagger reveals within each group for cohesive animations
+                // Stagger reveals within each group — direction-aware animations
                 Object.values(revealGroups).forEach(group => {
                     group.forEach((el, idx) => {
+                        // Determine animation direction based on element type
+                        let fromY = 24, fromX = 0, fromScale = 1;
+                        let stagger = 0.08;
+
+                        // Headings: larger upward slide
+                        if (el.matches('h1, h2, h3, .section-h2')) {
+                            fromY = 40;
+                            stagger = 0.1;
+                        }
+                        // Cards: scale + slide
+                        else if (el.matches('.service-card, .process-card, .portfolio-card')) {
+                            fromY = 50;
+                            fromScale = 0.96;
+                            stagger = 0.1;
+                        }
+                        // Stats: light scale
+                        else if (el.matches('.stat-item, [class*="stat"]')) {
+                            fromY = 20;
+                            fromScale = 0.95;
+                        }
+
                         gsap.fromTo(el,
-                            { opacity: 0, y: 24 },
+                            { opacity: 0, y: fromY, x: fromX, scale: fromScale },
                             {
-                                opacity: 1, y: 0,
+                                opacity: 1, y: 0, x: 0, scale: 1,
                                 duration: CONFIG.REVEAL_DURATION,
                                 ease: CONFIG.REVEAL_EASE,
-                                delay: idx * 0.08,  // Stagger by 80ms
+                                delay: idx * stagger,
                                 scrollTrigger: {
                                     trigger: el,
                                     start: `top ${CONFIG.SCROLL_TRIGGER_OFFSET * 100}%`,
                                     toggleActions: 'play none none none',
-                                    once: true,  // Only animate once for performance
+                                    once: true,
                                 },
                             }
                         );
@@ -2869,10 +3036,121 @@
                     });
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            //  LINE-BY-LINE HEADING ANIMATIONS
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            function initHeadingLineAnimations() {
+                if (!canAnimate()) return;
+                // Animate section headings line by line (split on <br>)
+                gsap.utils.toArray('.section-h2').forEach(heading => {
+                    const html = heading.innerHTML;
+                    const lines = html.split('<br>').map((line, i) => {
+                        return `<span class="line-wrap" style="display:block;overflow:hidden;"><span class="line" style="display:block;">${line}</span></span>`;
+                    });
+                    heading.innerHTML = lines.join('');
+
+                    // Animate each line
+                    const lineEls = heading.querySelectorAll('.line');
+                    gsap.fromTo(lineEls,
+                        { y: 30, opacity: 0 },
+                        {
+                            y: 0, opacity: 1,
+                            duration: 0.7,
+                            ease: 'power3.out',
+                            stagger: 0.15,
+                            scrollTrigger: {
+                                trigger: heading,
+                                start: 'top 80%',
+                                once: true,
+                            }
+                        }
+                    );
+                });
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            //  INTRO STATEMENT LINE ANIMATIONS
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            function initIntroStatementAnimation() {
+                if (!canAnimate()) return;
+                const intro = document.querySelector('.intro-statement');
+                if (!intro) return;
+
+                const html = intro.innerHTML;
+                const lines = html.split('<br class="hidden md:block">').map(line => {
+                    return `<span class="line-wrap" style="display:block;overflow:hidden;"><span class="line" style="display:block;">${line}</span></span>`;
+                });
+                intro.innerHTML = lines.join('');
+
+                const lineEls = intro.querySelectorAll('.line');
+                gsap.fromTo(lineEls,
+                    { y: 24, opacity: 0 },
+                    {
+                        y: 0, opacity: 1,
+                        duration: 0.65,
+                        ease: 'power3.out',
+                        stagger: 0.12,
+                        scrollTrigger: {
+                            trigger: intro,
+                            start: 'top 85%',
+                            once: true,
+                        }
+                    }
+                );
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            //  MARQUEE ENTRANCE ANIMATION
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            function initMarqueeEntrance() {
+                if (!canAnimate()) return;
+                const marquee = document.querySelector('.marquee-band');
+                if (!marquee) return;
+
+                gsap.fromTo(marquee,
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1, y: 0,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: marquee,
+                            start: 'top 95%',
+                            once: true,
+                        }
+                    }
+                );
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            //  FOOTER ANIMATIONS
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            function initFooterAnimations() {
+                if (!canAnimate()) return;
+                // Animate footer columns with left-to-right stagger
+                const footerCols = document.querySelectorAll('footer .footer-col');
+                if (footerCols.length === 0) return;
+
+                gsap.fromTo(footerCols,
+                    { opacity: 0, x: -20 },
+                    {
+                        opacity: 1, x: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        stagger: 0.1,
+                        scrollTrigger: {
+                            trigger: 'footer',
+                            start: 'top 85%',
+                            once: true,
+                        }
+                    }
+                );
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  TYPED MICRO-INTERACTIONS (Named function for debugging)
             //  Section labels (.section-label) type themselves in on scroll
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             function typeCharacters(el, text, cursor) {
                 let i = 0;
                 const interval = setInterval(() => {
@@ -2881,7 +3159,11 @@
                     i++;
                     if (i >= text.length) {
                         clearInterval(interval);
-                        setTimeout(() => cursor.remove(), CONFIG.TYPE_CURSOR_REMOVAL_MS);
+                        // Add class to trigger underline animation after typing
+                        setTimeout(() => {
+                            el.classList.add('typed-complete');
+                            cursor.remove();
+                        }, CONFIG.TYPE_CURSOR_REMOVAL_MS);
                     }
                 }, CONFIG.TYPE_SPEED_MS);
                 return interval; // Return for potential cleanup
@@ -2910,9 +3192,9 @@
                 });
                 return typeIntervals; // For cleanup if needed
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  ANIMATED STAT COUNTERS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             function initCounters() {
                 document.querySelectorAll('.stat-counter').forEach(el => {
                     const target  = parseFloat(el.dataset.target);
@@ -2936,9 +3218,104 @@
                     });
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+            function initAdvancedScrollEffects() {
+                try {
+                    // Paragraph fade-in effect
+                    gsap.utils.toArray('p:not(.reveal *)').forEach(para => {
+                        if (para.textContent.length < 40) return;
+                        gsap.fromTo(para, { opacity: 0 }, {
+                            opacity: 1, duration: 0.7, ease: 'power2.out',
+                            scrollTrigger: { trigger: para, start: 'top 85%', once: true }
+                        });
+                    });
+
+                    // Stat number scale animation
+                    gsap.utils.toArray('.stat-number').forEach(stat => {
+                        gsap.fromTo(stat, { scale: 0.5, opacity: 0 }, {
+                            scale: 1, opacity: 1, duration: 1, ease: 'back.out',
+                            scrollTrigger: { trigger: stat, start: 'top 80%', once: true }
+                        });
+                    });
+
+                    // About images slide in
+                    gsap.utils.toArray('#about .grid img').forEach((img, idx) => {
+                        const direction = idx % 2 === 0 ? -60 : 60;
+                        gsap.fromTo(img, { opacity: 0, x: direction }, {
+                            opacity: 1, x: 0, duration: 0.8, delay: idx * 0.1,
+                            ease: 'power3.out',
+                            scrollTrigger: { trigger: img, start: 'top 75%', once: true }
+                        });
+                    });
+
+                    // Form inputs slide up
+                    gsap.utils.toArray('.form-input, .form-select, .form-textarea').forEach((input, idx) => {
+                        gsap.fromTo(input, { opacity: 0, y: 30 }, {
+                            opacity: 1, y: 0, duration: 0.6, delay: idx * 0.08,
+                            ease: 'power2.out',
+                            scrollTrigger: { trigger: input, start: 'top 80%', once: true }
+                        });
+                    });
+
+                    // Heading glow effect (using cached headings)
+                    cachedHeadings.forEach(heading => {
+                        gsap.to(heading, {
+                            textShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: heading.closest('section'),
+                                start: 'top 70%',
+                                end: 'center 50%',
+                                scrub: 0.3,
+                            }
+                        });
+                    });
+
+                    // Testimonial cards — already animated via .reveal class, skip double animation
+                    // gsap.utils.toArray('.testimonial-card').forEach((card, idx) => { ... });
+
+                    // Section background color shift — commented out (too subtle + single-section bug)
+                    // gsap.to('section', { backgroundColor: ..., scrollTrigger: { ... } });
+                } catch(e) {
+                    // Scroll effects non-critical; silently fail
+                    // console.warn('Scroll effect error:', e);
+                }
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            //  SCROLL PROGRESS INDICATOR
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            function initScrollToTop() {
+                const scrollBtn = document.getElementById('scroll-to-top');
+                if (!scrollBtn) return;
+
+                // Show/hide button based on scroll position
+                const toggleButton = () => {
+                    if (window.scrollY > 300) {
+                        scrollBtn.classList.add('visible');
+                    } else {
+                        scrollBtn.classList.remove('visible');
+                    }
+                };
+
+                // Scroll to top on click
+                scrollBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Update visibility on scroll
+                window.addEventListener('scroll', toggleButton, { passive: true });
+
+                // Initial check
+                toggleButton();
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  SCROLL CUE BUTTON (Interactive scroll trigger)
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             function initScrollCueButton() {
                 const scrollCueBtn = document.getElementById('scroll-cue');
                 if (!scrollCueBtn) return;
@@ -2948,24 +3325,36 @@
 
                 scrollCueBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    // Smooth scroll to next section (just past canvas)
                     const nextSection = document.getElementById('services') || document.querySelector('section:nth-of-type(2)');
                     if (nextSection) {
                         nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 });
 
-                // Make it keyboard accessible
+                // Keyboard accessibility
                 scrollCueBtn.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
                         scrollCueBtn.click();
                     }
                 });
+
+                // Fade out scroll cue as user scrolls
+                gsap.to(scrollCueBtn, {
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '#canvas-section',
+                        start: 'top 20%',
+                        end: 'top 5%',
+                        scrub: 0.5,
+                    }
+                });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  MAIN SCROLL TRIGGER (Named function for debugging)
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             const scrollTriggers = []; // Track for cleanup
 
             function initScrollTrigger() {
@@ -3033,27 +3422,41 @@
 
                 updatePanels(0);
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            //  REDUCED MOTION CHECK
+            // ═══════════════════════════════════════════════════════════════════════════════════
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function canAnimate() {
+                return !prefersReducedMotion;
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════════════
             //  INIT SEQUENCE
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ═══════════════════════════════════════════════════════════════════════════════════
             gsap.registerPlugin(ScrollTrigger);
             // Gray placeholder while loading
             ctx.fillStyle = '#f5f5f3';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Init scroll button before preload
             initScrollCueButton();
+            initScrollToTop();
             preloadFrames(() => {
-                // All frames loaded â€” hide loader, init animations
+                // All frames loaded &mdash; hide loader, init animations
                 loaderEl.classList.add('hidden');
                 drawFrameIndex(0);
                 initScrollTrigger();
                 initRevealAnimations();
+                initHeadingLineAnimations();
+                initIntroStatementAnimation();
                 initServiceCardAnimations();
                 initProcessCardAnimations();
                 initSectionScrollEffects();
                 initTextParallax();
                 initCounters();
                 initTypedLabels();
+                initMarqueeEntrance();
+                initAdvancedScrollEffects();
+                initFooterAnimations();
             });
         })();
     </script>
@@ -3073,16 +3476,14 @@
                 location: 'S. Florida',
                 subtitle: 'Oceanfront Luxury Renovation',
                 coverImage: 'projects/assets/miami-beach-cover.webp',
-                description: 'I transformed a dated oceanfront unit into a sophisticated luxury residence. Premium finishes, smart home integration, and meticulous structural oversightâ€”all completed in 5 months. The result: a modern oceanfront estate with panoramic views and uncompromising quality.',
+                description: 'I transformed a dated oceanfront unit into a sophisticated luxury residence. Premium finishes, smart home integration, and meticulous structural oversight&mdash;all completed in 5 months. The result: a modern oceanfront estate with panoramic views and uncompromising quality.',
                 duration: '5 months',
                 sqft: '4,200 sqft',
                 bedrooms: '4',
                 baths: '4',
                 role: 'Complete project management from design coordination through final quality assurance and delivery.',
                 gallery: [
-                    'projects/assets/miami-beach-cover.webp',
-                    'projects/miami-beach-interior-1.jpg',
-                    'projects/miami-beach-interior-2.jpg'
+                    'projects/assets/miami-beach-cover.webp'
                 ]
             },
             'high-alpine-ranch': {
@@ -3100,8 +3501,8 @@
                 role: 'End-to-end project leadership including site analysis, structural engineering coordination, and specialized weather-adaptive construction.',
                 gallery: [
                     'projects/assets/alpine-ranch-cover.webp',
-                    'projects/alpine-ranch-exterior.jpg',
-                    'projects/alpine-ranch-interior.jpg'
+                    'projects/assets/alpine-ranch-1.webp',
+                    'projects/assets/alpine-ranch-2.webp'
                 ]
             },
             'syracuse-house': {
@@ -3111,14 +3512,12 @@
                 location: 'N. Utah',
                 subtitle: 'N. Utah Craftsman Estate',
                 coverImage: 'projects/syracuse-cover.png',
-                description: 'I delivered this 6,200 sq ft craftsman estate as a complete design-build project in 18 months. Blending timeless design principles with modern systemsâ€”custom millwork, natural stone, and integrated smart home technology. The result: a refined estate built to perform for generations.',
+                description: 'I delivered this 6,200 sq ft craftsman estate as a complete design-build project in 18 months. Blending timeless design principles with modern systems&mdash;custom millwork, natural stone, and integrated smart home technology. The result: a refined estate built to perform for generations.',
                 duration: '18 months',
                 sqft: '6,200 sqft',
                 role: 'Complete design-build leadership aligning architectural vision with flawless execution.',
                 gallery: [
-                    'projects/syracuse-cover.png',
-                    'projects/syracuse-exterior.jpg',
-                    'projects/syracuse-interior.jpg'
+                    'projects/syracuse-cover.png'
                 ]
             },
             'montana-condo': {
@@ -3133,8 +3532,7 @@
                 sqft: '2,800 sqft',
                 role: 'Construction oversight and quality management for mid-rise residential development.',
                 gallery: [
-                    'projects/assets/montana-cover.webp',
-                    'projects/montana-interior.jpg'
+                    'projects/assets/montana-cover.webp'
                 ]
             },
             'hospitality-pool': {
@@ -3144,14 +3542,12 @@
                 location: 'SE Texas',
                 subtitle: 'Resort Pool',
                 coverImage: 'projects/hospitality-pool-cover-v2.jpg',
-                description: 'I engineered and executed an ultra-luxury resort pool complexâ€”189,000 gallons of custom-designed waterscapes completed in 18 months. Advanced filtration systems, premium landscaping, and resort amenitiesâ€”all operating flawlessly. A destination asset built to last.',
+                description: 'I engineered and executed an ultra-luxury resort pool complex&mdash;189,000 gallons of custom-designed waterscapes completed in 18 months. Advanced filtration systems, premium landscaping, and resort amenities&mdash;all operating flawlessly. A destination asset built to last.',
                 duration: '18 months',
                 gallons: '189,000 gal',
                 role: 'Complete hospitality project leadership including pool engineering, amenity coordination, and luxury execution standards.',
                 gallery: [
-                    'projects/hospitality-pool-cover-v2.jpg',
-                    'projects/hospitality-pool-1.jpg',
-                    'projects/hospitality-pool-2.jpg'
+                    'projects/hospitality-pool-cover-v2.jpg'
                 ]
             },
             'southcoast-remodel': {
@@ -3216,12 +3612,12 @@
                 category: 'Residential Construction',
                 location: 'California',
                 subtitle: 'Luxury Residence',
-                coverImage: 'projects/carmel-house-2-cover.jpg',
+                coverImage: 'projects/assets/carmel-2-cover.webp',
                 description: 'A luxury residence in Carmel featuring contemporary design and premium finishes. This project showcases sophisticated architectural detailing and high-end construction quality.',
                 duration: 'Custom Timeline',
                 role: 'Construction management for luxury residential development.',
                 gallery: [
-                    'projects/carmel-house-2-cover.jpg'
+                    'projects/assets/carmel-2-cover.webp'
                 ]
             },
             'bigsur-mountain-remodel': {
@@ -3230,12 +3626,13 @@
                 category: 'Civil',
                 location: 'California',
                 subtitle: 'Structural Enhancement',
-                coverImage: 'projects/bigsur-mountain-cover.jpg',
+                coverImage: 'projects/assets/bigsur-cover.webp',
                 description: 'A specialized mountain remodeling project navigating Big Sur\'s challenging terrain and environmental regulations. This civil project required expert foundation work and structural engineering.',
                 duration: 'Custom Timeline',
                 role: 'Civil engineering and foundation management for mountain terrain adaptation.',
                 gallery: [
-                    'projects/bigsur-mountain-cover.jpg'
+                    'projects/assets/bigsur-cover.webp',
+                    'projects/assets/bigsur-1.webp'
                 ]
             },
             'carmel-knolls': {
@@ -3244,12 +3641,12 @@
                 category: 'Civil',
                 location: 'California',
                 subtitle: 'Development Project',
-                coverImage: 'projects/carmel-knolls-cover.jpg',
+                coverImage: 'projects/carmel-knolls/001.10%20COVER.jpg',
                 description: 'A civil development project in the Carmel Knolls area featuring site preparation, foundation work, and infrastructure development.',
                 duration: 'Custom Timeline',
                 role: 'Civil project coordination including site analysis and development management.',
                 gallery: [
-                    'projects/carmel-knolls-cover.jpg'
+                    'projects/carmel-knolls/001.10%20COVER.jpg'
                 ]
             },
             'coastal-restoration': {
@@ -3258,12 +3655,12 @@
                 category: 'Civil',
                 location: 'California',
                 subtitle: 'Environmental Preservation',
-                coverImage: 'projects/coastal-restoration-cover.jpg',
+                coverImage: 'projects/coastal-restoration/001%20COVER.JPG',
                 description: 'A specialized coastal restoration project addressing environmental preservation and structural integrity. This complex civil project required environmental compliance and precise engineering.',
                 duration: 'Custom Timeline',
                 role: 'Environmental project management and coastal engineering oversight.',
                 gallery: [
-                    'projects/coastal-restoration-cover.jpg'
+                    'projects/coastal-restoration/001%20COVER.JPG'
                 ]
             },
             'bahamas-beachfront-estate': {
@@ -3272,12 +3669,13 @@
                 category: 'Residential Development',
                 location: 'Bahamas',
                 subtitle: 'Premier Island Development',
-                coverImage: 'projects/bahamas-beachfront-cover.jpg',
+                coverImage: 'projects/assets/beachfront-1.webp',
                 description: 'A premier beachfront estate development in the Bahamas featuring luxury residences with direct beach access. This major development project combined landscape design with structural excellence.',
                 duration: 'Custom Timeline',
                 role: 'Large-scale development project management including master planning and infrastructure coordination.',
                 gallery: [
-                    'projects/bahamas-beachfront-cover.jpg'
+                    'projects/assets/beachfront-1.webp',
+                    'projects/assets/beachfront-2.webp'
                 ]
             },
             'development-civil': {
@@ -3286,12 +3684,12 @@
                 category: 'Residential Development',
                 location: 'Multi-State',
                 subtitle: 'Infrastructure Development',
-                coverImage: 'projects/development-civil-cover.jpg',
+                coverImage: 'projects/development-civil/development%20(1).jpg',
                 description: 'A comprehensive civil development project handling infrastructure, site preparation, and master planning for residential development.',
                 duration: 'Custom Timeline',
                 role: 'Development and civil coordination across multiple phases.',
                 gallery: [
-                    'projects/development-civil-cover.jpg'
+                    'projects/development-civil/development%20(1).jpg'
                 ]
             },
             'pacific-grove-design-build': {
@@ -3300,12 +3698,12 @@
                 category: 'Design Build',
                 location: 'California',
                 subtitle: 'Coastal Residence',
-                coverImage: 'projects/pacific-grove-cover.jpg',
+                coverImage: 'projects/pacific-grove/001%20COVER.JPG',
                 description: 'A design-build project in Pacific Grove featuring coastal luxury with environmental sensitivity. This project balanced aesthetic design with structural resilience.',
                 duration: 'Custom Timeline',
                 role: 'Coastal design-build management from concept through completion.',
                 gallery: [
-                    'projects/pacific-grove-cover.jpg'
+                    'projects/pacific-grove/001%20COVER.JPG'
                 ]
             },
             'hillside-cleanup': {
@@ -3314,12 +3712,12 @@
                 category: 'Civil',
                 location: 'California',
                 subtitle: 'Site Remediation',
-                coverImage: 'projects/hillside-cleanup-cover.jpg',
+                coverImage: 'projects/hillside-cleanup/001%20COVER.jpg',
                 description: 'A specialized civil project focusing on hillside remediation, stabilization, and environmental cleanup. This project required careful site assessment and engineering solutions.',
                 duration: 'Custom Timeline',
                 role: 'Civil engineering and site remediation management.',
                 gallery: [
-                    'projects/hillside-cleanup-cover.jpg'
+                    'projects/hillside-cleanup/001%20COVER.jpg'
                 ]
             },
             'laguna-grande-design-build': {
@@ -3328,12 +3726,12 @@
                 category: 'Design Build',
                 location: 'California',
                 subtitle: 'Luxury Estate',
-                coverImage: 'projects/laguna-grande-cover.jpg',
+                coverImage: 'projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png',
                 description: 'A luxury design-build estate in Laguna Grande featuring premium materials, sophisticated design, and high-end construction excellence.',
                 duration: 'Custom Timeline',
                 role: 'Full design-build management for luxury estate development.',
                 gallery: [
-                    'projects/laguna-grande-cover.jpg'
+                    'projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png'
                 ]
             },
             'carmel-house-3': {
@@ -3342,12 +3740,12 @@
                 category: 'Residential Construction',
                 location: 'California',
                 subtitle: 'Premium Residence',
-                coverImage: 'projects/carmel-house-3-cover.jpg',
+                coverImage: 'projects/assets/carmel-3-cover.webp',
                 description: 'Another distinguished Carmel residence project showcasing premium construction quality and sophisticated architectural detailing.',
                 duration: 'Custom Timeline',
                 role: 'Construction management for luxury residential property.',
                 gallery: [
-                    'projects/carmel-house-3-cover.jpg'
+                    'projects/assets/carmel-3-cover.webp'
                 ]
             }
         };
@@ -3570,14 +3968,38 @@
 
     })();
     </script>
-    <!-- Multi-step discovery form logic -->
+    <!-- Multi-step discovery form logic with sessionStorage persistence -->
     <script>
     (() => {
         'use strict';
-        let selectedBudget = '';
-        let selectedType   = '';
-        let currentStep    = 1;
+        const FORM_STATE_KEY = 'mcdesign_form_state';
         const listeners = []; // Track for cleanup
+
+        // Helper: load form state from sessionStorage
+        function loadFormState() {
+            try {
+                const saved = sessionStorage.getItem(FORM_STATE_KEY);
+                return saved ? JSON.parse(saved) : { budget: '', type: '', name: '', email: '', step: 1 };
+            } catch (e) {
+                console.warn('Failed to load form state:', e);
+                return { budget: '', type: '', name: '', email: '', step: 1 };
+            }
+        }
+
+        // Helper: save form state to sessionStorage
+        function saveFormState(state) {
+            try {
+                sessionStorage.setItem(FORM_STATE_KEY, JSON.stringify(state));
+            } catch (e) {
+                console.warn('Failed to save form state:', e);
+            }
+        }
+
+        // Load saved state
+        const savedState = loadFormState();
+        let selectedBudget = savedState.budget;
+        let selectedType = savedState.type;
+        let currentStep = savedState.step;
 
         const steps = [
             document.getElementById('step-1'),
@@ -3608,6 +4030,8 @@
                 if (i < n - 1) p.classList.add('done');
                 else if (i === n - 1) p.classList.add('active');
             });
+            // Save step to sessionStorage
+            saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: n });
         }
 
         // Helper: attach listener and track for cleanup
@@ -3627,39 +4051,64 @@
             }
         }
 
-        // Step 1 â€” budget selection
+        // Restore saved form state visually
+        function restoreSavedState() {
+            if (selectedBudget) {
+                const budgetBtn = budgetGrid.querySelector(`[data-value=”${selectedBudget}”]`);
+                if (budgetBtn) budgetBtn.classList.add('selected');
+                step1NextBtn.disabled = false;
+            }
+            if (selectedType) {
+                const typeBtn = typeGrid.querySelector(`[data-value=”${selectedType}”]`);
+                if (typeBtn) typeBtn.classList.add('selected');
+                step2NextBtn.disabled = false;
+            }
+            if (savedState.name) nameInput.value = savedState.name;
+            if (savedState.email) emailInput.value = savedState.email;
+            showStep(currentStep);
+        }
+
+        // Step 1 &mdash; budget selection
         budgetGrid.querySelectorAll('.option-btn').forEach(btn => {
             on(btn, 'click', () => {
                 budgetGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
                 selectedBudget = btn.dataset.value;
                 step1NextBtn.disabled = false;
+                saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
             });
         });
         on(step1NextBtn, 'click', () => showStep(2));
 
-        // Step 2 â€” project type selection
+        // Step 2 &mdash; project type selection
         typeGrid.querySelectorAll('.option-btn').forEach(btn => {
             on(btn, 'click', () => {
                 typeGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
                 selectedType = btn.dataset.value;
                 step2NextBtn.disabled = false;
+                saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
             });
         });
         on(step2BackBtn, 'click', () => showStep(1));
         on(step2NextBtn, 'click', () => showStep(3));
 
-        // Step 3 â€” contact & submit with improved validation
+        // Step 3 &mdash; contact & submit with improved validation
         on(step3BackBtn, 'click', () => showStep(2));
-        on(nameInput, 'input', () => setFieldError(nameInput, false));
-        on(emailInput, 'input', () => setFieldError(emailInput, false));
+        on(nameInput, 'input', () => {
+            setFieldError(nameInput, false);
+            saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
+        });
+        on(emailInput, 'input', () => {
+            setFieldError(emailInput, false);
+            saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
+        });
 
         on(step3SubmitBtn, 'click', () => {
             const name = nameInput.value.trim();
             const email = emailInput.value.trim();
             const hasNameError = !name;
-            const hasEmailError = !email;
+            const hasEmailError = !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
             setFieldError(nameInput, hasNameError);
             setFieldError(emailInput, hasEmailError);
@@ -3671,12 +4120,13 @@
             stepIndicator.style.display = 'none';
             formSuccess.classList.add('visible');
 
-            // Optional: Reset form after success display
+            // Clear form state after successful submission
             setTimeout(() => {
                 nameInput.value = '';
                 emailInput.value = '';
                 selectedBudget = '';
                 selectedType = '';
+                sessionStorage.removeItem(FORM_STATE_KEY);
             }, 100);
         });
 
@@ -3687,6 +4137,9 @@
             });
             listeners.length = 0;
         }
+
+        // Restore saved state on load
+        restoreSavedState();
 
         // Attach cleanup to window for potential SPA navigation
         window.formCleanup = cleanup;
@@ -3754,6 +4207,9 @@
                         const match = filter === 'all' || card.dataset.category === filter;
                         card.hidden = !match;
                     });
+
+                    // Recalculate scroll trigger positions after DOM layout changes
+                    ScrollTrigger.refresh();
                 };
             }
 
@@ -3805,7 +4261,7 @@
                 ]
             },
             'syracuse-house': {
-                title: 'Syracuse House â€” N. Utah Craftsman Estate',
+                title: 'Syracuse House &mdash; N. Utah Craftsman Estate',
                 images: [
                     BASE + 'syracuse-cover.webp',
                     ...Array.from({length:46}, (_,i) => BASE + 'syracuse-' + (i+1) + '.webp')
@@ -3870,7 +4326,7 @@
                 ]
             },
             'bigsur-mountain-remodel': {
-                title: 'Coastal Mountain Residence â€” Civil Site Work',
+                title: 'Coastal Mountain Residence &mdash; Civil Site Work',
                 images: [
                     BASE + 'bigsur-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'bigsur-' + (i+1) + '.webp')
@@ -3884,7 +4340,7 @@
                 ]
             },
             'coastal-restoration': {
-                title: 'Coastal Restoration â€” Erosion Repair',
+                title: 'Coastal Restoration &mdash; Erosion Repair',
                 images: [
                     BASE + 'coastal-restoration-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'coastal-restoration-' + (i+1) + '.webp')
@@ -3909,14 +4365,14 @@
                 ]
             },
             'hillside-cleanup': {
-                title: 'Hillside Restoration â€” Environmental Cleanup',
+                title: 'Hillside Restoration &mdash; Environmental Cleanup',
                 images: [
                     BASE + 'hillside-cleanup-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'hillside-cleanup-' + (i+1) + '.webp')
                 ]
             },
             'laguna-grande-design-build': {
-                title: 'Laguna Grande â€” Spanish Revival Commercial',
+                title: 'Laguna Grande &mdash; Spanish Revival Commercial',
                 images: [
                     BASE + 'laguna-grande-cover.webp',
                     ...Array.from({length:6}, (_,i) => BASE + 'laguna-grande-' + (i+1) + '.webp')
@@ -3983,7 +4439,7 @@
 
             lbImg.classList.remove('loaded');
             const src = currentImages[idx];
-            lbImg.alt = lbTitle.textContent + ' â€” image ' + (idx + 1);
+            lbImg.alt = lbTitle.textContent + ' &mdash; image ' + (idx + 1);
 
             // Use single preload image, reuse it for loading check
             let loadTimeout;
@@ -3994,7 +4450,8 @@
             };
             const handleError = () => {
                 clearTimeout(loadTimeout);
-                console.warn(`Failed to load image: ${src}`);
+                // Gracefully handle load failure; display broken image rather than blocking
+                // console.warn(`Failed to load image: ${src}`);
                 lbImg.src = src; // Show broken image rather than nothing
                 lbImg.classList.add('loaded');
             };
@@ -4087,5 +4544,7 @@
         };
     })();
     </script>
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" aria-label="Scroll to top" title="Back to top"></button>
 </body>
 </html>
