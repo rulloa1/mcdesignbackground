@@ -4,16 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Michael Chandler &mdash; Strategic Construction Executive</title>
-    <meta name=”description”
-        content=”Michael Chandler &mdash; Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana.” />
-    <meta name=”keywords” content=”ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction” />
-    <meta property=”og:title” content=”Michael Chandler &mdash; Strategic Construction Executive” />
-    <meta property=”og:description” content=”Ultra-luxury custom homes, historic coastal restorations, and design-build construction management. 37+ years, $500M+ portfolio.” />
-    <meta property=”og:type” content=”website” />
-    <meta name=”twitter:card” content=”summary_large_image” />
-    <meta name=”twitter:title” content=”Michael Chandler &mdash; Strategic Construction Executive” />
-    <meta name=”twitter:description” content=”Ultra-luxury custom homes, coastal restorations, design-build construction. California &bullet; Bahamas &bullet; Texas &bullet; Montana.” />
+    <meta name="description"
+        content="Michael Chandler &mdash; Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana." />
+    <meta name="keywords" content="ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction" />
+    <meta property="og:title" content="Michael Chandler &mdash; Strategic Construction Executive" />
+    <meta property="og:description" content="Ultra-luxury custom homes, historic coastal restorations, and design-build construction management. 37+ years, $500M+ portfolio." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesign.bio" />
+    <meta property="og:site_name" content="mcdesign" />
+    <meta property="og:image" content="https://mcdesign.bio/og-image-1200x630.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Michael Chandler &mdash; Strategic Construction Executive" />
+    <meta name="twitter:description" content="Ultra-luxury custom homes, coastal restorations, design-build construction. California &bullet; Bahamas &bullet; Texas &bullet; Montana." />
     <link rel="canonical" href="https://mcdesign.bio" />
+    <meta name="twitter:image" content="https://mcdesign.bio/og-image-1200x630.jpg" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#1C1916" />
+    <!-- Content Security Policy: restricts resource loading and mitigates XSS attacks -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' data:; connect-src 'self';" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Michael Chandler",
+      "jobTitle": "Strategic Construction Executive",
+      "url": "https://mcdesign.bio",
+      "knowsAbout": [
+        "Ultra-luxury custom homes",
+        "Historic coastal restoration",
+        "Design-build construction management"
+      ]
+    }
+    </script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
     <script>
@@ -38,17 +64,19 @@
             }
         }
     </script>
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Inter (body) + Cormorant Garamond (display serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet" />
-    <!-- GSAP + ScrollTrigger CDN with SRI hashes -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-MOoERQ9E0lkVw1MdjiUZA9fsmB0NVl4+r4HS5Pz0Tho3dJFjn76QBKtZFfVPb4Tr5GXUFi2YMrwT9j17YfaYA==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-sTZ0n5S0f3GEHp3VfVGSVKz6mKQCfaMr9Jl6dQ+aM1eSiSdOTGiDUcBjB2h2i6qqDL1ylIEXEU8f+sBN0TojQ==" crossorigin="anonymous"></script>
+
     <style>
         /* === Reset & base === */
+        button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--text);
+            outline-offset: 2px;
+        }
         *,
         *::before,
         *::after {
@@ -66,16 +94,67 @@
             --text:        #1C1916;
             --text-muted:  #6B6660;
             --text-faint:  #9C978E;
+            /* Warm-orange accent system (Lovable-inspired editorial luxury) */
+            --accent:      #E27535;
+            --accent-hov:  #C85F24;
+            --accent-soft: #F0A577;
+            --serif:       'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+        }
+        /* === Editorial display typography === */
+        .display-serif {
+            font-family: var(--serif);
+            font-weight: 400;
+            letter-spacing: -0.015em;
+            line-height: 1.04;
+            text-transform: none;
+        }
+        /* One-word italic pull in the accent color — the signature Lovable treatment */
+        .pull-italic {
+            font-family: var(--serif);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
+            letter-spacing: -0.005em;
+        }
+        /* Dashed eyebrow label: "— LABEL" with an orange rule */
+        .eyebrow-dash {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+        .eyebrow-dash::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+        /* Primary accent button (replaces bare dark buttons where a CTA is desired) */
+        .btn-accent {
+            background: var(--accent);
+            color: #fff;
+            border: 1px solid var(--accent);
+            transition: background .25s ease, border-color .25s ease;
+        }
+        .btn-accent:hover {
+            background: var(--accent-hov);
+            border-color: var(--accent-hov);
         }
         /* === Accessibility: Respect user motion preferences === */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
             *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
+                animation-duration: 0.01ms;
+                animation-iteration-count: 1;
+                transition-duration: 0.01ms;
+                scroll-behavior: auto;
             }
         }
         /* === Spin animation (moved from inline JS) === */
@@ -85,7 +164,7 @@
         /* === Form validation error state === */
         .form-input.error,
         .form-textarea.error {
-            border-color: #d44 !important;
+            border-color: #d44;
         }
         html {
             font-family: 'Inter', system-ui, sans-serif;
@@ -217,13 +296,62 @@
             margin-bottom: 10px;
         }
         .panel-heading {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 300;
-            letter-spacing: -.02em;
-            line-height: 1.08;
+            font-family: var(--serif);
+            font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+            font-weight: 400;
+            letter-spacing: -.015em;
+            line-height: 1.02;
             color: var(--text);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
+            text-transform: none;
+        }
+        .panel-heading .pull-italic {
+            font-size: 1.05em; /* slight upscale; italics read narrower */
+        }
+        /* === Hero wordmark — fades out as scroll progresses === */
+        #hero-wordmark {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5vw;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 1;
+            transition: opacity .35s ease-out;
+        }
+        #hero-wordmark .wm-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .28em;
             text-transform: uppercase;
+            color: rgba(255, 255, 255, .82);
+            margin-bottom: 14px;
+            text-shadow: 0 1px 12px rgba(0, 0, 0, .35);
+        }
+        #hero-wordmark .wm-line {
+            font-family: var(--serif);
+            font-weight: 400;
+            color: #fff;
+            line-height: .92;
+            letter-spacing: -.02em;
+            text-shadow: 0 2px 30px rgba(0, 0, 0, .4);
+        }
+        #hero-wordmark .wm-first {
+            font-size: clamp(3.5rem, 9vw, 7.5rem);
+        }
+        #hero-wordmark .wm-second {
+            font-size: clamp(3.8rem, 10vw, 8.5rem);
+            font-style: italic;
+            color: var(--accent);
+            margin-top: -.08em;
+        }
+        #hero-wordmark.is-hidden {
+            opacity: 0;
         }
         .panel-body {
             font-size: 1rem;
@@ -253,14 +381,14 @@
             font-family: inherit;
         }
         #scroll-cue:hover {
-            opacity: 1 !important;
+            opacity: 1;
         }
         #scroll-cue span {
             font-size: .65rem;
             font-weight: 600;
             letter-spacing: .16em;
             text-transform: uppercase;
-            color: rgba(100, 100, 100, .7);
+            color: rgba(70, 70, 70, .9);
             transition: color .3s ease;
         }
         #scroll-cue:hover span {
@@ -295,13 +423,13 @@
             font-weight: 600;
             letter-spacing: .12em;
             text-transform: uppercase;
-            color: rgba(100, 100, 100, .6);
+            color: rgba(70, 70, 70, .8);
             transition: color .3s ease;
         }
         .chevron-down {
             width: 28px;
             height: 28px;
-            color: rgba(100, 100, 100, .5);
+            color: rgba(70, 70, 70, .7);
             animation: chevronBounce 2s ease-in-out infinite;
             transition: color .3s ease;
         }
@@ -344,7 +472,7 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
         #scroll-to-top::before {
-            content: '↑';
+            content: '= ';
             color: #fff;
             font-size: 24px;
             font-weight: bold;
@@ -535,20 +663,31 @@
             padding: 0 28px;
         }
         .section-label {
-            font-size: .65rem;
-            font-weight: 700;
-            letter-spacing: .15em;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .18em;
             text-transform: uppercase;
-            color: var(--text-faint);
-            margin-bottom: 16px;
-            display: block;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
             position: relative;
+        }
+        /* Orange dash before every section label: "— LABEL" */
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+            flex-shrink: 0;
         }
         .section-label::after {
             content: '';
             position: absolute;
             bottom: -8px;
-            left: 0;
+            left: 54px; /* shift right to clear the orange dash */
             width: 32px;
             height: 1px;
             background: var(--border);
@@ -730,6 +869,102 @@
             opacity: 0;
             transform: translateY(24px);
         }
+        /* === Selected Works teaser (editorial flagship picks) === */
+        .selected-works {
+            margin-bottom: 72px;
+        }
+        .selected-works-header {
+            display: flex;
+            align-items: baseline;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(0,0,0,.1);
+        }
+        .selected-works-sub {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+        .selected-works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        @media (max-width: 960px) {
+            .selected-works-grid { grid-template-columns: 1fr; gap: 36px; }
+        }
+        .selected-work {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            position: relative;
+        }
+        .selected-work-num {
+            font-family: var(--serif);
+            font-size: .82rem;
+            font-weight: 500;
+            letter-spacing: .18em;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 14px;
+        }
+        .selected-work-img {
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            background: #eee;
+            position: relative;
+        }
+        .selected-work-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.1s cubic-bezier(.2,.6,.2,1);
+        }
+        .selected-work-img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,0) 45%);
+            opacity: 0;
+            transition: opacity .4s ease;
+        }
+        .selected-work:hover .selected-work-img img { transform: scale(1.05); }
+        .selected-work:hover .selected-work-img::after { opacity: 1; }
+        .selected-work-body {
+            padding-top: 20px;
+        }
+        .selected-work-location {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 6px;
+        }
+        .selected-work-title {
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -.012em;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .selected-work-title em {
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .selected-work-sub {
+            font-size: .88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
         /* === Portfolio grid === */
         .portfolio-filters {
             display: flex;
@@ -961,7 +1196,7 @@
             color: #555;
         }
 
-        /* â”€â”€ LIGHTBOX â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /*  "= "=  LIGHTBOX  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
         #lightbox {
             display: none;
             position: fixed;
@@ -1354,10 +1589,10 @@
             color: rgba(255,255,255,.3);
         }
         .dark-section h2 {
-            color: #fff !important;
+            color: #fff;
         }
         .dark-section .text-gray-500 {
-            color: rgba(255,255,255,.5) !important;
+            color: rgba(255,255,255,.5);
         }
         .dark-section .rule {
             background: rgba(255,255,255,.15);
@@ -1365,29 +1600,41 @@
         .dark-section .service-icon svg path,
         .dark-section .service-icon svg circle,
         .dark-section .service-icon svg rect {
-            stroke: rgba(255,255,255,.65) !important;
+            stroke: rgba(255,255,255,.65);
         }
 
-        /* === Section heading refinements === */
+        /* === Section heading refinements (editorial serif) === */
         .section-h2 {
-            line-height: 1.06;
-            letter-spacing: -.022em;
+            font-family: var(--serif) !important;
+            font-weight: 400 !important;
+            font-size: clamp(2.4rem, 5vw, 4.2rem) !important;
+            line-height: 1.03;
+            letter-spacing: -.015em;
+            text-transform: none !important;
+        }
+        .section-h2 .pull-italic {
+            font-size: 1.04em;
         }
 
         /* === Intro statement === */
         .intro-statement {
+            font-family: var(--serif);
             font-size: clamp(2.4rem, 5.5vw, 4.5rem);
-            font-weight: 300;
-            letter-spacing: -.03em;
-            line-height: 1.06;
+            font-weight: 400;
+            letter-spacing: -.012em;
+            line-height: 1.08;
             color: var(--text);
         }
+        .intro-statement .pull-italic {
+            font-size: 1.04em;
+        }
 
-        /* === Stats === */
+        /* === Stats (editorial serif numerals, Lovable-style) === */
         .stat-number {
-            font-size: clamp(3rem, 6vw, 4rem);
-            font-weight: 300;
-            letter-spacing: -.04em;
+            font-family: var(--serif);
+            font-size: clamp(2.8rem, 5.4vw, 3.8rem);
+            font-weight: 400;
+            letter-spacing: -.02em;
             line-height: 1;
         }
         .stat-label {
@@ -1559,9 +1806,117 @@
         .stat-accent-line {
             display: block;
             width: 24px;
-            height: 2px;
-            background: #d4a574;
-            margin: 0 auto 12px;
+            height: 1px;
+            background: var(--accent);
+            margin: 0 auto 14px;
+        }
+
+        /* === About portrait (feature-sized, personal-brand forward) === */
+        .portrait-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .portrait-frame {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            background: #111;
+        }
+        .portrait-frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(0,0,0,.06);
+            pointer-events: none;
+        }
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(.2,.6,.2,1);
+        }
+        .portrait-wrap:hover .portrait-frame img {
+            transform: scale(1.04);
+        }
+        .portrait-caption {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-left: 2px;
+        }
+        .portrait-caption::before {
+            content: "";
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+        .portrait-name {
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 500;
+            letter-spacing: -.01em;
+            color: var(--text);
+            line-height: 1.1;
+        }
+        .portrait-role {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-top: 4px;
+        }
+
+        /* === Editorial pull-quote (Spanish-fluency, etc.) === */
+        .pull-quote {
+            margin: 96px auto 0;
+            max-width: 920px;
+            position: relative;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .pull-quote-mark {
+            color: var(--accent);
+            margin: 0 auto 28px;
+            display: block;
+            opacity: .9;
+        }
+        .pull-quote blockquote {
+            font-family: var(--serif);
+            font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.32;
+            letter-spacing: -.008em;
+            color: var(--text);
+            margin: 0;
+        }
+        .pull-quote blockquote .pull-italic {
+            font-style: italic;
+            font-size: 1em;
+        }
+
+        /* === 6-up stat row responsive tweak === */
+        .stats-row-6 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px 24px;
+            margin-top: 88px;
+            padding-top: 64px;
+            border-top: 1px solid rgba(0,0,0,.08);
+        }
+        @media (min-width: 640px) {
+            .stats-row-6 { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .stats-row-6 { grid-template-columns: repeat(6, 1fr); gap: 32px 16px; }
         }
 
         /* === Testimonials section === */
@@ -1726,9 +2081,10 @@
     </style>
 </head>
 <body class="antialiased">
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        LOADING OVERLAY
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <div id="loader" role="status" aria-label="Loading animation frames">
         <div id="loader-logo">
             <svg width="24" height="24" viewBox="0 0 240 240" fill="none" aria-hidden="true">
@@ -1751,9 +2107,9 @@
         </div>
         <p id="loader-pct">0%</p>
     </div>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        NAVBAR
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <header id="navbar" aria-label="Site navigation">
         <div class="nav-inner">
             <a href="#" class="nav-logo" aria-label="mcdesign home">
@@ -1787,6 +2143,8 @@
             </div>
         </div>
     </header>
+
+    <main id="main-content">
     <!-- Full-screen mobile nav -->
     <nav id="mobile-nav" aria-label="Mobile navigation">
         <a href="#services" class="mobile-nav-link">Services</a>
@@ -1802,41 +2160,47 @@
             <span class="mobile-nav-sub" style="color:var(--text-faint);">CA &middot; TX &middot; MT &middot; FL &middot; Bahamas</span>
         </div>
     </nav>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        CANVAS HERO  (pinned 400vh)
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section id="canvas-section" aria-label="Construction portfolio showcase animation">
         <div id="sticky-canvas">
             <!-- Main canvas &mdash; frames rendered here -->
             <canvas id="hero-canvas" role="img" aria-label="Construction portfolio cinematic sequence"></canvas>
+            <!-- Wordmark overlay: visible at the very start of the scroll, fades out as frames advance -->
+            <div id="hero-wordmark" aria-hidden="true">
+                <span class="wm-eyebrow">Strategic Construction Executive</span>
+                <span class="wm-line wm-first">Michael</span>
+                <span class="wm-line wm-second">Chandler</span>
+            </div>
             <!-- Panel 1: The Blueprint (0% checkpoint) -->
-            <div class=”text-panel” id=”panel-1”>
-                <div class=”panel-inner”>
-                    <span class=”panel-eyebrow”>Michael Chandler</span>
-                    <h2 class=”panel-heading”>37 Years.<br>Built by Hand.</h2>
-                    <p class=”panel-body”>I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbean&mdash;residential, hospitality, and complex civil projects.</p>
+            <div class="text-panel" id="panel-1">
+                <div class="panel-inner">
+                    <span class="panel-eyebrow">Michael Chandler</span>
+                    <h2 class="panel-heading">37 years.<br>Built by <span class="pull-italic">hand.</span></h2>
+                    <p class="panel-body">I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbean&mdash;residential, hospitality, and complex civil projects.</p>
                     <div style="display:flex;gap:10px;pointer-events:auto;">
-                        <a href="#form-section" class="btn btn-dark">Start Conversation</a>
+                        <a href="#form-section" class="btn btn-accent">Start Conversation</a>
                         <a href="#portfolio" class="btn btn-outline">View Work</a>
                     </div>
                 </div>
             </div>
             <!-- Panel 2: The Build (33% checkpoint) -->
-            <div class=”text-panel” id=”panel-2”>
-                <div class=”panel-inner”>
-                    <span class=”panel-eyebrow”>My Approach</span>
-                    <h2 class=”panel-heading”>Uncompromising<br>Precision.</h2>
-                    <p class=”panel-body”>I coordinate every trade with relentless quality oversight. Every detail&mdash;structural, mechanical, and architectural&mdash;reflects uncompromising standards and meticulous craftsmanship.</p>
-                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
+            <div class="text-panel" id="panel-2">
+                <div class="panel-inner">
+                    <span class="panel-eyebrow">My Approach</span>
+                    <h2 class="panel-heading">Uncompromising<br><span class="pull-italic">precision.</span></h2>
+                    <p class="panel-body">I coordinate every trade with relentless quality oversight. Every detail&mdash;structural, mechanical, and architectural&mdash;reflects uncompromising standards and meticulous craftsmanship.</p>
+                    <a href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
             <!-- Panel 3: The Space (66% checkpoint) -->
-            <div class=”text-panel” id=”panel-3”>
-                <div class=”panel-inner”>
-                    <span class=”panel-eyebrow”>The Result</span>
-                    <h2 class=”panel-heading”>Built to<br>Last Generations.</h2>
-                    <p class=”panel-body”>From coastal high-rises to alpine estates&mdash;I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
-                    <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
+            <div class="text-panel" id="panel-3">
+                <div class="panel-inner">
+                    <span class="panel-eyebrow">The Result</span>
+                    <h2 class="panel-heading">Built to last<br><span class="pull-italic">generations.</span></h2>
+                    <p class="panel-body">From coastal high-rises to alpine estates&mdash;I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
+                    <a href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
             <!-- Scroll notification with animated chevron -->
@@ -1859,33 +2223,116 @@
         <div class="dot" data-section="1" title="The Build"></div>
         <div class="dot" data-section="2" title="The Space"></div>
     </nav>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        INTRO STATEMENT
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section class="py-28 md:py-36">
         <div class="site-max">
             <div class="rule reveal"></div>
             <p class="intro-statement max-w-4xl reveal">
                 Three decades of ultra-luxury construction<br class="hidden md:block" />
-                executed with precision, accountability, and uncompromising craft.<br class="hidden md:block" />
+                executed with <span class="pull-italic">precision,</span> accountability, and uncompromising craft.<br class="hidden md:block" />
                 37 years. $500M+ portfolio. Thousands of transformed spaces.
             </p>
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+       ABOUT SECTION (moved up — portrait-forward personal brand)
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+    <section id="about" class="py-24 md:py-28" style="background:var(--bg-alt);">
+        <div class="site-max">
+            <div class="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 md:gap-20 items-center">
+                <!-- Left: portrait (feature-sized) -->
+                <div class="portrait-wrap reveal">
+                    <div class="portrait-frame">
+                        <img src="mike-profile.jpeg" alt="Michael Chandler, Founder &amp; Master Builder" />
+                    </div>
+                    <div class="portrait-caption">
+                        <div>
+                            <p class="portrait-name">Michael Chandler</p>
+                            <p class="portrait-role">Founder &amp; Master Builder</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: bio -->
+                <div>
+                    <span class="section-label reveal">Legacy Since 1987</span>
+                    <h2 class="text-4xl md:text-5xl tracking-tight mb-6 reveal section-h2">
+                        A unique <span class="pull-italic">perspective</span><br />on strategic execution.
+                    </h2>
+                    <div class="rule reveal"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6 reveal" style="font-family:var(--serif);font-size:1.35rem;font-weight:400;line-height:1.45;">
+                        Through 37 years as a business, design, and construction professional, I've found that exceptional results come from exceptional teams.
+                    </p>
+                    <p class="text-base text-gray-500 leading-relaxed mb-6 reveal">
+                        My approach is simple: bring together the right people, create an environment built on mutual respect, and stay closely attuned to client feedback throughout every phase of a project.
+                    </p>
+                    <p class="text-base text-gray-500 leading-relaxed reveal">
+                        I've built my career on the principle that quality construction isn't about meeting standards &mdash; it's about exceeding them, by combining rigorous process with forward-thinking design.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Spanish-fluency pull-quote -->
+            <figure class="pull-quote reveal">
+                <svg class="pull-quote-mark" width="36" height="28" viewBox="0 0 36 28" fill="none" aria-hidden="true">
+                    <path d="M0 28V17C0 11 2 6 6 2C7 1 8.5 0 10 0L12 4C8 6 6 9 6 13H12V28H0ZM22 28V17C22 11 24 6 28 2C29 1 30.5 0 32 0L34 4C30 6 28 9 28 13H34V28H22Z" fill="currentColor"/>
+                </svg>
+                <blockquote>
+                    Native-level fluency in Spanish enables seamless communication with international stakeholders across portfolios exceeding <span class="pull-italic">$500M</span> in four countries.
+                </blockquote>
+            </figure>
+
+            <!-- 6-up stats (operator-grade numbers) -->
+            <div class="stats-row-6">
+                <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
+                    <p class="stat-number stat-counter text-gray-900" data-target="37" data-prefix="" data-suffix="+">37+</p>
+                    <p class="stat-label">Years Experience</p>
+                </div>
+                <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
+                    <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="$" data-suffix="M+">$500M+</p>
+                    <p class="stat-label">Portfolio Value</p>
+                </div>
+                <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
+                    <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="" data-suffix="+">500+</p>
+                    <p class="stat-label">Projects Delivered</p>
+                </div>
+                <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
+                    <p class="stat-number stat-counter text-gray-900" data-target="12" data-prefix="" data-suffix="">12</p>
+                    <p class="stat-label">US States</p>
+                </div>
+                <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
+                    <p class="stat-number stat-counter text-gray-900" data-target="4" data-prefix="" data-suffix="">4</p>
+                    <p class="stat-label">Countries</p>
+                </div>
+                <div class="text-center reveal">
+                    <span class="stat-accent-line"></span>
+                    <p class="stat-number stat-counter text-gray-900" data-target="100" data-prefix="" data-suffix="%">100%</p>
+                    <p class="stat-label">On-Time Delivery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
        SERVICES / CAPABILITIES SECTION
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section id="services" class="dark-section py-24">
         <div class="site-max">
             <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                 <div class="reveal">
                     <span class="section-label">Our Expertise</span>
-                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2">
-                        Complete project leadership.
+                    <h2 class="text-4xl md:text-5xl tracking-tight section-h2">
+                        Complete project <span class="pull-italic">leadership.</span>
                     </h2>
                 </div>
-                <p class=”text-base text-gray-500 leading-relaxed max-w-sm reveal”>
+                <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
                     From conception to completion&mdash;we deliver integrated expertise across design-build, construction management, and complex site development.
                 </p>
             </div>
@@ -1913,7 +2360,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Construction Management</p>
-                    <p class=”service-desc”>Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordination&mdash;protecting your interests at every phase.</p>
+                    <p class="service-desc">Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordination&mdash;protecting your interests at every phase.</p>
                     <span class="service-tag">High-Rise</span>
                     <span class="service-tag" style="margin-left:6px;">Hospitality</span>
                 </div>
@@ -1928,7 +2375,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Civil &amp; Site Work</p>
-                    <p class=”service-desc”>Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure mastery&mdash;turning challenging terrain into asset value.</p>
+                    <p class="service-desc">Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure mastery&mdash;turning challenging terrain into asset value.</p>
                     <span class="service-tag">Coastal</span>
                     <span class="service-tag" style="margin-left:6px;">45+ Acres</span>
                 </div>
@@ -1936,15 +2383,15 @@
         </div>
     </section>
     
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        THE CHANDLER PROCESS
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section id="process" class="py-32" style="background:#fff;">
         <div class="site-max">
             <div class="max-w-2xl reveal">
                 <span class="section-label">Our Approach</span>
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8 section-h2">
-                    Strategic execution<br />in three phases
+                <h2 class="text-4xl md:text-6xl tracking-tight mb-8 section-h2">
+                    Strategic execution<br />in three <span class="pull-italic">phases.</span>
                 </h2>
                 <div class="rule mb-12"></div>
             </div>
@@ -1992,31 +2439,81 @@
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        PORTFOLIO SECTION
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section id="portfolio">
         <div class="site-max">
             <!-- Section header -->
             <div class="pt-24 mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                 <div class="reveal">
                     <span class="section-label">Portfolio</span>
-                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2">
-                        Three decades of<br />exceptional delivery
+                    <h2 class="text-4xl md:text-5xl tracking-tight section-h2">
+                        Three decades of<br />exceptional <span class="pull-italic">delivery.</span>
                     </h2>
                 </div>
-                <p class=”text-base text-gray-500 leading-relaxed max-w-sm reveal”>
+                <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
                     From California to the Caribbean&mdash;$500M+ in completed projects spanning ultra-luxury homes, hospitality, civil infrastructure, and heritage restoration.
                 </p>
             </div>
+
+            <!-- Selected Works teaser (flagship picks, before filters) -->
+            <div class="selected-works reveal">
+                <div class="selected-works-header">
+                    <span class="section-label eyebrow-dash" style="margin-bottom:0;">Selected Works</span>
+                    <p class="selected-works-sub">A closer look at three flagship projects.</p>
+                </div>
+                <div class="selected-works-grid">
+                    <a class="selected-work reveal" data-project="miami-beach-condo">
+                        <span class="selected-work-num">&mdash;&nbsp;Project 01</span>
+                        <div class="selected-work-img">
+                            <img src="projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo" loading="lazy" />
+                        </div>
+                        <div class="selected-work-body">
+                            <p class="selected-work-location">S. Florida &middot; Residential</p>
+                            <p class="selected-work-title">High&nbsp;Rise <em>Luxe</em> Condo</p>
+                            <p class="selected-work-sub">Oceanfront luxury renovation &mdash; 4,200 sqft, 5 months, ocean-facing master suite.</p>
+                        </div>
+                    </a>
+                    <a class="selected-work reveal" data-project="high-alpine-ranch">
+                        <span class="selected-work-num">&mdash;&nbsp;Project 02</span>
+                        <div class="selected-work-img">
+                            <img src="projects/assets/alpine-ranch-cover.webp" alt="High Alpine Ranch" loading="lazy" />
+                        </div>
+                        <div class="selected-work-body">
+                            <p class="selected-work-location">Mountain West &middot; Residential</p>
+                            <p class="selected-work-title">High Alpine <em>Ranch</em></p>
+                            <p class="selected-work-sub">Ground-up luxury ranch executed at altitude &mdash; uncompromising craft in an extreme environment.</p>
+                        </div>
+                    </a>
+                    <a class="selected-work reveal" data-project="carmel-valley-new">
+                        <span class="selected-work-num">&mdash;&nbsp;Project 03</span>
+                        <div class="selected-work-img">
+                            <img src="projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley Residence" loading="lazy" />
+                        </div>
+                        <div class="selected-work-body">
+                            <p class="selected-work-location">Carmel Valley &middot; Design&ndash;Build</p>
+                            <p class="selected-work-title">Carmel Valley <em>Residence</em></p>
+                            <p class="selected-work-sub">Integrated design-build harmonizing contemporary restraint with the valley landscape.</p>
+                        </div>
+                    </a>
+                </div>
+                <div style="margin-top:40px;text-align:left;">
+                    <a href="#portfolio-grid" class="section-label" style="color:var(--accent);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;">
+                        View full portfolio
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+
             <!-- Filters -->
-            <div class="portfolio-filters reveal">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="Residential Construction">Residential</button>
-                <button class="filter-btn" data-filter="Design Build">Design Build</button>
-                <button class="filter-btn" data-filter="Civil">Civil</button>
-                <button class="filter-btn" data-filter="Hospitality">Hospitality</button>
-                <button class="filter-btn" data-filter="Residential Development">Development</button>
+            <div class="portfolio-filters reveal" role="group" aria-label="Filter projects by category">
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-btn" data-filter="Residential Construction" aria-pressed="false">Residential</button>
+                <button class="filter-btn" data-filter="Design Build" aria-pressed="false">Design Build</button>
+                <button class="filter-btn" data-filter="Civil" aria-pressed="false">Civil</button>
+                <button class="filter-btn" data-filter="Hospitality" aria-pressed="false">Hospitality</button>
+                <button class="filter-btn" data-filter="Residential Development" aria-pressed="false">Development</button>
             </div>
             <!-- Grid -->
             <div class="portfolio-grid" id="portfolio-grid">
@@ -2070,9 +2567,9 @@
                 </div>
                 <!-- 3. Syracuse House -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house" style="cursor:pointer;">
-                    <div class=”portfolio-img-wrap”>
-                        <img src=”projects/syracuse-cover.png”
-                            alt=”Syracuse House &mdash; N. Utah Craftsman Estate” loading=”lazy” />
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/syracuse-cover.png"
+                            alt="Syracuse House &mdash; N. Utah Craftsman Estate" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <div class="portfolio-card-overlay">
                             <span class="portfolio-card-overlay-text">View Project
@@ -2372,22 +2869,22 @@
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        TESTIMONIALS SECTION
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section id="testimonials">
         <div class="site-max">
             <div class="reveal">
-                <span class="section-label" style="color:rgba(255,255,255,.3);">Client Voices</span>
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2" style="color:#fff;margin-top:8px;margin-bottom:0;">
-                    Built on trust.
+                <span class="section-label" style="color:rgba(255,255,255,.55);">Client Voices</span>
+                <h2 class="text-4xl md:text-5xl tracking-tight section-h2" style="color:#fff;margin-top:8px;margin-bottom:0;">
+                    Built on <span class="pull-italic">trust.</span>
                 </h2>
             </div>
             <div class="testimonial-grid">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class=”testimonial-body”>Michael's attention to detail is unmatched. He treated our $4M oceanfront renovation like it was his own home. Every subcontractor, every material choice, every timeline &mdash; flawlessly managed. We couldn't be more impressed.</p>
+                    <p class="testimonial-body">Michael's attention to detail is unmatched. He treated our $4M oceanfront renovation like it was his own home. Every subcontractor, every material choice, every timeline &mdash; flawlessly managed. We couldn't be more impressed.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">R. & J. Whitmore</p>
                     <p class="testimonial-meta">S. Florida &middot; Oceanfront Luxury Renovation</p>
@@ -2395,7 +2892,7 @@
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class=”testimonial-body”>We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle &mdash; and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
+                    <p class="testimonial-body">We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle &mdash; and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">T. Harrington</p>
                     <p class="testimonial-meta">Big Sur, CA &middot; Coastal Mountain Civil Work</p>
@@ -2403,7 +2900,7 @@
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class=”testimonial-body”>From our first conversation to final walkthrough, Michael operated with total transparency and professionalism. The Bahamas build was ambitious &mdash; harbor access, tropical engineering, remote logistics &mdash; and he delivered beyond expectation.</p>
+                    <p class="testimonial-body">From our first conversation to final walkthrough, Michael operated with total transparency and professionalism. The Bahamas build was ambitious &mdash; harbor access, tropical engineering, remote logistics &mdash; and he delivered beyond expectation.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">C. & M. Fairfax</p>
                     <p class="testimonial-meta">Abaco, Bahamas &middot; Waterfront Estate</p>
@@ -2412,96 +2909,40 @@
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-       ABOUT SECTION
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-    <section id="about" class="py-28" style="background:var(--bg-alt);">
-        <div class="site-max">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
-                <!-- Left: bio -->
-                <div>
-                    <span class="section-label reveal">About</span>
-                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6 reveal section-h2">
-                        Who I Am
-                    </h2>
-                    <div class="rule reveal"></div>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6 reveal">
-                        Through my experience of 37 years as a Business, Design, and Construction professional, I have found that exceptional results come from exceptional teams.
-                    </p>
-                    <p class="text-base text-gray-500 leading-relaxed mb-6 reveal">
-                        My approach is simple: bring together the right people, create an environment built on mutual respect, and stay closely attuned to client feedback throughout every phase of a project.
-                    </p>
-                    <p class="text-base text-gray-500 leading-relaxed mb-10 reveal">
-                        I've built my career on the universal business principle that quality construction isn't just about meeting standards &mdash; it's about exceeding them, by combining rigorous processes with forward-thinking design.
-                    </p>
-                    <!-- Signature -->
-                    <div class="flex items-center gap-4 reveal">
-                        <div style="width:56px;height:56px;border-radius:0;overflow:hidden;border:1px solid var(--border);flex-shrink:0;">
-                            <img src="mike-profile.jpeg" alt="Michael Chandler" style="width:100%;height:100%;object-fit:cover;" />
-                        </div>
-                        <div>
-                            <p style="font-weight:700;font-size:1.05rem;color:#111;letter-spacing:-.01em;">Michael Chandler</p>
-                            <p style="font-size:.8rem;color:#aaa;letter-spacing:.04em;text-transform:uppercase;">Founder &amp; Master Builder</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Right: image grid -->
-                <div class="grid grid-cols-2 gap-3 reveal">
-                    <div class="space-y-3">
-                        <div style="aspect-ratio:4/5;overflow:hidden;">
-                            <img class="img-zoom" src="projects/syracuse-cover.png" alt="Syracuse House" style="width:100%;height:100%;object-fit:cover;" />
-                        </div>
-                        <div style="aspect-ratio:1/1;overflow:hidden;">
-                            <img class="img-zoom" src="projects/coastal-mountain/001 COVER.JPG" alt="Coastal Mountain" style="width:100%;height:100%;object-fit:cover;" />
-                        </div>
-                    </div>
-                    <div class="space-y-3" style="padding-top:2.5rem;">
-                        <div style="aspect-ratio:1/1;overflow:hidden;">
-                            <img class="img-zoom" src="projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley" style="width:100%;height:100%;object-fit:cover;" />
-                        </div>
-                        <div style="aspect-ratio:4/5;overflow:hidden;">
-                            <img class="img-zoom" src="projects/hospitality-pool-cover-v2.jpg" alt="Private Club Pool" style="width:100%;height:100%;object-fit:cover;" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-gray-200">
-                <div class="text-center reveal">
-                    <span class="stat-accent-line"></span>
-                    <p class="stat-number stat-counter text-gray-900" data-target="37" data-prefix="" data-suffix="+">37+</p>
-                    <p class="stat-label">Years Experience</p>
-                </div>
-                <div class="text-center reveal">
-                    <span class="stat-accent-line"></span>
-                    <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="$" data-suffix="M+">$500M+</p>
-                    <p class="stat-label">Portfolio Value</p>
-                </div>
-                <div class="text-center reveal">
-                    <span class="stat-accent-line"></span>
-                    <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="" data-suffix="+">500+</p>
-                    <p class="stat-label">Projects Completed</p>
-                </div>
-                <div class="text-center reveal">
-                    <span class="stat-accent-line"></span>
-                    <p class="stat-number stat-counter text-gray-900" data-target="100" data-prefix="" data-suffix="%">100%</p>
-                    <p class="stat-label">Client Satisfaction</p>
-                </div>
-            </div>
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+       CTA BAND (framing the final form — consolidated close)
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+    <section id="contact" class="bg-gray-950 text-white py-24 md:py-28 px-6 text-center" style="border-bottom:1px solid rgba(255,255,255,.06);">
+        <span class="section-label reveal" style="color:rgba(255,255,255,.55);justify-content:center;">The Path To Excellence</span>
+        <h2 class="text-4xl md:text-6xl tracking-tight mb-6 reveal section-h2" style="color:#fff;margin-top:8px;">
+            Ready to <span class="pull-italic">elevate</span><br />your next development?
+        </h2>
+        <p class="cta-sub reveal">Put 37+ years of strategic construction expertise to work on your multimillion-dollar project.</p>
+        <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="#form-section" class="btn btn-accent"
+                style="padding:16px 36px;font-size:.78rem;">
+                Start the conversation
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <a href="#portfolio" class="btn"
+                style="background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.2);padding:14px 32px;font-size:.78rem;">
+                View Portfolio
+            </a>
         </div>
+        <p class="reveal" style="margin-top:28px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);">Limited availability for new consultations</p>
     </section>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-       PROJECT DISCOVERY FORM
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-    <section id="form-section">
+
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+       PROJECT DISCOVERY FORM (directly follows CTA band — no duplicate heading)
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+    <section id="form-section" class="py-20 md:py-24">
         <div class="site-max">
-            <div class="max-w-2xl mb-16 reveal">
-                <span class="section-label">Start a Conversation</span>
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight section-h2 mb-4">
-                    Let's discuss your<br />next project
-                </h2>
-                <p class="text-base text-gray-500 leading-relaxed">
-                    Share your vision, location, and timeline. I'll evaluate the opportunity and connect with you personally within 24 hours.
+            <div class="max-w-2xl mb-12 reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+                <span class="section-label" style="justify-content:center;">Project Discovery</span>
+                <p class="text-base text-gray-500 leading-relaxed" style="font-family:var(--serif);font-style:italic;font-size:1.15rem;">
+                    Three quick questions. I'll review your project and connect within 24 hours.
                 </p>
             </div>
 
@@ -2518,9 +2959,9 @@
                     <p class="step-heading">What's your project budget?</p>
                     <p class="step-sub">This helps me scope the project and understand if we're a fit.</p>
                     <div class="option-grid" id="budget-grid">
-                        <button class=”option-btn” data-value=”$500K &ndash; $1M”>$500K &ndash; $1M</button>
-                        <button class=”option-btn” data-value=”$1M &ndash; $3M”>$1M &ndash; $3M</button>
-                        <button class=”option-btn” data-value=”$3M &ndash; $10M”>$3M &ndash; $10M</button>
+                        <button class="option-btn" data-value="$500K &ndash; $1M">$500K &ndash; $1M</button>
+                        <button class="option-btn" data-value="$1M &ndash; $3M">$1M &ndash; $3M</button>
+                        <button class="option-btn" data-value="$3M &ndash; $10M">$3M &ndash; $10M</button>
                         <button class="option-btn" data-value="$10M+">$10M+</button>
                     </div>
                     <div class="form-nav">
@@ -2553,11 +2994,13 @@
                     <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
                         <div class="form-field">
                             <label class="form-label" for="disc-name">Full Name</label>
-                            <input id="disc-name" type="text" class="form-input" placeholder="Michael Chandler" autocomplete="name" />
+                            <input id="disc-name" type="text" class="form-input" placeholder="Michael Chandler" autocomplete="name" aria-required="true" aria-describedby="disc-name-error" />
+                            <span id="disc-name-error" role="alert" class="form-error" style="display:none;font-size:0.875rem;color:#d44;margin-top:4px;">Please enter your name</span>
                         </div>
                         <div class="form-field">
                             <label class="form-label" for="disc-email">Email Address</label>
-                            <input id="disc-email" type="email" class="form-input" placeholder="you@email.com" autocomplete="email" />
+                            <input id="disc-email" type="email" class="form-input" placeholder="you@email.com" autocomplete="email" aria-required="true" aria-describedby="disc-email-error" />
+                            <span id="disc-email-error" role="alert" class="form-error" style="display:none;font-size:0.875rem;color:#d44;margin-top:4px;">Please enter a valid email address</span>
                         </div>
                         <div class="form-field">
                             <label class="form-label" for="disc-phone">Phone (optional)</label>
@@ -2587,32 +3030,11 @@
             </div>
         </div>
     </section>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-       CTA BAND
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-    <section id="contact" class="bg-gray-950 text-white py-32 px-6 text-center">
-        <span class="section-label reveal" style="color:rgba(255,255,255,.3);">Next Steps</span>
-        <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-6 reveal" style="letter-spacing:-.025em;line-height:1.05;text-transform:uppercase;">
-            Let's build something<br />remarkable together
-        </h2>
-        <p class="cta-sub reveal">Ultra-luxury residential &middot; Coastal restoration &middot; Design-build &middot; Civil engineering<br />I work where precision and accountability matter most.</p>
-        <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-            <a href="#form-section" class="btn"
-                style="background:#fff;color:#111;padding:14px 32px;font-size:.78rem;">
-                Start the Conversation
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </a>
-            <a href="#portfolio" class="btn"
-                style="background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.2);padding:14px 32px;font-size:.78rem;">
-                View Portfolio
-            </a>
-        </div>
-    </section>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
        FOOTER
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+    </main>
+
     <footer id="site-footer">
         <div class="site-max">
             <div class="footer-top">
@@ -2627,7 +3049,7 @@
                         </svg>
                         mcdesign
                     </p>
-                    <p class=”footer-brand-tagline”>Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft &mdash; from California to the Caribbean.</p>
+                    <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft &mdash; from California to the Caribbean.</p>
                 </div>
                 <!-- Services col -->
                 <div>
@@ -2654,28 +3076,33 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class=”footer-copy”>&copy; 2026 Michael Chandler &mdash; mcdesign. All rights reserved.</p>
+                <p class="footer-copy">&copy; 2026 Michael Chandler &mdash; mcdesign. All rights reserved.</p>
                 <p class="footer-regions">Regions Served: California &bull; Bahamas &bull; Texas &bull; Montana &bull; Utah &bull; Florida</p>
             </div>
         </div>
     </footer>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        JAVASCRIPT
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
         (() => {
             'use strict';
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  CONFIG - Centralized magic numbers and thresholds
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             const CONFIG = {
                 TOTAL_FRAMES: 294,
-                PRELOAD_TIMEOUT: 8000, // 8s timeout for frame loading
+                PRELOAD_TIMEOUT: 30000, // 30s timeout for frame loading
                 REVEAL_DURATION: 0.85,
                 REVEAL_EASE: 'power3.out',
                 SCROLL_TRIGGER_OFFSET: 0.9, // 90% from top
                 PANEL_CHECKPOINTS: [
-                    { index: 0, start: 0.00, end: 0.30 },
+                    // Panel 1 starts after the hero wordmark fades (~0.08) so the two don't overlap
+                    { index: 0, start: 0.08, end: 0.30 },
                     { index: 1, start: 0.33, end: 0.62 },
                     { index: 2, start: 0.66, end: 0.90 },
                 ],
@@ -2707,12 +3134,11 @@
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
-                const ext = supportsWebP ? 'webp' : 'jpg';
-                return `ezgif-frame-${n}.${ext}`;
+                return `ezgif-frame-${n}.jpg`;
             });
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  DOM REFS
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             const loaderEl = document.getElementById('loader');
             const loaderBar = document.getElementById('loader-bar');
             const loaderPct = document.getElementById('loader-pct');
@@ -2728,9 +3154,9 @@
             const progressEl = document.getElementById('progress-dots');
             const scrollCue = document.getElementById('scroll-cue');
             const navbar = document.getElementById('navbar');
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  CANVAS SIZING
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             canvasSec.style.height = '400vh';
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
@@ -2741,9 +3167,9 @@
                 resizeCanvas();
                 drawFrameIndex(currentFrameIndex);
             });
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  IMAGE CACHE
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             /** @type {(HTMLImageElement|null)[]} */
             const cache = new Array(CONFIG.TOTAL_FRAMES).fill(null);
             let loaded = 0;
@@ -2756,29 +3182,33 @@
                 const i = Math.max(0, Math.min(CONFIG.TOTAL_FRAMES - 1, Math.round(idx)));
                 currentFrameIndex = i;
                 const img = cache[i];
-                if (!img) return;
-                const cw = canvas.width, ch = canvas.height;
-                const iw = img.naturalWidth, ih = img.naturalHeight;
-                if (!iw || !ih) return;
-                const scale = Math.max(cw / iw, ch / ih);
-                const sw = iw * scale, sh = ih * scale;
-                const sx = (cw - sw) / 2, sy = (ch - sh) / 2;
-                ctx.clearRect(0, 0, cw, ch);
-                ctx.drawImage(img, sx, sy, sw, sh);
+                
+                if (img && img.complete && img.naturalWidth !== 0) {
+                    const cw = canvas.width, ch = canvas.height;
+                    const iw = img.naturalWidth, ih = img.naturalHeight;
+                    const scale = Math.max(cw / iw, ch / ih);
+                    const sw = iw * scale, sh = ih * scale;
+                    const sx = (cw - sw) / 2, sy = (ch - sh) / 2;
+                    ctx.clearRect(0, 0, cw, ch);
+                    ctx.drawImage(img, sx, sy, sw, sh);
+                } else {
+                    ctx.fillStyle = '#111';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText('Loading frame ' + i, 20, 30);
+                }
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  PRELOAD WITH PROGRESS & ERROR HANDLING
             //  Loads all frames concurrently, tracks progress, with timeout fallback.
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function preloadFrames(onComplete) {
-                let done = 0;
+                // let done = 0;
                 let hasError = false;
 
                 // Timeout safety net: if loading takes too long, proceed anyway
                 const timeoutId = setTimeout(() => {
-                    if (done < CONFIG.TOTAL_FRAMES && !hasError) {
-                        // Only log in development; comment out for production
-                        // console.warn(`Frame preload incomplete after ${CONFIG.PRELOAD_TIMEOUT}ms, proceeding with ${done}/${CONFIG.TOTAL_FRAMES} frames`);
+                    if (loaded < CONFIG.TOTAL_FRAMES && !hasError) {
                         onComplete();
                     }
                 }, CONFIG.PRELOAD_TIMEOUT);
@@ -2795,13 +3225,13 @@
                 };
                 seed.src = FRAME_URLS[0];
 
-                let done_count = 0;
+                let loaded = 0;
                 const tick = () => {
-                    done_count++;
-                    const pct = Math.round((done_count / CONFIG.TOTAL_FRAMES) * 100);
+                    loaded++;
+                    const pct = Math.round((loaded / CONFIG.TOTAL_FRAMES) * 100);
                     loaderBar.style.width = pct + '%';
                     loaderPct.textContent = pct + '%';
-                    if (done_count === CONFIG.TOTAL_FRAMES) {
+                    if (loaded === CONFIG.TOTAL_FRAMES) {
                         clearTimeout(timeoutId);
                         onComplete();
                     }
@@ -2821,11 +3251,11 @@
                     img.src = url;
                 });
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  TEXT PANEL TRANSITIONS
             //  CSS class toggling (is-visible) with CSS transitions for smooth
             //  interpolation handled by the browser's compositor.
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function updatePanels(progress) {
                 CONFIG.PANEL_CHECKPOINTS.forEach(({ index, start, end }) => {
                     const panel = panels[index];
@@ -2834,9 +3264,9 @@
                     panel.style.pointerEvents = visible ? 'auto' : 'none';
                 });
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  SIDEBAR DOTS
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function updateDots(progress) {
                 let active = 0;
                 for (const { index, min } of CONFIG.DOT_THRESHOLDS) {
@@ -2844,32 +3274,36 @@
                 }
                 dots.forEach((d, i) => d.classList.toggle('active', i === active));
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  SMOOTH FRAME SCRUBBING
             //
             //  Strategy: ScrollTrigger drives a gsap-tweened "scrub proxy" object.
             //  We lerp toward the raw progress value each rAF tick, then map to
             //  a frame index. This gives buttery-smooth canvas updates even when
             //  the user scrubs quickly.
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             const proxy = { progress: 0 };  // GSAP-tweened progress target
             let rAFid = null;
-            let frameCount = 0;
-            const isMobile = window.innerWidth < 768; // Optimize for mobile
-            const frameSkip = isMobile ? 2 : 1; // Skip frames on mobile for performance
-
+            let lastDrawnFrame = -1;
+            const wordmarkEl = document.getElementById('hero-wordmark');
+            function updateWordmark(progress) {
+                if (!wordmarkEl) return;
+                // Wordmark is fully visible until ~5% scroll, fully hidden by ~15%.
+                // It lives in the "pre-panel" window before panel-1 reaches is-visible.
+                const hidden = progress > 0.05;
+                wordmarkEl.classList.toggle('is-hidden', hidden);
+            }
             function renderLoop() {
-                if (frameCount % frameSkip === 0) {
-                    drawFrameIndex(proxy.progress * (CONFIG.TOTAL_FRAMES - 1));
-                    updatePanels(proxy.progress);
-                    updateDots(proxy.progress);
-                }
-                frameCount++;
+                const currentFrame = Math.round(proxy.progress * (CONFIG.TOTAL_FRAMES - 1));
+                drawFrameIndex(currentFrame);
+                updatePanels(proxy.progress);
+                updateDots(proxy.progress);
+                updateWordmark(proxy.progress);
                 rAFid = requestAnimationFrame(renderLoop);
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  BELOW-FOLD SCROLL REVEALS
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initServiceCardAnimations() {
                 if (!canAnimate()) return;
                 // Service cards with subtle rotation on scroll
@@ -2962,7 +3396,7 @@
                     revealGroups[parentKey].push(el);
                 });
 
-                // Stagger reveals within each group — direction-aware animations
+                // Stagger reveals within each group  " direction-aware animations
                 Object.values(revealGroups).forEach(group => {
                     group.forEach((el, idx) => {
                         // Determine animation direction based on element type
@@ -3036,9 +3470,9 @@
                     });
                 });
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  LINE-BY-LINE HEADING ANIMATIONS
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initHeadingLineAnimations() {
                 if (!canAnimate()) return;
                 // Animate section headings line by line (split on <br>)
@@ -3068,9 +3502,9 @@
                 });
             }
 
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  INTRO STATEMENT LINE ANIMATIONS
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initIntroStatementAnimation() {
                 if (!canAnimate()) return;
                 const intro = document.querySelector('.intro-statement');
@@ -3099,9 +3533,9 @@
                 );
             }
 
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  MARQUEE ENTRANCE ANIMATION
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initMarqueeEntrance() {
                 if (!canAnimate()) return;
                 const marquee = document.querySelector('.marquee-band');
@@ -3122,9 +3556,9 @@
                 );
             }
 
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  FOOTER ANIMATIONS
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initFooterAnimations() {
                 if (!canAnimate()) return;
                 // Animate footer columns with left-to-right stagger
@@ -3147,10 +3581,10 @@
                 );
             }
 
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  TYPED MICRO-INTERACTIONS (Named function for debugging)
             //  Section labels (.section-label) type themselves in on scroll
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function typeCharacters(el, text, cursor) {
                 let i = 0;
                 const interval = setInterval(() => {
@@ -3192,9 +3626,9 @@
                 });
                 return typeIntervals; // For cleanup if needed
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  ANIMATED STAT COUNTERS
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initCounters() {
                 document.querySelectorAll('.stat-counter').forEach(el => {
                     const target  = parseFloat(el.dataset.target);
@@ -3271,10 +3705,10 @@
                         });
                     });
 
-                    // Testimonial cards — already animated via .reveal class, skip double animation
+                    // Testimonial cards  " already animated via .reveal class, skip double animation
                     // gsap.utils.toArray('.testimonial-card').forEach((card, idx) => { ... });
 
-                    // Section background color shift — commented out (too subtle + single-section bug)
+                    // Section background color shift  " commented out (too subtle + single-section bug)
                     // gsap.to('section', { backgroundColor: ..., scrollTrigger: { ... } });
                 } catch(e) {
                     // Scroll effects non-critical; silently fail
@@ -3282,9 +3716,9 @@
                 }
             }
 
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  SCROLL PROGRESS INDICATOR
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initScrollToTop() {
                 const scrollBtn = document.getElementById('scroll-to-top');
                 if (!scrollBtn) return;
@@ -3313,9 +3747,9 @@
                 toggleButton();
             }
 
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  SCROLL CUE BUTTON (Interactive scroll trigger)
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             function initScrollCueButton() {
                 const scrollCueBtn = document.getElementById('scroll-cue');
                 if (!scrollCueBtn) return;
@@ -3352,9 +3786,9 @@
                     }
                 });
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  MAIN SCROLL TRIGGER (Named function for debugging)
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             const scrollTriggers = []; // Track for cleanup
 
             function initScrollTrigger() {
@@ -3395,9 +3829,9 @@
                     onUpdate(self) {
                         gsap.to(proxy, {
                             progress: self.progress,
-                            duration: 0.4,
-                            ease: 'power1.out',
-                            overwrite: true,
+                            duration: 0.1,
+                            ease: 'none',
+                            overwrite: true
                         });
                     },
                     onEnter() {
@@ -3422,20 +3856,20 @@
 
                 updatePanels(0);
             }
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  REDUCED MOTION CHECK
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             function canAnimate() {
                 return !prefersReducedMotion;
             }
 
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             //  INIT SEQUENCE
-            // ═══════════════════════════════════════════════════════════════════════════════════
+            // ===================================================================================
             gsap.registerPlugin(ScrollTrigger);
             // Gray placeholder while loading
-            ctx.fillStyle = '#f5f5f3';
+            ctx.fillStyle = '#ff0000';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Init scroll button before preload
             initScrollCueButton();
@@ -3461,13 +3895,15 @@
         })();
     </script>
     <!-- Project Details Modal System -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
-    (() => {
-        'use strict';
+        (() => {
+            'use strict';
 
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
         // PROJECT DATA STRUCTURE
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
         const projectsData = {
             'miami-beach-condo': {
                 id: 'miami-beach-condo',
@@ -3750,9 +4186,9 @@
             }
         };
 
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
         // MODAL MANAGEMENT
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
         let currentProjectId = null;
         let currentImageIndex = 0;
 
@@ -3953,10 +4389,10 @@
             });
         }
 
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
         // PORTFOLIO CARD CLICK HANDLERS
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-        document.querySelectorAll('.portfolio-card').forEach(card => {
+        //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+        document.querySelectorAll('.portfolio-card, .selected-work').forEach(card => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
                 const projectId = card.getAttribute('data-project');
@@ -3969,9 +4405,11 @@
     })();
     </script>
     <!-- Multi-step discovery form logic with sessionStorage persistence -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
-    (() => {
-        'use strict';
+        (() => {
+            'use strict';
         const FORM_STATE_KEY = 'mcdesign_form_state';
         const listeners = []; // Track for cleanup
 
@@ -4042,24 +4480,29 @@
             }
         }
 
-        // Helper: validate and display error state
+        // Helper: validate and display error state with accessibility announcements
         function setFieldError(input, isError) {
+            const errorSpan = document.getElementById(input.getAttribute('aria-describedby'));
             if (isError) {
                 input.classList.add('error');
+                input.setAttribute('aria-invalid', 'true');
+                if (errorSpan) errorSpan.style.display = 'block';
             } else {
                 input.classList.remove('error');
+                input.setAttribute('aria-invalid', 'false');
+                if (errorSpan) errorSpan.style.display = 'none';
             }
         }
 
         // Restore saved form state visually
         function restoreSavedState() {
             if (selectedBudget) {
-                const budgetBtn = budgetGrid.querySelector(`[data-value=”${selectedBudget}”]`);
+                const budgetBtn = budgetGrid.querySelector(`[data-value="${selectedBudget}"]`);
                 if (budgetBtn) budgetBtn.classList.add('selected');
                 step1NextBtn.disabled = false;
             }
             if (selectedType) {
-                const typeBtn = typeGrid.querySelector(`[data-value=”${selectedType}”]`);
+                const typeBtn = typeGrid.querySelector(`[data-value="${selectedType}"]`);
                 if (typeBtn) typeBtn.classList.add('selected');
                 step2NextBtn.disabled = false;
             }
@@ -4146,6 +4589,8 @@
     })();
     </script>
     <!-- Mobile nav toggle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
         (() => {
             'use strict';
@@ -4186,6 +4631,8 @@
         })();
     </script>
     <!-- Portfolio filter logic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
         (() => {
             'use strict';
@@ -4197,9 +4644,13 @@
 
             function handleFilterClick(btn) {
                 return () => {
-                    // Remove active state from all buttons
-                    filterBtnsArray.forEach(b => b.classList.remove('active'));
+                    // Remove active state from all buttons and update aria-pressed
+                    filterBtnsArray.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-pressed', 'false');
+                    });
                     btn.classList.add('active');
+                    btn.setAttribute('aria-pressed', 'true');
 
                     // Filter cards
                     const filter = btn.dataset.filter;
@@ -4221,7 +4672,7 @@
     </script>
 
     <!-- LIGHTBOX -->
-    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery">
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery" tabindex="-1">
         <div id="lb-header">
             <div style="display:flex;align-items:center;gap:0;">
                 <span id="lb-title"></span>
@@ -4238,10 +4689,12 @@
     </div>
 
     <!-- Lightbox + Gallery Data Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
-    (() => {
-        'use strict';
-        /* â”€â”€ Gallery data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        (() => {
+            'use strict';
+        /*  "= "=  Gallery data  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
         const BASE = 'projects/assets/';
 
         const GALLERIES = {
@@ -4387,14 +4840,14 @@
             }
         };
 
-        /* â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /*  "= "=  State  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
         let currentImages = [];
         let currentIndex  = 0;
         // Reuse single preload image instead of creating new ones
         const preloadImg  = new Image();
         const listeners   = []; // Track for cleanup
 
-        /* â”€â”€ Elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /*  "= "=  Elements  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
         const lb       = document.getElementById('lightbox');
         const lbImg    = document.getElementById('lb-img');
         const lbTitle  = document.getElementById('lb-title');
@@ -4410,10 +4863,14 @@
             listeners.push({ el, event, handler, options });
         }
 
-        /* â”€â”€ Open / close â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /*  "= "=  Open / close  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
+        let lastActiveTrigger = null; // Store trigger element for focus restoration
+
         function openLightbox(projectId) {
             const data = GALLERIES[projectId];
             if (!data) return;
+            // Store the element that triggered the lightbox (for focus restoration)
+            lastActiveTrigger = document.activeElement;
             currentImages = data.images;
             currentIndex  = 0;
             lbTitle.textContent = data.title;
@@ -4421,7 +4878,7 @@
             showImage(0);
             lb.classList.add('open');
             document.body.style.overflow = 'hidden';
-            lb.focus();
+            lb.focus(); // Focus lightbox for keyboard navigation
         }
 
         function closeLightbox() {
@@ -4429,9 +4886,14 @@
             document.body.style.overflow = '';
             lbImg.classList.remove('loaded');
             lbImg.src = '';
+            // Restore focus to the trigger element
+            if (lastActiveTrigger && typeof lastActiveTrigger.focus === 'function') {
+                lastActiveTrigger.focus();
+            }
         }
 
-        /* â”€â”€ Image display (optimized with single preload image) â”€â”€â”€â”€â”€â”€â”€ */
+        /*  "= "=  Image display (optimized with single preload image)  "= "= "= "= "= "= "=  */
+        let nextPreload = null;
         function showImage(idx) {
             idx = (idx + currentImages.length) % currentImages.length;
             currentIndex = idx;
@@ -4439,7 +4901,7 @@
 
             lbImg.classList.remove('loaded');
             const src = currentImages[idx];
-            lbImg.alt = lbTitle.textContent + ' &mdash; image ' + (idx + 1);
+            lbImg.alt = lbTitle.textContent + ' \u2014 image ' + (idx + 1);
 
             // Use single preload image, reuse it for loading check
             let loadTimeout;
@@ -4466,10 +4928,10 @@
             preloadImg.onerror = handleError;
             preloadImg.src = src;
 
-            // Preload next image for smooth navigation
-            const nextSrc = currentImages[(idx + 1) % currentImages.length];
-            const nextPreload = new Image();
-            nextPreload.src = nextSrc;
+            // Preload next image (reusing single object)
+            if (nextPreload) nextPreload.src = "";
+            nextPreload = new Image();
+            nextPreload.src = currentImages[(idx + 1) % currentImages.length];
 
             // Sync thumbs
             const thumbEls = lbThumbs.querySelectorAll('.lb-thumb');
@@ -4486,7 +4948,7 @@
             showImage(currentIndex + dir);
         }
 
-        /* â”€â”€ Thumbnails â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /*  "= "=  Thumbnails  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
         function buildThumbs() {
             lbThumbs.innerHTML = '';
             currentImages.forEach((src, i) => {
@@ -4499,7 +4961,7 @@
             });
         }
 
-        /* â”€â”€ Event listeners â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /*  "= "=  Event listeners  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
         // Card clicks
         document.querySelectorAll('.portfolio-card[data-project]').forEach(card => {
             on(card, 'click', () => openLightbox(card.dataset.project));
@@ -4548,3 +5010,33 @@
     <button id="scroll-to-top" aria-label="Scroll to top" title="Back to top"></button>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
