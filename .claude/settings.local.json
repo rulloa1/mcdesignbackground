@@ -22,7 +22,9 @@
       "Bash(cp \"c:/Users/roryu/mcdesign/constructiondesignnew/src/assets/projects/\"* \"c:/Users/roryu/OneDrive/Desktop/mcdesignbackground/projects/assets/\")",
       "Bash(echo \"Done: $?\")",
       "Bash(node -e ':*)",
-      "Bash(node -c index.html)"
+      "Bash(node -c index.html)",
+      "Bash(python -m http.server 8000)",
+      "Bash(python3)"
     ]
   }
 }

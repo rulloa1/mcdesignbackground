@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael Chandler â€” Strategic Construction Executive</title>
-    <meta name="description"
-        content="Michael Chandler â€” Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana." />
-    <meta name="keywords" content="ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction" />
-    <meta property="og:title" content="Michael Chandler â€” Strategic Construction Executive" />
-    <meta property="og:description" content="Ultra-luxury custom homes, historic coastal restorations, and design-build construction management. 37+ years, $500M+ portfolio." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Michael Chandler â€” Strategic Construction Executive" />
-    <meta name="twitter:description" content="Ultra-luxury custom homes, coastal restorations, design-build construction. California â€¢ Bahamas â€¢ Texas â€¢ Montana." />
+    <title>Michael Chandler – Strategic Construction Executive</title>
+    <meta name=”description”
+        content=”Michael Chandler – Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana.” />
+    <meta name=”keywords” content=”ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction” />
+    <meta property=”og:title” content=”Michael Chandler – Strategic Construction Executive” />
+    <meta property=”og:description” content=”Ultra-luxury custom homes, historic coastal restorations, and design-build construction management. 37+ years, $500M+ portfolio.” />
+    <meta property=”og:type” content=”website” />
+    <meta name=”twitter:card” content=”summary_large_image” />
+    <meta name=”twitter:title” content=”Michael Chandler – Strategic Construction Executive” />
+    <meta name=”twitter:description” content=”Ultra-luxury custom homes, coastal restorations, design-build construction. California • Bahamas • Texas • Montana.” />
     <link rel="canonical" href="https://mcdesign.bio" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +48,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
-        /* â”€â”€â”€ Reset & base â”€â”€â”€ */
+        /* ”€”€”€ Reset & base ”€”€”€ */
         *,
         *::before,
         *::after {
@@ -67,11 +67,11 @@
             --text-muted:  #6B6660;
             --text-faint:  #9C978E;
         }
-        /* â”€â”€â”€ Spin animation (moved from inline JS) â”€â”€â”€ */
+        /* ”€”€”€ Spin animation (moved from inline JS) ”€”€”€ */
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        /* â”€â”€â”€ Form validation error state â”€â”€â”€ */
+        /* ”€”€”€ Form validation error state ”€”€”€ */
         .form-input.error,
         .form-textarea.error {
             border-color: #d44 !important;
@@ -83,14 +83,14 @@
             -webkit-font-smoothing: antialiased;
             scroll-behavior: smooth;
         }
-        /* â”€â”€â”€ Image zoom effect (about section) â”€â”€â”€ */
+        /* ”€”€”€ Image zoom effect (about section) ”€”€”€ */
         .img-zoom {
             transition: transform .6s ease;
         }
         .img-zoom:hover {
             transform: scale(1.04);
         }
-        /* â”€â”€â”€ Loading overlay â”€â”€â”€ */
+        /* ”€”€”€ Loading overlay ”€”€”€ */
         #loader {
             position: fixed;
             inset: 0;
@@ -137,7 +137,7 @@
             color: #aaa;
             letter-spacing: .06em;
         }
-        /* â”€â”€â”€ Canvas section â”€â”€â”€ */
+        /* ”€”€”€ Canvas section ”€”€”€ */
         #canvas-section {
             position: relative;
             /* height set by JS = 400vh */
@@ -167,7 +167,7 @@
             z-index: 2;
             pointer-events: none;
         }
-        /* â”€â”€â”€ Text panels â”€â”€â”€ */
+        /* ”€”€”€ Text panels ”€”€”€ */
         .text-panel {
             position: absolute;
             inset: 0;
@@ -220,7 +220,7 @@
             line-height: 1.65;
             margin-bottom: 28px;
         }
-        /* â”€â”€â”€ Scroll cue (interactive button) â”€â”€â”€ */
+        /* ”€”€”€ Scroll cue (interactive button) ”€”€”€ */
         #scroll-cue {
             position: absolute;
             bottom: 32px;
@@ -276,7 +276,33 @@
                 opacity: .3;
             }
         }
-        /* â”€â”€â”€ Progress dots â”€â”€â”€ */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+            70% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+        .scroll-pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: pulse-ring 2.2s ease-out infinite;
+            pointer-events: none;
+        }
+        /* “€”€”€ Progress dots “€”€”€ */
         #progress-dots {
             position: fixed;
             right: 24px;
@@ -304,7 +330,7 @@
             background: #111;
             transform: scale(1.6);
         }
-        /* â”€â”€â”€ Navbar â”€â”€â”€ */
+        /* ”€”€”€ Navbar ”€”€”€ */
         #navbar {
             position: fixed;
             top: 0;
@@ -408,7 +434,7 @@
         .nav-link:hover::after {
             width: 100%;
         }
-        /* â”€â”€â”€ Buttons â”€â”€â”€ */
+        /* ”€”€”€ Buttons ”€”€”€ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -446,7 +472,7 @@
             border-color: #111;
             transform: translateY(-1px);
         }
-        /* â”€â”€â”€ Section layout helpers â”€â”€â”€ */
+        /* ”€”€”€ Section layout helpers ”€”€”€ */
         .site-max {
             max-width: 1280px;
             margin: 0 auto;
@@ -467,7 +493,7 @@
             background: var(--border);
             margin-bottom: 28px;
         }
-        /* â”€â”€â”€ Services grid â€” glassmorphism â”€â”€â”€ */
+        /* ”€”€”€ Services grid –” glassmorphism ”€”€”€ */
         .service-card {
             border: 1px solid rgba(255,255,255,.13);
             border-radius: 2px;
@@ -531,21 +557,10 @@
             border-radius: 0;
             padding: 4px 12px;
         }
-        /* â”€â”€â”€ The Chandler Process â”€â”€â”€ */
+        /* ”€”€”€ The Chandler Process ”€”€”€ */
         .process-section {
             background: #fff;
             padding: 10rem 0;
-        }
-        .process-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 4rem;
-        }
-        @media (min-width: 1024px) {
-            .process-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2.5rem;
-            }
         }
         .process-card {
             position: relative;
@@ -572,7 +587,7 @@
             color: var(--text-muted);
             line-height: 1.6;
         }
-        /* â”€â”€â”€ Quote form â”€â”€â”€ */
+        /* ”€”€”€ Quote form ”€”€”€ */
         .form-field {
             display: flex;
             flex-direction: column;
@@ -627,12 +642,12 @@
             border-top: 5px solid #999;
             pointer-events: none;
         }
-        /* â”€â”€â”€ Scroll reveals â”€â”€â”€ */
+        /* ”€”€”€ Scroll reveals ”€”€”€ */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
         }
-        /* â”€â”€â”€ Portfolio grid â”€â”€â”€ */
+        /* ”€”€”€ Portfolio grid ”€”€”€ */
         .portfolio-filters {
             display: flex;
             flex-wrap: wrap;
@@ -771,7 +786,7 @@
             gap: 6px;
             margin-top: 14px;
         }
-        /* â”€â”€â”€ Mobile nav hamburger â”€â”€â”€ */
+        /* ”€”€”€ Mobile nav hamburger ”€”€”€ */
         #nav-hamburger {
             display: flex;
             flex-direction: column;
@@ -798,7 +813,7 @@
         #nav-hamburger.open span:nth-child(2) { opacity: 0; }
         #nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* â”€â”€â”€ Full-screen mobile menu â”€â”€â”€ */
+        /* ”€”€”€ Full-screen mobile menu ”€”€”€ */
         #mobile-nav {
             position: fixed;
             inset: 0;
@@ -847,11 +862,11 @@
         }
         .mobile-nav-sub:hover { color: var(--text); }
 
-        /* â”€â”€â”€ About section â”€â”€â”€ */
+        /* ”€”€”€ About section ”€”€”€ */
         #about .grid > div img {
             transition: transform .5s ease;
         }
-        /* â”€â”€â”€ Footer â”€â”€â”€ */
+        /* ”€”€”€ Footer ”€”€”€ */
         .footer-link {
             font-size: .8rem;
             color: #999;
@@ -862,7 +877,7 @@
             color: #555;
         }
 
-        /* â”€â”€ LIGHTBOX â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ LIGHTBOX ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€ */
         #lightbox {
             display: none;
             position: fixed;
@@ -1005,7 +1020,7 @@
         }
         .portfolio-card:hover .gallery-hint { opacity: 1; }
 
-        /* â”€â”€â”€ Project Modal System â”€â”€â”€ */
+        /* ”€”€”€ Project Modal System ”€”€”€ */
         .project-modal-overlay {
             position: fixed;
             inset: 0;
@@ -1246,7 +1261,7 @@
             }
         }
 
-        /* â”€â”€â”€ Dark section rhythm (BMW + Apple cinematic) â”€â”€â”€ */
+        /* ”€”€”€ Dark section rhythm (BMW + Apple cinematic) ”€”€”€ */
         .dark-section {
             background: var(--text);
             color: #fff;
@@ -1269,13 +1284,13 @@
             stroke: rgba(255,255,255,.65) !important;
         }
 
-        /* â”€â”€â”€ Section heading refinements â”€â”€â”€ */
+        /* ”€”€”€ Section heading refinements ”€”€”€ */
         .section-h2 {
             line-height: 1.06;
             letter-spacing: -.022em;
         }
 
-        /* â”€â”€â”€ Intro statement â”€â”€â”€ */
+        /* ”€”€”€ Intro statement ”€”€”€ */
         .intro-statement {
             font-size: clamp(2.4rem, 5.5vw, 4.5rem);
             font-weight: 300;
@@ -1284,7 +1299,7 @@
             color: var(--text);
         }
 
-        /* â”€â”€â”€ Stats â”€â”€â”€ */
+        /* ”€”€”€ Stats ”€”€”€ */
         .stat-number {
             font-size: clamp(3rem, 6vw, 4rem);
             font-weight: 300;
@@ -1300,17 +1315,17 @@
             margin-top: 8px;
         }
 
-        /* â”€â”€â”€ About section â”€â”€â”€ */
+        /* ”€”€”€ About section ”€”€”€ */
         #about .about-img-wrap {
             overflow: hidden;
             border-radius: 0;
         }
 
-        /* â”€â”€â”€ Portfolio section â”€â”€â”€ */
+        /* ”€”€”€ Portfolio section ”€”€”€ */
         #portfolio {
             padding: 80px 0 96px;
         }
-        /* â”€â”€â”€ The Chandler Process â”€â”€â”€ */
+        /* ”€”€”€ The Chandler Process ”€”€”€ */
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 64px; }
         .process-card { background: #fff; padding: 48px; border: 1px solid var(--border); transition: transform .4s ease, box-shadow .4s ease; display: flex; flex-direction: column; height: 100%; border-radius: 4px; }
         .process-card:hover { transform: translateY(-8px); border-color: var(--text-faint); box-shadow: 0 20px 40px rgba(0,0,0,.04); }
@@ -1319,7 +1334,7 @@
         .process-card p { font-size: .95rem; color: var(--text-muted); line-height: 1.7; flex-grow: 1; margin-bottom: 0; }
         .process-icon { width: 40px; height: 40px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; background: var(--bg-alt); border-radius: 50%; color: var(--text); }
 
-        /* â”€â”€â”€ Typed micro-interaction â”€â”€â”€ */
+        /* ”€”€”€ Typed micro-interaction ”€”€”€ */
         .section-label.typed-init { opacity: 0; }
         .type-cursor {
             display: inline-block;
@@ -1335,7 +1350,7 @@
             50% { opacity: 0; }
         }
 
-        /* â”€â”€â”€ Multi-step form section â”€â”€â”€ */
+        /* ”€”€”€ Multi-step form section ”€”€”€ */
         #form-section { background: var(--bg-alt); padding: 7rem 0; }
         .multistep-form { max-width: 640px; margin: 0 auto; }
         .form-step { display: none; }
@@ -1365,7 +1380,7 @@
         #form-success.visible { display: block; }
         .success-check { width: 48px; height: 48px; margin: 0 auto 20px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
 
-        /* â”€â”€â”€ Marquee ticker band â”€â”€â”€ */
+        /* ”€”€”€ Marquee ticker band ”€”€”€ */
         .marquee-band {
             overflow: hidden;
             background: var(--text);
@@ -1400,7 +1415,7 @@
             to   { transform: translateX(-50%); }
         }
 
-        /* â”€â”€â”€ Portfolio card: slide-up overlay â”€â”€â”€ */
+        /* ”€”€”€ Portfolio card: slide-up overlay ”€”€”€ */
         .portfolio-card-overlay {
             position: absolute;
             inset: 0;
@@ -1439,7 +1454,7 @@
         }
         .portfolio-card:hover .portfolio-card-gold-line { width: 100%; }
 
-        /* â”€â”€â”€ Process ghost numbers â”€â”€â”€ */
+        /* ”€”€”€ Process ghost numbers ”€”€”€ */
         .process-card { position: relative; overflow: hidden; }
         .process-ghost-num {
             position: absolute;
@@ -1456,7 +1471,7 @@
         }
         .process-card > *:not(.process-ghost-num) { position: relative; z-index: 1; }
 
-        /* â”€â”€â”€ Stats bar upgrade â”€â”€â”€ */
+        /* ”€”€”€ Stats bar upgrade ”€”€”€ */
         .stat-accent-line {
             display: block;
             width: 24px;
@@ -1465,7 +1480,7 @@
             margin: 0 auto 12px;
         }
 
-        /* â”€â”€â”€ Testimonials section â”€â”€â”€ */
+        /* ”€”€”€ Testimonials section ”€”€”€ */
         #testimonials {
             background: var(--text);
             padding: 7rem 0;
@@ -1528,7 +1543,7 @@
             color: rgba(255,255,255,.35);
         }
 
-        /* â”€â”€â”€ Enhanced CTA / contact band â”€â”€â”€ */
+        /* ”€”€”€ Enhanced CTA / contact band ”€”€”€ */
         #contact {
             position: relative;
             overflow: hidden;
@@ -1553,7 +1568,7 @@
             margin-right: auto;
         }
 
-        /* â”€â”€â”€ Upgraded footer â”€â”€â”€ */
+        /* ”€”€”€ Upgraded footer ”€”€”€ */
         #site-footer {
             background: #0d0b09;
             color: rgba(255,255,255,.5);
@@ -1624,12 +1639,79 @@
             text-transform: uppercase;
             color: rgba(255,255,255,.18);
         }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LAYOUT IMPROVEMENTS & RESPONSIVE ENHANCEMENTS
+           ═══════════════════════════════════════════════════════════════ */
+
+        /* Fix portfolio card meta tags (service-tag reuse with wrong colors) */
+        .portfolio-card .service-tag {
+            color: var(--text-muted);
+            border-color: var(--border);
+            background: transparent;
+        }
+
+        /* Hero text panel mobile layout adjustment */
+        @media (max-width: 640px) {
+            .text-panel {
+                justify-content: flex-start;
+                padding: 0 4vw 5vh 4vw;
+            }
+            .panel-inner {
+                max-width: 100%;
+                padding: 24px 20px;
+            }
+        }
+
+        /* Discovery form option grid collapse on small phones */
+        @media (max-width: 480px) {
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Services section tablet breakpoint (2 columns at 640-767px) */
+        @media (min-width: 640px) and (max-width: 767px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        /* Portfolio grid large screen 4-column layout (1440px+) */
+        @media (min-width: 1440px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Services section top padding increase for better breathing room */
+        @media (min-width: 768px) {
+            #services {
+                padding-top: 9rem;
+            }
+            .process-section {
+                padding-top: 9rem;
+            }
+        }
+
+        /* Portfolio section heading spacing */
+        #portfolio > .site-max > h2 {
+            margin-bottom: 2rem;
+        }
+
+        /* Process grid improved responsive (single definition, replaces old conflicting rules) */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
     </style>
 </head>
 <body class="antialiased">
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        LOADING OVERLAY
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <div id="loader" role="status" aria-label="Loading animation frames">
         <div id="loader-logo">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -1645,9 +1727,9 @@
         </div>
         <p id="loader-pct">0%</p>
     </div>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        NAVBAR
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <header id="navbar" aria-label="Site navigation">
         <div class="nav-inner">
             <a href="#" class="nav-logo" aria-label="mcdesign home">
@@ -1683,53 +1765,59 @@
         <a href="#contact" class="mobile-nav-link">Contact</a>
         <div class="mobile-nav-footer">
             <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="mobile-nav-sub">mcdesign.bio</a>
-            <span class="mobile-nav-sub" style="opacity:.3;">Â·</span>
+            <span class="mobile-nav-sub" style="opacity:.3;">·</span>
             <a href="#form-section" class="mobile-nav-sub">Request a Call</a>
-            <span class="mobile-nav-sub" style="opacity:.3;">Â·</span>
-            <span class="mobile-nav-sub" style="color:var(--text-faint);">CA Â· TX Â· MT Â· FL Â· Bahamas</span>
+            <span class="mobile-nav-sub" style="opacity:.3;">·</span>
+            <span class="mobile-nav-sub" style="color:var(--text-faint);">CA · TX · MT · FL · Bahamas</span>
         </div>
     </nav>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        CANVAS HERO  (pinned 400vh)
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="canvas-section" aria-label="Construction portfolio showcase animation">
         <div id="sticky-canvas">
-            <!-- Main canvas â€” frames rendered here -->
+            <!-- Main canvas –” frames rendered here -->
             <canvas id="hero-canvas" role="img" aria-label="Construction portfolio cinematic sequence"></canvas>
-            <!-- â”€â”€ Panel 1: The Blueprint (0% checkpoint) â”€â”€ -->
+            <!-- ”€”€ Panel 1: The Blueprint (0% checkpoint) ”€”€ -->
             <div class="text-panel" id="panel-1">
                 <div class="panel-inner">
                     <span class="panel-eyebrow">Michael Chandler</span>
                     <h2 class="panel-heading">37 Years.<br>Built by Hand.</h2>
-                    <p class="panel-body">I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbeanâ€”residential, hospitality, and complex civil projects.</p>
+                    <p class="panel-body">I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbean–”residential, hospitality, and complex civil projects.</p>
                     <div style="display:flex;gap:10px;pointer-events:auto;">
                         <a href="#form-section" class="btn btn-dark">Start Conversation</a>
                         <a href="#portfolio" class="btn btn-outline">View Work</a>
                     </div>
                 </div>
             </div>
-            <!-- â”€â”€ Panel 2: The Build (33% checkpoint) â”€â”€ -->
+            <!-- ”€”€ Panel 2: The Build (33% checkpoint) ”€”€ -->
             <div class="text-panel" id="panel-2">
                 <div class="panel-inner">
                     <span class="panel-eyebrow">My Approach</span>
                     <h2 class="panel-heading">Uncompromising<br>Precision.</h2>
-                    <p class="panel-body">I coordinate every trade with relentless quality oversight. Every detailâ€”structural, mechanical, and architecturalâ€”reflects uncompromising standards and meticulous craftsmanship.</p>
+                    <p class="panel-body">I coordinate every trade with relentless quality oversight. Every detail–”structural, mechanical, and architectural–”reflects uncompromising standards and meticulous craftsmanship.</p>
                     <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
-            <!-- â”€â”€ Panel 3: The Space (66% checkpoint) â”€â”€ -->
+            <!-- ”€”€ Panel 3: The Space (66% checkpoint) ”€”€ -->
             <div class="text-panel" id="panel-3">
                 <div class="panel-inner">
                     <span class="panel-eyebrow">The Result</span>
                     <h2 class="panel-heading">Built to<br>Last Generations.</h2>
-                    <p class="panel-body">From coastal high-rises to alpine estatesâ€”I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
+                    <p class="panel-body">From coastal high-rises to alpine estates–”I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
                     <a href="#form-section" class="btn btn-dark" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
-            <!-- Scroll cue (interactive button) -->
+            <!-- Scroll cue (interactive button with pulse ring) -->
             <button id="scroll-cue" aria-label="Scroll down to explore" title="Click to scroll or keep scrolling">
-                <span>Scroll</span>
-                <div class="scroll-line"></div>
+                <div class="scroll-pulse-ring"></div>
+                <svg width="24" height="32" viewBox="0 0 24 32" fill="none" style="position:relative;z-index:2;" aria-hidden="true">
+                    <rect x="8" y="2" width="8" height="12" rx="4" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/>
+                    <circle cx="12" cy="10" r="1.5" fill="rgba(255,255,255,0.7)">
+                        <animate attributeName="cy" values="10;14;10" dur="1.8s" repeatCount="indefinite"/>
+                    </circle>
+                </svg>
+                <span style="position:relative;z-index:2;">SCROLL TO EXPLORE</span>
             </button>
         </div><!-- /sticky-canvas -->
     </section>
@@ -1739,9 +1827,9 @@
         <div class="dot" data-section="1" title="The Build"></div>
         <div class="dot" data-section="2" title="The Space"></div>
     </nav>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        INTRO STATEMENT
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section class="py-28 md:py-36">
         <div class="site-max">
             <div class="rule reveal"></div>
@@ -1753,9 +1841,9 @@
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        SERVICES / CAPABILITIES SECTION
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="services" class="dark-section py-24">
         <div class="site-max">
             <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -1766,7 +1854,7 @@
                     </h2>
                 </div>
                 <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
-                    From conception to completionâ€”we deliver integrated expertise across design-build, construction management, and complex site development.
+                    From conception to completion–”we deliver integrated expertise across design-build, construction management, and complex site development.
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
@@ -1793,7 +1881,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Construction Management</p>
-                    <p class="service-desc">Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordinationâ€”protecting your interests at every phase.</p>
+                    <p class="service-desc">Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordination–”protecting your interests at every phase.</p>
                     <span class="service-tag">High-Rise</span>
                     <span class="service-tag" style="margin-left:6px;">Hospitality</span>
                 </div>
@@ -1808,7 +1896,7 @@
                         </svg>
                     </div>
                     <p class="service-title">Civil &amp; Site Work</p>
-                    <p class="service-desc">Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure masteryâ€”turning challenging terrain into asset value.</p>
+                    <p class="service-desc">Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure mastery–”turning challenging terrain into asset value.</p>
                     <span class="service-tag">Coastal</span>
                     <span class="service-tag" style="margin-left:6px;">45+ Acres</span>
                 </div>
@@ -1816,9 +1904,9 @@
         </div>
     </section>
     
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        THE CHANDLER PROCESS
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="process" class="py-32" style="background:#fff;">
         <div class="site-max">
             <div class="max-w-2xl reveal">
@@ -1840,7 +1928,7 @@
                         </svg>
                     </div>
                     <h3>Strategic Vision</h3>
-                    <p>We begin by understanding your objectives and constraints. We analyze site conditions, regulatory requirements, budgets, and timelinesâ€”creating a comprehensive roadmap that anticipates challenges and opportunities before construction begins.</p>
+                    <p>We begin by understanding your objectives and constraints. We analyze site conditions, regulatory requirements, budgets, and timelines–”creating a comprehensive roadmap that anticipates challenges and opportunities before construction begins.</p>
                 </div>
                 
                 <!-- Step 2 -->
@@ -1853,7 +1941,7 @@
                         </svg>
                     </div>
                     <h3>Flawless Execution</h3>
-                    <p>Construction demands uncompromising attention to detail. We coordinate every trade with relentless quality oversightâ€”managing budgets, schedules, and vendor performance to deliver world-class results on every component.</p>
+                    <p>Construction demands uncompromising attention to detail. We coordinate every trade with relentless quality oversight–”managing budgets, schedules, and vendor performance to deliver world-class results on every component.</p>
                 </div>
                 
                 <!-- Step 3 -->
@@ -1872,9 +1960,9 @@
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        PORTFOLIO SECTION
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="portfolio">
         <div class="site-max">
             <!-- Section header -->
@@ -1886,7 +1974,7 @@
                     </h2>
                 </div>
                 <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
-                    From California to the Caribbeanâ€”$500M+ in completed projects spanning ultra-luxury homes, hospitality, civil infrastructure, and heritage restoration.
+                    From California to the Caribbean–”$500M+ in completed projects spanning ultra-luxury homes, hospitality, civil infrastructure, and heritage restoration.
                 </p>
             </div>
             <!-- Filters -->
@@ -1920,7 +2008,7 @@
                         <div class="portfolio-meta">
                             <span class="service-tag">4,200 sqft</span>
                             <span class="service-tag">5 months</span>
-                            <span class="service-tag">4 bed Â· 4 bath</span>
+                            <span class="service-tag">4 bed · 4 bath</span>
                         </div>
                     </div>
                 </div>
@@ -1944,7 +2032,7 @@
                         <div class="portfolio-meta">
                             <span class="service-tag">2,300 sqft</span>
                             <span class="service-tag">24 months</span>
-                            <span class="service-tag">5 bed Â· 2 bath</span>
+                            <span class="service-tag">5 bed · 2 bath</span>
                         </div>
                     </div>
                 </div>
@@ -1952,7 +2040,7 @@
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
                         <img src="projects/syracuse-cover.png"
-                            alt="Syracuse House â€” N. Utah Craftsman Estate" loading="lazy" />
+                            alt="Syracuse House –” N. Utah Craftsman Estate" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <div class="portfolio-card-overlay">
                             <span class="portfolio-card-overlay-text">View Project
@@ -1977,7 +2065,10 @@
                         <img src="projects/assets/montana-cover.webp"
                             alt="Mtn. Mid-Rise Luxe Condo" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Montana</p>
@@ -1995,7 +2086,10 @@
                         <img src="projects/hospitality-pool-cover-v2.jpg"
                             alt="Ultra Luxe Private Club Resort Pool" loading="lazy" />
                         <span class="portfolio-cat-badge">Hospitality</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">SE Texas</p>
@@ -2013,7 +2107,10 @@
                         <img src="projects/assets/southcoast-cover.webp"
                             alt="South Coast Renovation" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Big Sur, CA</p>
@@ -2031,7 +2128,10 @@
                         <img src="projects/assets/carmel-valley-new-cover.webp"
                             alt="Carmel Valley New Custom Residence" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Carmel Valley, CA</p>
@@ -2049,7 +2149,10 @@
                         <img src="projects/north-florida/NIMG_9178.jpg"
                             alt="North Florida Renovation and Addition" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">N. Florida</p>
@@ -2067,7 +2170,10 @@
                         <img src="projects/assets/abaco-luxe-boathouse-cover.webp"
                             alt="Abaco Luxe Boat House" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Abaco, Bahamas</p>
@@ -2085,12 +2191,19 @@
                         <img src="projects/assets/carmel-2-cover.webp"
                             alt="Carmel Forest to Ocean View Custom Addition" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Carmel By the Sea, CA</p>
                         <p class="portfolio-title">Carmel Forest to Ocean View</p>
                         <p class="portfolio-subtitle">Custom Addition</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">3,200 sqft</span>
+                            <span class="service-tag">14 months</span>
+                        </div>
                     </div>
                 </div>
                 <!-- 11. Coastal Mountain Residence -->
@@ -2099,7 +2212,10 @@
                         <img src="projects/assets/bigsur-cover.webp"
                             alt="Coastal Mountain Residence Civil Site Work" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Big Sur, CA</p>
@@ -2116,7 +2232,10 @@
                         <img src="projects/carmel-knolls/001.10%20COVER.jpg"
                             alt="Carmel Knolls Remodel" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Carmel, CA</p>
@@ -2134,7 +2253,10 @@
                         <img src="projects/coastal-restoration/001%20COVER.JPG"
                             alt="Coastal Restoration Erosion Repair" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Monterey Peninsula, CA</p>
@@ -2151,7 +2273,10 @@
                         <img src="projects/assets/beachfront-1.webp"
                             alt="Beachfront Estate Residence" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Development</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Abaco, Bahamas</p>
@@ -2169,7 +2294,10 @@
                         <img src="projects/development-civil/development%20(1).jpg"
                             alt="Development Civil Construction" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Development</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">SE Texas</p>
@@ -2187,7 +2315,10 @@
                         <img src="projects/pacific-grove/001%20COVER.JPG"
                             alt="New Residential Construction In Historic Neighborhood" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Central Coast, CA</p>
@@ -2205,7 +2336,10 @@
                         <img src="projects/hillside-cleanup/001%20COVER.jpg"
                             alt="Hillside Restoration and Environmental Cleanup" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Carmel, CA</p>
@@ -2222,7 +2356,10 @@
                         <img src="projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png"
                             alt="Laguna Grande Spanish Revival Commercial" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Seaside, CA</p>
@@ -2240,21 +2377,28 @@
                         <img src="projects/assets/carmel-3-cover.webp"
                             alt="Carmel House Remodel No.23" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
-                        <span class="gallery-hint">View Gallery</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Gallery →</span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
                     </div>
                     <div class="portfolio-card-body">
                         <p class="portfolio-location">Carmel By the Sea, CA</p>
                         <p class="portfolio-title">Carmel House Remodel No.23</p>
                         <p class="portfolio-subtitle">Complete Renovation</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">4,100 sqft</span>
+                            <span class="service-tag">18 months</span>
+                        </div>
                     </div>
                 </div>
             </div><!-- /portfolio-grid -->
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        TESTIMONIALS SECTION
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+   ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="testimonials">
         <div class="site-max">
             <div class="reveal">
@@ -2267,34 +2411,34 @@
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class="testimonial-body">Michael's attention to detail is unmatched. He treated our $4M oceanfront renovation like it was his own home. Every subcontractor, every material choice, every timeline â€” flawlessly managed. We couldn't be more impressed.</p>
+                    <p class="testimonial-body">Michael's attention to detail is unmatched. He treated our $4M oceanfront renovation like it was his own home. Every subcontractor, every material choice, every timeline –” flawlessly managed. We couldn't be more impressed.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">R. & J. Whitmore</p>
-                    <p class="testimonial-meta">S. Florida Â· Oceanfront Luxury Renovation</p>
+                    <p class="testimonial-meta">S. Florida · Oceanfront Luxury Renovation</p>
                 </div>
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class="testimonial-body">We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle â€” and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
+                    <p class="testimonial-body">We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle –” and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">T. Harrington</p>
-                    <p class="testimonial-meta">Big Sur, CA Â· Coastal Mountain Civil Work</p>
+                    <p class="testimonial-meta">Big Sur, CA · Coastal Mountain Civil Work</p>
                 </div>
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card reveal">
                     <span class="testimonial-quote-mark">&ldquo;</span>
-                    <p class="testimonial-body">From our first conversation to final walkthrough, Michael operated with total transparency and professionalism. The Bahamas build was ambitious â€” harbor access, tropical engineering, remote logistics â€” and he delivered beyond expectation.</p>
+                    <p class="testimonial-body">From our first conversation to final walkthrough, Michael operated with total transparency and professionalism. The Bahamas build was ambitious –” harbor access, tropical engineering, remote logistics –” and he delivered beyond expectation.</p>
                     <div class="testimonial-divider"></div>
                     <p class="testimonial-name">C. & M. Fairfax</p>
-                    <p class="testimonial-meta">Abaco, Bahamas Â· Waterfront Estate</p>
+                    <p class="testimonial-meta">Abaco, Bahamas · Waterfront Estate</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        ABOUT SECTION
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="about" class="py-28" style="background:var(--bg-alt);">
         <div class="site-max">
             <div class="grid md:grid-cols-2 gap-16 items-start">
@@ -2312,7 +2456,7 @@
                         My approach is simple: bring together the right people, create an environment built on mutual respect, and stay closely attuned to client feedback throughout every phase of a project.
                     </p>
                     <p class="text-base text-gray-500 leading-relaxed mb-10 reveal">
-                        I've built my career on the universal business principle that quality construction isn't just about meeting standards â€” it's about exceeding them, by combining rigorous processes with forward-thinking design.
+                        I've built my career on the universal business principle that quality construction isn't just about meeting standards –” it's about exceeding them, by combining rigorous processes with forward-thinking design.
                     </p>
                     <!-- Signature -->
                     <div class="flex items-center gap-4 reveal">
@@ -2370,9 +2514,9 @@
             </div>
         </div>
     </section>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        PROJECT DISCOVERY FORM
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="form-section">
         <div class="site-max">
             <div class="max-w-2xl mb-16 reveal">
@@ -2398,9 +2542,9 @@
                     <p class="step-heading">What's your project budget?</p>
                     <p class="step-sub">This helps me scope the project and understand if we're a fit.</p>
                     <div class="option-grid" id="budget-grid">
-                        <button class="option-btn" data-value="$500K â€“ $1M">$500K â€“ $1M</button>
-                        <button class="option-btn" data-value="$1M â€“ $3M">$1M â€“ $3M</button>
-                        <button class="option-btn" data-value="$3M â€“ $10M">$3M â€“ $10M</button>
+                        <button class="option-btn" data-value="$500K –“ $1M">$500K –“ $1M</button>
+                        <button class="option-btn" data-value="$1M –“ $3M">$1M –“ $3M</button>
+                        <button class="option-btn" data-value="$3M –“ $10M">$3M –“ $10M</button>
                         <button class="option-btn" data-value="$10M+">$10M+</button>
                     </div>
                     <div class="form-nav">
@@ -2445,7 +2589,7 @@
                         </div>
                         <div class="form-field">
                             <label class="form-label" for="disc-notes">Brief Project Notes (optional)</label>
-                            <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key prioritiesâ€¦" rows="3"></textarea>
+                            <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key priorities–¦" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-nav">
@@ -2467,15 +2611,15 @@
             </div>
         </div>
     </section>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        CTA BAND
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <section id="contact" class="bg-gray-950 text-white py-32 px-6 text-center">
         <span class="section-label reveal" style="color:rgba(255,255,255,.3);">Next Steps</span>
         <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-6 reveal" style="letter-spacing:-.025em;line-height:1.05;text-transform:uppercase;">
             Let's build something<br />remarkable together
         </h2>
-        <p class="cta-sub reveal">Ultra-luxury residential Â· Coastal restoration Â· Design-build Â· Civil engineering<br />I work where precision and accountability matter most.</p>
+        <p class="cta-sub reveal">Ultra-luxury residential · Coastal restoration · Design-build · Civil engineering<br />I work where precision and accountability matter most.</p>
         <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
             <a href="#form-section" class="btn"
                 style="background:#fff;color:#111;padding:14px 32px;font-size:.78rem;">
@@ -2490,9 +2634,9 @@
             </a>
         </div>
     </section>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        FOOTER
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <footer id="site-footer">
         <div class="site-max">
             <div class="footer-top">
@@ -2507,7 +2651,7 @@
                         </svg>
                         mcdesign
                     </p>
-                    <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft â€” from California to the Caribbean.</p>
+                    <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft –” from California to the Caribbean.</p>
                 </div>
                 <!-- Services col -->
                 <div>
@@ -2530,24 +2674,24 @@
                     <p class="footer-col-heading">Contact</p>
                     <a href="#form-section" class="footer-col-link">Request a Discovery Call</a>
                     <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="footer-col-link">mcdesign.bio</a>
-                    <p class="footer-col-link" style="cursor:default;">CA Â· Bahamas Â· TX Â· MT Â· UT Â· FL</p>
+                    <p class="footer-col-link" style="cursor:default;">CA · Bahamas · TX · MT · UT · FL</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2026 Michael Chandler â€” mcdesign. All rights reserved.</p>
+                <p class="footer-copy">&copy; 2026 Michael Chandler –” mcdesign. All rights reserved.</p>
                 <p class="footer-regions">Regions Served: California &bull; Bahamas &bull; Texas &bull; Montana &bull; Utah &bull; Florida</p>
             </div>
         </div>
     </footer>
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- •••••••••••••••••••••••••••••••••••••••••••••••
        JAVASCRIPT
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  ••••••••••••••••••••••••••••••••••••••••••••••• -->
     <script>
         (() => {
             'use strict';
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  CONFIG - Centralized magic numbers and thresholds
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             const CONFIG = {
                 TOTAL_FRAMES: 294,
                 PRELOAD_TIMEOUT: 8000, // 8s timeout for frame loading
@@ -2572,15 +2716,15 @@
 
             /**
              * Generate the array of relative frame paths.
-             * Files: ezgif-frame-001.jpg â€¦ ezgif-frame-294.jpg
+             * Files: ezgif-frame-001.jpg –¦ ezgif-frame-294.jpg
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
                 return `ezgif-frame-${n}.jpg`;
             });
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  DOM REFS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             const loaderEl = document.getElementById('loader');
             const loaderBar = document.getElementById('loader-bar');
             const loaderPct = document.getElementById('loader-pct');
@@ -2596,9 +2740,9 @@
             const progressEl = document.getElementById('progress-dots');
             const scrollCue = document.getElementById('scroll-cue');
             const navbar = document.getElementById('navbar');
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  CANVAS SIZING
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             canvasSec.style.height = '400vh';
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
@@ -2609,16 +2753,16 @@
                 resizeCanvas();
                 drawFrameIndex(currentFrameIndex);
             });
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  IMAGE CACHE
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             /** @type {(HTMLImageElement|null)[]} */
             const cache = new Array(TOTAL_FRAMES).fill(null);
             let loaded = 0;
             let currentFrameIndex = 0;
             /**
              * Draws a cached frame using object-fit:cover semantics.
-             * @param {number} idx â€“ frame index (float ok, will be rounded+clamped)
+             * @param {number} idx –“ frame index (float ok, will be rounded+clamped)
              */
             function drawFrameIndex(idx) {
                 const i = Math.max(0, Math.min(CONFIG.TOTAL_FRAMES - 1, Math.round(idx)));
@@ -2634,10 +2778,10 @@
                 ctx.clearRect(0, 0, cw, ch);
                 ctx.drawImage(img, sx, sy, sw, sh);
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  PRELOAD WITH PROGRESS & ERROR HANDLING
             //  Loads all frames concurrently, tracks progress, with timeout fallback.
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             function preloadFrames(onComplete) {
                 let done = 0;
                 let hasError = false;
@@ -2681,17 +2825,17 @@
                         tick();
                     };
                     img.onerror = () => {
-                        // Mark as loaded but leave as null â€” canvas will skip it
+                        // Mark as loaded but leave as null –” canvas will skip it
                         tick();
                     };
                     img.src = url;
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  TEXT PANEL TRANSITIONS
             //  CSS class toggling (is-visible) with CSS transitions for smooth
             //  interpolation handled by the browser's compositor.
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             function updatePanels(progress) {
                 CONFIG.PANEL_CHECKPOINTS.forEach(({ index, start, end }) => {
                     const panel = panels[index];
@@ -2700,9 +2844,9 @@
                     panel.style.pointerEvents = visible ? 'auto' : 'none';
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  SIDEBAR DOTS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             function updateDots(progress) {
                 let active = 0;
                 for (const { index, min } of CONFIG.DOT_THRESHOLDS) {
@@ -2710,14 +2854,14 @@
                 }
                 dots.forEach((d, i) => d.classList.toggle('active', i === active));
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  SMOOTH FRAME SCRUBBING
             //
             //  Strategy: ScrollTrigger drives a gsap-tweened "scrub proxy" object.
             //  We lerp toward the raw progress value each rAF tick, then map to
             //  a frame index. This gives buttery-smooth canvas updates even when
             //  the user scrubs quickly.
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             const proxy = { progress: 0 };  // GSAP-tweened progress target
             let rAFid = null;
             function renderLoop() {
@@ -2726,9 +2870,9 @@
                 updateDots(proxy.progress);
                 rAFid = requestAnimationFrame(renderLoop);
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  BELOW-FOLD SCROLL REVEALS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             function initServiceCardAnimations() {
                 // Service cards with subtle rotation on scroll
                 gsap.utils.toArray('.service-card').forEach((card, idx) => {
@@ -2869,10 +3013,10 @@
                     });
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  TYPED MICRO-INTERACTIONS (Named function for debugging)
             //  Section labels (.section-label) type themselves in on scroll
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             function typeCharacters(el, text, cursor) {
                 let i = 0;
                 const interval = setInterval(() => {
@@ -2910,9 +3054,9 @@
                 });
                 return typeIntervals; // For cleanup if needed
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  ANIMATED STAT COUNTERS
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             function initCounters() {
                 document.querySelectorAll('.stat-counter').forEach(el => {
                     const target  = parseFloat(el.dataset.target);
@@ -2936,9 +3080,9 @@
                     });
                 });
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  SCROLL CUE BUTTON (Interactive scroll trigger)
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             function initScrollCueButton() {
                 const scrollCueBtn = document.getElementById('scroll-cue');
                 if (!scrollCueBtn) return;
@@ -2962,10 +3106,21 @@
                         scrollCueBtn.click();
                     }
                 });
+
+                // Fade out scroll cue after user scrolls 100px
+                let scrollCueFaded = false;
+                const fadeOutScrollCue = () => {
+                    if (window.scrollY > 100 && !scrollCueFaded) {
+                        gsap.to(scrollCueBtn, { opacity: 0, duration: 0.4, ease: 'power2.out' });
+                        scrollCueFaded = true;
+                        window.removeEventListener('scroll', fadeOutScrollCue);
+                    }
+                };
+                window.addEventListener('scroll', fadeOutScrollCue);
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  MAIN SCROLL TRIGGER (Named function for debugging)
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             const scrollTriggers = []; // Track for cleanup
 
             function initScrollTrigger() {
@@ -3033,9 +3188,9 @@
 
                 updatePanels(0);
             }
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             //  INIT SEQUENCE
-            // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+            // ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€
             gsap.registerPlugin(ScrollTrigger);
             // Gray placeholder while loading
             ctx.fillStyle = '#f5f5f3';
@@ -3043,7 +3198,7 @@
             // Init scroll button before preload
             initScrollCueButton();
             preloadFrames(() => {
-                // All frames loaded â€” hide loader, init animations
+                // All frames loaded –” hide loader, init animations
                 loaderEl.classList.add('hidden');
                 drawFrameIndex(0);
                 initScrollTrigger();
@@ -3062,9 +3217,9 @@
     (() => {
         'use strict';
 
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
         // PROJECT DATA STRUCTURE
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
         const projectsData = {
             'miami-beach-condo': {
                 id: 'miami-beach-condo',
@@ -3073,7 +3228,7 @@
                 location: 'S. Florida',
                 subtitle: 'Oceanfront Luxury Renovation',
                 coverImage: 'projects/assets/miami-beach-cover.webp',
-                description: 'I transformed a dated oceanfront unit into a sophisticated luxury residence. Premium finishes, smart home integration, and meticulous structural oversightâ€”all completed in 5 months. The result: a modern oceanfront estate with panoramic views and uncompromising quality.',
+                description: 'I transformed a dated oceanfront unit into a sophisticated luxury residence. Premium finishes, smart home integration, and meticulous structural oversight–”all completed in 5 months. The result: a modern oceanfront estate with panoramic views and uncompromising quality.',
                 duration: '5 months',
                 sqft: '4,200 sqft',
                 bedrooms: '4',
@@ -3111,7 +3266,7 @@
                 location: 'N. Utah',
                 subtitle: 'N. Utah Craftsman Estate',
                 coverImage: 'projects/syracuse-cover.png',
-                description: 'I delivered this 6,200 sq ft craftsman estate as a complete design-build project in 18 months. Blending timeless design principles with modern systemsâ€”custom millwork, natural stone, and integrated smart home technology. The result: a refined estate built to perform for generations.',
+                description: 'I delivered this 6,200 sq ft craftsman estate as a complete design-build project in 18 months. Blending timeless design principles with modern systems–”custom millwork, natural stone, and integrated smart home technology. The result: a refined estate built to perform for generations.',
                 duration: '18 months',
                 sqft: '6,200 sqft',
                 role: 'Complete design-build leadership aligning architectural vision with flawless execution.',
@@ -3144,7 +3299,7 @@
                 location: 'SE Texas',
                 subtitle: 'Resort Pool',
                 coverImage: 'projects/hospitality-pool-cover-v2.jpg',
-                description: 'I engineered and executed an ultra-luxury resort pool complexâ€”189,000 gallons of custom-designed waterscapes completed in 18 months. Advanced filtration systems, premium landscaping, and resort amenitiesâ€”all operating flawlessly. A destination asset built to last.',
+                description: 'I engineered and executed an ultra-luxury resort pool complex–”189,000 gallons of custom-designed waterscapes completed in 18 months. Advanced filtration systems, premium landscaping, and resort amenities–”all operating flawlessly. A destination asset built to last.',
                 duration: '18 months',
                 gallons: '189,000 gal',
                 role: 'Complete hospitality project leadership including pool engineering, amenity coordination, and luxury execution standards.',
@@ -3352,9 +3507,9 @@
             }
         };
 
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
         // MODAL MANAGEMENT
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
         let currentProjectId = null;
         let currentImageIndex = 0;
 
@@ -3555,18 +3710,10 @@
             });
         }
 
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
         // PORTFOLIO CARD CLICK HANDLERS
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-        document.querySelectorAll('.portfolio-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                const projectId = card.getAttribute('data-project');
-                if (projectId) {
-                    openProjectModal(projectId);
-                }
-            });
-        });
+        // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+        // Click handlers managed by lightbox script (see GALLERIES lightbox system)
 
     })();
     </script>
@@ -3627,7 +3774,7 @@
             }
         }
 
-        // Step 1 â€” budget selection
+        // Step 1 –” budget selection
         budgetGrid.querySelectorAll('.option-btn').forEach(btn => {
             on(btn, 'click', () => {
                 budgetGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
@@ -3638,7 +3785,7 @@
         });
         on(step1NextBtn, 'click', () => showStep(2));
 
-        // Step 2 â€” project type selection
+        // Step 2 –” project type selection
         typeGrid.querySelectorAll('.option-btn').forEach(btn => {
             on(btn, 'click', () => {
                 typeGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
@@ -3650,7 +3797,7 @@
         on(step2BackBtn, 'click', () => showStep(1));
         on(step2NextBtn, 'click', () => showStep(3));
 
-        // Step 3 â€” contact & submit with improved validation
+        // Step 3 –” contact & submit with improved validation
         on(step3BackBtn, 'click', () => showStep(2));
         on(nameInput, 'input', () => setFieldError(nameInput, false));
         on(emailInput, 'input', () => setFieldError(emailInput, false));
@@ -3785,7 +3932,7 @@
     <script>
     (() => {
         'use strict';
-        /* â”€â”€ Gallery data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ Gallery data ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€ */
         const BASE = 'projects/assets/';
 
         const GALLERIES = {
@@ -3805,7 +3952,7 @@
                 ]
             },
             'syracuse-house': {
-                title: 'Syracuse House â€” N. Utah Craftsman Estate',
+                title: 'Syracuse House –” N. Utah Craftsman Estate',
                 images: [
                     BASE + 'syracuse-cover.webp',
                     ...Array.from({length:46}, (_,i) => BASE + 'syracuse-' + (i+1) + '.webp')
@@ -3870,7 +4017,7 @@
                 ]
             },
             'bigsur-mountain-remodel': {
-                title: 'Coastal Mountain Residence â€” Civil Site Work',
+                title: 'Coastal Mountain Residence –” Civil Site Work',
                 images: [
                     BASE + 'bigsur-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'bigsur-' + (i+1) + '.webp')
@@ -3884,7 +4031,7 @@
                 ]
             },
             'coastal-restoration': {
-                title: 'Coastal Restoration â€” Erosion Repair',
+                title: 'Coastal Restoration –” Erosion Repair',
                 images: [
                     BASE + 'coastal-restoration-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'coastal-restoration-' + (i+1) + '.webp')
@@ -3909,14 +4056,14 @@
                 ]
             },
             'hillside-cleanup': {
-                title: 'Hillside Restoration â€” Environmental Cleanup',
+                title: 'Hillside Restoration –” Environmental Cleanup',
                 images: [
                     BASE + 'hillside-cleanup-cover.webp',
                     ...Array.from({length:15}, (_,i) => BASE + 'hillside-cleanup-' + (i+1) + '.webp')
                 ]
             },
             'laguna-grande-design-build': {
-                title: 'Laguna Grande â€” Spanish Revival Commercial',
+                title: 'Laguna Grande –” Spanish Revival Commercial',
                 images: [
                     BASE + 'laguna-grande-cover.webp',
                     ...Array.from({length:6}, (_,i) => BASE + 'laguna-grande-' + (i+1) + '.webp')
@@ -3931,14 +4078,14 @@
             }
         };
 
-        /* â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ State ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€ */
         let currentImages = [];
         let currentIndex  = 0;
         // Reuse single preload image instead of creating new ones
         const preloadImg  = new Image();
         const listeners   = []; // Track for cleanup
 
-        /* â”€â”€ Elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ Elements ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€ */
         const lb       = document.getElementById('lightbox');
         const lbImg    = document.getElementById('lb-img');
         const lbTitle  = document.getElementById('lb-title');
@@ -3954,7 +4101,7 @@
             listeners.push({ el, event, handler, options });
         }
 
-        /* â”€â”€ Open / close â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ Open / close ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€ */
         function openLightbox(projectId) {
             const data = GALLERIES[projectId];
             if (!data) return;
@@ -3975,7 +4122,7 @@
             lbImg.src = '';
         }
 
-        /* â”€â”€ Image display (optimized with single preload image) â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ Image display (optimized with single preload image) ”€”€”€”€”€”€”€ */
         function showImage(idx) {
             idx = (idx + currentImages.length) % currentImages.length;
             currentIndex = idx;
@@ -3983,7 +4130,7 @@
 
             lbImg.classList.remove('loaded');
             const src = currentImages[idx];
-            lbImg.alt = lbTitle.textContent + ' â€” image ' + (idx + 1);
+            lbImg.alt = lbTitle.textContent + ' –” image ' + (idx + 1);
 
             // Use single preload image, reuse it for loading check
             let loadTimeout;
@@ -4029,7 +4176,7 @@
             showImage(currentIndex + dir);
         }
 
-        /* â”€â”€ Thumbnails â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ Thumbnails ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€ */
         function buildThumbs() {
             lbThumbs.innerHTML = '';
             currentImages.forEach((src, i) => {
@@ -4042,7 +4189,7 @@
             });
         }
 
-        /* â”€â”€ Event listeners â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ”€”€ Event listeners ”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€”€ */
         // Card clicks
         document.querySelectorAll('.portfolio-card[data-project]').forEach(card => {
             on(card, 'click', () => openLightbox(card.dataset.project));
