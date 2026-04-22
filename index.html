@@ -2324,7 +2324,7 @@
     <header id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand" style="display:flex; align-items:center;">
-                <img src="logo-horizontal.png" alt="MC Michael Chandler Logo" style="height: 48px; width: auto; object-fit: contain; mix-blend-mode: multiply;" />
+                <img src="logo-horizontal.png" alt="MC Michael Chandler Logo" style="height: 48px; width: auto; object-fit: contain;" />
             </a>
             <nav class="nav-links">
                 <a href="#" class="nav-link">Home</a>
@@ -3241,7 +3241,7 @@
                 <!-- Brand col -->
                 <div>
                     <h3 class="footer-brand-name" style="margin-bottom: 12px;">
-                        <img src="logo-horizontal.png" alt="MC Michael Chandler Logo" style="height: 60px; width: auto; object-fit: contain; filter: invert(1) brightness(2) contrast(1.2);" />
+                        <img src="logo-vertical.png" alt="MC Michael Chandler Logo" style="height: 100px; width: auto; object-fit: contain; filter: invert(1) brightness(2) contrast(1.2);" />
                     </h3>
                     <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft &mdash; from California to the Caribbean.</p>
                 </div>
@@ -4012,18 +4012,20 @@
                     // Scrub text effect for intro statement
                     const scrubWords = gsap.utils.toArray('#intro-scrub-text .scrub-word');
                     if (scrubWords.length > 0) {
-                        gsap.set(scrubWords, { opacity: 0.15 });
-                        gsap.to(scrubWords, {
-                            opacity: 1,
-                            stagger: 0.1,
-                            ease: 'none',
-                            scrollTrigger: {
-                                trigger: '#intro-scrub-text',
-                                start: 'top 85%',
-                                end: 'bottom 40%',
-                                scrub: 0.5,
+                        gsap.fromTo(scrubWords, 
+                            { opacity: 0.15 },
+                            {
+                                opacity: 1,
+                                stagger: 0.1,
+                                ease: 'none',
+                                scrollTrigger: {
+                                    trigger: '#intro-scrub-text',
+                                    start: 'top 80%',
+                                    end: 'bottom 50%',
+                                    scrub: 1,
+                                }
                             }
-                        });
+                        );
                     }
                 } catch(e) {
                     // Scroll effects non-critical; silently fail
@@ -4207,7 +4209,7 @@
                 renderStaticHeroFallback();
                 initRevealAnimations();
                 initHeadingLineAnimations();
-                initIntroStatementAnimation();
+                // initIntroStatementAnimation(); // Disabled in favor of scrub text
                 initServiceCardAnimations();
                 initProcessCardAnimations();
                 initSectionScrollEffects();
@@ -4227,7 +4229,7 @@
                 initScrollTrigger();
                 initRevealAnimations();
                 initHeadingLineAnimations();
-                initIntroStatementAnimation();
+                // initIntroStatementAnimation(); // Disabled in favor of scrub text
                 initServiceCardAnimations();
                 initProcessCardAnimations();
                 initSectionScrollEffects();
