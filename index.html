@@ -1606,6 +1606,26 @@
             letter-spacing: 0.01em;
             line-height: 1.2;
         }
+                .role-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .role-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .role-list li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1;
+            top: 2px;
+        }
         .project-modal-role-text {
             color: var(--text-muted);
             line-height: 1.75;
@@ -4243,7 +4263,7 @@
                 sqft: '4,200 sqft',
                 bedrooms: '4',
                 baths: '4',
-                role: 'Complete project management from design coordination through final quality assurance and delivery.',
+                role: ['Complete project management', 'Design coordination', 'Final quality assurance and delivery'],
                 gallery: [
                     'projects/assets/miami-beach-cover.webp'
                 ]
@@ -4260,7 +4280,7 @@
                 sqft: '2,300 sqft',
                 bedrooms: '5',
                 baths: '2',
-                role: 'End-to-end project leadership including site analysis, structural engineering coordination, and specialized weather-adaptive construction.',
+                role: ['End-to-end project leadership', 'Site analysis', 'Structural engineering coordination', 'Specialized weather-adaptive construction'],
                 gallery: [
                     'projects/assets/alpine-ranch-cover.webp',
                     'projects/assets/alpine-ranch-1.webp',
@@ -4277,7 +4297,7 @@
                 description: 'I delivered this 6,200 sq ft craftsman estate as a complete design-build project in 18 months. Blending timeless design principles with modern systems&mdash;custom millwork, natural stone, and integrated smart home technology. The result: a refined estate built to perform for generations.',
                 duration: '18 months',
                 sqft: '6,200 sqft',
-                role: 'Complete design-build leadership aligning architectural vision with flawless execution.',
+                role: ['Complete design-build leadership', 'Aligning architectural vision', 'Flawless execution'],
                 gallery: [
                     'projects/syracuse-cover.png'
                 ]
@@ -4292,7 +4312,7 @@
                 description: 'A mid-rise luxury condominium featuring 2,800 square feet of premium living space. Completed in 8 months, this project showcases modern architecture with high-end finishes and mountain views.',
                 duration: '8 months',
                 sqft: '2,800 sqft',
-                role: 'Construction oversight and quality management for mid-rise residential development.',
+                role: ['Construction oversight', 'Quality management', 'Mid-rise residential development'],
                 gallery: [
                     'projects/assets/montana-cover.webp'
                 ]
@@ -4307,7 +4327,7 @@
                 description: 'I engineered and executed an ultra-luxury resort pool complex&mdash;189,000 gallons of custom-designed waterscapes completed in 18 months. Advanced filtration systems, premium landscaping, and resort amenities&mdash;all operating flawlessly. A destination asset built to last.',
                 duration: '18 months',
                 gallons: '189,000 gal',
-                role: 'Complete hospitality project leadership including pool engineering, amenity coordination, and luxury execution standards.',
+                role: ['Complete hospitality project leadership', 'Pool engineering', 'Amenity coordination', 'Luxury execution standards'],
                 gallery: [
                     'projects/hospitality-pool-cover-v2.jpg'
                 ]
@@ -4321,7 +4341,7 @@
                 coverImage: 'projects/assets/southcoast-cover.webp',
                 description: 'A comprehensive coastal estate renovation combining historic preservation with modern luxury. This 16-month design-build project respects the home\'s architectural heritage while introducing contemporary comforts.',
                 duration: '16 months',
-                role: 'Design-build coordination balancing historic preservation with luxury modernization.',
+                role: ['Design-build coordination', 'Historic preservation', 'Luxury modernization'],
                 gallery: [
                     'projects/assets/southcoast-cover.webp'
                 ]
@@ -4335,7 +4355,7 @@
                 coverImage: 'projects/assets/carmel-valley-new-cover.webp',
                 description: 'A custom-designed residence in prestigious Carmel Valley. This 20-month design-build project features luxury finishes, smart home integration, and seamless indoor-outdoor living spaces.',
                 duration: '20 months',
-                role: 'Complete design-build management from land analysis through final delivery.',
+                role: ['Complete design-build management', 'Land analysis', 'Final delivery'],
                 gallery: [
                     'projects/assets/carmel-valley-new-cover.webp'
                 ]
@@ -4349,7 +4369,7 @@
                 coverImage: 'projects/north-florida/NIMG_9178.jpg',
                 description: 'A 10-month renovation and addition project modernizing a North Florida residence. Features include expanded living spaces, updated systems, and contemporary finishes.',
                 duration: '10 months',
-                role: 'Renovation management including structural assessment, addition design coordination, and system upgrades.',
+                role: ['Renovation management', 'Structural assessment', 'Addition design coordination', 'System upgrades'],
                 gallery: [
                     'projects/north-florida/NIMG_9178.jpg'
                 ]
@@ -4363,7 +4383,7 @@
                 coverImage: 'projects/assets/abaco-luxe-boathouse-cover.webp',
                 description: 'A luxury island boat house in the Bahamas featuring waterfront living at its finest. This project required specialized expertise in tropical construction and marine integration.',
                 duration: 'Custom Timeline',
-                role: 'Island development project management including environmental compliance and marine integration.',
+                role: ['Island development project management', 'Environmental compliance', 'Marine integration'],
                 gallery: [
                     'projects/assets/abaco-luxe-boathouse-cover.webp'
                 ]
@@ -4377,7 +4397,7 @@
                 coverImage: 'projects/assets/carmel-2-cover.webp',
                 description: 'A luxury residence in Carmel featuring contemporary design and premium finishes. This project showcases sophisticated architectural detailing and high-end construction quality.',
                 duration: 'Custom Timeline',
-                role: 'Construction management for luxury residential development.',
+                role: ['Construction management', 'Luxury residential development'],
                 gallery: [
                     'projects/assets/carmel-2-cover.webp'
                 ]
@@ -4391,7 +4411,7 @@
                 coverImage: 'projects/assets/bigsur-cover.webp',
                 description: 'A specialized mountain remodeling project navigating Big Sur\'s challenging terrain and environmental regulations. This civil project required expert foundation work and structural engineering.',
                 duration: 'Custom Timeline',
-                role: 'Civil engineering and foundation management for mountain terrain adaptation.',
+                role: ['Civil engineering', 'Foundation management', 'Mountain terrain adaptation'],
                 gallery: [
                     'projects/assets/bigsur-cover.webp',
                     'projects/assets/bigsur-1.webp'
@@ -4406,7 +4426,7 @@
                 coverImage: 'projects/carmel-knolls/001.10%20COVER.jpg',
                 description: 'A civil development project in the Carmel Knolls area featuring site preparation, foundation work, and infrastructure development.',
                 duration: 'Custom Timeline',
-                role: 'Civil project coordination including site analysis and development management.',
+                role: ['Civil project coordination', 'Site analysis', 'Development management'],
                 gallery: [
                     'projects/carmel-knolls/001.10%20COVER.jpg'
                 ]
@@ -4420,7 +4440,7 @@
                 coverImage: 'projects/coastal-restoration/001%20COVER.JPG',
                 description: 'A specialized coastal restoration project addressing environmental preservation and structural integrity. This complex civil project required environmental compliance and precise engineering.',
                 duration: 'Custom Timeline',
-                role: 'Environmental project management and coastal engineering oversight.',
+                role: ['Environmental project management', 'Coastal engineering oversight'],
                 gallery: [
                     'projects/coastal-restoration/001%20COVER.JPG'
                 ]
@@ -4434,7 +4454,7 @@
                 coverImage: 'projects/assets/beachfront-1.webp',
                 description: 'A premier beachfront estate development in the Bahamas featuring luxury residences with direct beach access. This major development project combined landscape design with structural excellence.',
                 duration: 'Custom Timeline',
-                role: 'Large-scale development project management including master planning and infrastructure coordination.',
+                role: ['Large-scale development project management', 'Master planning', 'Infrastructure coordination'],
                 gallery: [
                     'projects/assets/beachfront-1.webp',
                     'projects/assets/beachfront-2.webp'
@@ -4449,7 +4469,7 @@
                 coverImage: 'projects/development-civil/development%20(1).jpg',
                 description: 'A comprehensive civil development project handling infrastructure, site preparation, and master planning for residential development.',
                 duration: 'Custom Timeline',
-                role: 'Development and civil coordination across multiple phases.',
+                role: ['Development and civil coordination', 'Multi-phase management'],
                 gallery: [
                     'projects/development-civil/development%20(1).jpg'
                 ]
@@ -4463,7 +4483,7 @@
                 coverImage: 'projects/pacific-grove/001%20COVER.JPG',
                 description: 'A design-build project in Pacific Grove featuring coastal luxury with environmental sensitivity. This project balanced aesthetic design with structural resilience.',
                 duration: 'Custom Timeline',
-                role: 'Coastal design-build management from concept through completion.',
+                role: ['Coastal design-build management', 'Concept development', 'Completion execution'],
                 gallery: [
                     'projects/pacific-grove/001%20COVER.JPG'
                 ]
@@ -4477,7 +4497,7 @@
                 coverImage: 'projects/hillside-cleanup/001%20COVER.jpg',
                 description: 'A specialized civil project focusing on hillside remediation, stabilization, and environmental cleanup. This project required careful site assessment and engineering solutions.',
                 duration: 'Custom Timeline',
-                role: 'Civil engineering and site remediation management.',
+                role: ['Civil engineering', 'Site remediation management'],
                 gallery: [
                     'projects/hillside-cleanup/001%20COVER.jpg'
                 ]
@@ -4491,7 +4511,7 @@
                 coverImage: 'projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png',
                 description: 'A luxury design-build estate in Laguna Grande featuring premium materials, sophisticated design, and high-end construction excellence.',
                 duration: 'Custom Timeline',
-                role: 'Full design-build management for luxury estate development.',
+                role: ['Full design-build management', 'Luxury estate development'],
                 gallery: [
                     'projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png'
                 ]
@@ -4505,7 +4525,7 @@
                 coverImage: 'projects/assets/carmel-3-cover.webp',
                 description: 'Another distinguished Carmel residence project showcasing premium construction quality and sophisticated architectural detailing.',
                 duration: 'Custom Timeline',
-                role: 'Construction management for luxury residential property.',
+                role: ['Construction management', 'Luxury residential property'],
                 gallery: [
                     'projects/assets/carmel-3-cover.webp'
                 ]
@@ -4561,8 +4581,10 @@
 
                                     ${project.role ? `
                                         <div class="project-modal-role-box">
-                                            <h3 class="project-modal-role-title">Our Role</h3>
-                                            <p class="project-modal-role-text">${project.role}</p>
+                                            <h3 class="project-modal-role-title">My Role</h3>
+                                            <ul class="project-modal-role-text role-list">
+                                                ${Array.isArray(project.role) ? project.role.map(r => `<li>${r}</li>`).join('') : `<li>${project.role}</li>`}
+                                            </ul>
                                         </div>
                                     ` : ''}
                                 </div>
