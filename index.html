@@ -2442,10 +2442,10 @@
     <section style="padding: 7rem 0; overflow: hidden;">
         <div class="site-max">
             <div class="rule reveal"></div>
-            <p class="intro-statement reveal" style="max-width: 56rem;">
-                Three decades of ultra-luxury construction<br class="hidden md:block" />
-                executed with <span class="pull-italic">precision,</span> accountability, and uncompromising craft.<br class="hidden md:block" />
-                37 years. $500M+ portfolio. Thousands of transformed spaces.
+            <p class="intro-statement" id="intro-scrub-text" style="max-width: 56rem;">
+                <span class="scrub-word">Three</span> <span class="scrub-word">decades</span> <span class="scrub-word">of</span> <span class="scrub-word">ultra-luxury</span> <span class="scrub-word">construction</span><br class="hidden md:block" />
+                <span class="scrub-word">executed</span> <span class="scrub-word">with</span> <span class="scrub-word pull-italic" style="display:inline-block">precision,</span> <span class="scrub-word">accountability,</span> <span class="scrub-word">and</span> <span class="scrub-word">uncompromising</span> <span class="scrub-word">craft.</span><br class="hidden md:block" />
+                <span class="scrub-word">37</span> <span class="scrub-word">years.</span> <span class="scrub-word">$500M+</span> <span class="scrub-word">portfolio.</span> <span class="scrub-word">Thousands</span> <span class="scrub-word">of</span> <span class="scrub-word">transformed</span> <span class="scrub-word">spaces.</span>
             </p>
         </div>
     </section>
@@ -4027,6 +4027,23 @@
 
                     // Section background color shift  " commented out (too subtle + single-section bug)
                     // gsap.to('section', { backgroundColor: ..., scrollTrigger: { ... } });
+
+                    // Scrub text effect for intro statement
+                    const scrubWords = gsap.utils.toArray('#intro-scrub-text .scrub-word');
+                    if (scrubWords.length > 0) {
+                        gsap.set(scrubWords, { opacity: 0.15 });
+                        gsap.to(scrubWords, {
+                            opacity: 1,
+                            stagger: 0.1,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: '#intro-scrub-text',
+                                start: 'top 85%',
+                                end: 'bottom 40%',
+                                scrub: 0.5,
+                            }
+                        });
+                    }
                 } catch(e) {
                     // Scroll effects non-critical; silently fail
                     // console.warn('Scroll effect error:', e);
