@@ -1809,6 +1809,11 @@
             overflow: hidden;
             border-radius: 0;
         }
+        @media (min-width: 768px) {
+            #about-grid {
+                grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            }
+        }
 
         /* === Portfolio section === */
         #portfolio {
@@ -2403,7 +2408,7 @@
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section id="about" class="py-24 md:py-28" style="background:var(--bg-alt);">
         <div class="site-max">
-            <div class="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 md:gap-20 items-center">
+            <div class="grid gap-12 md:gap-20 items-center" style="grid-template-columns: 1fr; " id="about-grid">
                 <!-- Left: portrait (feature-sized) -->
                 <div class="portrait-wrap reveal">
                     <div class="portrait-frame">
