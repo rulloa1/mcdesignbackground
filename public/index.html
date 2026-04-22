@@ -3256,7 +3256,7 @@
                 try {
                     return fn.call(context);
                 } catch (e) {
-                    if (process?.env?.NODE_ENV === 'development') {
+                    if (window.__DEV__) {
                         console.error('Animation error (non-critical):', e.message);
                     }
                     return null;
@@ -3394,6 +3394,10 @@
             const progressEl = document.getElementById('progress-dots');
             const scrollCue = document.getElementById('scroll-cue');
             const navbar = document.getElementById('navbar');
+            const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const prefersReducedMotion = prefersReducedMotionQuery.matches;
+            const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
+            const shouldBypassHeavyHero = prefersReducedMotion || saveDataEnabled;
             // ===================================================================================
             //  CANVAS SIZING
             // ===================================================================================
@@ -3495,6 +3499,19 @@
                     };
                     img.src = url;
                 });
+            }
+
+            function renderStaticHeroFallback() {
+                const fallback = new Image();
+                fallback.onload = () => {
+                    cache[0] = fallback;
+                    drawFrameIndex(0);
+                };
+                fallback.onerror = () => {
+                    ctx.fillStyle = '#1C1916';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                };
+                fallback.src = FRAME_URLS[0];
             }
             // ===================================================================================
             //  TEXT PANEL TRANSITIONS
@@ -4112,7 +4129,6 @@
             // ===================================================================================
             //  REDUCED MOTION CHECK
             // ===================================================================================
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             function canAnimate() {
                 return !prefersReducedMotion;
             }
@@ -4121,12 +4137,39 @@
             //  INIT SEQUENCE
             // ===================================================================================
             gsap.registerPlugin(ScrollTrigger);
-            // Gray placeholder while loading
-            ctx.fillStyle = '#ff0000';
+            // Neutral placeholder while loading
+            ctx.fillStyle = '#1C1916';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Init scroll button before preload
             initScrollCueButton();
             initScrollToTop();
+
+            if (shouldBypassHeavyHero) {
+                loaderEl.classList.add('hidden');
+                canvasSec.style.height = '100vh';
+                if (progressEl) progressEl.classList.remove('visible');
+                if (scrollCue) {
+                    scrollCue.style.opacity = '0';
+                    scrollCue.style.pointerEvents = 'none';
+                }
+                updatePanels(0);
+                updateDots(0);
+                renderStaticHeroFallback();
+                initRevealAnimations();
+                initHeadingLineAnimations();
+                initIntroStatementAnimation();
+                initServiceCardAnimations();
+                initProcessCardAnimations();
+                initSectionScrollEffects();
+                initTextParallax();
+                initCounters();
+                initTypedLabels();
+                initMarqueeEntrance();
+                initAdvancedScrollEffects();
+                initFooterAnimations();
+                return;
+            }
+
             preloadFrames(() => {
                 // All frames loaded &mdash; hide loader, init animations
                 loaderEl.classList.add('hidden');
@@ -4148,8 +4191,6 @@
         })();
     </script>
     <!-- Project Details Modal System -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
         (() => {
             'use strict';
@@ -4578,7 +4619,7 @@
                                                     <video class="project-modal-gallery-img" data-index="${idx}" data-src="${media}" src="${media}" muted playsinline controls preload="metadata" poster="${project.coverImage}" aria-label="${project.title} video ${idx + 1}"></video>
                                                 `;
                                             }
-                                            return `<img src="${media}" alt="${project.title} image ${idx + 1}" class="project-modal-gallery-img" data-index="${idx}" data-src="${media}" />`;
+                                            return `<img src="${media}" alt="${project.title} image ${idx + 1}" class="project-modal-gallery-img" data-index="${idx}" data-src="${media}" loading="lazy" decoding="async" fetchpriority="low" />`;
                                         }).join('')}
                                     </div>
                                 </div>
@@ -4594,31 +4635,28 @@
             // Prevent scroll
             document.body.style.overflow = 'hidden';
 
-            // Add event listeners
+            // Add delegated modal event listeners
             const modal = document.getElementById('project-modal-overlay');
-            const closeBtn = modal.querySelector('.project-modal-close');
-            const galleryImgs = modal.querySelectorAll('.project-modal-gallery-img');
-            const videoBtn = modal.querySelector('.project-modal-video-btn');
-
-            closeBtn.addEventListener('click', closeProjectModal);
             modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeProjectModal();
-            });
+                if (e.target === modal || e.target.closest('.project-modal-close')) {
+                    closeProjectModal();
+                    return;
+                }
 
-            galleryImgs.forEach(img => {
-                img.addEventListener('click', () => {
-                    const source = img.getAttribute('data-src') || img.currentSrc || img.src;
-                    const mediaType = /\.mp4($|\?)/i.test(source) ? 'video' : 'image';
-                    openImageLightbox(source, mediaType);
-                });
-            });
-
-            if (videoBtn) {
-                videoBtn.addEventListener('click', () => {
+                const videoBtn = e.target.closest('.project-modal-video-btn');
+                if (videoBtn) {
                     const source = videoBtn.getAttribute('data-video-src');
                     if (source) openImageLightbox(source, 'video');
-                });
-            }
+                    return;
+                }
+
+                const galleryMedia = e.target.closest('.project-modal-gallery-img');
+                if (galleryMedia) {
+                    const source = galleryMedia.getAttribute('data-src') || galleryMedia.currentSrc || galleryMedia.src;
+                    const mediaType = /\.mp4($|\?)/i.test(source) ? 'video' : 'image';
+                    openImageLightbox(source, mediaType);
+                }
+            });
 
             // Smooth scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -4672,14 +4710,15 @@
         //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
         // PORTFOLIO CARD CLICK HANDLERS
         //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-        document.querySelectorAll('.portfolio-card, .selected-work').forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                const projectId = card.getAttribute('data-project');
-                if (projectId) {
-                    openProjectModal(projectId);
-                }
-            });
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('.portfolio-card, .selected-work');
+            if (!card) return;
+
+            const projectId = card.getAttribute('data-project');
+            if (!projectId) return;
+
+            e.preventDefault();
+            openProjectModal(projectId);
         });
 
     })();
@@ -5158,6 +5197,10 @@
         let currentIndex  = 0;
         // Reuse single preload image instead of creating new ones
         const preloadImg  = new Image();
+        const nextPreload = new Image();
+        let pendingImageSrc = '';
+        let imageLoadTimeoutId = null;
+        let thumbObserver = null;
         const listeners   = []; // Track for cleanup
 
         /*  "= "=  Elements  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
@@ -5204,6 +5247,14 @@
             document.body.style.overflow = '';
             lbImg.classList.remove('loaded');
             lbVideo.classList.remove('loaded');
+            pendingImageSrc = '';
+            if (imageLoadTimeoutId) {
+                clearTimeout(imageLoadTimeoutId);
+                imageLoadTimeoutId = null;
+            }
+            if (thumbObserver) {
+                thumbObserver.disconnect();
+            }
             lbImg.src = '';
             lbVideo.pause();
             lbVideo.removeAttribute('src');
@@ -5215,7 +5266,6 @@
         }
 
         /*  "= "=  Image display (optimized with single preload image)  "= "= "= "= "= "= "=  */
-        let nextPreload = null;
         function showImage(idx) {
             idx = (idx + currentImages.length) % currentImages.length;
             currentIndex = idx;
@@ -5237,16 +5287,23 @@
                 lbVideo.removeAttribute('src');
                 lbImg.style.display = 'block';
                 lbImg.alt = lbTitle.textContent + ' \u2014 image ' + (idx + 1);
+                pendingImageSrc = src;
+
+                if (imageLoadTimeoutId) {
+                    clearTimeout(imageLoadTimeoutId);
+                    imageLoadTimeoutId = null;
+                }
 
                 // Use single preload image, reuse it for loading check
-                let loadTimeout;
                 const handleLoad = () => {
-                    clearTimeout(loadTimeout);
+                    if (pendingImageSrc !== src) return;
+                    clearTimeout(imageLoadTimeoutId);
                     lbImg.src = src;
                     lbImg.classList.add('loaded');
                 };
                 const handleError = () => {
-                    clearTimeout(loadTimeout);
+                    if (pendingImageSrc !== src) return;
+                    clearTimeout(imageLoadTimeoutId);
                     // Gracefully handle load failure; display broken image rather than blocking
                     // console.warn(`Failed to load image: ${src}`);
                     lbImg.src = src; // Show broken image rather than nothing
@@ -5254,7 +5311,8 @@
                 };
 
                 // Timeout safety for slow/failed loads
-                loadTimeout = setTimeout(() => {
+                imageLoadTimeoutId = setTimeout(() => {
+                    if (pendingImageSrc !== src) return;
                     lbImg.src = src;
                     lbImg.classList.add('loaded');
                 }, 3000);
@@ -5265,9 +5323,8 @@
 
                 // Preload next image (reusing single object)
                 const nextSrc = currentImages[(idx + 1) % currentImages.length];
-                if (nextPreload) nextPreload.src = '';
+                nextPreload.src = '';
                 if (!isVideoSrc(nextSrc)) {
-                    nextPreload = new Image();
                     nextPreload.src = nextSrc;
                 }
             }
@@ -5290,38 +5347,62 @@
         /*  "= "=  Thumbnails  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
         function buildThumbs() {
             lbThumbs.innerHTML = '';
+            if (thumbObserver) {
+                thumbObserver.disconnect();
+            }
+            if ('IntersectionObserver' in window) {
+                thumbObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        const thumb = entry.target;
+                        const src = thumb.getAttribute('data-src');
+                        if (src && !thumb.getAttribute('src')) {
+                            thumb.setAttribute('src', src);
+                        }
+                        observer.unobserve(thumb);
+                    });
+                }, { root: lbThumbs, rootMargin: '80px' });
+            }
+
             currentImages.forEach((src, i) => {
                 const thumb = isVideoSrc(src)
                     ? document.createElement('video')
                     : document.createElement('img');
 
                 thumb.className = 'lb-thumb';
+                thumb.setAttribute('data-src', src);
 
                 if (isVideoSrc(src)) {
-                    thumb.src = src;
                     thumb.muted = true;
                     thumb.playsInline = true;
-                    thumb.preload = 'metadata';
+                    thumb.preload = 'none';
                     thumb.setAttribute('aria-label', 'Video thumbnail ' + (i + 1));
                 } else {
-                    thumb.src = src;
                     thumb.alt = 'Thumbnail ' + (i + 1);
+                    thumb.loading = 'lazy';
+                    thumb.decoding = 'async';
                 }
 
                 thumb.addEventListener('click', () => showImage(i));
                 lbThumbs.appendChild(thumb);
+
+                if (i < 8 || !thumbObserver) {
+                    thumb.setAttribute('src', src);
+                } else {
+                    thumbObserver.observe(thumb);
+                }
             });
         }
 
         /*  "= "=  Event listeners  "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "= "=  */
-        // Card clicks
-        document.querySelectorAll('.portfolio-card[data-project]').forEach(card => {
-            on(card, 'click', (e) => {
-                // The project modal handler runs first and marks the click as handled.
-                // Respect that to avoid opening two overlays at once.
-                if (e.defaultPrevented) return;
-                openLightbox(card.dataset.project);
-            });
+        // Card clicks (delegated to avoid per-card listeners)
+        on(document, 'click', (e) => {
+            const card = e.target.closest('.portfolio-card[data-project]');
+            if (!card) return;
+            // The project modal handler marks matching clicks as handled.
+            // Respect that to avoid opening two overlays at once.
+            if (e.defaultPrevented) return;
+            openLightbox(card.dataset.project);
         });
 
         on(lbClose, 'click', closeLightbox);
