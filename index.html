@@ -1814,6 +1814,23 @@
                 grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
             }
         }
+        @media (max-width: 767px) {
+            #about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* About two-column layout — fully native, no Tailwind dependency */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(2rem, 4vw, 5rem);
+            align-items: start;
+        }
+        @media (min-width: 768px) {
+            .about-layout {
+                grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            }
+        }
 
         /* === Portfolio section === */
         #portfolio {
@@ -2408,9 +2425,9 @@
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <section id="about" class="py-24 md:py-28" style="background:var(--bg-alt);">
         <div class="site-max">
-            <div class="grid gap-12 md:gap-20 items-center" style="grid-template-columns: 1fr; " id="about-grid">
+            <div class="about-layout" id="about-grid">
                 <!-- Left: portrait (feature-sized) -->
-                <div class="portrait-wrap reveal">
+                <div class="portrait-wrap reveal" style="min-width:0;">
                     <div class="portrait-frame">
                         <img src="mike-profile.jpeg" alt="Michael Chandler, Founder &amp; Master Builder" />
                     </div>
@@ -2422,7 +2439,7 @@
                     </div>
                 </div>
                 <!-- Right: bio -->
-                <div>
+                <div style="min-width:0;">
                     <span class="section-label reveal">Legacy Since 1987</span>
                     <h2 class="text-4xl md:text-5xl tracking-tight mb-6 reveal section-h2">
                         A unique <span class="pull-italic">perspective</span><br />on strategic execution.
