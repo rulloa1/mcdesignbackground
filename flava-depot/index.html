@@ -123,18 +123,18 @@
     .text-panel {
       position: absolute; inset: 0; z-index: 5;
       pointer-events: none; opacity: 0;
-      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1);
     }
-    .text-panel.is-visible { opacity: 1; pointer-events: auto; }
+    .text-panel.is-visible { pointer-events: auto; }
 
     .glass-card {
-      background: rgba(8,8,8,0.55);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid rgba(155,93,229,0.25);
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(155,93,229,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
-      padding: 36px 44px;
+      background: rgba(8,8,8,0.65);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid rgba(155,93,229,0.4);
+      border-radius: 16px;
+      box-shadow: 0 0 60px rgba(155,93,229,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+      padding: 44px 52px;
+      opacity: 0; /* Handled by GSAP */
     }
 
     /* Panel 1 — Center Hero */
@@ -436,7 +436,7 @@
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     const TOTAL_FRAMES = 294;
-    const FRAME_PATH = (n) => `../ezgif-frame-${String(n).padStart(3,'0')}.jpg`;
+    const FRAME_PATH = (n) => `frames/ezgif-frame-${String(n).padStart(3,'0')}.jpg`;
 
     function resizeCanvas() {
       const dpr = window.devicePixelRatio || 1;
@@ -511,11 +511,32 @@
       4: document.getElementById('panel-4'),
     };
 
+    let activePanel = null;
+
     function showPanel(id) {
+      if (activePanel === id) return;
+      activePanel = id;
+
       Object.keys(panels).forEach(k => {
         const show = parseInt(k) === id;
-        panels[k].style.opacity = show ? '1' : '0';
-        panels[k].style.pointerEvents = show ? 'auto' : 'none';
+        const panel = panels[k];
+        const card = panel.querySelector('.glass-card');
+        
+        if (show) {
+          panel.classList.add('is-visible');
+          gsap.to(panel, { opacity: 1, duration: 0.1 });
+          gsap.fromTo(card, 
+            { y: 40, opacity: 0, scale: 0.95 },
+            { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out", overwrite: true }
+          );
+        } else {
+          panel.classList.remove('is-visible');
+          gsap.to(card, 
+            { y: -30, opacity: 0, scale: 0.95, duration: 0.6, ease: "power2.in", overwrite: true, onComplete: () => {
+              gsap.set(panel, { opacity: 0 });
+            }}
+          );
+        }
       });
     }
 
