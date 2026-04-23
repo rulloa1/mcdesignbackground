@@ -3435,7 +3435,7 @@
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
-                return `/flava-depot/frames/ezgif-frame-${n}.jpg`;
+                return `flava-depot/frames/ezgif-frame-${n}.jpg`;
             });
             // ===================================================================================
             //  DOM REFS
@@ -3458,7 +3458,7 @@
             const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const prefersReducedMotion = prefersReducedMotionQuery.matches;
             const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
-            const shouldBypassHeavyHero = true; // prefersReducedMotion || saveDataEnabled;
+            const shouldBypassHeavyHero = false; // prefersReducedMotion || saveDataEnabled;
             // ===================================================================================
             //  CANVAS SIZING
             // ===================================================================================
