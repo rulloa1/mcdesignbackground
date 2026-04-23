@@ -4053,6 +4053,187 @@
             }
 
             // ===================================================================================
+            //  SECTION-TO-SECTION SCROLL COHESION
+            // ===================================================================================
+            function initSectionTransitions() {
+                if (!canAnimate()) return;
+
+                // Get all major sections
+                const sections = gsap.utils.toArray('section');
+
+                sections.forEach((section, idx) => {
+                    // Get section heading if exists
+                    const heading = section.querySelector('h2, h3, .section-h2');
+                    const rule = section.querySelector('.rule');
+                    const label = section.querySelector('.section-label');
+
+                    // Section entrance: subtle scale and fade
+                    gsap.fromTo(section,
+                        { opacity: 0.8, y: 20 },
+                        {
+                            opacity: 1, y: 0,
+                            duration: 0.8,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'top 75%',
+                                once: true,
+                            }
+                        }
+                    );
+
+                    // Section labels: staggered entrance
+                    if (label) {
+                        gsap.fromTo(label,
+                            { opacity: 0, x: -20 },
+                            {
+                                opacity: 1, x: 0,
+                                duration: 0.6,
+                                ease: 'power2.out',
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: 'top 75%',
+                                    once: true,
+                                }
+                            }
+                        );
+                    }
+
+                    // Decorative rules: draw-like entrance with rotation
+                    if (rule) {
+                        gsap.fromTo(rule,
+                            { scaleX: 0, opacity: 0 },
+                            {
+                                scaleX: 1, opacity: 1,
+                                duration: 0.7,
+                                ease: 'power3.out',
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: 'top 70%',
+                                    once: true,
+                                }
+                            }
+                        );
+                    }
+
+                    // Background parallax for depth (subtle upward drift)
+                    gsap.to(section, {
+                        y: -30,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 0.5,
+                        }
+                    });
+
+                    // Heading parallax counter-motion (drifts down slightly)
+                    if (heading) {
+                        gsap.to(heading, {
+                            y: 15,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'top bottom',
+                                end: 'bottom top',
+                                scrub: 1,
+                            }
+                        });
+                    }
+                });
+
+                // Cross-section visual bridges: fade rules between sections
+                const allRules = gsap.utils.toArray('.rule');
+                allRules.forEach(rule => {
+                    gsap.to(rule, {
+                        opacity: 0.3,
+                        ease: 'power2.inOut',
+                        scrollTrigger: {
+                            trigger: rule,
+                            start: 'top 40%',
+                            end: 'bottom 60%',
+                            scrub: 0.5,
+                        }
+                    });
+                });
+            }
+
+            // ===================================================================================
+            //  CARD GRID STAGGER ENTER
+            // ===================================================================================
+            function initCardGridStagger() {
+                if (!canAnimate()) return;
+
+                const cardGrids = {
+                    '.service-card': 0.08,
+                    '.portfolio-card': 0.12,
+                };
+
+                Object.entries(cardGrids).forEach(([selector, staggerDelay]) => {
+                    const cards = gsap.utils.toArray(selector);
+
+                    cards.forEach((card, idx) => {
+                        const row = Math.floor(idx / 3); // 3-column grid
+                        const col = idx % 3;
+
+                        gsap.fromTo(card,
+                            {
+                                opacity: 0,
+                                y: 40,
+                                rotate: 0.5
+                            },
+                            {
+                                opacity: 1,
+                                y: 0,
+                                rotate: 0,
+                                duration: 0.7,
+                                ease: 'power3.out',
+                                delay: (row * 3 + col) * staggerDelay,
+                                scrollTrigger: {
+                                    trigger: card.closest('section'),
+                                    start: 'top 70%',
+                                    once: true,
+                                }
+                            }
+                        );
+                    });
+                });
+            }
+
+            // ===================================================================================
+            //  TEXT BLOCK PROGRESSIVE REVEAL
+            // ===================================================================================
+            function initTextBlockReveal() {
+                if (!canAnimate()) return;
+
+                // Find all major text blocks (bio, descriptions, etc.)
+                const textBlocks = gsap.utils.toArray('section p, section li, .pull-quote blockquote');
+
+                textBlocks.forEach(block => {
+                    if (block.textContent.length < 50) return; // Skip short text
+
+                    gsap.fromTo(block,
+                        {
+                            opacity: 0.4,
+                            y: 12
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.8,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: block,
+                                start: 'top 80%',
+                                once: true,
+                            }
+                        }
+                    );
+                });
+            }
+
+            // ===================================================================================
             //  SCROLL PROGRESS INDICATOR
             // ===================================================================================
             function initScrollToTop() {
@@ -4237,6 +4418,9 @@
                 initTypedLabels();
                 initMarqueeEntrance();
                 initAdvancedScrollEffects();
+                initSectionTransitions();
+                initCardGridStagger();
+                initTextBlockReveal();
                 initFooterAnimations();
                 return;
             }
@@ -4257,6 +4441,9 @@
                 initTypedLabels();
                 initMarqueeEntrance();
                 initAdvancedScrollEffects();
+                initSectionTransitions();
+                initCardGridStagger();
+                initTextBlockReveal();
                 initFooterAnimations();
             });
         })();
