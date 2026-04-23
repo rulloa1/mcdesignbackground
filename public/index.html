@@ -276,9 +276,14 @@
         html {
             font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg);
+            background-attachment: fixed;
             color: var(--text);
             -webkit-font-smoothing: antialiased;
             scroll-behavior: smooth;
+        }
+        body {
+            background: var(--bg);
+            background-attachment: fixed;
         }
         /* === Image zoom effect (about section) === */
         .img-zoom {
@@ -3430,7 +3435,7 @@
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
-                return `ezgif-frame-${n}.jpg`;
+                return `flava-depot/frames/ezgif-frame-${n}.jpg`;
             });
             // ===================================================================================
             //  DOM REFS
@@ -3453,11 +3458,11 @@
             const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const prefersReducedMotion = prefersReducedMotionQuery.matches;
             const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
-            const shouldBypassHeavyHero = prefersReducedMotion || saveDataEnabled;
+            const shouldBypassHeavyHero = false; // prefersReducedMotion || saveDataEnabled;
             // ===================================================================================
             //  CANVAS SIZING
             // ===================================================================================
-            canvasSec.style.height = '400vh';
+            canvasSec.style.height = shouldBypassHeavyHero ? '100vh' : '400vh';
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
