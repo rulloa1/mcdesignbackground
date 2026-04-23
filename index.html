@@ -127,21 +127,7 @@
         rel="stylesheet" />
 
     <style>
-        /* === Skip to main content link === */
-        .skip-to-main {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--accent);
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-            border-radius: 0 0 4px 0;
-        }
-        .skip-to-main:focus {
-            top: 0;
-        }
+
         /* === Print styles === */
         @media print {
             #navbar, #mobile-nav, #scroll-cue, .scroll-notification,
@@ -276,6 +262,7 @@
         html {
             font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg);
+            background-attachment: fixed;
             color: var(--text);
             -webkit-font-smoothing: antialiased;
             scroll-behavior: smooth;
@@ -2293,7 +2280,6 @@
     </style>
 </head>
 <body class="antialiased">
-    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
     <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        LOADING OVERLAY
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
@@ -2322,7 +2308,6 @@
     <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        NAVBAR
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
-    <a href="#main-content" class="skip-to-main">Skip to main content</a>
     <header id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand" style="display:flex; align-items:center;">
