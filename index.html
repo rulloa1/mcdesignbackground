@@ -265,7 +265,7 @@
             background-attachment: fixed;
             color: var(--text);
             -webkit-font-smoothing: antialiased;
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
         }
         body {
             background: var(--bg);
@@ -328,15 +328,30 @@
         /* === Canvas section === */
         #canvas-section {
             position: relative;
-            /* height set by JS = 400vh */
+            height: 400vh;
+            pointer-events: none;
+            transform: none !important;
+            translate: none !important;
+            rotate: none !important;
+            scale: none !important;
         }
         #sticky-canvas {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: 100vh;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
             overflow: hidden;
             background: var(--bg-alt);
+            z-index: 1;
+            transform: none !important;
+            will-change: auto;
+            pointer-events: auto;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        /* Prevent any GSAP transforms */
+        #sticky-canvas[style*="transform"] {
+            transform: none !important;
         }
         #hero-canvas {
             display: block;
@@ -4394,46 +4409,44 @@
                     },
                 }));
 
-                // Canvas pin + scroll-driven scrub
-                // Strategy: ScrollTrigger pins the canvas for 400vh scroll height and drives a
-                // tweened "proxy" object that lerps toward the raw progress value. This allows
-                // smooth frame interpolation even on fast user scrolling. The proxy value then
-                // maps to a frame index via requestAnimationFrame render loop.
-                scrollTriggers.push(ScrollTrigger.create({
-                    trigger: '#canvas-section',
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    pin: '#sticky-canvas',
-                    pinSpacing: false,
-                    scrub: CONFIG.SCRUB_DURATION,
-                    onUpdate(self) {
-                        // Tween proxy toward scroll progress with smooth easing
-                        gsap.to(proxy, {
-                            progress: self.progress,
-                            duration: CONFIG.FRAME_LERP_DURATION,
-                            ease: 'none',
-                            overwrite: true
-                        });
-                    },
-                    onEnter() {
-                        progressEl.classList.add('visible');
-                        gsap.to(scrollCue, { opacity: 0, duration: .5 });
+                // Canvas stays completely fixed - no ScrollTrigger manipulation
+                // Only track scroll progress for frame updates
+                let canvasProgress = 0;
+                const stickyCanvas = document.getElementById('sticky-canvas');
+                
+                window.addEventListener('scroll', () => {
+                    const section = document.getElementById('canvas-section');
+                    const rect = section.getBoundingClientRect();
+                    const sectionHeight = section.offsetHeight;
+                    const viewportHeight = window.innerHeight;
+                    
+                    if (rect.top <= 0 && rect.bottom >= viewportHeight) {
+                        canvasProgress = Math.abs(rect.top) / (sectionHeight - viewportHeight);
+                        proxy.progress = Math.max(0, Math.min(1, canvasProgress));
+                        
+                        // Show canvas
+                        stickyCanvas.style.opacity = '1';
+                        stickyCanvas.style.visibility = 'visible';
+                        
                         if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
-                    },
-                    onLeave() {
-                        progressEl.classList.remove('visible');
-                        cancelAnimationFrame(rAFid); rAFid = null;
-                    },
-                    onEnterBack() {
                         progressEl.classList.add('visible');
-                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
-                    },
-                    onLeaveBack() {
+                    } else if (rect.top > 0) {
+                        // Before section
+                        stickyCanvas.style.opacity = '1';
+                        stickyCanvas.style.visibility = 'visible';
                         progressEl.classList.remove('visible');
                         gsap.to(scrollCue, { opacity: 1, duration: .5 });
-                        cancelAnimationFrame(rAFid); rAFid = null;
-                    },
-                }));
+                        cancelAnimationFrame(rAFid);
+                        rAFid = null;
+                    } else {
+                        // After section - hide canvas
+                        stickyCanvas.style.opacity = '0';
+                        stickyCanvas.style.visibility = 'hidden';
+                        progressEl.classList.remove('visible');
+                        cancelAnimationFrame(rAFid);
+                        rAFid = null;
+                    }
+                });
 
                 updatePanels(0);
             }

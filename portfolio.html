@@ -308,6 +308,34 @@
             font-size: 0.9rem;
             color: #a0a0a0;
         }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .featured-card {
+            transition-delay: 0s;
+        }
+
+        .featured-card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .project-card {
+            transition-delay: 0s;
+        }
+
+        .project-card:nth-child(2) { transition-delay: 0.1s; }
+        .project-card:nth-child(3) { transition-delay: 0.2s; }
+        .project-card:nth-child(4) { transition-delay: 0.3s; }
     </style>
 </head>
 <body>
@@ -341,26 +369,7 @@
     </section>
 
     <!-- Featured Projects -->
-    <section class="featured-grid">
-        <a href="#" class="featured-card">
-            <img src="https://mcdesign.bio/projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo">
-            <div class="card-overlay">
-                <div class="featured-badge">★ FEATURED</div>
-                <h2 class="featured-title">S. Florida</h2>
-                <div class="featured-subtitle">High Rise Luxe Condo</div>
-                <div class="featured-specs">Oceanfront Luxury Renovation <br> 4,200 sqft • 5 months • 4 bed · 4 bath</div>
-            </div>
-        </a>
-        <a href="#" class="featured-card">
-            <img src="https://mcdesign.bio/projects/assets/alpine-ranch-cover.webp" alt="High Alpine Mtn. Ranch Luxe Retreat">
-            <div class="card-overlay">
-                <div class="featured-badge">★ FEATURED</div>
-                <h2 class="featured-title">High Alpine Mtn.</h2>
-                <div class="featured-subtitle">Ranch Luxe Retreat</div>
-                <div class="featured-specs">Montana <br> 2,300 sqft • 24 months • 5 bed · 2 bath</div>
-            </div>
-        </a>
-    </section>
+    <section class="featured-grid" id="featured-grid"></section>
 
     <!-- Filter System -->
     <div class="filter-container" id="filter-container">
@@ -373,194 +382,7 @@
     </div>
 
     <!-- Project Grid -->
-    <section class="project-grid" id="project-grid">
-        <!-- Project 1 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/syracuse-cover.png" alt="Syracuse House">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">Syracuse House</h3>
-                <div class="project-subtitle">N. Utah Craftsman Estate</div>
-                <div class="project-specs">6,200 sqft • 18 months</div>
-            </div>
-        </a>
-
-        <!-- Project 2 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/montana-cover.webp" alt="Mtn. Mid-Rise Luxe">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Mtn. Mid-Rise Luxe</h3>
-                <div class="project-subtitle">Condo</div>
-                <div class="project-specs">Montana • 2,800 sqft • 8 months</div>
-            </div>
-        </a>
-
-        <!-- Project 3 -->
-        <a href="#" class="project-card" data-category="hospitality">
-            <img src="https://mcdesign.bio/projects/hospitality-pool-cover-v2.jpg" alt="Ultra Luxe Private Club">
-            <div class="project-overlay">
-                <span class="category-tag">Hospitality</span>
-                <h3 class="project-title">Ultra Luxe Private Club</h3>
-                <div class="project-subtitle">Resort Pool</div>
-                <div class="project-specs">SE Texas • 189,000 gal • 18 months</div>
-            </div>
-        </a>
-
-        <!-- Project 4 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/assets/southcoast-cover.webp" alt="South Coast Renovation">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">South Coast Renovation</h3>
-                <div class="project-subtitle">Complete Remodel</div>
-                <div class="project-specs">Big Sur, CA • 3,800 sqft • 16 months</div>
-            </div>
-        </a>
-
-        <!-- Project 5 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley New">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">Carmel Valley New</h3>
-                <div class="project-subtitle">Custom Residence</div>
-                <div class="project-specs">Carmel Valley, CA • 4,800 sqft • 20 months</div>
-            </div>
-        </a>
-
-        <!-- Project 6 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/north-florida/NIMG_9178.jpg" alt="North Florida Renovation">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">North Florida Renovation/Addition</h3>
-                <div class="project-subtitle">Addition</div>
-                <div class="project-specs">N. Florida • 3,600 + 1,200 sqft • 10 months</div>
-            </div>
-        </a>
-
-        <!-- Project 7 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/abaco-luxe-boathouse-cover.webp" alt="Abaco Luxe Boat House">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Abaco Luxe Boat House</h3>
-                <div class="project-subtitle">Construction</div>
-                <div class="project-specs">Abaco, Bahamas • 1,800 sqft • 6 months</div>
-            </div>
-        </a>
-
-        <!-- Project 8 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/carmel-2-cover.webp" alt="Carmel Forest to Ocean View">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Carmel Forest to Ocean View</h3>
-                <div class="project-subtitle">Custom Addition</div>
-                <div class="project-specs">Carmel By the Sea, CA</div>
-            </div>
-        </a>
-
-        <!-- Project 9 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/assets/bigsur-cover.webp" alt="Coastal Mountain Residence">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Coastal Mountain Residence</h3>
-                <div class="project-subtitle">Civil Site Work</div>
-                <div class="project-specs">Big Sur, CA • 11 months</div>
-            </div>
-        </a>
-
-        <!-- Project 10 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/carmel-knolls/001.10%20COVER.jpg" alt="Carmel Knolls">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Carmel Knolls</h3>
-                <div class="project-subtitle">More Than Lipstick on an Old Lady!</div>
-                <div class="project-specs">Carmel, CA • 2,200 sqft • 12 months</div>
-            </div>
-        </a>
-
-        <!-- Project 11 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/coastal-restoration/001%20COVER.JPG" alt="Coastal Restoration">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Coastal Restoration</h3>
-                <div class="project-subtitle">Erosion Repair</div>
-                <div class="project-specs">Monterey Peninsula, CA • 9 months</div>
-            </div>
-        </a>
-
-        <!-- Project 12 -->
-        <a href="#" class="project-card" data-category="residential-development">
-            <img src="https://mcdesign.bio/projects/assets/beachfront-1.webp" alt="Beachfront Estate">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Development</span>
-                <h3 class="project-title">Beachfront Estate</h3>
-                <div class="project-subtitle">Residence</div>
-                <div class="project-specs">Abaco, Bahamas • 6,800 sqft • 2.5 Acres</div>
-            </div>
-        </a>
-
-        <!-- Project 13 -->
-        <a href="#" class="project-card" data-category="residential-development">
-            <img src="https://mcdesign.bio/projects/development-civil/development%20(1).jpg" alt="Development Civil">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Development</span>
-                <h3 class="project-title">Development Civil</h3>
-                <div class="project-subtitle">Construction</div>
-                <div class="project-specs">SE Texas • 45 Acres • 36 months</div>
-            </div>
-        </a>
-
-        <!-- Project 14 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/pacific-grove/001%20COVER.JPG" alt="New Residential Construction">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">New Residential Construction</h3>
-                <div class="project-subtitle">In Historic Neighborhood</div>
-                <div class="project-specs">Central Coast, CA • 2,600 sqft • 14 months</div>
-            </div>
-        </a>
-
-        <!-- Project 15 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/hillside-cleanup/001%20COVER.jpg" alt="Hillside Restoration">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Hillside Restoration & Environmental Cleanup</h3>
-                <div class="project-subtitle">Environmental Cleanup</div>
-                <div class="project-specs">Carmel, CA • 4 months</div>
-            </div>
-        </a>
-
-        <!-- Project 16 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png" alt="Laguna Grande">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">Laguna Grande</h3>
-                <div class="project-subtitle">Spanish Revival Commercial</div>
-                <div class="project-specs">Seaside, CA • 12,000 sqft • 22 months</div>
-            </div>
-        </a>
-
-        <!-- Project 17 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/carmel-3-cover.webp" alt="Carmel House Remodel No.23">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Carmel House Remodel No.23</h3>
-                <div class="project-subtitle">Complete Renovation</div>
-                <div class="project-specs">Carmel By the Sea, CA</div>
-            </div>
-        </a>
-    </section>
+    <section class="project-grid" id="project-grid"></section>
 
     <footer>
         <div class="footer-logo">mcdesign</div>
@@ -571,27 +393,82 @@
         </div>
     </footer>
 
+    <script src="projects-data.js"></script>
     <script>
+        // Render featured projects
+        const featuredGrid = document.getElementById('featured-grid');
+        const featuredProjects = projectsData.filter(p => p.featured);
+        
+        featuredProjects.forEach(project => {
+            const card = document.createElement('a');
+            card.href = `project-detail.html?id=${project.id}`;
+            card.className = 'featured-card';
+            card.innerHTML = `
+                <img src="${project.coverImage}" alt="${project.title}">
+                <div class="card-overlay">
+                    <div class="featured-badge">★ FEATURED</div>
+                    <h2 class="featured-title">${project.title.split(' ')[0]}</h2>
+                    <div class="featured-subtitle">${project.subtitle}</div>
+                    <div class="featured-specs">${project.location} <br> ${project.specs}</div>
+                </div>
+            `;
+            featuredGrid.appendChild(card);
+        });
+
+        // Render all projects
+        const projectGrid = document.getElementById('project-grid');
+        
+        function renderProjects(filter = 'all') {
+            projectGrid.innerHTML = '';
+            const filtered = filter === 'all' 
+                ? projectsData 
+                : projectsData.filter(p => p.category === filter);
+            
+            filtered.forEach(project => {
+                const card = document.createElement('a');
+                card.href = `project-detail.html?id=${project.id}`;
+                card.className = 'project-card';
+                card.setAttribute('data-category', project.category);
+                card.innerHTML = `
+                    <img src="${project.coverImage}" alt="${project.title}">
+                    <div class="project-overlay">
+                        <span class="category-tag">${project.category.replace('-', ' ')}</span>
+                        <h3 class="project-title">${project.title}</h3>
+                        <div class="project-subtitle">${project.subtitle}</div>
+                        <div class="project-specs">${project.specs}</div>
+                    </div>
+                `;
+                projectGrid.appendChild(card);
+            });
+        }
+
+        // Initial render
+        renderProjects();
+
+        // Update stats
+        document.querySelector('.stats-container').innerHTML = `
+            <div class="stat-item">
+                <h3>${projectsData.length}</h3>
+                <p>Signature Projects</p>
+            </div>
+            <div class="stat-item">
+                <h3>37+</h3>
+                <p>Years Excellence</p>
+            </div>
+            <div class="stat-item">
+                <h3>$500M+</h3>
+                <p>Portfolio Value</p>
+            </div>
+        `;
+
         // Filtering Logic
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
                 btn.classList.add('active');
-
                 const filterValue = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                renderProjects(filterValue);
             });
         });
     </script>

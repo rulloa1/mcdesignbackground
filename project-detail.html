@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Project — Michael Chandler</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    colors: {
+                        gold: '#D4AF37',
+                        charcoal: '#1a1a1a',
+                        offwhite: '#FAF9F6',
+                        graytext: '#6B6B6B',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF9F6;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav.main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 50;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav.main-nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            color: #D4AF37;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav.main-nav .back-link {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav.main-nav .back-link:hover {
+            color: #D4AF37;
+        }
+
+        /* Hero */
+        .project-hero {
+            padding-top: 100px;
+            padding-bottom: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6B6B6B;
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a {
+            color: #D4AF37;
+            text-decoration: none;
+        }
+
+        .project-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: #6B6B6B;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+            border-top: 1px solid #d0d0d0;
+            border-bottom: 1px solid #d0d0d0;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6B6B6B;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Gallery */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            cursor: pointer;
+            background: #e0e0e0;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-prev { left: 2rem; }
+        .lightbox-next { right: 2rem; }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            color: #D4AF37;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .regions {
+            color: #D4AF37;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <a href="portfolio.html" class="logo">mcdesign</a>
+        <a href="portfolio.html" class="back-link">← Back to Portfolio</a>
+    </nav>
+
+    <div class="project-hero">
+        <div class="breadcrumb">
+            <a href="portfolio.html">Portfolio</a> / <span id="breadcrumb-category"></span> / <span id="breadcrumb-title"></span>
+        </div>
+        <h1 class="project-title" id="project-title"></h1>
+        <div class="project-subtitle" id="project-subtitle"></div>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <span class="meta-label">Location</span>
+                <span class="meta-value" id="project-location"></span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Category</span>
+                <span class="meta-value" id="project-category"></span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Specs</span>
+                <span class="meta-value" id="project-specs"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <div class="lightbox-content">
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+            <img src="" alt="" id="lightboxImg">
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">mcdesign</div>
+        <div class="regions">CA • Bahamas • TX • MT • UT • FL</div>
+        <div class="contact-info">
+            <p>Michael Chandler — Strategic Construction Executive</p>
+            <p style="margin-top: 1rem;"><a href="mailto:contact@mcdesign.bio" style="color: #D4AF37; text-decoration: none;">contact@mcdesign.bio</a></p>
+        </div>
+    </footer>
+
+    <script src="projects-data.js"></script>
+    <script>
+        // Get project ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id');
+
+        // Find project data
+        const project = projectsData.find(p => p.id === projectId);
+
+        if (!project) {
+            window.location.href = 'portfolio.html';
+        }
+
+        // Populate page
+        document.getElementById('page-title').textContent = `${project.title} — Michael Chandler`;
+        document.getElementById('breadcrumb-category').textContent = project.category.replace('-', ' ');
+        document.getElementById('breadcrumb-title').textContent = project.title;
+        document.getElementById('project-title').textContent = project.title;
+        document.getElementById('project-subtitle').textContent = project.subtitle;
+        document.getElementById('project-location').textContent = project.location;
+        document.getElementById('project-category').textContent = project.category.replace('-', ' ').toUpperCase();
+        document.getElementById('project-specs').textContent = project.specs;
+
+        // Render gallery
+        const galleryGrid = document.getElementById('gallery-grid');
+        project.images.forEach((img, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `<img src="${img}" alt="${project.title} - Image ${index + 1}" loading="lazy">`;
+            item.onclick = () => openLightbox(index);
+            galleryGrid.appendChild(item);
+        });
+
+        // Lightbox functionality
+        let currentImageIndex = 0;
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxImage() {
+            const img = document.getElementById('lightboxImg');
+            img.src = project.images[currentImageIndex];
+            img.alt = `${project.title} - Image ${currentImageIndex + 1}`;
+            document.getElementById('lightboxCounter').textContent = `${currentImageIndex + 1} / ${project.images.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % project.images.length;
+            updateLightboxImage();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+            updateLightboxImage();
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxNext').addEventListener('click', nextImage);
+        document.getElementById('lightboxPrev').addEventListener('click', prevImage);
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+    </script>
+</body>
+</html>
