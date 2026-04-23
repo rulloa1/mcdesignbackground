@@ -3986,13 +3986,15 @@
                         });
                     });
 
-                    // Stat number scale animation
+                    // Stat number scale animation (disabled as it conflicts with .reveal opacity and counter updates)
+                    /*
                     gsap.utils.toArray('.stat-number').forEach(stat => {
                         gsap.fromTo(stat, { scale: 0.5, opacity: 0 }, {
                             scale: 1, opacity: 1, duration: 1, ease: 'back.out',
                             scrollTrigger: { trigger: stat, start: 'top 80%', once: true }
                         });
                     });
+                    */
 
                     // About images slide in
                     gsap.utils.toArray('#about .grid img').forEach((img, idx) => {
