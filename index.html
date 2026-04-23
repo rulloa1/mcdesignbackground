@@ -3458,11 +3458,11 @@
             const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const prefersReducedMotion = prefersReducedMotionQuery.matches;
             const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
-            const shouldBypassHeavyHero = prefersReducedMotion || saveDataEnabled;
+            const shouldBypassHeavyHero = true; // prefersReducedMotion || saveDataEnabled;
             // ===================================================================================
             //  CANVAS SIZING
             // ===================================================================================
-            canvasSec.style.height = '400vh';
+            canvasSec.style.height = shouldBypassHeavyHero ? '100vh' : '400vh';
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
