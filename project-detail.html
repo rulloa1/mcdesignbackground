@@ -309,6 +309,10 @@
                 <span class="meta-value" id="project-location"></span>
             </div>
             <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value" id="project-role"></span>
+            </div>
+            <div class="meta-item">
                 <span class="meta-label">Category</span>
                 <span class="meta-value" id="project-category"></span>
             </div>
@@ -363,6 +367,7 @@
         document.getElementById('project-title').textContent = project.title;
         document.getElementById('project-subtitle').textContent = project.subtitle;
         document.getElementById('project-location').textContent = project.location;
+        document.getElementById('project-role').textContent = project.role;
         document.getElementById('project-category').textContent = project.category.replace('-', ' ').toUpperCase();
         document.getElementById('project-specs').textContent = project.specs;
 
