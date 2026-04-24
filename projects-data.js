@@ -10,7 +10,7 @@ const projectsData = [
         specs: '4,200 sqft • 5 months • 4 bed · 4 bath',
         featured: true,
         coverImage: 'projects/assets/miami-beach-cover.webp',
-        images: Array.from({length: 48}, (_, i) => `projects/assets/miami-beach-${i + 1}.webp`)
+        images: Array.from({length: 47}, (_, i) => `projects/assets/miami-beach-${i + 1}.webp`)
     },
     {
         id: 'alpine-ranch',
@@ -34,7 +34,7 @@ const projectsData = [
         specs: '6,200 sqft • 18 months',
         featured: false,
         coverImage: 'projects/syracuse-cover.png',
-        images: Array.from({length: 49}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
+        images: Array.from({length: 46}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
     },
     {
         id: 'montana-condo',
@@ -72,7 +72,7 @@ const projectsData = [
             'projects/assets/pool-design-5.png',
             'projects/assets/pool-design-6.png',
             'projects/assets/pool-design-9.png',
-            ...Array.from({length: 29}, (_, i) => `projects/assets/pool-design-${i + 10}.webp`)
+            ...Array.from({length: 28}, (_, i) => `projects/assets/pool-design-${i + 10}.webp`)
         ]
     },
     {
@@ -221,7 +221,7 @@ const projectsData = [
         images: [
             'projects/pacific-grove/001 COVER.JPG',
             'projects/assets/pg-cover.webp',
-            ...Array.from({length: 13}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
+            ...Array.from({length: 10}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
         ]
     },
     {
