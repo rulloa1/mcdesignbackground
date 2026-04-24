@@ -3466,7 +3466,8 @@
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
-                return `flava-depot/frames/ezgif-frame-${n}.jpg`;
+                const ext = supportsWebP ? 'webp' : 'jpg';
+                return `flava-depot/frames/ezgif-frame-${n}.${ext}`;
             });
             // ===================================================================================
             //  DOM REFS
@@ -3489,7 +3490,7 @@
             const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const prefersReducedMotion = prefersReducedMotionQuery.matches;
             const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
-            const shouldBypassHeavyHero = false; // prefersReducedMotion || saveDataEnabled;
+            const shouldBypassHeavyHero = prefersReducedMotion || saveDataEnabled;
             // ===================================================================================
             //  CANVAS SIZING
             // ===================================================================================
@@ -3536,8 +3537,6 @@
                 } else {
                     ctx.fillStyle = '#111';
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText('Loading frame ' + i, 20, 30);
                 }
             }
             // ===================================================================================
@@ -5083,23 +5082,31 @@
         const FORM_STATE_KEY = 'mcdesign_form_state';
         const listeners = []; // Track for cleanup
 
-        // Helper: load form state from sessionStorage
+        const FORM_STATE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+        const EMPTY_STATE = () => ({ budget: '', type: '', name: '', email: '', step: 1 });
+
+        // Helper: load form state from sessionStorage, discarding if older than TTL
         function loadFormState() {
             try {
                 const saved = sessionStorage.getItem(FORM_STATE_KEY);
-                return saved ? JSON.parse(saved) : { budget: '', type: '', name: '', email: '', step: 1 };
+                if (!saved) return EMPTY_STATE();
+                const parsed = JSON.parse(saved);
+                if (parsed._ts && Date.now() - parsed._ts > FORM_STATE_TTL_MS) {
+                    sessionStorage.removeItem(FORM_STATE_KEY);
+                    return EMPTY_STATE();
+                }
+                return parsed;
             } catch (e) {
-                console.warn('Failed to load form state:', e);
-                return { budget: '', type: '', name: '', email: '', step: 1 };
+                return EMPTY_STATE();
             }
         }
 
-        // Helper: save form state to sessionStorage
+        // Helper: save form state to sessionStorage with timestamp
         function saveFormState(state) {
             try {
-                sessionStorage.setItem(FORM_STATE_KEY, JSON.stringify(state));
+                sessionStorage.setItem(FORM_STATE_KEY, JSON.stringify({ ...state, _ts: Date.now() }));
             } catch (e) {
-                console.warn('Failed to save form state:', e);
+                // ignore storage errors
             }
         }
 
