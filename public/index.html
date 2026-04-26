@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -150,7 +150,7 @@
 
         /* === Print styles === */
         @media print {
-            #navbar, #mobile-nav, #scroll-cue, .scroll-notification,
+            #navbar, #mobile-nav, #scroll-cue,
             .marquee-band, #progress-dots, footer { display: none; }
             body { background: white; color: black; }
             a { text-decoration: underline; }
@@ -527,45 +527,6 @@
                 opacity: 0.85;
             }
             50% {
-                opacity: 1;
-            }
-        }
-        /* === Scroll notification (animated chevron + text) === */
-        .scroll-notification {
-            position: absolute;
-            bottom: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            pointer-events: none;
-            user-select: none;
-            z-index: 10;
-        }
-        .scroll-label {
-            font-size: .7rem;
-            font-weight: 600;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: rgba(70, 70, 70, .8);
-            transition: color .3s ease;
-        }
-        .chevron-down {
-            width: 28px;
-            height: 28px;
-            color: rgba(70, 70, 70, .7);
-            animation: chevronBounce 2s ease-in-out infinite;
-            transition: color .3s ease;
-        }
-        @keyframes chevronBounce {
-            0%, 100% {
-                transform: translateY(0) opacity(0.5);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(8px);
                 opacity: 1;
             }
         }
@@ -1143,7 +1104,7 @@
             border: 1px solid #e8e8e8;
             background: #fff;
             transition: border-color .25s, box-shadow .25s;
-            cursor: default;
+            cursor: pointer;
         }
         .portfolio-card:hover {
             border-color: #bbb;
@@ -2328,7 +2289,7 @@
     <header id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand" style="display:flex; align-items:center;">
-                <img src="logo-horizontal.png" alt="MC Michael Chandler Logo" style="height: 40px; width: auto; display: block;" />
+                <img src="MC_Logo_Improved_V1.png" alt="MC Michael Chandler Logo" style="height: 50px; width: auto; display: block;" />
             </a>
             <nav class="nav-links">
                 <a href="#" class="nav-link">Home</a>
@@ -2406,13 +2367,6 @@
                     <p class="panel-body">From coastal high-rises to alpine estates&mdash;I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
                     <a aria-label="Button" href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
                 </div>
-            </div>
-            <!-- Scroll notification with animated chevron -->
-            <div class="scroll-notification" aria-label="Scroll to explore content">
-                <span class="scroll-label">Scroll to explore</span>
-                <svg class="chevron-down" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
             </div>
             <!-- Scroll cue (interactive button) -->
             <button id="scroll-cue" aria-label="Scroll down to explore" title="Click to scroll or keep scrolling">
@@ -2729,7 +2683,7 @@
                 <!-- 1. S. Florida High Rise Luxe Condo -->
                 
                 <!-- 1. Bakers Bay Resort -->
-                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="bakers-bay" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="bakers-bay">
                     <div class="portfolio-img-wrap">
                         <img src="projects/assets/miami-beach-cover.webp"
                             alt="Bakers Bay Resort" loading="lazy" decoding="async" />
@@ -2753,7 +2707,7 @@
                 </div>
 
                 <!-- 2. Yellowstone Club -->
-                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="yellowstone-club" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="yellowstone-club">
                     <div class="portfolio-img-wrap">
                         <img src="projects/assets/alpine-ranch-cover.webp"
                             alt="Yellowstone Club" loading="lazy" decoding="async" />
@@ -2777,7 +2731,7 @@
                 </div>
 
                 <!-- 3. Houston Oaks -->
-                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="houston-oaks" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="houston-oaks">
                     <div class="portfolio-img-wrap">
                         <img src="projects/syracuse-cover.png"
                             alt="Houston Oaks" loading="lazy" decoding="async" />
@@ -2801,7 +2755,7 @@
                 </div>
 
                 <!-- 4. Mangrove Group Portfolio -->
-                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="mangrove-group" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="mangrove-group">
                     <div class="portfolio-img-wrap">
                         <img src="projects/assets/miami-beach-1.webp"
                             alt="Mangrove Group Portfolio" loading="lazy" decoding="async" />
@@ -2825,7 +2779,7 @@
                 </div>
 
                 <!-- 5. $125M Private Island Estate -->
-                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="private-island" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="private-island">
                     <div class="portfolio-img-wrap">
                         <img src="projects/assets/miami-beach-2.webp"
                             alt="$125M Private Island Estate" loading="lazy" decoding="async" />
@@ -2847,7 +2801,7 @@
                         </div>
                     </div>
                 </div>
-<div class="portfolio-card reveal" data-category="Residential Construction" data-project="miami-beach-condo" style="cursor:pointer;">
+<div class="portfolio-card reveal" data-category="Residential Construction" data-project="miami-beach-condo">
                     <div class="portfolio-img-wrap">
                         <img src="projects/assets/miami-beach-cover.webp"
                             alt="S. Florida High Rise Luxe Condo" loading="lazy" decoding="async" />
@@ -2871,7 +2825,7 @@
                     </div>
                 </div>
                 <!-- 2. High Alpine Ranch -->
-                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="high-alpine-ranch" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="high-alpine-ranch">
                     <div class="portfolio-img-wrap">
                         <img src="projects/assets/alpine-ranch-cover.webp"
                             alt="High Alpine Mtn. Ranch Luxe Retreat" loading="lazy" decoding="async" />
@@ -2895,7 +2849,7 @@
                     </div>
                 </div>
                 <!-- 3. Syracuse House -->
-                <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/syracuse-cover.png"
                             alt="Syracuse House &mdash; N. Utah Craftsman Estate" loading="lazy" />
@@ -2918,7 +2872,7 @@
                     </div>
                 </div>
                 <!-- 4. Montana Condo -->
-                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="montana-condo" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="montana-condo">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/montana-cover.webp"
                             alt="Mtn. Mid-Rise Luxe Condo" loading="lazy" />
@@ -2936,7 +2890,7 @@
                     </div>
                 </div>
                 <!-- 5. Hospitality Pool -->
-                <div class="portfolio-card reveal" data-category="Hospitality" data-project="hospitality-pool" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Hospitality" data-project="hospitality-pool">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/hospitality-pool-cover-v2.jpg"
                             alt="Ultra Luxe Private Club Resort Pool" loading="lazy" />
@@ -2954,7 +2908,7 @@
                     </div>
                 </div>
                 <!-- 6. South Coast Renovation -->
-                <div class="portfolio-card reveal" data-category="Design Build" data-project="southcoast-remodel" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="southcoast-remodel">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/southcoast-cover.webp"
                             alt="South Coast Renovation" loading="lazy" />
@@ -2972,7 +2926,7 @@
                     </div>
                 </div>
                 <!-- 7. VP of Development &bull; Global Operations New -->
-                <div class="portfolio-card reveal" data-category="Design Build" data-project="carmel-valley-new" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="carmel-valley-new">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/carmel-valley-new-cover.webp"
                             alt="VP of Development &bull; Global Operations New Custom Residence" loading="lazy" />
@@ -2990,7 +2944,7 @@
                     </div>
                 </div>
                 <!-- 8. North Florida Renovation -->
-                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="north-florida-renovation" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="north-florida-renovation">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/north-florida/NIMG_9178.jpg"
                             alt="North Florida Renovation and Addition" loading="lazy" />
@@ -3008,7 +2962,7 @@
                     </div>
                 </div>
                 <!-- 9. Abaco Luxe Boat House -->
-                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="bahamas-abaco-development" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="bahamas-abaco-development">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/abaco-luxe-boathouse-cover.webp"
                             alt="Abaco Luxe Boat House" loading="lazy" />
@@ -3026,7 +2980,7 @@
                     </div>
                 </div>
                 <!-- 10. Carmel Forest to Ocean View -->
-                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-2" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-2">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/carmel-2-cover.webp"
                             alt="Carmel Forest to Ocean View Custom Addition" loading="lazy" />
@@ -3040,7 +2994,7 @@
                     </div>
                 </div>
                 <!-- 11. Coastal Mountain Residence -->
-                <div class="portfolio-card reveal" data-category="Civil" data-project="bigsur-mountain-remodel" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Civil" data-project="bigsur-mountain-remodel">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/bigsur-cover.webp"
                             alt="Coastal Mountain Residence Civil Site Work" loading="lazy" />
@@ -3057,7 +3011,7 @@
                     </div>
                 </div>
                 <!-- 12. Carmel Knolls -->
-                <div class="portfolio-card reveal" data-category="Civil" data-project="carmel-knolls" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Civil" data-project="carmel-knolls">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/carmel-knolls/001.10%20COVER.jpg"
                             alt="Carmel Knolls Remodel" loading="lazy" />
@@ -3075,7 +3029,7 @@
                     </div>
                 </div>
                 <!-- 13. Coastal Restoration -->
-                <div class="portfolio-card reveal" data-category="Civil" data-project="coastal-restoration" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Civil" data-project="coastal-restoration">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/coastal-restoration/001%20COVER.JPG"
                             alt="Coastal Restoration Erosion Repair" loading="lazy" />
@@ -3092,7 +3046,7 @@
                     </div>
                 </div>
                 <!-- 14. Beachfront Estate -->
-                <div class="portfolio-card reveal" data-category="Residential Development" data-project="bahamas-beachfront-estate" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Development" data-project="bahamas-beachfront-estate">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/beachfront-1.webp"
                             alt="Beachfront Estate Residence" loading="lazy" />
@@ -3110,7 +3064,7 @@
                     </div>
                 </div>
                 <!-- 15. Development Civil -->
-                <div class="portfolio-card reveal" data-category="Residential Development" data-project="development-civil" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Development" data-project="development-civil">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/development-civil/development%20(1).jpg"
                             alt="Development Civil Construction" loading="lazy" />
@@ -3128,7 +3082,7 @@
                     </div>
                 </div>
                 <!-- 16. Pacific Grove Design Build -->
-                <div class="portfolio-card reveal" data-category="Design Build" data-project="pacific-grove-design-build" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="pacific-grove-design-build">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/pacific-grove/001%20COVER.JPG"
                             alt="New Residential Construction In Historic Neighborhood" loading="lazy" />
@@ -3146,7 +3100,7 @@
                     </div>
                 </div>
                 <!-- 17. Hillside Cleanup -->
-                <div class="portfolio-card reveal" data-category="Civil" data-project="hillside-cleanup" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Civil" data-project="hillside-cleanup">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/hillside-cleanup/001%20COVER.jpg"
                             alt="Hillside Restoration and Environmental Cleanup" loading="lazy" />
@@ -3163,7 +3117,7 @@
                     </div>
                 </div>
                 <!-- 18. Laguna Grande -->
-                <div class="portfolio-card reveal" data-category="Design Build" data-project="laguna-grande-design-build" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Design Build" data-project="laguna-grande-design-build">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png"
                             alt="Laguna Grande Spanish Revival Commercial" loading="lazy" />
@@ -3181,7 +3135,7 @@
                     </div>
                 </div>
                 <!-- 19. Carmel House Remodel No.23 -->
-                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-3" style="cursor:pointer;">
+                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-3">
                     <div class="portfolio-img-wrap">
                         <img decoding="async" src="projects/assets/carmel-3-cover.webp"
                             alt="Carmel House Remodel No.23" loading="lazy" />
@@ -3376,7 +3330,7 @@
                 <!-- Brand col -->
                 <div>
                     <h3 class="footer-brand-name" style="margin-bottom: 12px;">
-                        <img src="logo-vertical.png" alt="MC Michael Chandler Logo" loading="lazy" decoding="async" style="height: 96px; width: auto; display: block;" />
+                        <img src="MC_Logo_Improved_V1.png" alt="MC Michael Chandler Logo" loading="lazy" decoding="async" style="height: 120px; width: auto; display: block;" />
                     </h3>
                     <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft &mdash; from California to the Caribbean.</p>
                 </div>
@@ -4580,6 +4534,23 @@
             initScrollCueButton();
             initScrollToTop();
 
+            function initAllAnimations() {
+                initRevealAnimations();
+                initHeadingLineAnimations();
+                initServiceCardAnimations();
+                initProcessCardAnimations();
+                initSectionScrollEffects();
+                initTextParallax();
+                initCounters();
+                initTypedLabels();
+                initMarqueeEntrance();
+                initAdvancedScrollEffects();
+                initSectionTransitions();
+                initCardGridStagger();
+                initTextBlockReveal();
+                initFooterAnimations();
+            }
+
             if (shouldBypassHeavyHero) {
                 loaderEl.classList.add('hidden');
                 canvasSec.style.height = '100vh';
@@ -4591,44 +4562,15 @@
                 updatePanels(0);
                 updateDots(0);
                 renderStaticHeroFallback();
-                initRevealAnimations();
-                initHeadingLineAnimations();
-                // initIntroStatementAnimation(); // Disabled in favor of scrub text
-                initServiceCardAnimations();
-                initProcessCardAnimations();
-                initSectionScrollEffects();
-                initTextParallax();
-                initCounters();
-                initTypedLabels();
-                initMarqueeEntrance();
-                initAdvancedScrollEffects();
-                initSectionTransitions();
-                initCardGridStagger();
-                initTextBlockReveal();
-                initFooterAnimations();
+                initAllAnimations();
                 return;
             }
 
             preloadFrames(() => {
-                // All frames loaded &mdash; hide loader, init animations
                 loaderEl.classList.add('hidden');
                 drawFrameIndex(0);
                 initScrollTrigger();
-                initRevealAnimations();
-                initHeadingLineAnimations();
-                // initIntroStatementAnimation(); // Disabled in favor of scrub text
-                initServiceCardAnimations();
-                initProcessCardAnimations();
-                initSectionScrollEffects();
-                initTextParallax();
-                initCounters();
-                initTypedLabels();
-                initMarqueeEntrance();
-                initAdvancedScrollEffects();
-                initSectionTransitions();
-                initCardGridStagger();
-                initTextBlockReveal();
-                initFooterAnimations();
+                initAllAnimations();
             });
         })();
     </script>
@@ -5970,29 +5912,3 @@
     <button id="scroll-to-top" aria-label="Scroll to top" title="Back to top"></button>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
