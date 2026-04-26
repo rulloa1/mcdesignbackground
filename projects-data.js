@@ -1,5 +1,68 @@
 // Complete project database for Michael Chandler portfolio
+// NOTE: Owner's Rep projects reuse other project images as placeholders
+// until dedicated photography is available.
 const projectsData = [
+    {
+        id: 'bakers-bay',
+        title: 'Bakers Bay Resort',
+        subtitle: 'Luxury Resort Development',
+        category: 'owners-representation',
+        location: 'Bahamas',
+        role: "Chief Projects Officer & Owner's Rep",
+        specs: 'Resort Portfolio',
+        featured: true,
+        coverImage: 'projects/assets/bakers-bay-1.webp',
+        images: ['projects/assets/bakers-bay-1.webp', 'projects/assets/bakers-bay-2.webp']
+    },
+    {
+        id: 'yellowstone-club',
+        title: 'Yellowstone Club',
+        subtitle: 'Ultra-Luxury Alpine Community',
+        category: 'owners-representation',
+        location: 'Montana',
+        role: "Chief Projects Officer & Owner's Rep",
+        specs: 'Alpine Community',
+        featured: true,
+        coverImage: 'projects/assets/alpine-ranch-cover.webp',
+        images: ['projects/assets/alpine-ranch-cover.webp']
+    },
+    {
+        id: 'houston-oaks',
+        title: 'Houston Oaks',
+        subtitle: 'Premium Country Club Estate',
+        category: 'owners-representation',
+        location: 'Texas',
+        role: "Chief Projects Officer & Owner's Rep",
+        specs: 'Country Club Portfolio',
+        featured: true,
+        coverImage: 'projects/syracuse-cover.png',
+        images: ['projects/syracuse-cover.png']
+    },
+    {
+        id: 'mangrove-group',
+        title: 'Mangrove Group Portfolio',
+        subtitle: 'Luxury Development Portfolio',
+        category: 'owners-representation',
+        location: 'Caribbean & Latin America',
+        role: "Chief Projects Officer & Owner's Rep",
+        specs: 'International Portfolio',
+        featured: true,
+        coverImage: 'projects/assets/miami-beach-1.webp',
+        images: ['projects/assets/miami-beach-1.webp']
+    },
+    {
+        id: 'private-island',
+        title: '$125M Private Island Estate',
+        subtitle: 'Ultra-Luxury Private Island',
+        category: 'owners-representation',
+        location: 'Bahamas',
+        role: "Chief Projects Officer & Owner's Rep",
+        specs: '$125M Estate',
+        featured: true,
+        coverImage: 'projects/assets/miami-beach-2.webp',
+        images: ['projects/assets/miami-beach-2.webp']
+    },
+
     {
         id: 'miami-beach',
         title: 'S. Florida High Rise Luxe Condo',
@@ -10,7 +73,7 @@ const projectsData = [
         specs: '4,200 sqft • 5 months • 4 bed · 4 bath',
         featured: true,
         coverImage: 'projects/assets/miami-beach-cover.webp',
-        images: Array.from({length: 48}, (_, i) => `projects/assets/miami-beach-${i + 1}.webp`)
+        images: Array.from({length: 47}, (_, i) => `projects/assets/miami-beach-${i + 1}.webp`)
     },
     {
         id: 'alpine-ranch',
@@ -34,7 +97,7 @@ const projectsData = [
         specs: '6,200 sqft • 18 months',
         featured: false,
         coverImage: 'projects/syracuse-cover.png',
-        images: Array.from({length: 49}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
+        images: Array.from({length: 46}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
     },
     {
         id: 'montana-condo',
@@ -72,7 +135,7 @@ const projectsData = [
             'projects/assets/pool-design-5.png',
             'projects/assets/pool-design-6.png',
             'projects/assets/pool-design-9.png',
-            ...Array.from({length: 29}, (_, i) => `projects/assets/pool-design-${i + 10}.webp`)
+            ...Array.from({length: 28}, (_, i) => `projects/assets/pool-design-${i + 10}.webp`)
         ]
     },
     {
@@ -221,7 +284,7 @@ const projectsData = [
         images: [
             'projects/pacific-grove/001 COVER.JPG',
             'projects/assets/pg-cover.webp',
-            ...Array.from({length: 13}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
+            ...Array.from({length: 10}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
         ]
     },
     {

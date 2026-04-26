@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael Chandler &mdash; Strategic Construction Executive</title>
+    <title>Michael Chandler &mdash; Chief Projects &amp; Construction Officer</title>
     <meta name="description"
         content="Michael Chandler &mdash; Ultra-luxury custom home builder and historic coastal restoration specialist. 37+ years of design-build construction management. $500M+ portfolio spanning California, Bahamas, Texas &amp; Montana." />
     <meta name="keywords" content="ultra-luxury custom homes, historic coastal restoration, design-build construction management, luxury home builder California, Bahamas construction, high-end residential contractor, Michael Chandler construction" />
@@ -23,7 +23,8 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="theme-color" content="#1C1916" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Clickjacking protection (X-Frame-Options must be set via HTTP header on Vercel) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://formspree.io; frame-ancestors 'none';" />
+    <!-- Clickjacking protection (X-Frame-Options must be set via HTTP header on Cloudflare) -->
     <!-- Resource hints for performance -->
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -106,9 +107,8 @@
       ]
     }
     </script>
-    <!-- Tailwind CSS utility overrides (production-safe, no Play CDN) -->
+    <!-- Utility classes (Tailwind-style naming, no Tailwind dependency) -->
     <style>
-        /* Core Tailwind utilities used in this site */
         .text-gray-500 { color: #6B6660; }
         .text-gray-700 { color: #2E2B26; }
         .text-gray-900 { color: #1C1916; }
@@ -118,8 +118,13 @@
         .text-5xl { font-size: 3rem; line-height: 1; }
         .tracking-tight { letter-spacing: -0.025em; }
         .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
         .leading-relaxed { line-height: 1.625; }
-        @media (min-width: 768px) { .md\:text-5xl { font-size: 3rem; line-height: 1; } }
+        .max-w-sm { max-width: 24rem; }
+        @media (min-width: 768px) {
+            .md\:text-5xl { font-size: 3rem; line-height: 1; }
+            .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
+        }
     </style>
     <!-- Google Fonts: Inter (body) + Cormorant Garamond (display serif) -->
     <link
@@ -142,6 +147,7 @@
         .skip-to-main:focus {
             top: 0;
         }
+
         /* === Print styles === */
         @media print {
             #navbar, #mobile-nav, #scroll-cue, .scroll-notification,
@@ -253,17 +259,6 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(226, 117, 53, .25);
         }
-        /* === Accessibility: Respect user motion preferences === */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms;
-                animation-iteration-count: 1;
-                transition-duration: 0.01ms;
-                scroll-behavior: auto;
-            }
-        }
         /* === Spin animation (moved from inline JS) === */
         @keyframes spin {
             to { transform: rotate(360deg); }
@@ -279,7 +274,7 @@
             background-attachment: fixed;
             color: var(--text);
             -webkit-font-smoothing: antialiased;
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
         }
         body {
             background: var(--bg);
@@ -342,7 +337,7 @@
         /* === Canvas section === */
         #canvas-section {
             position: relative;
-            /* height set by JS = 400vh */
+            height: 400vh;
         }
         #sticky-canvas {
             position: sticky;
@@ -351,6 +346,7 @@
             height: 100vh;
             overflow: hidden;
             background: var(--bg-alt);
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #hero-canvas {
             display: block;
@@ -474,47 +470,63 @@
         /* === Scroll cue (interactive button) === */
         #scroll-cue {
             position: absolute;
-            bottom: 32px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
             pointer-events: auto;
-            transition: opacity .5s ease;
+            transition: all .4s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
+            padding: 20px 28px;
+            border-radius: 50px;
             user-select: none;
             z-index: 10;
-            background: transparent;
-            border: none;
+            background: rgba(28, 25, 22, 0.75);
+            border: 2px solid rgba(180, 160, 140, 0.4);
+            backdrop-filter: blur(12px);
             font-family: inherit;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: scrollPulse 2.2s ease-in-out infinite;
         }
         #scroll-cue:hover {
-            opacity: 1;
+            background: rgba(28, 25, 22, 0.95);
+            border-color: rgba(180, 160, 140, 0.7);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: translateX(-50%) scale(1.08);
         }
         #scroll-cue span {
-            font-size: .65rem;
-            font-weight: 600;
-            letter-spacing: .16em;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: rgba(70, 70, 70, .9);
+            color: rgba(200, 180, 160, 1);
             transition: color .3s ease;
         }
         #scroll-cue:hover span {
-            color: rgba(60, 60, 60, 1);
+            color: rgba(220, 200, 180, 1);
         }
         .scroll-line {
-            width: 1px;
-            height: 36px;
-            background: linear-gradient(to bottom, rgba(100, 100, 100, .5), transparent);
-            animation: scrollBob 1.8s ease-in-out infinite;
-            transition: background .3s ease;
+            width: 2px;
+            height: 48px;
+            background: linear-gradient(to bottom, rgba(180, 160, 140, 0.8), rgba(180, 160, 140, 0.1));
+            animation: scrollBob 1.6s ease-in-out infinite;
+            transition: all .3s ease;
+            box-shadow: 0 0 12px rgba(180, 160, 140, 0.3);
         }
         #scroll-cue:hover .scroll-line {
-            background: linear-gradient(to bottom, rgba(60, 60, 60, .8), transparent);
+            background: linear-gradient(to bottom, rgba(200, 180, 160, 1), rgba(200, 180, 160, 0.2));
+            box-shadow: 0 0 20px rgba(180, 160, 140, 0.5);
+        }
+        @keyframes scrollPulse {
+            0%, 100% {
+                opacity: 0.85;
+            }
+            50% {
+                opacity: 1;
+            }
         }
         /* === Scroll notification (animated chevron + text) === */
         .scroll-notification {
@@ -2282,8 +2294,8 @@
     </style>
 </head>
 <body class="antialiased">
-    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
-    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
        LOADING OVERLAY
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <div id="loader" role="status" aria-label="Loading animation frames">
@@ -2311,11 +2323,10 @@
     <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        NAVBAR
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
-    <a href="#main-content" class="skip-to-main">Skip to main content</a>
     <header id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand" style="display:flex; align-items:center;">
-                <img src="logo-horizontal.png" alt="MC Michael Chandler Logo" style="height: 48px; width: auto; object-fit: contain;" />
+                <img src="logo-horizontal.png" alt="MC Michael Chandler Logo" style="height: 40px; width: auto; display: block;" />
             </a>
             <nav class="nav-links">
                 <a href="#" class="nav-link">Home</a>
@@ -2325,7 +2336,7 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
             <div style="display:flex;align-items:center;gap:16px;">
-                <a href="#form-section" class="btn btn-dark hidden md:inline-flex">Discovery Call</a>
+                <a aria-label="Button" href="#form-section" class="btn btn-dark hidden md:inline-flex">Discovery Call</a>
                 <button id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
@@ -2371,8 +2382,8 @@
                     <h2 class="panel-heading">37 years.<br>Built by <span class="pull-italic">hand.</span></h2>
                     <p class="panel-body">I deliver ultra-luxury construction with uncompromising precision. My $500M+ portfolio spans California to the Caribbean&mdash;residential, hospitality, and complex civil projects.</p>
                     <div style="display:flex;gap:10px;pointer-events:auto;">
-                        <a href="#form-section" class="btn btn-accent">Start Conversation</a>
-                        <a href="#portfolio" class="btn btn-outline">View Work</a>
+                        <a aria-label="Button" href="#form-section" class="btn btn-accent">Start Conversation</a>
+                        <a aria-label="Button" href="#portfolio" class="btn btn-outline">View Work</a>
                     </div>
                 </div>
             </div>
@@ -2382,7 +2393,7 @@
                     <span class="panel-eyebrow">My Approach</span>
                     <h2 class="panel-heading">Uncompromising<br><span class="pull-italic">precision.</span></h2>
                     <p class="panel-body">I coordinate every trade with relentless quality oversight. Every detail&mdash;structural, mechanical, and architectural&mdash;reflects uncompromising standards and meticulous craftsmanship.</p>
-                    <a href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
+                    <a aria-label="Button" href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
             <!-- Panel 3: The Space (66% checkpoint) -->
@@ -2391,7 +2402,7 @@
                     <span class="panel-eyebrow">The Result</span>
                     <h2 class="panel-heading">Built to last<br><span class="pull-italic">generations.</span></h2>
                     <p class="panel-body">From coastal high-rises to alpine estates&mdash;I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.</p>
-                    <a href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
+                    <a aria-label="Button" href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
             <!-- Scroll notification with animated chevron -->
@@ -2431,18 +2442,19 @@
     <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
        ABOUT SECTION (moved up — portrait-forward personal brand)
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
-    <section id="about" style="padding: 6rem 0 7rem; background:var(--bg-alt); overflow: hidden;">
+    <section id="about" tabindex="-1" style="padding: 6rem 0 7rem; background:var(--bg-alt); overflow: hidden;">
+        <a id="main-content"></a>
         <div class="site-max">
             <div class="about-layout" id="about-grid">
                 <!-- Left: portrait (feature-sized) -->
                 <div class="portrait-wrap reveal" style="min-width:0;">
                     <div class="portrait-frame">
-                        <img src="mike-profile.jpeg" alt="Michael Chandler, Founder &amp; Master Builder" />
+                        <img src="mike-profile.jpeg" alt="Michael Chandler, Chief Projects &amp; Construction Officer &middot; Owner's Representative" loading="lazy" decoding="async" />
                     </div>
                     <div class="portrait-caption">
                         <div>
                             <p class="portrait-name">Michael Chandler</p>
-                            <p class="portrait-role">Founder &amp; Master Builder</p>
+                            <p class="portrait-role">Chief Projects &amp; Construction Officer &middot; Owner's Representative</p>
                         </div>
                     </div>
                 </div>
@@ -2489,8 +2501,8 @@
                 </div>
                 <div class="text-center reveal">
                     <span class="stat-accent-line"></span>
-                    <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="" data-suffix="+">500+</p>
-                    <p class="stat-label">Projects Delivered</p>
+                    <p class="stat-number stat-counter text-gray-900" data-target="500" data-prefix="$" data-suffix="M+">$500M+</p>
+                    <p class="stat-label">Portfolio</p>
                 </div>
                 <div class="text-center reveal">
                     <span class="stat-accent-line"></span>
@@ -2524,7 +2536,7 @@
                     </h2>
                 </div>
                 <p class="text-base text-gray-500 leading-relaxed max-w-sm reveal">
-                    From conception to completion&mdash;we deliver integrated expertise across design-build, construction management, and complex site development.
+                    From conception to completion&mdash;delivering integrated expertise across development pipeline leadership, owner's representation, and architecture &amp; design governance.
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
@@ -2536,7 +2548,7 @@
                             <path d="M14 2L18 6" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <p class="service-title">Design-Build</p>
+                    <p class="service-title">Development Pipeline Leadership</p>
                     <p class="service-desc">Seamless integration of design vision and construction expertise. One point of accountability from concept to completion, ensuring alignment, cost control, and on-time delivery.</p>
                     <span class="service-tag">Residential</span>
                     <span class="service-tag" style="margin-left:6px;">Commercial</span>
@@ -2550,7 +2562,7 @@
                             <circle cx="10" cy="14" r="1.5" fill="#555"/>
                         </svg>
                     </div>
-                    <p class="service-title">Construction Management</p>
+                    <p class="service-title">Owner's Representative</p>
                     <p class="service-desc">Expert owner representation throughout construction. We manage budgets, schedules, quality standards, and vendor coordination&mdash;protecting your interests at every phase.</p>
                     <span class="service-tag">High-Rise</span>
                     <span class="service-tag" style="margin-left:6px;">Hospitality</span>
@@ -2565,7 +2577,7 @@
                             <path d="M7 7L10 4L13 7" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <p class="service-title">Civil &amp; Site Work</p>
+                    <p class="service-title">Architecture &amp; Design Governance</p>
                     <p class="service-desc">Complex site engineering and environmental stewardship. Grading, drainage, coastal restoration, and infrastructure mastery&mdash;turning challenging terrain into asset value.</p>
                     <span class="service-tag">Coastal</span>
                     <span class="service-tag" style="margin-left:6px;">45+ Acres</span>
@@ -2623,7 +2635,7 @@
                             <path d="M10 3V17M3 10H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <h3>Legacy Completion</h3>
+                    <h3>Opening &amp; Handover</h3>
                     <p>Project completion extends beyond handoff. We ensure full functionality, provide comprehensive documentation, and stand behind our work for years to come. Your property should outperform expectations and endure for generations.</p>
                 </div>
             </div>
@@ -2655,10 +2667,10 @@
                     <p class="selected-works-sub">A closer look at three flagship projects.</p>
                 </div>
                 <div class="selected-works-grid">
-                    <a class="selected-work reveal" data-project="miami-beach-condo">
+                    <a aria-label="View Selected Work" class="selected-work reveal" data-project="miami-beach-condo">
                         <span class="selected-work-num">&mdash;&nbsp;Project 01</span>
                         <div class="selected-work-img">
-                            <img src="projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo" loading="lazy" />
+                            <img decoding="async" src="projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo" loading="lazy" />
                         </div>
                         <div class="selected-work-body">
                             <p class="selected-work-location">S. Florida &middot; Residential</p>
@@ -2666,10 +2678,10 @@
                             <p class="selected-work-sub">Oceanfront luxury renovation &mdash; 4,200 sqft, 5 months, ocean-facing master suite.</p>
                         </div>
                     </a>
-                    <a class="selected-work reveal" data-project="high-alpine-ranch">
+                    <a aria-label="View Selected Work" class="selected-work reveal" data-project="high-alpine-ranch">
                         <span class="selected-work-num">&mdash;&nbsp;Project 02</span>
                         <div class="selected-work-img">
-                            <img src="projects/assets/alpine-ranch-cover.webp" alt="High Alpine Ranch" loading="lazy" />
+                            <img decoding="async" src="projects/assets/alpine-ranch-cover.webp" alt="High Alpine Ranch" loading="lazy" />
                         </div>
                         <div class="selected-work-body">
                             <p class="selected-work-location">Mountain West &middot; Residential</p>
@@ -2677,14 +2689,14 @@
                             <p class="selected-work-sub">Ground-up luxury ranch executed at altitude &mdash; uncompromising craft in an extreme environment.</p>
                         </div>
                     </a>
-                    <a class="selected-work reveal" data-project="carmel-valley-new">
+                    <a aria-label="View Selected Work" class="selected-work reveal" data-project="carmel-valley-new">
                         <span class="selected-work-num">&mdash;&nbsp;Project 03</span>
                         <div class="selected-work-img">
-                            <img src="projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley Residence" loading="lazy" />
+                            <img decoding="async" src="projects/assets/carmel-valley-new-cover.webp" alt="VP of Development &bull; Global Operations Residence" loading="lazy" />
                         </div>
                         <div class="selected-work-body">
-                            <p class="selected-work-location">Carmel Valley &middot; Design&ndash;Build</p>
-                            <p class="selected-work-title">Carmel Valley <em>Residence</em></p>
+                            <p class="selected-work-location">VP of Development &bull; Global Operations &middot; Design&ndash;Build</p>
+                            <p class="selected-work-title">VP of Development &bull; Global Operations <em>Residence</em></p>
                             <p class="selected-work-sub">Integrated design-build harmonizing contemporary restraint with the valley landscape.</p>
                         </div>
                     </a>
@@ -2700,6 +2712,7 @@
             <!-- Filters + Photo Editor Button -->
             <div class="portfolio-filters reveal" role="group" aria-label="Filter projects by category" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
                 <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-btn" data-filter="Owner's Representation" aria-pressed="false">Owner's Rep</button>
                 <button class="filter-btn" data-filter="Residential Construction" aria-pressed="false">Residential</button>
                 <button class="filter-btn" data-filter="Design Build" aria-pressed="false">Design Build</button>
                 <button class="filter-btn" data-filter="Civil" aria-pressed="false">Civil</button>
@@ -2712,7 +2725,127 @@
             <!-- Grid -->
             <div class="portfolio-grid" id="portfolio-grid">
                 <!-- 1. S. Florida High Rise Luxe Condo -->
-                <div class="portfolio-card reveal" data-category="Residential Construction" data-project="miami-beach-condo" style="cursor:pointer;">
+                
+                <!-- 1. Bakers Bay Resort -->
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="bakers-bay" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/miami-beach-cover.webp"
+                            alt="Bakers Bay Resort" loading="lazy" decoding="async" />
+                        <span class="portfolio-cat-badge">Owner's Representation</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Bahamas</p>
+                        <p class="portfolio-title">Bakers Bay Resort</p>
+                        <p class="portfolio-subtitle">Luxury Resort Development</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">Owner's Rep</span>
+                            <span class="service-tag">Flagship</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Yellowstone Club -->
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="yellowstone-club" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/alpine-ranch-cover.webp"
+                            alt="Yellowstone Club" loading="lazy" decoding="async" />
+                        <span class="portfolio-cat-badge">Owner's Representation</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Montana</p>
+                        <p class="portfolio-title">Yellowstone Club</p>
+                        <p class="portfolio-subtitle">Ultra-Luxury Alpine Community</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">Owner's Rep</span>
+                            <span class="service-tag">Flagship</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Houston Oaks -->
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="houston-oaks" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/syracuse-cover.png"
+                            alt="Houston Oaks" loading="lazy" decoding="async" />
+                        <span class="portfolio-cat-badge">Owner's Representation</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Texas</p>
+                        <p class="portfolio-title">Houston Oaks</p>
+                        <p class="portfolio-subtitle">Premium Country Club Estate</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">Owner's Rep</span>
+                            <span class="service-tag">Flagship</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Mangrove Group Portfolio -->
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="mangrove-group" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/miami-beach-1.webp"
+                            alt="Mangrove Group Portfolio" loading="lazy" decoding="async" />
+                        <span class="portfolio-cat-badge">Owner's Representation</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Caribbean & Latin America</p>
+                        <p class="portfolio-title">Mangrove Group Portfolio</p>
+                        <p class="portfolio-subtitle">Luxury Development Portfolio</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">Owner's Rep</span>
+                            <span class="service-tag">Flagship</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. $125M Private Island Estate -->
+                <div class="portfolio-card reveal" data-category="Owner's Representation" data-project="private-island" style="cursor:pointer;">
+                    <div class="portfolio-img-wrap">
+                        <img src="projects/assets/miami-beach-2.webp"
+                            alt="$125M Private Island Estate" loading="lazy" decoding="async" />
+                        <span class="portfolio-cat-badge">Owner's Representation</span>
+                        <div class="portfolio-card-overlay">
+                            <span class="portfolio-card-overlay-text">View Project
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <div class="portfolio-card-gold-line"></div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p class="portfolio-location">Bahamas</p>
+                        <p class="portfolio-title">$125M Private Island Estate</p>
+                        <p class="portfolio-subtitle">Ultra-Luxury Private Island</p>
+                        <div class="portfolio-meta">
+                            <span class="service-tag">Owner's Rep</span>
+                            <span class="service-tag">Flagship</span>
+                        </div>
+                    </div>
+                </div>
+<div class="portfolio-card reveal" data-category="Residential Construction" data-project="miami-beach-condo" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
                         <img src="projects/assets/miami-beach-cover.webp"
                             alt="S. Florida High Rise Luxe Condo" loading="lazy" decoding="async" />
@@ -2762,7 +2895,7 @@
                 <!-- 3. Syracuse House -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="syracuse-house" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/syracuse-cover.png"
+                        <img decoding="async" src="projects/syracuse-cover.png"
                             alt="Syracuse House &mdash; N. Utah Craftsman Estate" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <div class="portfolio-card-overlay">
@@ -2785,7 +2918,7 @@
                 <!-- 4. Montana Condo -->
                 <div class="portfolio-card reveal" data-category="Residential Construction" data-project="montana-condo" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/montana-cover.webp"
+                        <img decoding="async" src="projects/assets/montana-cover.webp"
                             alt="Mtn. Mid-Rise Luxe Condo" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2803,7 +2936,7 @@
                 <!-- 5. Hospitality Pool -->
                 <div class="portfolio-card reveal" data-category="Hospitality" data-project="hospitality-pool" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/hospitality-pool-cover-v2.jpg"
+                        <img decoding="async" src="projects/hospitality-pool-cover-v2.jpg"
                             alt="Ultra Luxe Private Club Resort Pool" loading="lazy" />
                         <span class="portfolio-cat-badge">Hospitality</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2821,7 +2954,7 @@
                 <!-- 6. South Coast Renovation -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="southcoast-remodel" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/southcoast-cover.webp"
+                        <img decoding="async" src="projects/assets/southcoast-cover.webp"
                             alt="South Coast Renovation" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2836,17 +2969,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- 7. Carmel Valley New -->
+                <!-- 7. VP of Development &bull; Global Operations New -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="carmel-valley-new" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/carmel-valley-new-cover.webp"
-                            alt="Carmel Valley New Custom Residence" loading="lazy" />
+                        <img decoding="async" src="projects/assets/carmel-valley-new-cover.webp"
+                            alt="VP of Development &bull; Global Operations New Custom Residence" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <span class="gallery-hint">View Gallery</span>
                     </div>
                     <div class="portfolio-card-body">
-                        <p class="portfolio-location">Carmel Valley, CA</p>
-                        <p class="portfolio-title">Carmel Valley New</p>
+                        <p class="portfolio-location">VP of Development &bull; Global Operations, CA</p>
+                        <p class="portfolio-title">VP of Development &bull; Global Operations New</p>
                         <p class="portfolio-subtitle">Custom Residence</p>
                         <div class="portfolio-meta">
                             <span class="service-tag">4,800 sqft</span>
@@ -2857,7 +2990,7 @@
                 <!-- 8. North Florida Renovation -->
                 <div class="portfolio-card reveal" data-category="Residential Construction" data-project="north-florida-renovation" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/north-florida/NIMG_9178.jpg"
+                        <img decoding="async" src="projects/north-florida/NIMG_9178.jpg"
                             alt="North Florida Renovation and Addition" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2875,7 +3008,7 @@
                 <!-- 9. Abaco Luxe Boat House -->
                 <div class="portfolio-card reveal" data-category="Residential Construction" data-project="bahamas-abaco-development" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/abaco-luxe-boathouse-cover.webp"
+                        <img decoding="async" src="projects/assets/abaco-luxe-boathouse-cover.webp"
                             alt="Abaco Luxe Boat House" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2893,7 +3026,7 @@
                 <!-- 10. Carmel Forest to Ocean View -->
                 <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-2" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/carmel-2-cover.webp"
+                        <img decoding="async" src="projects/assets/carmel-2-cover.webp"
                             alt="Carmel Forest to Ocean View Custom Addition" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2907,7 +3040,7 @@
                 <!-- 11. Coastal Mountain Residence -->
                 <div class="portfolio-card reveal" data-category="Civil" data-project="bigsur-mountain-remodel" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/bigsur-cover.webp"
+                        <img decoding="async" src="projects/assets/bigsur-cover.webp"
                             alt="Coastal Mountain Residence Civil Site Work" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2924,7 +3057,7 @@
                 <!-- 12. Carmel Knolls -->
                 <div class="portfolio-card reveal" data-category="Civil" data-project="carmel-knolls" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/carmel-knolls/001.10%20COVER.jpg"
+                        <img decoding="async" src="projects/carmel-knolls/001.10%20COVER.jpg"
                             alt="Carmel Knolls Remodel" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2942,7 +3075,7 @@
                 <!-- 13. Coastal Restoration -->
                 <div class="portfolio-card reveal" data-category="Civil" data-project="coastal-restoration" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/coastal-restoration/001%20COVER.JPG"
+                        <img decoding="async" src="projects/coastal-restoration/001%20COVER.JPG"
                             alt="Coastal Restoration Erosion Repair" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2959,7 +3092,7 @@
                 <!-- 14. Beachfront Estate -->
                 <div class="portfolio-card reveal" data-category="Residential Development" data-project="bahamas-beachfront-estate" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/beachfront-1.webp"
+                        <img decoding="async" src="projects/assets/beachfront-1.webp"
                             alt="Beachfront Estate Residence" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Development</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2977,7 +3110,7 @@
                 <!-- 15. Development Civil -->
                 <div class="portfolio-card reveal" data-category="Residential Development" data-project="development-civil" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/development-civil/development%20(1).jpg"
+                        <img decoding="async" src="projects/development-civil/development%20(1).jpg"
                             alt="Development Civil Construction" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Development</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -2995,7 +3128,7 @@
                 <!-- 16. Pacific Grove Design Build -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="pacific-grove-design-build" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/pacific-grove/001%20COVER.JPG"
+                        <img decoding="async" src="projects/pacific-grove/001%20COVER.JPG"
                             alt="New Residential Construction In Historic Neighborhood" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -3013,7 +3146,7 @@
                 <!-- 17. Hillside Cleanup -->
                 <div class="portfolio-card reveal" data-category="Civil" data-project="hillside-cleanup" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/hillside-cleanup/001%20COVER.jpg"
+                        <img decoding="async" src="projects/hillside-cleanup/001%20COVER.jpg"
                             alt="Hillside Restoration and Environmental Cleanup" loading="lazy" />
                         <span class="portfolio-cat-badge">Civil</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -3030,7 +3163,7 @@
                 <!-- 18. Laguna Grande -->
                 <div class="portfolio-card reveal" data-category="Design Build" data-project="laguna-grande-design-build" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png"
+                        <img decoding="async" src="projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png"
                             alt="Laguna Grande Spanish Revival Commercial" loading="lazy" />
                         <span class="portfolio-cat-badge">Design Build</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -3048,7 +3181,7 @@
                 <!-- 19. Carmel House Remodel No.23 -->
                 <div class="portfolio-card reveal" data-category="Residential Construction" data-project="carmel-house-3" style="cursor:pointer;">
                     <div class="portfolio-img-wrap">
-                        <img src="projects/assets/carmel-3-cover.webp"
+                        <img decoding="async" src="projects/assets/carmel-3-cover.webp"
                             alt="Carmel House Remodel No.23" loading="lazy" />
                         <span class="portfolio-cat-badge">Residential Construction</span>
                         <span class="gallery-hint">View Gallery</span>
@@ -3088,8 +3221,8 @@
                     <span class="testimonial-quote-mark">&ldquo;</span>
                     <p class="testimonial-body">We hired Michael for a complex coastal restoration project on Big Sur. He navigated every environmental agency, every permit hurdle &mdash; and delivered on time. His experience on the California coast is genuinely irreplaceable.</p>
                     <div class="testimonial-divider"></div>
-                    <p class="testimonial-name">T. Harrington</p>
-                    <p class="testimonial-meta">Big Sur, CA &middot; Coastal Mountain Civil Work</p>
+                    <p class="testimonial-name">International Resort Developers</p>
+                    <p class="testimonial-meta">Big Sur, CA &middot; Owner's Representative &bull; $85M Portfolio</p>
                 </div>
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card reveal">
@@ -3113,14 +3246,14 @@
         </h2>
         <p class="cta-sub reveal">Put 37+ years of strategic construction expertise to work on your multimillion-dollar project.</p>
         <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-            <a href="#form-section" class="btn btn-accent"
+            <a aria-label="Button" href="#form-section" class="btn btn-accent"
                 style="padding:16px 36px;font-size:.78rem;">
                 Start the conversation
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path d="M2 7h10M8 3.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </a>
-            <a href="#portfolio" class="btn"
+            <a aria-label="Button" href="#portfolio" class="btn"
                 style="background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.2);padding:14px 32px;font-size:.78rem;">
                 View Portfolio
             </a>
@@ -3204,6 +3337,11 @@
                             <label class="form-label" for="disc-notes">Brief Project Notes (optional)</label>
                             <textarea id="disc-notes" class="form-textarea" placeholder="Location, timeline, key priorities&hellip;" rows="3"></textarea>
                         </div>
+                        <!-- Honeypot field — hidden from real users, caught by bots -->
+                        <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;">
+                            <label for="disc-company">Company</label>
+                            <input id="disc-company" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+                        </div>
                     </div>
                     <div class="form-nav">
                         <button class="btn-back" id="step3-back">&larr; Back</button>
@@ -3228,8 +3366,7 @@
        FOOTER
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     </main>
-        <!-- Photo Editor Modal -->
-        <div id="photo-editor-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:1000;overflow-y:auto;padding:20px;"><div style="max-width:800px;margin:40px auto;background:white;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.3);"><div style="padding:24px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;"><h3 style="margin:0;font-size:1.5rem;font-weight:600;color:var(--text);">Photo Editor</h3><button id="photo-editor-close" style="background:none;border:none;font-size:24px;cursor:pointer;color:#999;">✕</button></div><div style="padding:32px;"><div id="upload-area" style="border:2px dashed var(--accent);border-radius:8px;padding:48px;text-align:center;cursor:pointer;background:#fafafa;"><p style="font-size:1rem;font-weight:500;color:var(--text);margin:0 0 8px;">Drag and drop photo</p><p style="font-size:0.875rem;color:var(--text-muted);margin:0;">or click to select</p><input type="file" id="photo-input" accept="image/*" style="display:none;" /></div><div id="editor-section" style="display:none;margin-top:32px;"><canvas id="photo-canvas" style="max-width:100%;border-radius:6px;margin-bottom:24px;"></canvas><div style="display:grid;gap:16px;margin-bottom:24px;"><div><label style="font-size:0.875rem;font-weight:500;margin-bottom:8px;">Brightness</label><input type="range" id="brightness-slider" min="0.5" max="2" step="0.1" value="1" style="width:100%;"></div><div><label style="font-size:0.875rem;font-weight:500;margin-bottom:8px;">Contrast</label><input type="range" id="contrast-slider" min="0.5" max="2" step="0.1" value="1" style="width:100%;"></div><div><label style="font-size:0.875rem;font-weight:500;margin-bottom:8px;">Saturation</label><input type="range" id="saturation-slider" min="0" max="2" step="0.1" value="1" style="width:100%;"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><button id="reset-photo" style="padding:12px;background:var(--text-muted);color:white;border:none;border-radius:4px;cursor:pointer;">Reset</button><button id="download-photo" style="padding:12px;background:var(--accent);color:white;border:none;border-radius:4px;cursor:pointer;">⬇ Download</button></div></div></div></div></div>
+        </div></div>
 
     <footer id="site-footer" role="contentinfo">
         <div class="site-max">
@@ -3237,7 +3374,7 @@
                 <!-- Brand col -->
                 <div>
                     <h3 class="footer-brand-name" style="margin-bottom: 12px;">
-                        <img src="logo-vertical.png" alt="MC Michael Chandler Logo" style="height: 100px; width: auto; object-fit: contain; filter: invert(1) brightness(2) contrast(1.2);" />
+                        <img src="logo-vertical.png" alt="MC Michael Chandler Logo" loading="lazy" decoding="async" style="height: 96px; width: auto; display: block;" />
                     </h3>
                     <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft &mdash; from California to the Caribbean.</p>
                 </div>
@@ -3262,7 +3399,7 @@
                     <p class="footer-col-heading">Contact</p>
                     <a href="#form-section" class="footer-col-link">Request a Discovery Call</a>
                     <a href="https://mcdesign.bio" target="_blank" rel="noopener" class="footer-col-link">mcdesign.bio</a>
-                    <p class="footer-col-link" style="cursor:default;">CA &middot; Bahamas &middot; TX &middot; MT &middot; UT &middot; FL</p>
+                    <p class="footer-col-link" style="cursor:default;">Caribbean &amp; Latin America &middot; CA &middot; Bahamas &middot; Mexico &middot; TX &middot; MT &middot; UT &middot; FL</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -3274,8 +3411,8 @@
     <!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
        JAVASCRIPT - GSAP + ScrollTrigger (loaded once, used by all animation modules)
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
     <script>
         (() => {
             'use strict';
@@ -3304,8 +3441,8 @@
                 return duration;
             };
             
-            // === Allow manual debug mode ===
-            if (window.location.hash === '#debug') window.__DEV__ = true;
+            // === Allow manual debug mode (localhost only) ===
+            if (window.location.hash === '#debug' && window.location.hostname === 'localhost') window.__DEV__ = true;
 
             // === Utility: debounce function for performance ===
             const debounce = (fn, delay) => {
@@ -3418,24 +3555,9 @@
                 TYPE_CURSOR_REMOVAL_MS: 900,
             };
 
-            /**
-             * Detect WebP support for optimal compression
-             * WebP saves ~40% bandwidth vs JPEG
-             */
-            let supportsWebP = false;
-            const webpCanvas = document.createElement('canvas');
-            if (webpCanvas.getContext && webpCanvas.getContext('2d')) {
-                webpCanvas.width = webpCanvas.height = 1;
-                supportsWebP = webpCanvas.toDataURL('image/webp').indexOf('image/webp') === 5;
-            }
-
-            /**
-             * Generate the array of relative frame paths with format preference.
-             * Files: ezgif-frame-001.webp (if supported) or ezgif-frame-001.jpg
-             */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
-                return `flava-depot/frames/ezgif-frame-${n}.jpg`;
+                return `public/ezgif-frame-${n}.jpg`;
             });
             // ===================================================================================
             //  DOM REFS
@@ -3458,7 +3580,7 @@
             const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const prefersReducedMotion = prefersReducedMotionQuery.matches;
             const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
-            const shouldBypassHeavyHero = false; // prefersReducedMotion || saveDataEnabled;
+            const shouldBypassHeavyHero = prefersReducedMotion || saveDataEnabled;
             // ===================================================================================
             //  CANVAS SIZING
             // ===================================================================================
@@ -3513,55 +3635,63 @@
             //  PRELOAD WITH PROGRESS & ERROR HANDLING
             //  Loads all frames concurrently, tracks progress, with timeout fallback.
             // ===================================================================================
-            // === Improved preload with better error recovery ===
-            function preloadFrames(onComplete) {
-                let hasError = false;
-                let loadedCount = 0;
+            const INITIAL_BATCH = 20;
+            const CHUNK_SIZE = 20;
 
-                // Timeout safety net: if loading takes too long, proceed anyway
+            function loadImage(i) {
+                return new Promise(resolve => {
+                    const img = new Image();
+                    img.onload = () => { cache[i] = img; resolve(true); };
+                    img.onerror = () => resolve(false);
+                    img.src = FRAME_URLS[i];
+                });
+            }
+
+            function preloadFrames(onComplete) {
+                let totalLoaded = 0;
+
                 const timeoutId = setTimeout(() => {
-                    if (loadedCount < CONFIG.TOTAL_FRAMES && !hasError) {
-                        if (window.__DEV__) console.warn(`Frame preload timeout: ${loadedCount}/${CONFIG.TOTAL_FRAMES} loaded`);
+                    if (totalLoaded < INITIAL_BATCH) {
+                        if (window.__DEV__) console.warn(`Frame preload timeout: ${totalLoaded}/${CONFIG.TOTAL_FRAMES} loaded`);
                         onComplete();
                     }
                 }, CONFIG.PRELOAD_TIMEOUT);
 
-                // Paint first frame as early as possible
-                const seed = new Image();
-                seed.onload = () => { cache[0] = seed; drawFrameIndex(0); };
-                seed.onerror = () => {
-                    hasError = true;
-                    clearTimeout(timeoutId);
-                    if (window.__DEV__) console.error('Failed to load first frame');
-                    onComplete();
-                };
-                seed.src = FRAME_URLS[0];
-
-                const tick = () => {
-                    loadedCount++;
-                    const pct = Math.round((loadedCount / CONFIG.TOTAL_FRAMES) * 100);
+                const updateProgress = () => {
+                    totalLoaded++;
+                    const pct = Math.round((totalLoaded / CONFIG.TOTAL_FRAMES) * 100);
                     if (loaderBar) loaderBar.style.width = pct + '%';
                     if (loaderPct) loaderPct.textContent = pct + '%';
-                    if (loadedCount === CONFIG.TOTAL_FRAMES) {
-                        clearTimeout(timeoutId);
-                        onComplete();
-                    }
                 };
 
-                // Batch image loads efficiently
-                FRAME_URLS.forEach((url, i) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        cache[i] = img;
-                        if (i === 0) drawFrameIndex(0);
-                        tick();
-                    };
-                    img.onerror = () => {
-                        // Mark as loaded but leave as null — canvas will skip it
-                        tick();
-                    };
-                    img.src = url;
+                const initialPromises = [];
+                for (let i = 0; i < Math.min(INITIAL_BATCH, CONFIG.TOTAL_FRAMES); i++) {
+                    initialPromises.push(loadImage(i).then(ok => {
+                        updateProgress();
+                        if (i === 0 && ok) drawFrameIndex(0);
+                    }));
+                }
+
+                Promise.all(initialPromises).then(() => {
+                    clearTimeout(timeoutId);
+                    onComplete();
+                    loadRemainingChunks();
                 });
+
+                function loadRemainingChunks() {
+                    let cursor = INITIAL_BATCH;
+                    function nextChunk() {
+                        if (cursor >= CONFIG.TOTAL_FRAMES) return;
+                        const end = Math.min(cursor + CHUNK_SIZE, CONFIG.TOTAL_FRAMES);
+                        const promises = [];
+                        for (let i = cursor; i < end; i++) {
+                            promises.push(loadImage(i).then(() => updateProgress()));
+                        }
+                        cursor = end;
+                        Promise.all(promises).then(nextChunk);
+                    }
+                    nextChunk();
+                }
             }
 
             function renderStaticHeroFallback() {
@@ -4065,7 +4195,6 @@
             function initSectionTransitions() {
                 if (!canAnimate()) return;
 
-                // Get all major sections
                 const sections = gsap.utils.toArray('section');
 
                 sections.forEach((section, idx) => {
@@ -4281,11 +4410,49 @@
                 // Make sure it's visible initially
                 scrollCueBtn.style.opacity = '1';
 
+                // Add interactive hover animations
+                scrollCueBtn.addEventListener('mouseenter', () => {
+                    gsap.to(scrollCueBtn, {
+                        scale: 1.1,
+                        duration: 0.3,
+                        ease: 'back.out'
+                    });
+                });
+
+                scrollCueBtn.addEventListener('mouseleave', () => {
+                    gsap.to(scrollCueBtn, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: 'back.out'
+                    });
+                });
+
+                // Smooth scroll animation on click with bounce feedback
                 scrollCueBtn.addEventListener('click', (e) => {
                     e.preventDefault();
+                    gsap.to(scrollCueBtn, {
+                        scale: 0.95,
+                        duration: 0.15,
+                        ease: 'power2.in',
+                        onComplete: () => {
+                            gsap.to(scrollCueBtn, {
+                                scale: 1,
+                                duration: 0.25,
+                                ease: 'back.out'
+                            });
+                        }
+                    });
+
                     const nextSection = document.getElementById('services') || document.querySelector('section:nth-of-type(2)');
                     if (nextSection) {
-                        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        gsap.to(window, {
+                            scrollTo: {
+                                y: nextSection,
+                                autoKill: false
+                            },
+                            duration: 1.2,
+                            ease: 'power3.inOut'
+                        });
                     }
                 });
 
@@ -4309,6 +4476,20 @@
                         scrub: 0.5,
                     }
                 });
+
+                // Add subtle bob animation to scroll line on page load
+                const scrollLine = scrollCueBtn.querySelector('.scroll-line');
+                if (scrollLine && !prefersReducedMotion) {
+                    gsap.fromTo(scrollLine,
+                        { y: 0, opacity: 0.5 },
+                        {
+                            y: 6,
+                            opacity: 1,
+                            duration: 0.4,
+                            ease: 'back.out'
+                        }
+                    );
+                }
             }
             // ===================================================================================
             //  MAIN SCROLL TRIGGER (Named function for debugging)
@@ -4342,11 +4523,7 @@
                     },
                 }));
 
-                // Canvas pin + scroll-driven scrub
-                // Strategy: ScrollTrigger pins the canvas for 400vh scroll height and drives a
-                // tweened "proxy" object that lerps toward the raw progress value. This allows
-                // smooth frame interpolation even on fast user scrolling. The proxy value then
-                // maps to a frame index via requestAnimationFrame render loop.
+                // Canvas pin + scroll-driven scrub via ScrollTrigger
                 scrollTriggers.push(ScrollTrigger.create({
                     trigger: '#canvas-section',
                     start: 'top top',
@@ -4355,7 +4532,6 @@
                     pinSpacing: false,
                     scrub: CONFIG.SCRUB_DURATION,
                     onUpdate(self) {
-                        // Tween proxy toward scroll progress with smooth easing
                         gsap.to(proxy, {
                             progress: self.progress,
                             duration: CONFIG.FRAME_LERP_DURATION,
@@ -4377,8 +4553,8 @@
                         if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
                     },
                     onLeaveBack() {
-                        progressEl.classList.remove('visible');
                         gsap.to(scrollCue, { opacity: 1, duration: .5 });
+                        progressEl.classList.remove('visible');
                         cancelAnimationFrame(rAFid); rAFid = null;
                     },
                 }));
@@ -4561,12 +4737,12 @@
             },
             'carmel-valley-new': {
                 id: 'carmel-valley-new',
-                title: 'Carmel Valley New',
+                title: 'VP of Development &bull; Global Operations New',
                 category: 'Design Build',
                 location: 'California',
                 subtitle: 'Custom Residence',
                 coverImage: 'projects/assets/carmel-valley-new-cover.webp',
-                description: 'A custom-designed residence in prestigious Carmel Valley. This 20-month design-build project features luxury finishes, smart home integration, and seamless indoor-outdoor living spaces.',
+                description: 'A custom-designed residence in prestigious VP of Development &bull; Global Operations. This 20-month design-build project features luxury finishes, smart home integration, and seamless indoor-outdoor living spaces.',
                 duration: '20 months',
                 role: ['Complete design-build management', 'Land analysis', 'Final delivery'],
                 gallery: [
@@ -4947,7 +5123,7 @@
         function openImageLightbox(mediaSrc, mediaType = 'image') {
             const mediaMarkup = mediaType === 'video'
                 ? `<video src="${mediaSrc}" class="project-lightbox-img" controls autoplay playsinline></video>`
-                : `<img src="${mediaSrc}" alt="Full size image" class="project-lightbox-img" />`;
+                : `<img decoding="async" loading="lazy" src="${mediaSrc}" alt="Full size image" class="project-lightbox-img" />`;
 
             let lightboxHtml = `
                 <div id="project-lightbox" class="project-lightbox">
@@ -5141,6 +5317,9 @@
             const email = emailInput.value.trim();
             const phone = document.getElementById('disc-phone')?.value.trim() || '';
             const notes = document.getElementById('disc-notes')?.value.trim() || '';
+            const honeypot = document.getElementById('disc-company')?.value;
+            if (honeypot) return;
+
             const hasNameError = !name;
             const hasEmailError = !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -5294,8 +5473,10 @@
                 btn.addEventListener('click', handleFilterClick(btn));
             });
         })();
-            
-            // ===== PHOTO EDITOR =====
+
+        // ===== PHOTO EDITOR =====
+        (() => {
+            'use strict';
             const photoEditorBtn = document.getElementById('photo-editor-btn');
             const photoEditorModal = document.getElementById('photo-editor-modal');
             const photoEditorClose = document.getElementById('photo-editor-close');
@@ -5312,8 +5493,39 @@
             const resetBtn = document.getElementById('reset-photo');
             const downloadBtn = document.getElementById('download-photo');
             let originalImage = null; let rotation = 0; let flipH = false;
-            function openEditor(){photoEditorModal.style.display='block';editorSection.style.display='none';uploadArea.style.display='block';}
-            function closeEditor(){photoEditorModal.style.display='none';}
+            let previouslyFocused = null;
+
+            const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+            function trapFocus(e) {
+                const focusable = photoEditorModal.querySelectorAll(FOCUSABLE);
+                if (!focusable.length) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+
+            function openEditor() {
+                previouslyFocused = document.activeElement;
+                photoEditorModal.style.display = 'block';
+                editorSection.style.display = 'none';
+                uploadArea.style.display = 'block';
+                photoEditorClose.focus();
+                document.addEventListener('keydown', handleEditorKeydown);
+            }
+
+            function closeEditor() {
+                photoEditorModal.style.display = 'none';
+                document.removeEventListener('keydown', handleEditorKeydown);
+                if (previouslyFocused) previouslyFocused.focus();
+            }
+
+            function handleEditorKeydown(e) {
+                if (e.key === 'Escape') { closeEditor(); return; }
+                if (e.key === 'Tab') trapFocus(e);
+            }
+
             function loadImage(file){const reader=new FileReader();reader.onload=(e)=>{const img=new Image();img.onload=()=>{originalImage=img;uploadArea.style.display='none';editorSection.style.display='block';rotation=0;flipH=false;brightSlider.value=1;contrastSlider.value=1;saturationSlider.value=1;redrawCanvas();};img.src=e.target.result;};reader.readAsDataURL(file);}
             function redrawCanvas(){if(!originalImage)return;const w=originalImage.width;const h=originalImage.height;const isRotated=rotation===90||rotation===270;photoCanvas.width=isRotated?h:w;photoCanvas.height=isRotated?w:h;ctx.save();ctx.translate(photoCanvas.width/2,photoCanvas.height/2);ctx.rotate((rotation*Math.PI)/180);if(flipH)ctx.scale(-1,1);ctx.drawImage(originalImage,-w/2,-h/2,w,h);ctx.restore();applyFilters();}
             function applyFilters(){const imgData=ctx.getImageData(0,0,photoCanvas.width,photoCanvas.height);const data=imgData.data;const brightness=parseFloat(brightSlider.value);const contrast=parseFloat(contrastSlider.value);const saturation=parseFloat(saturationSlider.value);for(let i=0;i<data.length;i+=4){let r=data[i];let g=data[i+1];let b=data[i+2];const a=data[i+3];r=Math.min(255,r*brightness);g=Math.min(255,g*brightness);b=Math.min(255,b*brightness);r=((r-128)*contrast)+128;g=((g-128)*contrast)+128;b=((b-128)*contrast)+128;const gray=r*0.299+g*0.587+b*0.114;r=Math.round(gray+(r-gray)*saturation);g=Math.round(gray+(g-gray)*saturation);b=Math.round(gray+(b-gray)*saturation);data[i]=Math.max(0,Math.min(255,r));data[i+1]=Math.max(0,Math.min(255,g));data[i+2]=Math.max(0,Math.min(255,b));data[i+3]=a;}ctx.putImageData(imgData,0,0);}
@@ -5331,6 +5543,7 @@
             rotateRightBtn.addEventListener('click',()=>{flipH=!flipH;redrawCanvas();});
             resetBtn.addEventListener('click',()=>{rotation=0;flipH=false;brightSlider.value=1;contrastSlider.value=1;saturationSlider.value=1;redrawCanvas();});
             downloadBtn.addEventListener('click',()=>{const link=document.createElement('a');link.href=photoCanvas.toDataURL('image/jpeg',0.95);link.download='edited-photo.jpg';link.click();});
+        })();
     </script>
 
     <!-- LIGHTBOX -->
@@ -5344,7 +5557,7 @@
         </div>
         <div id="lb-img-wrap">
             <button class="lb-arrow" id="lb-prev" aria-label="Previous image">&#8249;</button>
-            <img id="lb-img" src="" alt="" />
+            <img decoding="async" loading="lazy" id="lb-img" src="" alt="" />
             <video id="lb-video" playsinline controls preload="metadata"></video>
             <button class="lb-arrow" id="lb-next" aria-label="Next image">&#8250;</button>
         </div>
@@ -5412,7 +5625,7 @@
             ]
         };
         GALLERIES['carmel-valley-new'] = {
-            title: 'Carmel Valley New Custom Residence',
+            title: 'VP of Development &bull; Global Operations New Custom Residence',
             images: [
                 BASE + 'carmel-valley-new-cover.webp',
                 ...Array.from({length:4}, (_,i) => BASE + 'carmel-valley-new-' + (i+1) + '.webp')
@@ -5756,10 +5969,6 @@
     <button id="scroll-to-top" aria-label="Scroll to top" title="Back to top"></button>
 </body>
 </html>
-
-
-
-
 
 
 
