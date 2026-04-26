@@ -4346,14 +4346,7 @@
 
                     const nextSection = document.getElementById('services') || document.querySelector('section:nth-of-type(2)');
                     if (nextSection) {
-                        gsap.to(window, {
-                            scrollTo: {
-                                y: nextSection,
-                                autoKill: false
-                            },
-                            duration: 1.2,
-                            ease: 'power3.inOut'
-                        });
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
 
@@ -5415,8 +5408,8 @@
             brightSlider.addEventListener('input',redrawCanvas);
             contrastSlider.addEventListener('input',redrawCanvas);
             saturationSlider.addEventListener('input',redrawCanvas);
-            rotateLeftBtn.addEventListener('click',()=>{rotation=(rotation-90+360)%360;redrawCanvas();});
-            rotateRightBtn.addEventListener('click',()=>{flipH=!flipH;redrawCanvas();});
+            if (rotateLeftBtn) rotateLeftBtn.addEventListener('click',()=>{rotation=(rotation-90+360)%360;redrawCanvas();});
+            if (rotateRightBtn) rotateRightBtn.addEventListener('click',()=>{flipH=!flipH;redrawCanvas();});
             resetBtn.addEventListener('click',()=>{rotation=0;flipH=false;brightSlider.value=1;contrastSlider.value=1;saturationSlider.value=1;redrawCanvas();});
             downloadBtn.addEventListener('click',()=>{const link=document.createElement('a');link.href=photoCanvas.toDataURL('image/jpeg',0.95);link.download='edited-photo.jpg';link.click();});
     </script>
