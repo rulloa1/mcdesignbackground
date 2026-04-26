@@ -150,7 +150,7 @@
 
         /* === Print styles === */
         @media print {
-            #navbar, #mobile-nav, #scroll-cue, .scroll-notification,
+            #navbar, #mobile-nav, #scroll-cue,
             .marquee-band, #progress-dots, footer { display: none; }
             body { background: white; color: black; }
             a { text-decoration: underline; }
@@ -340,12 +340,14 @@
             height: 400vh;
         }
         #sticky-canvas {
-            position: sticky;
+            position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            width: 100vw;
             height: 100vh;
             overflow: hidden;
             background: var(--bg-alt);
+            z-index: 1;
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #hero-canvas {
@@ -525,45 +527,6 @@
                 opacity: 0.85;
             }
             50% {
-                opacity: 1;
-            }
-        }
-        /* === Scroll notification (animated chevron + text) === */
-        .scroll-notification {
-            position: absolute;
-            bottom: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            pointer-events: none;
-            user-select: none;
-            z-index: 10;
-        }
-        .scroll-label {
-            font-size: .7rem;
-            font-weight: 600;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: rgba(70, 70, 70, .8);
-            transition: color .3s ease;
-        }
-        .chevron-down {
-            width: 28px;
-            height: 28px;
-            color: rgba(70, 70, 70, .7);
-            animation: chevronBounce 2s ease-in-out infinite;
-            transition: color .3s ease;
-        }
-        @keyframes chevronBounce {
-            0%, 100% {
-                transform: translateY(0) opacity(0.5);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(8px);
                 opacity: 1;
             }
         }
@@ -2405,13 +2368,6 @@
                     <a aria-label="Button" href="#form-section" class="btn btn-accent" style="pointer-events:auto;">Start Conversation</a>
                 </div>
             </div>
-            <!-- Scroll notification with animated chevron -->
-            <div class="scroll-notification" aria-label="Scroll to explore content">
-                <span class="scroll-label">Scroll to explore</span>
-                <svg class="chevron-down" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
             <!-- Scroll cue (interactive button) -->
             <button id="scroll-cue" aria-label="Scroll down to explore" title="Click to scroll or keep scrolling">
                 <span>Scroll</span>
@@ -4195,7 +4151,7 @@
             function initSectionTransitions() {
                 if (!canAnimate()) return;
 
-                const sections = gsap.utils.toArray('section');
+                const sections = gsap.utils.toArray('section:not(#canvas-section)');
 
                 sections.forEach((section, idx) => {
                     // Get section heading if exists
@@ -4523,41 +4479,40 @@
                     },
                 }));
 
-                // Canvas pin + scroll-driven scrub via ScrollTrigger
-                scrollTriggers.push(ScrollTrigger.create({
-                    trigger: '#canvas-section',
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    pin: '#sticky-canvas',
-                    pinSpacing: false,
-                    scrub: CONFIG.SCRUB_DURATION,
-                    onUpdate(self) {
-                        gsap.to(proxy, {
-                            progress: self.progress,
-                            duration: CONFIG.FRAME_LERP_DURATION,
-                            ease: 'none',
-                            overwrite: true
-                        });
-                    },
-                    onEnter() {
+                // Canvas is position:fixed — track scroll progress manually
+                const stickyCanvas = document.getElementById('sticky-canvas');
+
+                window.addEventListener('scroll', () => {
+                    const section = document.getElementById('canvas-section');
+                    const rect = section.getBoundingClientRect();
+                    const sectionHeight = section.offsetHeight;
+                    const viewportHeight = window.innerHeight;
+
+                    if (rect.top <= 0 && rect.bottom >= viewportHeight) {
+                        const p = Math.abs(rect.top) / (sectionHeight - viewportHeight);
+                        proxy.progress = Math.max(0, Math.min(1, p));
+
+                        stickyCanvas.style.opacity = '1';
+                        stickyCanvas.style.visibility = 'visible';
+
+                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
                         progressEl.classList.add('visible');
                         gsap.to(scrollCue, { opacity: 0, duration: .5 });
-                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
-                    },
-                    onLeave() {
+                    } else if (rect.top > 0) {
+                        stickyCanvas.style.opacity = '1';
+                        stickyCanvas.style.visibility = 'visible';
                         progressEl.classList.remove('visible');
-                        cancelAnimationFrame(rAFid); rAFid = null;
-                    },
-                    onEnterBack() {
-                        progressEl.classList.add('visible');
-                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
-                    },
-                    onLeaveBack() {
                         gsap.to(scrollCue, { opacity: 1, duration: .5 });
+                        cancelAnimationFrame(rAFid);
+                        rAFid = null;
+                    } else {
+                        stickyCanvas.style.opacity = '0';
+                        stickyCanvas.style.visibility = 'hidden';
                         progressEl.classList.remove('visible');
-                        cancelAnimationFrame(rAFid); rAFid = null;
-                    },
-                }));
+                        cancelAnimationFrame(rAFid);
+                        rAFid = null;
+                    }
+                });
 
                 updatePanels(0);
             }

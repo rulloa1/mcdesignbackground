@@ -340,12 +340,14 @@
             height: 400vh;
         }
         #sticky-canvas {
-            position: sticky;
+            position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            width: 100vw;
             height: 100vh;
             overflow: hidden;
             background: var(--bg-alt);
+            z-index: 1;
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #hero-canvas {
@@ -4195,7 +4197,7 @@
             function initSectionTransitions() {
                 if (!canAnimate()) return;
 
-                const sections = gsap.utils.toArray('section');
+                const sections = gsap.utils.toArray('section:not(#canvas-section)');
 
                 sections.forEach((section, idx) => {
                     // Get section heading if exists
@@ -4523,41 +4525,40 @@
                     },
                 }));
 
-                // Canvas pin + scroll-driven scrub via ScrollTrigger
-                scrollTriggers.push(ScrollTrigger.create({
-                    trigger: '#canvas-section',
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    pin: '#sticky-canvas',
-                    pinSpacing: false,
-                    scrub: CONFIG.SCRUB_DURATION,
-                    onUpdate(self) {
-                        gsap.to(proxy, {
-                            progress: self.progress,
-                            duration: CONFIG.FRAME_LERP_DURATION,
-                            ease: 'none',
-                            overwrite: true
-                        });
-                    },
-                    onEnter() {
+                // Canvas is position:fixed — track scroll progress manually
+                const stickyCanvas = document.getElementById('sticky-canvas');
+
+                window.addEventListener('scroll', () => {
+                    const section = document.getElementById('canvas-section');
+                    const rect = section.getBoundingClientRect();
+                    const sectionHeight = section.offsetHeight;
+                    const viewportHeight = window.innerHeight;
+
+                    if (rect.top <= 0 && rect.bottom >= viewportHeight) {
+                        const p = Math.abs(rect.top) / (sectionHeight - viewportHeight);
+                        proxy.progress = Math.max(0, Math.min(1, p));
+
+                        stickyCanvas.style.opacity = '1';
+                        stickyCanvas.style.visibility = 'visible';
+
+                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
                         progressEl.classList.add('visible');
                         gsap.to(scrollCue, { opacity: 0, duration: .5 });
-                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
-                    },
-                    onLeave() {
+                    } else if (rect.top > 0) {
+                        stickyCanvas.style.opacity = '1';
+                        stickyCanvas.style.visibility = 'visible';
                         progressEl.classList.remove('visible');
-                        cancelAnimationFrame(rAFid); rAFid = null;
-                    },
-                    onEnterBack() {
-                        progressEl.classList.add('visible');
-                        if (!rAFid) rAFid = requestAnimationFrame(renderLoop);
-                    },
-                    onLeaveBack() {
                         gsap.to(scrollCue, { opacity: 1, duration: .5 });
+                        cancelAnimationFrame(rAFid);
+                        rAFid = null;
+                    } else {
+                        stickyCanvas.style.opacity = '0';
+                        stickyCanvas.style.visibility = 'hidden';
                         progressEl.classList.remove('visible');
-                        cancelAnimationFrame(rAFid); rAFid = null;
-                    },
-                }));
+                        cancelAnimationFrame(rAFid);
+                        rAFid = null;
+                    }
+                });
 
                 updatePanels(0);
             }
