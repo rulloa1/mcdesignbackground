@@ -24,7 +24,9 @@
       "Bash(node -e ':*)",
       "Bash(node -c index.html)",
       "Bash(ls public/flava-depot/frames/ezgif-frame-*.jpg)",
-      "mcp__claude_ai_Cloudflare_Developer_Platform__search_cloudflare_documentation"
+      "mcp__claude_ai_Cloudflare_Developer_Platform__search_cloudflare_documentation",
+      "Bash(openssl dgst *)",
+      "Bash(openssl base64 *)"
     ]
   }
 }
