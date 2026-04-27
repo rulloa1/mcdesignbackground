@@ -2283,20 +2283,7 @@
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
     <div id="loader" role="status" aria-label="Loading animation frames">
         <div id="loader-logo">
-            <svg width="24" height="24" viewBox="0 0 240 240" fill="none" aria-hidden="true">
-                <!-- Top Left: M Shape -->
-                <path d="M30 50 L30 130 L50 110 L70 130 L70 50" stroke="#FFC107" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                <!-- Top Right: C Shape -->
-                <path d="M170 50 L150 50 L150 130 L170 130" stroke="#FFC107" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                <!-- Center Divider -->
-                <line x1="120" y1="30" x2="120" y2="150" stroke="#1C1916" stroke-width="4"/>
-                <!-- Bottom Left: I and V Shapes -->
-                <line x1="40" y1="160" x2="40" y2="220" stroke="#FFC107" stroke-width="8" stroke-linecap="round"/>
-                <path d="M25 220 L40 160 L55 220" stroke="#FFC107" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                <!-- Bottom Right: S Shape -->
-                <path d="M160 160 C160 170 170 175 180 175 C190 175 200 180 200 190 C200 200 190 210 180 210 C170 210 160 215 160 225" stroke="#FFC107" stroke-width="8" stroke-linecap="round" fill="none"/>
-            </svg>
-            mcdesign
+            <img src="mc-logo.png" alt="Michael Chandler Design Build Elevate" style="height:90px;width:auto;object-fit:contain;" />
         </div>
         <div id="loader-track">
             <div id="loader-bar"></div>
@@ -2310,7 +2297,7 @@
     <header id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand" style="display:flex; align-items:center;">
-                <img src="logo-horizontal.png" alt="MC Michael Chandler Logo" style="height: 48px; width: auto; object-fit: contain;" />
+                <img src="mc-logo.png" alt="Michael Chandler Design Build Elevate" style="height: 52px; width: auto; object-fit: contain;" />
             </a>
             <nav class="nav-links">
                 <a href="#" class="nav-link">Home</a>
@@ -3227,7 +3214,7 @@
                 <!-- Brand col -->
                 <div>
                     <h3 class="footer-brand-name" style="margin-bottom: 12px;">
-                        <img src="logo-vertical.png" alt="MC Michael Chandler Logo" style="height: 100px; width: auto; object-fit: contain; filter: invert(1) brightness(2) contrast(1.2);" />
+                        <img src="mc-logo.png" alt="Michael Chandler Design Build Elevate" style="height: 80px; width: auto; object-fit: contain;" />
                     </h3>
                     <p class="footer-brand-tagline">Ultra-luxury construction management. 37 years of precision, accountability, and uncompromising craft &mdash; from California to the Caribbean.</p>
                 </div>
@@ -3425,7 +3412,7 @@
              */
             const FRAME_URLS = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
                 const n = String(i + 1).padStart(3, '0');
-                return `/flava-depot/frames/ezgif-frame-${n}.jpg`;
+                return `ezgif-frame-${n}.jpg`;
             });
             // ===================================================================================
             //  DOM REFS
