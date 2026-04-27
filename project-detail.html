@@ -292,7 +292,7 @@
 <body>
 
     <nav class="main-nav">
-        <a href="portfolio.html" class="logo">mcdesign</a>
+        <a href="index.html" class="logo">mcdesign</a>
         <a href="portfolio.html" class="back-link">← Back to Portfolio</a>
     </nav>
 
@@ -362,13 +362,13 @@
 
         // Populate page
         document.getElementById('page-title').textContent = `${project.title} — Michael Chandler`;
-        document.getElementById('breadcrumb-category').textContent = project.category.replace('-', ' ');
+        document.getElementById('breadcrumb-category').textContent = project.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
         document.getElementById('breadcrumb-title').textContent = project.title;
         document.getElementById('project-title').textContent = project.title;
         document.getElementById('project-subtitle').textContent = project.subtitle;
         document.getElementById('project-location').textContent = project.location;
         document.getElementById('project-role').textContent = project.role;
-        document.getElementById('project-category').textContent = project.category.replace('-', ' ').toUpperCase();
+        document.getElementById('project-category').textContent = project.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').toUpperCase();
         document.getElementById('project-specs').textContent = project.specs;
 
         // Render gallery

@@ -1,4 +1,3 @@
-// Complete project database for Michael Chandler portfolio
 // NOTE: Owner's Rep projects reuse other project images as placeholders
 // until dedicated photography is available.
 const projectsData = [
@@ -8,7 +7,7 @@ const projectsData = [
         subtitle: 'Luxury Resort Development',
         category: 'owners-representation',
         location: 'Bahamas',
-        role: 'Discovery Land Company Project's Rep",
+        role: "Discovery Land Company Project's Rep",
         specs: 'Resort Portfolio',
         featured: true,
         coverImage: 'projects/assets/bakers-bay-1.webp',
@@ -20,7 +19,7 @@ const projectsData = [
         subtitle: 'Ultra-Luxury Alpine Community',
         category: 'owners-representation',
         location: 'Montana',
-        role: 'Project Management: Final Finish of Main Lodge Addition & Completion of 48 Private Condos's Rep",
+        role: "Project Management: Final Finish of Main Lodge Addition & Completion of 48 Private Condos's Rep",
         specs: '550,000 sqft • Incl. Underground Parking, Retail/Rest/Spa, 3 Floors of Private Condos',
         featured: true,
         coverImage: 'projects/assets/alpine-ranch-cover.webp',
@@ -56,7 +55,7 @@ const projectsData = [
         subtitle: 'Ultra-Luxury Private Island',
         category: 'owners-representation',
         location: 'Bahamas',
-        role: 'Concept Design & Feasibility Study for Land Development, Utilities & Logistics's Rep",
+        role: "Concept Design & Feasibility Study for Land Development, Utilities & Logistics's Rep",
         specs: '$125M Estate',
         featured: true,
         coverImage: 'projects/assets/miami-beach-2.webp',
@@ -305,7 +304,7 @@ const projectsData = [
         subtitle: 'Spanish Revival Commercial',
         category: 'design-build',
         location: 'Seaside, CA',
-        role: 'Civil Engineering Construction, Design (Structure), Builder, Project Manager, Owner's Representative',
+        role: "Civil Engineering Construction, Design (Structure), Builder, Project Manager, Owner's Representative",
         specs: '12,000 sqft • 14 months',
         featured: false,
         coverImage: 'projects/laguna-grande/6.0 Laguna Grande Design Build_001_COVER.png',
