@@ -5167,6 +5167,27 @@
         const formContainer = document.querySelector('.multistep-form');
         const stepIndicator = document.getElementById('step-indicator');
         const formSuccess = document.getElementById('form-success');
+        const phoneInput = document.getElementById('disc-phone');
+        const notesInput = document.getElementById('disc-notes');
+
+        if (!budgetGrid || !typeGrid || !step1NextBtn || !step2BackBtn || !step2NextBtn || !step3BackBtn || !step3SubmitBtn || !nameInput || !emailInput || !formContainer || !stepIndicator || !formSuccess || !phoneInput || !notesInput) {
+            console.warn('Multi-step form initialization skipped: required elements are missing.');
+            return;
+        }
+
+        const SUBMIT_IDLE_TEXT = 'Request Discovery Call →';
+        const SUBMIT_PENDING_TEXT = 'Sending...';
+        const FORMSPREE_ID = 'mvgopoqr';
+        const FORM_ERROR_MESSAGE = 'Unable to send submission. Please try again or email directly.';
+
+        function getCurrentFormState() {
+            return { budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep };
+        }
+
+        function resetSubmitButton() {
+            step3SubmitBtn.disabled = false;
+            step3SubmitBtn.textContent = SUBMIT_IDLE_TEXT;
+        }
 
         function showStep(n) {
             currentStep = n;
@@ -5226,7 +5247,7 @@
                 btn.classList.add('selected');
                 selectedBudget = btn.dataset.value;
                 step1NextBtn.disabled = false;
-                saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
+                saveFormState(getCurrentFormState());
             });
         });
         on(step1NextBtn, 'click', () => showStep(2));
@@ -5238,7 +5259,7 @@
                 btn.classList.add('selected');
                 selectedType = btn.dataset.value;
                 step2NextBtn.disabled = false;
-                saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
+                saveFormState(getCurrentFormState());
             });
         });
         on(step2BackBtn, 'click', () => showStep(1));
@@ -5248,18 +5269,18 @@
         on(step3BackBtn, 'click', () => showStep(2));
         on(nameInput, 'input', () => {
             setFieldError(nameInput, false);
-            saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
+            saveFormState(getCurrentFormState());
         });
         on(emailInput, 'input', () => {
             setFieldError(emailInput, false);
-            saveFormState({ budget: selectedBudget, type: selectedType, name: nameInput.value, email: emailInput.value, step: currentStep });
+            saveFormState(getCurrentFormState());
         });
 
         on(step3SubmitBtn, 'click', async () => {
             const name = nameInput.value.trim();
             const email = emailInput.value.trim();
-            const phone = document.getElementById('disc-phone')?.value.trim() || '';
-            const notes = document.getElementById('disc-notes')?.value.trim() || '';
+            const phone = phoneInput.value.trim();
+            const notes = notesInput.value.trim();
             const honeypot = document.getElementById('disc-company')?.value;
             if (honeypot) return;
 
@@ -5273,12 +5294,9 @@
 
             // Disable button during submission
             step3SubmitBtn.disabled = true;
-            step3SubmitBtn.textContent = 'Sending...';
+            step3SubmitBtn.textContent = SUBMIT_PENDING_TEXT;
 
             try {
-                // Send form data to Formspree.io (free email service)
-                // TO CONFIGURE: Visit https://formspree.io, create new form, replace form ID below
-                const FORMSPREE_ID = 'mvgopoqr'; // Replace with your Formspree form ID
                 const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -5303,24 +5321,23 @@
                     setTimeout(() => {
                         nameInput.value = '';
                         emailInput.value = '';
-                        document.getElementById('disc-phone').value = '';
-                        document.getElementById('disc-notes').value = '';
+                        phoneInput.value = '';
+                        notesInput.value = '';
                         selectedBudget = '';
                         selectedType = '';
                         sessionStorage.removeItem(FORM_STATE_KEY);
                     }, 100);
                 } else {
-                    // Network error
-                    alert('Unable to send submission. Please try again or email directly.');
-                    step3SubmitBtn.disabled = false;
-                    step3SubmitBtn.textContent = 'Request Discovery Call →';
+                    const errorText = await response.text();
+                    console.error('Form submission failed:', response.status, errorText);
+                    alert(FORM_ERROR_MESSAGE);
+                    resetSubmitButton();
                 }
             } catch (err) {
                 // Fallback: show error and allow retry
                 console.error('Form submission error:', err);
-                alert('Unable to send submission. Please try again or email directly.');
-                step3SubmitBtn.disabled = false;
-                step3SubmitBtn.textContent = 'Request Discovery Call →';
+                alert(FORM_ERROR_MESSAGE);
+                resetSubmitButton();
             }
         });
 
