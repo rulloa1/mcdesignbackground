@@ -131,6 +131,8 @@
         .mb-8 { margin-bottom: 2rem; }
         .mb-12 { margin-bottom: 3rem; }
         .mb-16 { margin-bottom: 4rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .py-24 { padding-top: 6rem; padding-bottom: 6rem; }
         .py-32 { padding-top: 8rem; padding-bottom: 8rem; }
         .max-w-2xl { max-width: 42rem; }
         .max-w-sm { max-width: 24rem; }
@@ -3348,7 +3350,10 @@
             // Replaces innerHTML approach with DOM-safe text node manipulation
             const createLineWrappedContent = (element, delimiter = '<br>') => {
                 const originalHTML = element.innerHTML;
-                const lines = originalHTML.split(delimiter);
+                const splitter = typeof delimiter === 'string' && /^<br/i.test(delimiter)
+                    ? /<br\b[^>]*>/i
+                    : delimiter;
+                const lines = originalHTML.split(splitter);
                 element.innerHTML = ''; // Clear original content
 
                 lines.forEach((line, i) => {
@@ -4003,6 +4008,7 @@
             }
 
             function initAdvancedScrollEffects() {
+                if (!canAnimate()) return;
                 try {
                     // Paragraph fade-in effect
                     gsap.utils.toArray('p:not(.reveal *)').forEach(para => {
