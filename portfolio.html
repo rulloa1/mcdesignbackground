@@ -294,9 +294,11 @@
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="residential-construction">Residential</button>
                     <button class="filter-btn" data-filter="design-build">Design Build</button>
+                    <button class="filter-btn" data-filter="architecture">Architecture</button>
                     <button class="filter-btn" data-filter="civil">Civil</button>
                     <button class="filter-btn" data-filter="hospitality">Hospitality</button>
                     <button class="filter-btn" data-filter="residential-development">Development</button>
+                    <button class="filter-btn" data-filter="custom-furniture">Custom Furniture</button>
                     <button class="filter-btn" data-filter="owners-representation">Owner&rsquo;s Rep</button>
                 </div>
             </div>
@@ -384,9 +386,11 @@
         const catLabel = {
             'residential-construction': 'Residential',
             'design-build':             'Design Build',
+            'architecture':             'Architecture',
             'civil':                    'Civil',
             'hospitality':              'Hospitality',
             'residential-development':  'Development',
+            'custom-furniture':         'Custom Furniture',
             'owners-representation':    "Owner's Rep",
         };
 
@@ -473,7 +477,7 @@
         // ── URL query-param filter on load ────────────────────────────────────
         const urlParams = new URLSearchParams(window.location.search);
         const urlFilter = urlParams.get('filter') || 'all';
-        const validFilters = ['all','residential-construction','design-build','civil','hospitality','residential-development','owners-representation'];
+        const validFilters = ['all','residential-construction','design-build','architecture','civil','hospitality','residential-development','custom-furniture','owners-representation'];
         const initialFilter = validFilters.includes(urlFilter) ? urlFilter : 'all';
 
         // Pre-select the matching button
