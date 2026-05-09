@@ -19,7 +19,7 @@ const projectsData = [
         subtitle: 'Ultra-Luxury Alpine Community',
         category: 'owners-representation',
         location: 'Montana',
-        role: "Project Management: Final Finish of Main Lodge Addition & Completion of 48 Private Condos's Rep",
+        role: "Project Management: Final Finish of Main Lodge Addition & Completion of 48 Private Condos' Rep",
         specs: '550,000 sqft • Incl. Underground Parking, Retail/Rest/Spa, 3 Floors of Private Condos',
         featured: true,
         coverImage: 'projects/assets/alpine-ranch-cover.webp',
@@ -127,14 +127,7 @@ const projectsData = [
         images: [
             'projects/hospitality-pool-cover-v2.jpg',
             'projects/assets/hospitality-pool-1.webp',
-            'projects/assets/pool-design-1.png',
-            'projects/assets/pool-design-2.png',
-            'projects/assets/pool-design-3.png',
-            'projects/assets/pool-design-4.png',
-            'projects/assets/pool-design-5.png',
-            'projects/assets/pool-design-6.png',
-            'projects/assets/pool-design-9.png',
-            ...Array.from({length: 28}, (_, i) => `projects/assets/pool-design-${i + 10}.webp`)
+            ...Array.from({length: 28}, (_, i) => `projects/assets/pool-design-${i + 1}.webp`)
         ]
     },
     {
