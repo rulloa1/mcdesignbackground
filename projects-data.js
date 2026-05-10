@@ -109,8 +109,11 @@ const projectsData = [
         specs: '2,300 sqft • 24 months • 2 bed · 2 bath',
         notes: 'Custom Bronze Windows/Doors Crafted in Italy. Mix of Radiant floor heating and custom forced air system for maximum efficiency.',
         featured: true,
-        coverImage: 'projects/assets/alpine-ranch-cover.webp',
-        images: Array.from({length: 12}, (_, i) => `projects/assets/alpine-ranch-${i + 1}.webp`)
+        coverImage: 'projects/assets/alpine-snow.webp',
+        images: [
+            'projects/assets/alpine-snow.webp',
+            ...Array.from({length: 12}, (_, i) => `projects/assets/alpine-ranch-${i + 1}.webp`)
+        ]
     },
     {
         id: 'syracuse',
@@ -122,8 +125,12 @@ const projectsData = [
         specs: '6,200 sqft • 18 months',
         description: 'Complete two-acre landscape orchestration. Features a 6-car garage/workshop for antique restoration, and a two-stall horse barn + storage, completing the perfect equestrian property.',
         featured: false,
-        coverImage: 'projects/assets/syracuse-cover.webp',
-        images: Array.from({length: 46}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
+        coverImage: 'projects/assets/syracuse-night.webp',
+        images: [
+            'projects/assets/syracuse-night.webp',
+            'projects/assets/syracuse-cover.webp',
+            ...Array.from({length: 46}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
+        ]
     },
     {
         id: 'montana-condo',
@@ -243,8 +250,12 @@ const projectsData = [
         role: 'Civil Engineering Lead & Site Manager',
         specs: '11 months',
         featured: false,
-        coverImage: 'projects/assets/bigsur-cover.webp',
-        images: Array.from({length: 15}, (_, i) => `projects/assets/bigsur-${i + 1}.webp`)
+        coverImage: 'projects/assets/bigsur-gate.webp',
+        images: [
+            'projects/assets/bigsur-gate.webp',
+            'projects/assets/bigsur-cover.webp',
+            ...Array.from({length: 15}, (_, i) => `projects/assets/bigsur-${i + 1}.webp`)
+        ]
     },
     {
         id: 'carmel-knolls',
