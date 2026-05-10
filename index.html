@@ -295,7 +295,14 @@
 
         /* Split Text Helper Classes */
         .word { display: inline-block; overflow: hidden; vertical-align: bottom; }
-        .word span { display: inline-block; transform: translateY(100%); opacity: 0; }
+        .word span { display: inline-block; transform: translateY(100%); opacity: 0; color: inherit; }
+        
+        #hero .hero-headline,
+        #hero .hero-headline *,
+        #hero .hero-headline .word span {
+            color: var(--bone) !important;
+            -webkit-text-fill-color: var(--bone) !important;
+        }
         
         .char-reveal { display: inline-block; overflow: hidden; vertical-align: bottom; }
         .char-reveal span { display: inline-block; transform: translateY(100%); opacity: 0; }
@@ -445,8 +452,8 @@
             <h1 class="hero-name font-mono text-sm md:text-base tracking-[0.4em] uppercase text-brass mb-6 opacity-0 translate-y-4">
                 Michael Chandler
             </h1>
-            <h2 class="hero-headline font-serif text-5xl md:text-8xl leading-tight mb-8 split-text" style="color: var(--bone);">
-                Building What Others Imagine.
+            <h2 class="hero-headline font-serif text-5xl md:text-8xl leading-tight mb-8 split-text">
+                Building What Others Can't.
             </h2>
             
             <div class="hero-line"></div>
@@ -833,7 +840,7 @@
             duration: 1.5,
             stagger: 0.05,
             ease: "expo.out",
-            delay: 0.5
+            delay: 0.2
         })
         .to('.brass-underline-draw', {
             width: '100%',
@@ -849,7 +856,7 @@
             yPercent: -100,
             duration: 2,
             ease: "power4.inOut",
-            delay: 1
+            delay: 0.5
         })
         .to('.hero-name', {
             opacity: 1,
@@ -873,9 +880,12 @@
             y: 0,
             opacity: 1,
             duration: 1.2,
-            stagger: 0.02,
-            ease: "power3.out"
-        }, "-=1.2")
+        }, "-=1");
+
+        // Failsafe visibility
+        setTimeout(() => {
+            gsap.to('.hero-headline .word span', { y: 0, opacity: 1, duration: 1, stagger: 0.02, overwrite: true });
+        }, 4000);
         .to('.scroll-indicator', {
             opacity: 1,
             duration: 1

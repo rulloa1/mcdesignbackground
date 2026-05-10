@@ -170,9 +170,10 @@ const projectsData = [
         location: 'Big Sur, CA',
         role: 'Design (Structure & Int. Design), Builder, Project Manager, Owner Representative, Property Manager',
         specs: '3,800 sqft • 16 months',
-        featured: false,
-        coverImage: 'projects/assets/southcoast-cover.webp',
+        featured: true,
+        coverImage: 'projects/assets/southcoast-deck.webp',
         images: [
+            'projects/assets/southcoast-deck.webp',
             'projects/assets/southcoast-cover.webp',
             ...Array.from({length: 52}, (_, i) => `projects/assets/southcoast-${i + 2}.webp`)
         ]
