@@ -8,32 +8,41 @@ except FileNotFoundError:
     exit()
 
 # Extract all explicit strings ending in webp, jpg, png
-explicit_refs = re.findall(r'[\'"`]?([^"\'`]+\.(?:webp|jpg|png|JPG|JPEG|jpeg))[\'"`]?', data)
-
-# Parse Array.from constructs
-# We can just extract all strings inside the template literals in Array.from and substitute
-array_refs = re.findall(r'Array\.from\(\{length:\s*(\d+)\}.+?projects/assets/([^$]+)\$\{(?:i \+ (\d+)|String\(i \+ (\d+)\)\.padStart\((\d+),\s*\'0\'\))\}\.webp', data)
-
 all_expected = set()
 
-for ref in explicit_refs:
-    if ref.startswith('projects/'):
-        all_expected.add(ref)
+# 1. Simple strings
+simple_refs = re.findall(r'[\'"](projects/[^\'"]+\.(?:webp|jpg|png|jpeg))[\'"]', data, re.I)
+for ref in simple_refs:
+    all_expected.add(ref)
 
-for match in array_refs:
-    length = int(match[0])
-    prefix = match[1]
+# 2. Array.from({length: N}, ...) patterns
+# We look for the length and the template string
+array_matches = re.finditer(r'Array\.from\(\{length:\s*(\d+)\}.*?`projects/assets/([^`]+)`', data, re.S)
+for match in array_matches:
+    length = int(match.group(1))
+    template = match.group(2)
     
-    if match[2]: # i + N
-        start_idx = int(match[2])
-        for i in range(length):
-            all_expected.add(f'projects/assets/{prefix}{i + start_idx}.webp')
-    elif match[3] and match[4]: # String(i + N).padStart(pad, '0')
-        start_idx = int(match[3])
-        pad = int(match[4])
-        for i in range(length):
-            num = str(i + start_idx).zfill(pad)
-            all_expected.add(f'projects/assets/{prefix}{num}.webp')
+    for i in range(length):
+        # Handle ${i + N}
+        def repl(m):
+            expr = m.group(1)
+            # Simple i + N evaluation
+            if expr.strip() == 'i': return str(i)
+            if '+' in expr:
+                parts = expr.split('+')
+                return str(i + int(parts[1].strip()))
+            return str(i)
+
+        # Handle padStart if present
+        if 'padStart' in template:
+            # projects/assets/nfl-${String(i + 2).padStart(3, '0')}
+            res = re.sub(r'\$\{String\(i \+ (\d+)\)\.padStart\((\d+), [\'"]0[\'"]\)\}', 
+                         lambda m: str(i + int(m.group(1))).zfill(int(m.group(2))), 
+                         template)
+        else:
+            res = re.sub(r'\$\{([^}]+)\}', repl, template)
+            
+        all_expected.add(f'projects/assets/{res}')
 
 missing = []
 for file_path in all_expected:

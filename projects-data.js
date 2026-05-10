@@ -34,8 +34,8 @@ const projectsData = [
         role: "Chief Projects Officer & Owner's Rep",
         specs: 'Country Club Portfolio',
         featured: true,
-        coverImage: 'projects/syracuse-cover.png',
-        images: ['projects/syracuse-cover.png']
+        coverImage: 'projects/assets/syracuse-cover.webp',
+        images: ['projects/assets/syracuse-cover.webp']
     },
     {
         id: 'mangrove-group',
@@ -95,7 +95,7 @@ const projectsData = [
         role: 'Design-Build Executive & General Contractor',
         specs: '6,200 sqft • 18 months',
         featured: false,
-        coverImage: 'projects/syracuse-cover.png',
+        coverImage: 'projects/assets/syracuse-cover.webp',
         images: Array.from({length: 46}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
     },
     {
@@ -127,7 +127,10 @@ const projectsData = [
         images: [
             'projects/hospitality-pool-cover-v2.jpg',
             'projects/assets/hospitality-pool-1.webp',
-            ...Array.from({length: 28}, (_, i) => `projects/assets/pool-design-${i + 1}.webp`)
+            ...Array.from({length: 28}, (_, i) => {
+                const n = i + 1;
+                return n === 7 ? 'projects/assets/pool-design-6.webp' : `projects/assets/pool-design-${n}.webp`;
+            })
         ]
     },
     {
@@ -198,7 +201,7 @@ const projectsData = [
         specs: 'Custom Addition',
         featured: false,
         coverImage: 'projects/assets/carmel-2-cover.webp',
-        images: Array.from({length: 5}, (_, i) => `projects/assets/carmel-2-${i + 1}.webp`)
+        images: Array.from({length: 6}, (_, i) => `projects/assets/carmel-forest-${i + 1}.webp`)
     },
     {
         id: 'bigsur-civil',
@@ -215,35 +218,35 @@ const projectsData = [
     {
         id: 'carmel-knolls',
         title: 'Carmel Knolls',
-        subtitle: 'More Than Lipstick on an Old Lady!',
-        category: 'civil',
+        subtitle: 'Custom Estate',
+        category: 'residential-construction',
         location: 'Carmel, CA',
-        role: 'General Contractor & Restoration Specialist',
-        specs: '2,200 sqft • 12 months',
+        role: 'Construction Management',
+        specs: 'Custom Estate',
         featured: false,
-        coverImage: 'projects/carmel-knolls/001.10 COVER.jpg',
-        images: Array.from({length: 25}, (_, i) => `projects/assets/carmel-knolls-${i + 1}.webp`)
+        coverImage: 'projects/assets/carmel-knolls-cover.webp',
+        images: Array.from({length: 10}, (_, i) => `projects/assets/carmel-knolls-${i + 1}.webp`)
     },
     {
         id: 'coastal-restoration',
         title: 'Coastal Restoration',
-        subtitle: 'Erosion Repair',
+        subtitle: 'Environmental Protection',
         category: 'civil',
-        location: 'Monterey Peninsula, CA',
-        role: 'Civil Engineering Lead & Environmental Restoration Manager',
-        specs: '9 months',
+        location: 'California Coast',
+        role: 'Lead Project Manager & Civil Specialist',
+        specs: 'Coastal Restoration',
         featured: false,
-        coverImage: 'projects/coastal-restoration/001 COVER.JPG',
+        coverImage: 'projects/assets/coastal-restoration-cover.webp',
         images: Array.from({length: 15}, (_, i) => `projects/assets/coastal-restoration-${i + 1}.webp`)
     },
     {
         id: 'beachfront-estate',
-        title: 'Beachfront Estate',
-        subtitle: 'Luxury Residence',
-        category: 'residential-development',
+        title: 'Beachfront Estate Abaco',
+        subtitle: 'Luxury Waterfront Estate',
+        category: 'residential-construction',
         location: 'Abaco, Bahamas',
-        role: 'Development Manager & General Contractor',
-        specs: '6,800 sqft • 2.5 Acres',
+        role: 'Owner Representative & Construction Manager',
+        specs: 'Luxury Waterfront Estate',
         featured: false,
         coverImage: 'projects/assets/beachfront-1.webp',
         images: Array.from({length: 7}, (_, i) => `projects/assets/beachfront-${i + 1}.webp`)
@@ -251,72 +254,70 @@ const projectsData = [
     {
         id: 'development-civil',
         title: 'Development Civil',
-        subtitle: 'Large Scale Construction',
-        category: 'residential-development',
-        location: 'SE Texas',
-        role: 'Project Management, Development/Civil Engineering',
-        specs: '45 Acres • 10.3 months • 120 Home Sites',
+        subtitle: 'Site Infrastructure',
+        category: 'civil',
+        location: 'Various Locations',
+        role: 'Civil Engineering Lead',
+        specs: 'Site Infrastructure',
         featured: false,
-        coverImage: 'projects/development-civil/development (1).jpg',
+        coverImage: 'projects/assets/development-cover.webp',
         images: [
-            'projects/development-civil/development (1).jpg',
-            ...Array.from({length: 10}, (_, i) => `projects/assets/development-civil-${i + 1}.webp`)
+            'projects/assets/development-cover.webp',
+            'projects/assets/development-site.webp',
+            'projects/assets/development-entrance-2.webp',
+            ...Array.from({length: 10}, (_, i) => `projects/assets/development-${i + 1}.webp`)
         ]
     },
     {
         id: 'pacific-grove',
-        title: 'New Residential Construction',
-        subtitle: 'In Historic Neighborhood',
-        category: 'design-build',
-        location: 'Central Coast, CA',
-        role: 'Designer (Structure & Int. Design), Project Management, Owner Representative',
-        specs: '2,600 sqft • 14 months',
+        title: 'Pacific Grove Historic Neighborhood',
+        subtitle: 'Historic Custom Home',
+        category: 'residential-construction',
+        location: 'Pacific Grove, CA',
+        role: 'General Contractor',
+        specs: 'Historic Custom Home',
         featured: false,
-        coverImage: 'projects/pacific-grove/001 COVER.JPG',
-        images: [
-            'projects/pacific-grove/001 COVER.JPG',
-            'projects/assets/pg-cover.webp',
-            ...Array.from({length: 10}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
-        ]
+        coverImage: 'projects/assets/pg-cover.webp',
+        images: Array.from({length: 10}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
     },
     {
         id: 'hillside-cleanup',
-        title: 'Hillside Restoration & Environmental Cleanup',
-        subtitle: 'Environmental Cleanup',
+        title: 'Hillside Cleanup',
+        subtitle: 'Environmental Remediation',
         category: 'civil',
-        location: 'Carmel, CA',
-        role: 'Civil Engineering Contractor/Builder, Permit Procurement',
-        specs: '4 months',
+        location: 'California',
+        role: 'Lead Manager',
+        specs: 'Environmental Remediation',
         featured: false,
-        coverImage: 'projects/hillside-cleanup/001 COVER.jpg',
-        images: Array.from({length: 15}, (_, i) => `projects/assets/hillside-cleanup-${i + 1}.webp`)
+        coverImage: 'projects/assets/cleanup-cover.webp',
+        images: Array.from({length: 15}, (_, i) => `projects/assets/cleanup-${i + 1}.webp`)
     },
     {
         id: 'laguna-grande',
         title: 'Laguna Grande',
-        subtitle: 'Spanish Revival Commercial',
-        category: 'design-build',
-        location: 'Seaside, CA',
-        role: "Civil Engineering Construction, Design (Structure), Builder, Project Manager, Owner's Representative",
-        specs: '12,000 sqft • 14 months',
+        subtitle: 'Site Development',
+        category: 'civil',
+        location: 'Monterey, CA',
+        role: 'Project Manager',
+        specs: 'Site Development',
         featured: false,
-        coverImage: 'projects/laguna-grande/6.0 Laguna Grande Design Build_001_COVER.png',
-        images: [
-            'projects/laguna-grande/6.0 Laguna Grande Design Build_001_COVER.png',
-            'projects/assets/laguna-grande-cover.webp',
-            ...Array.from({length: 6}, (_, i) => `projects/assets/laguna-grande-${i + 1}.webp`)
-        ]
+        coverImage: 'projects/assets/laguna-grande-cover.webp',
+        images: Array.from({length: 2}, (_, i) => `projects/assets/laguna-grande-${i + 1}.webp`)
     },
     {
         id: 'carmel-remodel-23',
-        title: 'Carmel House Remodel No.23',
-        subtitle: 'Complete Renovation',
+        title: 'Carmel Remodel 2023',
+        subtitle: 'Modern Coastal Update',
         category: 'residential-construction',
-        location: 'Carmel By the Sea, CA',
-        role: 'General Contractor & Renovation Specialist',
-        specs: 'Complete Renovation',
+        location: 'Carmel, CA',
+        role: 'Owner Rep & Construction Manager',
+        specs: 'Modern Coastal Update',
         featured: false,
         coverImage: 'projects/assets/carmel-3-cover.webp',
-        images: Array.from({length: 25}, (_, i) => `projects/assets/carmel-3-${i + 1}.webp`)
+        images: Array.from({length: 5}, (_, i) => `projects/assets/carmel-3-${i + 1}.webp`)
     }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = projectsData;
+}
