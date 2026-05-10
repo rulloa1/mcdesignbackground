@@ -472,22 +472,34 @@
     <!-- Brand Strip Marquee -->
     <section class="marquee-container">
         <div class="marquee-content">
-            <span class="marquee-item">Architectural Digest</span>
+            <span class="marquee-item">26 Signature Projects</span>
             <span class="marquee-item">•</span>
-            <span class="marquee-item">Monocle Magazine</span>
+            <span class="marquee-item">$500M+ Capital Managed</span>
             <span class="marquee-item">•</span>
-            <span class="marquee-item">AIA Award Winner</span>
+            <span class="marquee-item">20+ Years Executive Leadership</span>
             <span class="marquee-item">•</span>
-            <span class="marquee-item">Urban Land Institute</span>
+            <span class="marquee-item">Discovery Land Company Rep</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">Owner's Representation</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">Civil Engineering Excellence</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">Luxury Residential Construction</span>
             <span class="marquee-item">•</span>
             <!-- Duplicate for infinite loop -->
-            <span class="marquee-item">Architectural Digest</span>
+            <span class="marquee-item">26 Signature Projects</span>
             <span class="marquee-item">•</span>
-            <span class="marquee-item">Monocle Magazine</span>
+            <span class="marquee-item">$500M+ Capital Managed</span>
             <span class="marquee-item">•</span>
-            <span class="marquee-item">AIA Award Winner</span>
+            <span class="marquee-item">20+ Years Executive Leadership</span>
             <span class="marquee-item">•</span>
-            <span class="marquee-item">Urban Land Institute</span>
+            <span class="marquee-item">Discovery Land Company Rep</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">Owner's Representation</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">Civil Engineering Excellence</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">Luxury Residential Construction</span>
             <span class="marquee-item">•</span>
         </div>
     </section>
@@ -880,16 +892,16 @@
             y: 0,
             opacity: 1,
             duration: 1.2,
-        }, "-=1");
+        }, "-=1")
+        .to('.scroll-indicator', {
+            opacity: 1,
+            duration: 1
+        });
 
         // Failsafe visibility
         setTimeout(() => {
             gsap.to('.hero-headline .word span', { y: 0, opacity: 1, duration: 1, stagger: 0.02, overwrite: true });
         }, 4000);
-        .to('.scroll-indicator', {
-            opacity: 1,
-            duration: 1
-        });
 
         // Header Scroll Interaction
         window.addEventListener('scroll', () => {
