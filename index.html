@@ -341,9 +341,49 @@
         .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
         .hamburger.active .hamburger-line:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
 
+        /* Focus-visible styles */
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--brass);
+            outline-offset: 2px;
+        }
+
+        /* Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        .skip-nav {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--brass);
+            color: var(--carbon);
+            padding: 8px 16px;
+            z-index: 10000;
+            transition: top 0.3s;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+        .skip-nav:focus {
+            top: 0;
+        }
+
     </style>
 </head>
-<body class="antialiased selection:bg-brass selection:text-carbon">
+<body class="antialiased selection:bg-brass selection:text-carbon overflow-x-hidden">
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
 
     <!-- Cinematic Entrance Overlay -->
     <div id="entrance-overlay">
@@ -359,7 +399,8 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 px-6 py-8 mix-blend-difference text-bone flex justify-between items-center pointer-events-none">
+    <header>
+        <nav class="fixed w-full top-0 z-50 px-6 py-8 mix-blend-difference text-bone flex justify-between items-center pointer-events-none">
         <div class="font-serif text-xl tracking-widest uppercase pointer-events-auto">MC</div>
         
         <div class="desktop-nav font-sans text-sm tracking-widest uppercase flex gap-8 pointer-events-auto">
@@ -373,7 +414,7 @@
             <div class="hamburger-line"></div>
             <div class="hamburger-line"></div>
         </div>
-    </nav>
+    </header>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu">
@@ -385,7 +426,8 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <main id="main-content">
+        <!-- Hero Section -->
     <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 bg-carbon overflow-hidden z-10 pt-20" id="hero">
         <canvas id="dust-canvas"></canvas>
         
@@ -675,6 +717,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="py-6 text-center bg-carbon text-bone/40 font-mono text-xs border-t border-bone/10">
         &copy; 2026 Michael Chandler &mdash; MC Design Build. All Rights Reserved.
