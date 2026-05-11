@@ -34,8 +34,8 @@ const projectsData = [
         role: "Chief Projects Officer & Owner's Rep",
         specs: 'Country Club Portfolio',
         featured: true,
-        coverImage: 'projects/assets/montana-cover.webp',
-        images: ['projects/assets/montana-cover.webp']
+        coverImage: 'projects/assets/montana-4.webp',
+        images: ['projects/assets/montana-4.webp']
     },
     {
         id: 'miami-beach',
@@ -47,7 +47,7 @@ const projectsData = [
         specs: '4,200 sqft • 5 months • 4 bed · 4 bath',
         description: "Over a 5 month time, the newest Smart-Home Technologies were obtained and installed, with most components not even available to the public, in this Country, yet. Custom scalloped Solid Wood Paneling, made from some very special and rare South American wood. Hand-picked craftsman, world-class millworkers, and some extremely talented craftsmen who installed hand-applied specialty wall finishes, all worked in perfect harmony, to deliver this one of a kind ocean-side, high-rise residence, on time, on budget, and with every aspect of this remodel being on point. The delivery was flawless and made-ready for a world renown Interior Designer, who had nothing but praise for the fit and finish, throughout. All of this was accomplished at the height of a tragic world events, when everywhere else, the world had come to a screeching halt. Our hand-picked, old-world style craftsman, and modern technologists seamlessly went about their work, without faltering. The rare wood was sourced from another millwork company with a tragic cancelled order during this tragic time period. Going the extra many, many miles to Source the wood material, and then stepping in to purchase the lot, allowed for many jobs to be saved. Some of the Solid wood panels were even bent, into 1/4-rounds, using old-world wood bending techniques, to form the beautiful ends of the custom built-ins, in the Living Room. The residence was transformed from all white, to warm and beautiful. On Budget, On Schedule, and Perfectly On Point, thanks to a harmonious and incredible group of hand-picked craftsmen!",
         featured: true,
-        coverImage: 'projects/assets/miami-beach-cover.webp',
+        coverImage: 'projects/assets/miami-beach-27.webp',
         images: Array.from({length: 47}, (_, i) => `projects/assets/miami-beach-${i + 1}.webp`)
     },
     {
@@ -60,7 +60,7 @@ const projectsData = [
         specs: '2,300 sqft • 24 months • 2 bed · 2 bath',
         notes: 'Custom Bronze Windows/Doors Crafted in Italy. Mix of Radiant floor heating and custom forced air system for maximum efficiency.',
         featured: true,
-        coverImage: 'projects/assets/alpine-ranch-cover.webp',
+        coverImage: 'projects/assets/alpine-ranch-2.webp',
         images: [
             'projects/assets/alpine-ranch-cover.webp',
             ...Array.from({length: 12}, (_, i) => `projects/assets/alpine-ranch-${i + 1}.webp`)
@@ -76,9 +76,9 @@ const projectsData = [
         specs: '189,000 Gallon • 18 months',
         description: 'Coordination of over 15 specialty trades. Centerpiece is a beautiful free-form pool with a swim-up bar, 1,200 sq ft pool house, and 10 foot high solid mahogany wood walls and doors. Interior design inspired by 1950s New York smoking clubs.',
         featured: false,
-        coverImage: 'projects/hospitality-pool-cover-v2.jpg',
+        coverImage: 'projects/assets/pool-design-36.webp',
         images: [
-            'projects/hospitality-pool-cover-v2.jpg',
+            'projects/assets/pool-design-36.webp',
             'projects/assets/hospitality-pool-1.webp',
             ...Array.from({length: 30}, (_, i) => `projects/assets/pool-design-${i + 1}.webp`)
         ]
@@ -93,7 +93,7 @@ const projectsData = [
         specs: '3,600 + 1,200 sqft • 10 months',
         description: 'Revitalized this 3,600 sq ft home with a 1,200 sq ft addition. Comprehensive approach included new roof, impact windows, updated electrical and plumbing systems. Interior completely refreshed with estate management services ensuring seamless coordination of all trades. Result is a home that is more spacious, modern, fortified, and meticulously detailed.',
         featured: false,
-        coverImage: 'projects/north-florida/NIMG_9178.jpg',
+        coverImage: 'projects/assets/nfl-001-cover.webp',
         images: Array.from({length: 14}, (_, i) => `projects/assets/nfl-${String(i + 1).padStart(3, '0')}.webp`)
     },
     {
@@ -105,7 +105,7 @@ const projectsData = [
         role: 'Design (Structure & Int. Design), Builder, Project Manager, Owner Representative, Property Manager',
         specs: '3,800 sqft • 16 months',
         featured: true,
-        coverImage: 'projects/assets/southcoast-cover.webp',
+        coverImage: 'projects/assets/southcoast-52.webp',
         images: [
             'projects/assets/southcoast-cover.webp',
             ...Array.from({length: 52}, (_, i) => `projects/assets/southcoast-${i + 2}.webp`)
@@ -120,7 +120,7 @@ const projectsData = [
         role: 'Civil Engineering Lead & Site Manager',
         specs: '11 months',
         featured: false,
-        coverImage: 'projects/assets/bigsur-cover.webp',
+        coverImage: 'projects/assets/bigsur-3.webp',
         images: [
             'projects/assets/bigsur-cover.webp',
             ...Array.from({length: 15}, (_, i) => `projects/assets/bigsur-${i + 1}.webp`)
@@ -135,7 +135,7 @@ const projectsData = [
         role: 'Construction Management',
         specs: 'Custom Estate',
         featured: false,
-        coverImage: 'projects/assets/carmel-knolls-cover.webp',
+        coverImage: 'projects/assets/carmel-knolls-8.webp',
         images: Array.from({length: 10}, (_, i) => `projects/assets/carmel-knolls-${i + 1}.webp`)
     },
     {
@@ -147,7 +147,7 @@ const projectsData = [
         role: 'Civil Engineering Lead',
         specs: '45 Acres • 103 Home Sites • 36 months',
         featured: false,
-        coverImage: 'projects/assets/development-cover.webp',
+        coverImage: 'projects/assets/development-3.webp',
         images: [
             'projects/assets/development-cover.webp',
             'projects/assets/development-site.webp',
@@ -164,7 +164,7 @@ const projectsData = [
         role: 'Designer (Structure & Int. Design), Project Management, Owner Representative, Builder',
         specs: 'Historic Custom Home',
         featured: false,
-        coverImage: 'projects/assets/pg-cover.webp',
+        coverImage: 'projects/assets/pg-4-after.webp',
         images: Array.from({length: 10}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
     },
     {
@@ -177,7 +177,7 @@ const projectsData = [
         specs: 'Site Development • 14 months',
         description: 'Brought timeless beauty of Spanish Colonial Revival architecture to a new 12,000 sq ft commercial complex. Features authentic details like hand-formed clay roof tiles, custom ironwork, and arched colonnades. Although modern stucco is used, it was carefully applied so corners and edges are softened to look like original hand-applied plaster for authenticity.',
         featured: false,
-        coverImage: 'projects/assets/laguna-grande-cover.webp',
+        coverImage: 'projects/assets/laguna-grande-2.webp',
         images: Array.from({length: 2}, (_, i) => `projects/assets/laguna-grande-${i + 1}.webp`)
     },
     {
@@ -204,7 +204,7 @@ const projectsData = [
         role: 'Lead Project Manager & Civil Specialist',
         specs: 'Coastal Restoration',
         featured: false,
-        coverImage: 'projects/assets/coastal-restoration-cover.webp',
+        coverImage: 'projects/assets/coastal-restoration-13.webp',
         images: Array.from({length: 15}, (_, i) => `projects/assets/coastal-restoration-${i + 1}.webp`)
     },
     {
@@ -216,7 +216,7 @@ const projectsData = [
         role: 'Owner Representative & Construction Manager',
         specs: 'Luxury Waterfront Estate',
         featured: false,
-        coverImage: 'projects/assets/beachfront-1.webp',
+        coverImage: 'projects/assets/beachfront-3.webp',
         images: Array.from({length: 7}, (_, i) => `projects/assets/beachfront-${i + 1}.webp`)
     },
     {
@@ -229,7 +229,7 @@ const projectsData = [
         specs: '2,800 sqft • 8 months • New Build',
         notes: 'Selections feature Calacatta marble and warm walnut with special hand-applied wall/ceiling finishes.',
         featured: false,
-        coverImage: 'projects/assets/montana-cover.webp',
+        coverImage: 'projects/assets/montana-7.webp',
         images: Array.from({length: 11}, (_, i) => `projects/assets/montana-${i + 1}.webp`)
     },
     {
@@ -241,7 +241,7 @@ const projectsData = [
         role: 'Designer (Structure), Builder, Project Manager, Civil Engineering Contractor',
         specs: '4,800 sqft • 20 months',
         featured: false,
-        coverImage: 'projects/assets/carmel-valley-new-cover.webp',
+        coverImage: 'projects/assets/carmel-valley-new-2.webp',
         images: Array.from({length: 4}, (_, i) => `projects/assets/carmel-valley-new-${i + 1}.webp`)
     },
     {
@@ -253,7 +253,7 @@ const projectsData = [
         role: 'Designer (Structure & Int. Design), Builder, Project Manager',
         specs: 'Custom Design-Build',
         featured: false,
-        coverImage: 'projects/assets/syracuse-cover.webp',
+        coverImage: 'projects/assets/syracuse-12.webp',
         images: [
             'projects/assets/syracuse-cover.webp',
             ...Array.from({length: 51}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
@@ -268,7 +268,7 @@ const projectsData = [
         role: 'Owner Rep & Construction Manager',
         specs: 'Modern Coastal Update',
         featured: false,
-        coverImage: 'projects/assets/carmel-3-cover.webp',
+        coverImage: 'projects/assets/carmel-3-8.webp',
         images: Array.from({length: 5}, (_, i) => `projects/assets/carmel-3-${i + 1}.webp`)
     },
 ];
