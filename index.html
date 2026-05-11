@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="overflow-x-hidden">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300&display=swap"
+        rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -34,12 +37,13 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+
     <style>
         :root {
             --carbon: #0E0E0E;
             --brass: #C9A961;
-            --brass-dark: #8E733E; /* Darker brass for accessibility on light backgrounds */
+            --brass-dark: #8E733E;
+            /* Darker brass for accessibility on light backgrounds */
             --bone: #F4F1EB;
         }
 
@@ -67,7 +71,8 @@
             align-items: center;
         }
 
-        #blueprint-canvas, #dust-canvas {
+        #blueprint-canvas,
+        #dust-canvas {
             position: absolute;
             top: 0;
             left: 0;
@@ -75,15 +80,24 @@
             height: 100%;
             pointer-events: none;
         }
-        #blueprint-canvas { z-index: 0; opacity: 0.15; }
-        #dust-canvas { z-index: -1; opacity: 0.6; mix-blend-mode: screen; }
+
+        #blueprint-canvas {
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        #dust-canvas {
+            z-index: -1;
+            opacity: 0.6;
+            mix-blend-mode: screen;
+        }
 
         .name-reveal {
             position: relative;
             z-index: 10;
             color: var(--bone);
         }
-        
+
         .name-reveal span.char {
             opacity: 0;
             display: inline-block;
@@ -113,7 +127,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .hero-line {
             width: 0;
             height: 1px;
@@ -133,7 +147,7 @@
             gap: 1rem;
             opacity: 0;
         }
-        
+
         .scroll-line {
             width: 1px;
             height: 40px;
@@ -147,25 +161,30 @@
             overflow: hidden;
             white-space: nowrap;
             background-color: var(--bone);
-            border-top: 1px solid rgba(14,14,14,0.1);
-            border-bottom: 1px solid rgba(14,14,14,0.1);
+            border-top: 1px solid rgba(14, 14, 14, 0.1);
+            border-bottom: 1px solid rgba(14, 14, 14, 0.1);
             padding: 1.5rem 0;
         }
-        
+
         .marquee-content {
             display: inline-block;
             animation: marquee 30s linear infinite;
         }
-        
+
         .marquee-container:hover .marquee-content {
             animation-play-state: paused;
         }
 
         @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
-        
+
         .marquee-item {
             display: inline-block;
             margin: 0 3rem;
@@ -182,7 +201,7 @@
             overflow: hidden;
             cursor: pointer;
         }
-        
+
         .project-img-container {
             overflow: hidden;
             width: 100%;
@@ -194,9 +213,9 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(30%) brightness(.95);
-            transition: transform 1.2s cubic-bezier(.2,.8,.2,1), filter 1.2s cubic-bezier(.2,.8,.2,1);
+            transition: transform 1.2s cubic-bezier(.2, .8, .2, 1), filter 1.2s cubic-bezier(.2, .8, .2, 1);
         }
-        
+
         .project-overlay {
             position: absolute;
             inset: 0;
@@ -209,11 +228,11 @@
             transform: scale(1.05);
             filter: grayscale(0%) brightness(1.02);
         }
-        
+
         .project-card:hover .project-overlay {
             background-color: rgba(201, 169, 97, 0.15);
         }
-        
+
         .view-case-study {
             position: absolute;
             top: 50%;
@@ -281,7 +300,7 @@
         /* Process Timeline */
         .process-line {
             height: 2px;
-            background-color: rgba(14,14,14,0.1);
+            background-color: rgba(14, 14, 14, 0.1);
             width: 100%;
             position: relative;
         }
@@ -296,18 +315,37 @@
         }
 
         /* Split Text Helper Classes */
-        .word { display: inline-block; overflow: hidden; vertical-align: bottom; }
-        .word span { display: inline-block; transform: translateY(100%); opacity: 0; color: inherit; }
-        
+        .word {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .word span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            color: inherit;
+        }
+
         #hero .hero-headline,
         #hero .hero-headline *,
         #hero .hero-headline .word span {
             color: var(--bone) !important;
             -webkit-text-fill-color: var(--bone) !important;
         }
-        
-        .char-reveal { display: inline-block; overflow: hidden; vertical-align: bottom; }
-        .char-reveal span { display: inline-block; transform: translateY(100%); opacity: 0; }
+
+        .char-reveal {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .char-reveal span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+        }
 
         /* Mobile Menu */
         #mobile-menu {
@@ -331,8 +369,13 @@
         }
 
         @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .desktop-nav { display: none; }
+            .hamburger {
+                display: block;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
         }
 
         .hamburger-line {
@@ -343,13 +386,30 @@
             transition: all 0.4s ease;
         }
 
-        .hamburger-line:nth-child(1) { top: 0; }
-        .hamburger-line:nth-child(2) { top: 50%; transform: translateY(-50%); }
-        .hamburger-line:nth-child(3) { bottom: 0; }
+        .hamburger-line:nth-child(1) {
+            top: 0;
+        }
 
-        .hamburger.active .hamburger-line:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
-        .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
-        .hamburger.active .hamburger-line:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+        .hamburger-line:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
+        }
 
         /* Header Scroll Effect */
         header.scrolled nav {
@@ -381,6 +441,7 @@
             white-space: nowrap;
             border-width: 0;
         }
+
         .skip-nav {
             position: absolute;
             top: -40px;
@@ -395,12 +456,13 @@
             font-weight: bold;
             letter-spacing: 0.05em;
         }
+
         .skip-nav:focus {
             top: 0;
         }
-
     </style>
 </head>
+
 <body class="antialiased selection:bg-brass selection:text-carbon overflow-x-hidden">
     <a href="#main-content" class="skip-nav">Skip to main content</a>
 
@@ -419,21 +481,22 @@
 
     <!-- Navigation -->
     <header>
-        <nav class="fixed w-full top-0 z-50 px-6 py-8 mix-blend-difference text-bone flex justify-between items-center pointer-events-none">
-        <div class="font-serif text-xl tracking-widest uppercase pointer-events-auto">MC</div>
-        
-        <div class="desktop-nav font-sans text-sm tracking-widest uppercase flex gap-8 pointer-events-auto">
-            <a href="#about" class="hover:text-brass transition-colors duration-300">About</a>
-            <a href="#works" class="hover:text-brass transition-colors duration-300">Selected Works</a>
-            <a href="#philosophy" class="hover:text-brass transition-colors duration-300">Philosophy</a>
-            <a href="#contact" class="hover:text-brass transition-colors duration-300">Contact</a>
-        </div>
+        <nav
+            class="fixed w-full top-0 z-50 px-6 py-8 mix-blend-difference text-bone flex justify-between items-center pointer-events-none">
+            <div class="font-serif text-xl tracking-widest uppercase pointer-events-auto">MC</div>
 
-        <div class="hamburger pointer-events-auto" id="hamburger-btn">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-        </div>
+            <div class="desktop-nav font-sans text-sm tracking-widest uppercase flex gap-8 pointer-events-auto">
+                <a href="#about" class="hover:text-brass transition-colors duration-300">About</a>
+                <a href="#works" class="hover:text-brass transition-colors duration-300">Selected Works</a>
+                <a href="#philosophy" class="hover:text-brass transition-colors duration-300">Philosophy</a>
+                <a href="#contact" class="hover:text-brass transition-colors duration-300">Contact</a>
+            </div>
+
+            <div class="hamburger pointer-events-auto" id="hamburger-btn">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
     </header>
 
     <!-- Mobile Menu Overlay -->
@@ -449,411 +512,486 @@
 
     <main id="main-content">
         <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 bg-carbon overflow-hidden z-10 pt-20" id="hero">
-        <canvas id="dust-canvas"></canvas>
-        
-        <div class="max-w-5xl relative z-20">
-            <h1 class="hero-name font-mono text-sm md:text-base tracking-[0.4em] uppercase text-brass mb-6 opacity-0 translate-y-4">
-                Michael Chandler
-            </h1>
-            <h2 class="hero-headline font-serif text-5xl md:text-8xl leading-tight mb-8 split-text">
-                Building What Others Can't.
-            </h2>
-            
-            <div class="hero-line"></div>
-            
-            <p class="font-sans font-light text-bone/70 text-lg md:text-2xl max-w-2xl leading-relaxed split-text">
-                Construction leadership across 20+ years and $500M+ in delivered architectural landmarks.
-            </p>
-        </div>
+        <section
+            class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 bg-carbon overflow-hidden z-10 pt-20"
+            id="hero">
+            <canvas id="dust-canvas"></canvas>
 
-        <div class="scroll-indicator">
-            <span class="font-mono text-xs text-brass tracking-widest uppercase">Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
+            <div class="max-w-5xl relative z-20">
+                <h1
+                    class="hero-name font-mono text-sm md:text-base tracking-[0.4em] uppercase text-brass mb-6 opacity-0 translate-y-4">
+                    Michael Chandler
+                </h1>
+                <h2 class="hero-headline font-serif text-5xl md:text-8xl leading-tight mb-8 split-text">
+                    Building What Others Can't.
+                </h2>
 
-    <!-- Brand Strip Marquee -->
-    <section class="marquee-container">
-        <div class="marquee-content">
-            <span class="marquee-item">20 Signature Projects</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">$500M+ Capital Managed</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">20+ Years Executive Leadership</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Discovery Land Company Rep</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Owner's Representation</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Civil Engineering Excellence</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Luxury Residential Construction</span>
-            <span class="marquee-item">•</span>
-            <!-- Duplicate for infinite loop -->
-            <span class="marquee-item">20 Signature Projects</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">$500M+ Capital Managed</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">20+ Years Executive Leadership</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Discovery Land Company Rep</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Owner's Representation</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Civil Engineering Excellence</span>
-            <span class="marquee-item">•</span>
-            <span class="marquee-item">Luxury Residential Construction</span>
-            <span class="marquee-item">•</span>
-        </div>
-    </section>
+                <div class="hero-line"></div>
 
-    <!-- About Me -->
-    <section id="about" class="py-32 px-6 md:px-20 bg-carbon text-bone">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-            <div class="md:w-2/5 gs-reveal">
-                <div class="relative overflow-hidden" style="border: 2px solid var(--brass); padding: 6px;">
-                    <img src="mike-profile.webp" alt="Michael Chandler — Owner, MC Design Build" class="w-full object-cover" style="aspect-ratio: 3/4; filter: grayscale(20%);" loading="lazy">
-                </div>
+                <p class="font-sans font-light text-bone/70 text-lg md:text-2xl max-w-2xl leading-relaxed split-text">
+                    Construction leadership across 20+ years and $500M+ in delivered architectural landmarks.
+                </p>
             </div>
-            <div class="md:w-3/5 gs-reveal">
-                <h3 class="font-mono text-xs tracking-[0.3em] text-brass uppercase mb-4">About the Owner</h3>
-                <h2 class="font-serif text-4xl md:text-5xl mb-8 split-text">Michael Chandler</h2>
-                <div class="space-y-6 font-sans font-light text-bone/70 text-lg leading-relaxed">
-                    <p>With over 20 years of executive construction leadership, Michael Chandler has managed and delivered more than $500 million in ultra-luxury residential, hospitality, and civil projects across six global regions — from California's coastline to the Caribbean.</p>
-                    <p>As Owner of MC Design Build, Michael brings a rare combination of architectural sensitivity and rigorous project management to every engagement. His portfolio spans Discovery Land Company developments, private island estates, alpine retreats, and complex coastal restorations.</p>
-                    <p>Known for his old-world craftsmanship standards and modern execution methodology, Michael personally curates every trade partner, material selection, and milestone — ensuring on-time, on-budget delivery without compromising design intent.</p>
-                </div>
-                <div class="mt-10 flex flex-wrap gap-8">
-                     <div>
-                         <div class="font-serif text-3xl text-brass">20+</div>
-                         <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Signature Projects</div>
-                     </div>
-                    <div>
-                        <div class="font-serif text-3xl text-brass">$500M+</div>
-                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Capital Managed</div>
-                    </div>
-                    <div>
-                        <div class="font-serif text-3xl text-brass">6</div>
-                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Global Regions</div>
-                    </div>
-                </div>
+
+            <div class="scroll-indicator">
+                <span class="font-mono text-xs text-brass tracking-widest uppercase">Scroll</span>
+                <div class="scroll-line"></div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Selected Works - Asymmetric Grid -->
-    <section id="works" class="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
-        <div class="mb-20">
-            <h3 class="font-sans text-xs tracking-[0.3em] text-carbon/80 font-bold uppercase mb-4 split-text">Selected Works</h3>
-            <h2 class="font-serif text-4xl md:text-6xl split-text">A Legacy of Scale.</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-            <!-- Project 1 (Large) — S. Florida High Rise Luxe Condo -->
-            <a href="project-detail.html?id=miami-beach" class="project-card md:col-span-8 h-[60vh] md:h-[80vh] gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">S. Florida High Rise Luxe Condo</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Design-Build &amp; Project Management &bull; Miami Beach, FL</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project 2 (Medium) — High Alpine Mtn. Ranch -->
-            <a href="project-detail.html?id=alpine-ranch" class="project-card md:col-span-4 h-[50vh] md:h-[60vh] md:mt-32 gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/alpine-ranch-cover.webp" alt="High Alpine Mtn. Ranch Luxe Retreat" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">High Alpine Mtn. Ranch</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Design-Build Lead &bull; Montana</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project 3 (Medium) — South Coast Renovation -->
-            <a href="project-detail.html?id=southcoast" class="project-card md:col-span-5 h-[50vh] md:h-[70vh] gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/southcoast-cover.webp" alt="South Coast Renovation" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">South Coast Renovation</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Complete Coastal Remodel &bull; Big Sur, CA</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project 4 (Large) — Ultra Luxe Private Club Resort Pool -->
-            <a href="project-detail.html?id=hospitality-pool" class="project-card md:col-span-7 h-[60vh] md:h-[90vh] md:-mt-20 gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/pool-design-3.webp" alt="Ultra Luxe Private Club Resort Pool" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">Ultra Luxe Private Club Resort Pool</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Construction Manager &bull; SE Texas</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project 5 — Bakers Bay Resort -->
-            <a href="project-detail.html?id=bakers-bay" class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/bakers-bay-1.webp" alt="Bakers Bay Resort" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">Bakers Bay Resort</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Discovery Land Company Rep &bull; Bahamas</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project 6 — Syracuse House -->
-            <a href="project-detail.html?id=syracuse" class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/syracuse-cover.webp" alt="Syracuse House" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">Syracuse House</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Design-Build &bull; Syracuse, UT</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project 7 — Coastal Mountain Residence -->
-            <a href="project-detail.html?id=bigsur-civil" class="project-card md:col-span-4 h-[50vh] md:h-[65vh] gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/bigsur-cover.webp" alt="Coastal Mountain Residence" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">Coastal Mountain Residence</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Civil Engineering Lead &bull; Big Sur, CA</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project 8 — Yellowstone Club -->
-            <a href="project-detail.html?id=yellowstone-club" class="project-card md:col-span-8 h-[50vh] md:h-[65vh] gs-reveal">
-                <div class="project-img-container bg-gray-200">
-                    <img src="projects/assets/alpine-ranch-1.webp" alt="Yellowstone Club" class="project-img" loading="lazy">
-                    <div class="project-overlay"></div>
-                    <span class="view-case-study">View Album</span>
-                </div>
-                <div class="mt-4 flex justify-between items-baseline">
-                    <div>
-                        <h4 class="font-serif text-2xl">Yellowstone Club</h4>
-                        <p class="font-sans text-sm text-carbon/60 mt-1">Project Management &bull; Montana</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- View Full Portfolio CTA -->
-        <div class="text-center mt-20 gs-reveal">
-            <a href="portfolio.html" class="inline-block border-2 border-carbon/30 px-12 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-carbon hover:text-bone transition-all duration-500">
-                View All 20 Projects &rarr;
-            </a>
-        </div>
-    </section>
-
-    <!-- Featured Case Study - Pinned Sequence -->
-    <section id="featured-case" class="pinned-section">
-        <!-- Background Images for Crossfade -->
-        <img src="projects/assets/pool-design-3.webp" class="pinned-img img-1" alt="Ultra Luxe Pool — Aerial Overview">
-        <img src="projects/assets/pool-design-20.webp" class="pinned-img img-2" alt="Ultra Luxe Pool — Construction Detail">
-        <img src="projects/assets/pool-design-28.webp" class="pinned-img img-3" alt="Ultra Luxe Pool — Finished Resort">
-
-        <div class="absolute inset-0 bg-carbon/40 z-20"></div>
-
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center pointer-events-none w-full px-6">
-            <h3 class="font-sans text-xs tracking-[0.3em] text-brass uppercase mb-6" id="case-subtitle">Signature Project &mdash; SE Texas</h3>
-            <h2 class="font-serif text-5xl md:text-8xl text-bone" id="case-title">Ultra Luxe Private Club Resort Pool</h2>
-        </div>
-
-        <div class="pinned-content">
-            <div class="pinned-caption cap-1">
-                <p class="font-mono text-brass text-sm mb-2">01 / The Vision</p>
-                <p class="font-serif text-2xl md:text-3xl text-bone">Delivering a world-class aquatic resort experience for one of Texas's most exclusive private clubs — engineered from the ground up.</p>
+        <!-- Brand Strip Marquee -->
+        <section class="marquee-container">
+            <div class="marquee-content">
+                <span class="marquee-item">20 Signature Projects</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">$500M+ Capital Managed</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">20+ Years Executive Leadership</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Discovery Land Company Rep</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Owner's Representation</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Civil Engineering Excellence</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Luxury Residential Construction</span>
+                <span class="marquee-item">•</span>
+                <!-- Duplicate for infinite loop -->
+                <span class="marquee-item">20 Signature Projects</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">$500M+ Capital Managed</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">20+ Years Executive Leadership</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Discovery Land Company Rep</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Owner's Representation</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Civil Engineering Excellence</span>
+                <span class="marquee-item">•</span>
+                <span class="marquee-item">Luxury Residential Construction</span>
+                <span class="marquee-item">•</span>
             </div>
-            <div class="pinned-caption cap-2">
-                <p class="font-mono text-brass text-sm mb-2">02 / The Execution</p>
-                <p class="font-serif text-2xl md:text-3xl text-bone">18 months of precision civil engineering, coordinating specialty aquatic, structural, and landscape contractors across a complex site.</p>
-            </div>
-            <div class="pinned-caption cap-3">
-                <p class="font-mono text-brass text-sm mb-2">03 / The Result</p>
-                <div class="flex items-end gap-6">
-                    <div>
-                        <div class="stats-counter" id="sqft-counter">0</div>
-                        <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Gallons Capacity</div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="py-32 px-6 md:px-20 bg-carbon text-bone">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+                <div class="md:w-2/5 gs-reveal">
+                    <div class="relative overflow-hidden" style="border: 2px solid var(--brass); padding: 6px;">
+                        <img src="mike-profile.webp" alt="Michael Chandler — Owner, MC Design Build"
+                            class="w-full object-cover" style="aspect-ratio: 3/4; filter: grayscale(20%);"
+                            loading="lazy">
                     </div>
-                    <div>
-                        <div class="stats-counter" id="budget-counter">0</div>
-                        <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Million Budget</div>
+                </div>
+                <div class="md:w-3/5 gs-reveal">
+                    <h3 class="font-mono text-xs tracking-[0.3em] text-brass uppercase mb-4">About the Owner</h3>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-8 split-text">Michael Chandler</h2>
+                    <div class="space-y-6 font-sans font-light text-bone/70 text-lg leading-relaxed">
+                        <p>With over 20 years of executive construction leadership, Michael Chandler has managed and
+                            delivered more than $500 million in ultra-luxury residential, hospitality, and civil
+                            projects across six global regions — from California's coastline to the Caribbean.</p>
+                        <p>As Owner of MC Design Build, Michael brings a rare combination of architectural sensitivity
+                            and rigorous project management to every engagement. His portfolio spans Discovery Land
+                            Company developments, private island estates, alpine retreats, and complex coastal
+                            restorations.</p>
+                        <p>Known for his old-world craftsmanship standards and modern execution methodology, Michael
+                            personally curates every trade partner, material selection, and milestone — ensuring
+                            on-time, on-budget delivery without compromising design intent.</p>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-8">
+                        <div>
+                            <div class="font-serif text-3xl text-brass">20+</div>
+                            <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Signature
+                                Projects</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-3xl text-brass">$500M+</div>
+                            <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Capital Managed
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-3xl text-brass">6</div>
+                            <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Global Regions
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Philosophy -->
-    <section id="philosophy" class="py-40 px-6 md:px-20 bg-bone relative overflow-hidden">
-        <!-- Faint bg texture -->
-        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, var(--carbon) 1px, transparent 0); background-size: 32px 32px;"></div>
-        
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <p class="font-serif text-3xl md:text-6xl leading-tight text-carbon mb-16 split-text">
-                "Great architecture is not just built; it is rigorously orchestrated. We don't construct buildings; we construct the reality of a vision."
-            </p>
-            
-            <div class="flex justify-center items-center flex-col">
-                <!-- SVG Signature Reveal -->
-                <svg width="200" height="80" viewBox="0 0 200 80" class="mb-4">
-                    <path id="signature-path" fill="none" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-                          d="M10,60 C30,20 50,70 70,30 C80,10 100,50 120,40 C140,30 160,60 180,20" />
-                </svg>
-                <p class="font-sans text-sm tracking-[0.2em] uppercase text-carbon/60">Michael Chandler</p>
+        <!-- Selected Works - Asymmetric Grid -->
+        <section id="works" class="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
+            <div class="mb-20">
+                <h3 class="font-sans text-xs tracking-[0.3em] text-carbon/80 font-bold uppercase mb-4 split-text">
+                    Selected Works</h3>
+                <h2 class="font-serif text-4xl md:text-6xl split-text">A Legacy of Scale.</h2>
             </div>
-        </div>
-    </section>
 
-    <!-- The Process -->
-    <section id="process" class="py-32 px-6 md:px-20 bg-carbon text-bone">
-        <div class="max-w-7xl mx-auto">
-            <h3 class="font-sans text-xs tracking-[0.3em] text-brass uppercase mb-4">Methodology</h3>
-            <h2 class="font-serif text-4xl md:text-5xl mb-24">The Architecture of Execution.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
+                <!-- Project 1 (Large) — S. Florida High Rise Luxe Condo -->
+                <a href="project-detail.html?id=miami-beach"
+                    class="project-card md:col-span-8 h-[60vh] md:h-[80vh] gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo"
+                            class="project-img" loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">S. Florida High Rise Luxe Condo</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Design-Build &amp; Project Management
+                                &bull; Miami Beach, FL</p>
+                        </div>
+                    </div>
+                </a>
 
-            <div class="relative">
-                <div class="process-line mb-12">
-                    <div class="process-line-fill" id="process-fill"></div>
+                <!-- Project 2 (Medium) — High Alpine Mtn. Ranch -->
+                <a href="project-detail.html?id=alpine-ranch"
+                    class="project-card md:col-span-4 h-[50vh] md:h-[60vh] md:mt-32 gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/alpine-ranch-cover.webp" alt="High Alpine Mtn. Ranch Luxe Retreat"
+                            class="project-img" loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">High Alpine Mtn. Ranch</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Design-Build Lead &bull; Montana</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3 (Medium) — South Coast Renovation -->
+                <a href="project-detail.html?id=southcoast"
+                    class="project-card md:col-span-5 h-[50vh] md:h-[70vh] gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/southcoast-cover.webp" alt="South Coast Renovation"
+                            class="project-img" loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">South Coast Renovation</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Complete Coastal Remodel &bull; Big Sur, CA
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 4 (Large) — Ultra Luxe Private Club Resort Pool -->
+                <a href="project-detail.html?id=hospitality-pool"
+                    class="project-card md:col-span-7 h-[60vh] md:h-[90vh] md:-mt-20 gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/pool-design-3.webp" alt="Ultra Luxe Private Club Resort Pool"
+                            class="project-img" loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">Ultra Luxe Private Club Resort Pool</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Construction Manager &bull; SE Texas</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 5 — Bakers Bay Resort -->
+                <a href="project-detail.html?id=bakers-bay"
+                    class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/bakers-bay-1.webp" alt="Bakers Bay Resort" class="project-img"
+                            loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">Bakers Bay Resort</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Discovery Land Company Rep &bull; Bahamas
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 6 — Syracuse House -->
+                <a href="project-detail.html?id=syracuse"
+                    class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/syracuse-cover.webp" alt="Syracuse House" class="project-img"
+                            loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">Syracuse House</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Design-Build &bull; Syracuse, UT</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 7 — Coastal Mountain Residence -->
+                <a href="project-detail.html?id=bigsur-civil"
+                    class="project-card md:col-span-4 h-[50vh] md:h-[65vh] gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/bigsur-cover.webp" alt="Coastal Mountain Residence"
+                            class="project-img" loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">Coastal Mountain Residence</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Civil Engineering Lead &bull; Big Sur, CA
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 8 — Yellowstone Club -->
+                <a href="project-detail.html?id=yellowstone-club"
+                    class="project-card md:col-span-8 h-[50vh] md:h-[65vh] gs-reveal">
+                    <div class="project-img-container bg-gray-200">
+                        <img src="projects/assets/alpine-ranch-1.webp" alt="Yellowstone Club" class="project-img"
+                            loading="lazy">
+                        <div class="project-overlay"></div>
+                        <span class="view-case-study">View Album</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-baseline">
+                        <div>
+                            <h4 class="font-serif text-2xl">Yellowstone Club</h4>
+                            <p class="font-sans text-sm text-carbon/60 mt-1">Project Management &bull; Montana</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- View Full Portfolio CTA -->
+            <div class="text-center mt-20 gs-reveal">
+                <a href="portfolio.html"
+                    class="inline-block border-2 border-carbon/30 px-12 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-carbon hover:text-bone transition-all duration-500">
+                    View All 20 Projects &rarr;
+                </a>
+            </div>
+        </section>
+
+        <!-- Featured Case Study - Pinned Sequence -->
+        <section id="featured-case" class="pinned-section">
+            <!-- Background Images for Crossfade -->
+            <img src="projects/assets/pool-design-3.webp" class="pinned-img img-1"
+                alt="Ultra Luxe Pool — Aerial Overview">
+            <img src="projects/assets/pool-design-20.webp" class="pinned-img img-2"
+                alt="Ultra Luxe Pool — Construction Detail">
+            <img src="projects/assets/pool-design-28.webp" class="pinned-img img-3"
+                alt="Ultra Luxe Pool — Finished Resort">
+
+            <div class="absolute inset-0 bg-carbon/40 z-20"></div>
+
+            <div
+                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center pointer-events-none w-full px-6">
+                <h3 class="font-sans text-xs tracking-[0.3em] text-brass uppercase mb-6" id="case-subtitle">Signature
+                    Project &mdash; SE Texas</h3>
+                <h2 class="font-serif text-5xl md:text-8xl text-bone" id="case-title">Ultra Luxe Private Club Resort
+                    Pool</h2>
+            </div>
+
+            <div class="pinned-content">
+                <div class="pinned-caption cap-1">
+                    <p class="font-mono text-brass text-sm mb-2">01 / The Vision</p>
+                    <p class="font-serif text-2xl md:text-3xl text-bone">Delivering a world-class aquatic resort
+                        experience for one of Texas's most exclusive private clubs — engineered from the ground up.</p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12" id="process-steps">
-                    <div class="process-step opacity-50 transition-opacity duration-500">
-                        <div class="font-mono text-brass text-sm mb-6">01</div>
-                        <h4 class="font-serif text-2xl mb-4">Strategize</h4>
-                        <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Aligning capital vision with structural reality before a single dollar is deployed.</p>
-                    </div>
-                    <div class="process-step opacity-50 transition-opacity duration-500">
-                        <div class="font-mono text-brass text-sm mb-6">02</div>
-                        <h4 class="font-serif text-2xl mb-4">Assemble</h4>
-                        <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Curating tier-one architectural, engineering, and contracting talent specific to the asset.</p>
-                    </div>
-                    <div class="process-step opacity-50 transition-opacity duration-500">
-                        <div class="font-mono text-brass text-sm mb-6">03</div>
-                        <h4 class="font-serif text-2xl mb-4">Orchestrate</h4>
-                        <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Rigorous milestone management, value engineering, and risk mitigation.</p>
-                    </div>
-                    <div class="process-step opacity-50 transition-opacity duration-500">
-                        <div class="font-mono text-brass text-sm mb-6">04</div>
-                        <h4 class="font-serif text-2xl mb-4">Deliver</h4>
-                        <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Handover of a market-defining asset, on budget, to precise specifications.</p>
+                <div class="pinned-caption cap-2">
+                    <p class="font-mono text-brass text-sm mb-2">02 / The Execution</p>
+                    <p class="font-serif text-2xl md:text-3xl text-bone">18 months of precision civil engineering,
+                        coordinating specialty aquatic, structural, and landscape contractors across a complex site.</p>
+                </div>
+                <div class="pinned-caption cap-3">
+                    <p class="font-mono text-brass text-sm mb-2">03 / The Result</p>
+                    <div class="flex items-end gap-6">
+                        <div>
+                            <div class="stats-counter" id="sqft-counter">0</div>
+                            <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Gallons Capacity
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stats-counter" id="budget-counter">0</div>
+                            <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Million Budget
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Professional Stats Calculator -->
-    <section class="py-32 px-6 md:px-20 bg-bone border-t border-carbon/10">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-            <div class="md:w-1/2">
-                <h2 class="font-serif text-4xl md:text-5xl mb-6 split-text">Quantifiable Impact.</h2>
-                <p class="font-sans text-carbon/60 text-lg mb-10">Use the slider to see the compounding value of experienced leadership.</p>
-                
-                <div class="w-full">
-                    <label class="font-mono text-xs uppercase tracking-widest text-carbon/50 flex justify-between mb-4">
-                        <span>Years in Industry</span>
-                        <span id="slider-value" class="text-brass font-bold">20</span>
-                    </label>
-                    <input type="range" min="1" max="25" value="20" class="w-full h-1 bg-carbon/20 rounded-lg appearance-none cursor-pointer accent-brass" id="experience-slider">
+        <!-- Philosophy -->
+        <section id="philosophy" class="py-40 px-6 md:px-20 bg-bone relative overflow-hidden">
+            <!-- Faint bg texture -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none"
+                style="background-image: radial-gradient(circle at 2px 2px, var(--carbon) 1px, transparent 0); background-size: 32px 32px;">
+            </div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <p class="font-serif text-3xl md:text-6xl leading-tight text-carbon mb-16 split-text">
+                    "Great architecture is not just built; it is rigorously orchestrated. We don't construct buildings;
+                    we construct the reality of a vision."
+                </p>
+
+                <div class="flex justify-center items-center flex-col">
+                    <!-- SVG Signature Reveal -->
+                    <svg width="200" height="80" viewBox="0 0 200 80" class="mb-4">
+                        <path id="signature-path" fill="none" stroke="var(--brass)" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            d="M10,60 C30,20 50,70 70,30 C80,10 100,50 120,40 C140,30 160,60 180,20" />
+                    </svg>
+                    <p class="font-sans text-sm tracking-[0.2em] uppercase text-carbon/60">Michael Chandler</p>
                 </div>
             </div>
-            
-            <div class="md:w-1/2 bg-carbon text-bone p-12 rounded-sm w-full">
-                <div class="space-y-8">
-                    <div>
-                        <div class="font-sans text-xs tracking-widest uppercase text-brass mb-2">Projects Led</div>
-                        <div class="font-serif text-5xl" id="calc-projects">45</div>
+        </section>
+
+        <!-- The Process -->
+        <section id="process" class="py-32 px-6 md:px-20 bg-carbon text-bone">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="font-sans text-xs tracking-[0.3em] text-brass uppercase mb-4">Methodology</h3>
+                <h2 class="font-serif text-4xl md:text-5xl mb-24">The Architecture of Execution.</h2>
+
+                <div class="relative">
+                    <div class="process-line mb-12">
+                        <div class="process-line-fill" id="process-fill"></div>
                     </div>
-                    <div class="w-full h-px bg-bone/10"></div>
-                    <div>
-                        <div class="font-sans text-xs tracking-widest uppercase text-brass mb-2">Sq Ft Delivered</div>
-                        <div class="font-serif text-5xl"><span id="calc-sqft">2.5</span>M</div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-12" id="process-steps">
+                        <div class="process-step opacity-50 transition-opacity duration-500">
+                            <div class="font-mono text-brass text-sm mb-6">01</div>
+                            <h4 class="font-serif text-2xl mb-4">Strategize</h4>
+                            <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Aligning capital vision
+                                with structural reality before a single dollar is deployed.</p>
+                        </div>
+                        <div class="process-step opacity-50 transition-opacity duration-500">
+                            <div class="font-mono text-brass text-sm mb-6">02</div>
+                            <h4 class="font-serif text-2xl mb-4">Assemble</h4>
+                            <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Curating tier-one
+                                architectural, engineering, and contracting talent specific to the asset.</p>
+                        </div>
+                        <div class="process-step opacity-50 transition-opacity duration-500">
+                            <div class="font-mono text-brass text-sm mb-6">03</div>
+                            <h4 class="font-serif text-2xl mb-4">Orchestrate</h4>
+                            <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Rigorous milestone
+                                management, value engineering, and risk mitigation.</p>
+                        </div>
+                        <div class="process-step opacity-50 transition-opacity duration-500">
+                            <div class="font-mono text-brass text-sm mb-6">04</div>
+                            <h4 class="font-serif text-2xl mb-4">Deliver</h4>
+                            <p class="font-sans font-light text-bone/60 text-sm leading-relaxed">Handover of a
+                                market-defining asset, on budget, to precise specifications.</p>
+                        </div>
                     </div>
-                    <div class="w-full h-px bg-bone/10"></div>
-                    <div>
-                        <div class="font-sans text-xs tracking-widest uppercase text-brass mb-2">Capital Managed</div>
-                        <div class="font-serif text-5xl">$<span id="calc-capital">850</span>M</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Stats Calculator -->
+        <section class="py-32 px-6 md:px-20 bg-bone border-t border-carbon/10">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+                <div class="md:w-1/2">
+                    <h2 class="font-serif text-4xl md:text-5xl mb-6 split-text">Quantifiable Impact.</h2>
+                    <p class="font-sans text-carbon/60 text-lg mb-10">Use the slider to see the compounding value of
+                        experienced leadership.</p>
+
+                    <div class="w-full">
+                        <label
+                            class="font-mono text-xs uppercase tracking-widest text-carbon/50 flex justify-between mb-4">
+                            <span>Years in Industry</span>
+                            <span id="slider-value" class="text-brass font-bold">20</span>
+                        </label>
+                        <input type="range" min="1" max="25" value="20"
+                            class="w-full h-1 bg-carbon/20 rounded-lg appearance-none cursor-pointer accent-brass"
+                            id="experience-slider">
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 bg-carbon text-bone p-12 rounded-sm w-full">
+                    <div class="space-y-8">
+                        <div>
+                            <div class="font-sans text-xs tracking-widest uppercase text-brass mb-2">Projects Led</div>
+                            <div class="font-serif text-5xl" id="calc-projects">45</div>
+                        </div>
+                        <div class="w-full h-px bg-bone/10"></div>
+                        <div>
+                            <div class="font-sans text-xs tracking-widest uppercase text-brass mb-2">Sq Ft Delivered
+                            </div>
+                            <div class="font-serif text-5xl"><span id="calc-sqft">2.5</span>M</div>
+                        </div>
+                        <div class="w-full h-px bg-bone/10"></div>
+                        <div>
+                            <div class="font-sans text-xs tracking-widest uppercase text-brass mb-2">Capital Managed
+                            </div>
+                            <div class="font-serif text-5xl">$<span id="calc-capital">850</span>M</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials -->
-    <section class="py-32 px-6 md:px-20 bg-bone">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="gs-reveal">
-                    <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"He brings an architectural sensitivity to raw construction management. Rare to find someone who protects the design intent while fiercely guarding the budget."</p>
-                    <div class="font-sans text-sm font-medium">— Principal Architect, SOM</div>
-                </div>
-                <div class="gs-reveal mt-0 md:mt-12">
-                    <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"The only executive I trust with a nine-figure development. The risk mitigation and foresight are unparalleled in the industry."</p>
-                    <div class="font-sans text-sm font-medium">— Managing Director, Real Estate Trust</div>
-                </div>
-                <div class="gs-reveal mt-0 md:mt-24">
-                    <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"An absolute force. Driven, precise, and possesses a commanding authority that makes complex, multi-stakeholder projects move seamlessly."</p>
-                    <div class="font-sans text-sm font-medium">— City Planning Commissioner</div>
+        <!-- Testimonials -->
+        <section class="py-32 px-6 md:px-20 bg-bone">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="gs-reveal">
+                        <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"He brings an architectural
+                            sensitivity to raw construction management. Rare to find someone who protects the design
+                            intent while fiercely guarding the budget."</p>
+                        <div class="font-sans text-sm font-medium">— Principal Architect, SOM</div>
+                    </div>
+                    <div class="gs-reveal mt-0 md:mt-12">
+                        <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"The only executive I trust with
+                            a nine-figure development. The risk mitigation and foresight are unparalleled in the
+                            industry."</p>
+                        <div class="font-sans text-sm font-medium">— Managing Director, Real Estate Trust</div>
+                    </div>
+                    <div class="gs-reveal mt-0 md:mt-24">
+                        <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"An absolute force. Driven,
+                            precise, and possesses a commanding authority that makes complex, multi-stakeholder projects
+                            move seamlessly."</p>
+                        <div class="font-sans text-sm font-medium">— City Planning Commissioner</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-40 px-6 md:px-20 bg-carbon text-bone text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920')] opacity-5 bg-cover bg-center mix-blend-luminosity"></div>
-        
-        <div class="max-w-3xl mx-auto relative z-10">
-            <h2 class="font-serif text-4xl md:text-6xl mb-8 split-text">For project inquiries, speaking engagements, and board consultations.</h2>
-            
-            <a href="mailto:mike.rcccon@yahoo.com" class="inline-block mt-8 border border-brass/50 px-10 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-brass hover:text-carbon transition-colors duration-500">
-                Begin a Conversation
-            </a>
-
-            <div class="mt-20 flex justify-center gap-12 font-mono text-sm text-bone/60">
-                <a href="https://linkedin.com" class="hover:text-brass transition-colors">LinkedIn</a>
-                <a href="mailto:mike.rcccon@yahoo.com" class="hover:text-brass transition-colors">Email</a>
-                <span class="flex items-center gap-2">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Spring, Texas
-                </span>
+        <!-- Contact -->
+        <section id="contact" class="py-40 px-6 md:px-20 bg-carbon text-bone text-center relative overflow-hidden">
+            <div
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920')] opacity-5 bg-cover bg-center mix-blend-luminosity">
             </div>
-        </div>
-    </section>
+
+            <div class="max-w-3xl mx-auto relative z-10">
+                <h2 class="font-serif text-4xl md:text-6xl mb-8 split-text">For project inquiries, speaking engagements,
+                    and board consultations.</h2>
+
+                <a href="mailto:mike.rcccon@yahoo.com"
+                    class="inline-block mt-8 border border-brass/50 px-10 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-brass hover:text-carbon transition-colors duration-500">
+                    Begin a Conversation
+                </a>
+
+                <div class="mt-20 flex justify-center gap-12 font-mono text-sm text-bone/60">
+                    <a href="https://linkedin.com" class="hover:text-brass transition-colors">LinkedIn</a>
+                    <a href="mailto:mike.rcccon@yahoo.com" class="hover:text-brass transition-colors">Email</a>
+                    <span class="flex items-center gap-2">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Spring, Texas
+                    </span>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="py-6 text-center bg-carbon text-bone/40 font-mono text-xs border-t border-bone/10">
@@ -904,7 +1042,7 @@
             blueCanvas.width = window.innerWidth;
             blueCanvas.height = window.innerHeight;
             lines = [];
-            for(let i=0; i<20; i++) {
+            for (let i = 0; i < 20; i++) {
                 lines.push({
                     x: Math.random() * blueCanvas.width,
                     y: Math.random() * blueCanvas.height,
@@ -924,18 +1062,18 @@
             lines.forEach(line => {
                 blueCtx.beginPath();
                 blueCtx.moveTo(line.x, line.y);
-                
+
                 let currentLen = line.length * Math.sin(line.progress * Math.PI); // Fade in and out effect
-                
-                if(line.vertical) {
+
+                if (line.vertical) {
                     blueCtx.lineTo(line.x, line.y + currentLen);
                 } else {
                     blueCtx.lineTo(line.x + currentLen, line.y);
                 }
                 blueCtx.stroke();
-                
+
                 line.progress += line.speed;
-                if(line.progress > 1) {
+                if (line.progress > 1) {
                     line.progress = 0;
                     line.x = Math.random() * blueCanvas.width;
                     line.y = Math.random() * blueCanvas.height;
@@ -950,7 +1088,7 @@
 
         // 2. Cinematic Entrance Timeline
         const tlEntrance = gsap.timeline();
-        
+
         tlEntrance.to('#entrance-name .char', {
             y: 0,
             opacity: 1,
@@ -959,49 +1097,49 @@
             ease: "expo.out",
             delay: 0.2
         })
-        .to('.brass-underline-draw', {
-            width: '100%',
-            duration: 1.5,
-            ease: "power3.inOut"
-        }, "-=1")
-        .to('.title-reveal', {
-            opacity: 1,
-            duration: 1.5,
-            ease: "power2.out"
-        }, "-=0.5")
-        .to('#entrance-overlay', {
-            yPercent: -100,
-            duration: 2,
-            ease: "power4.inOut",
-            delay: 0.5
-        })
-        .to('.hero-name', {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out"
-        }, "-=1.5")
-        .to('.hero-headline .word span', {
-            y: 0,
-            opacity: 1,
-            duration: 1.5,
-            stagger: 0.05,
-            ease: "power4.out"
-        }, "-=1.2")
-        .to('.hero-line', {
-            width: '100%',
-            duration: 1.5,
-            ease: "power3.inOut"
-        }, "-=1.2")
-        .to('#hero p.split-text .word span', {
-            y: 0,
-            opacity: 1,
-            duration: 1.2,
-        }, "-=1")
-        .to('.scroll-indicator', {
-            opacity: 1,
-            duration: 1
-        });
+            .to('.brass-underline-draw', {
+                width: '100%',
+                duration: 1.5,
+                ease: "power3.inOut"
+            }, "-=1")
+            .to('.title-reveal', {
+                opacity: 1,
+                duration: 1.5,
+                ease: "power2.out"
+            }, "-=0.5")
+            .to('#entrance-overlay', {
+                yPercent: -100,
+                duration: 2,
+                ease: "power4.inOut",
+                delay: 0.5
+            })
+            .to('.hero-name', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            }, "-=1.5")
+            .to('.hero-headline .word span', {
+                y: 0,
+                opacity: 1,
+                duration: 1.5,
+                stagger: 0.05,
+                ease: "power4.out"
+            }, "-=1.2")
+            .to('.hero-line', {
+                width: '100%',
+                duration: 1.5,
+                ease: "power3.inOut"
+            }, "-=1.2")
+            .to('#hero p.split-text .word span', {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+            }, "-=1")
+            .to('.scroll-indicator', {
+                opacity: 1,
+                duration: 1
+            });
 
         // Failsafe visibility
         setTimeout(() => {
@@ -1027,7 +1165,7 @@
             dustCanvas.width = window.innerWidth;
             dustCanvas.height = window.innerHeight;
             particles = [];
-            for(let i=0; i<50; i++) {
+            for (let i = 0; i < 50; i++) {
                 particles.push({
                     x: Math.random() * dustCanvas.width,
                     y: Math.random() * dustCanvas.height,
@@ -1050,7 +1188,7 @@
                 p.y += p.speedY;
                 p.x += p.speedX;
 
-                if(p.y < 0) {
+                if (p.y < 0) {
                     p.y = dustCanvas.height;
                     p.x = Math.random() * dustCanvas.width;
                 }
@@ -1075,7 +1213,7 @@
         });
 
         gsap.utils.toArray('.split-text').forEach(elem => {
-            if(elem.closest('#hero')) return; // skip hero, already animated
+            if (elem.closest('#hero')) return; // skip hero, already animated
             gsap.to(elem.querySelectorAll('.word span'), {
                 scrollTrigger: {
                     trigger: elem,
@@ -1113,20 +1251,20 @@
             .to('.img-2', { opacity: 1, scale: 1, duration: 1 }, "<")
             .to('.cap-1', { opacity: 0, y: -20, duration: 0.5 }, "<")
             .to('.cap-2', { opacity: 1, y: 0, duration: 0.5 }, ">")
-            
+
             // Transition 2 to 3
             .to('.img-2', { opacity: 0, scale: 1.05, duration: 1 }, "+=0.5")
             .to('.img-3', { opacity: 1, scale: 1, duration: 1 }, "<")
             .to('.cap-2', { opacity: 0, y: -20, duration: 0.5 }, "<")
             .to('.cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
             .to('#case-title', { y: -100, opacity: 0, duration: 1 }, "<") // Move title out of way
-            
+
             // Counter Animation
             .to('#sqft-counter', {
                 innerHTML: 189000,
                 duration: 1,
                 snap: { innerHTML: 1 },
-                onUpdate: function() {
+                onUpdate: function () {
                     document.getElementById('sqft-counter').innerHTML = Number(this.targets()[0].innerHTML).toLocaleString();
                 }
             }, "<")
@@ -1180,15 +1318,15 @@
         function updateStats() {
             const val = parseInt(slider.value);
             valDisplay.innerText = val;
-            
+
             // Artificial logic for authority building
             const proj = Math.floor(val * 2.25);
             const sqft = (val * 0.125).toFixed(1);
             const cap = Math.floor(val * 42.5);
 
-            gsap.to(pProjects, { innerHTML: proj, duration: 0.5, snap: { innerHTML: 1 }});
+            gsap.to(pProjects, { innerHTML: proj, duration: 0.5, snap: { innerHTML: 1 } });
             gsap.to(pSqft, { innerHTML: sqft, duration: 0.5 });
-            gsap.to(pCap, { innerHTML: cap, duration: 0.5, snap: { innerHTML: 1 }});
+            gsap.to(pCap, { innerHTML: cap, duration: 0.5, snap: { innerHTML: 1 } });
         }
 
         slider.addEventListener('input', updateStats);
@@ -1201,7 +1339,7 @@
 
         btn.addEventListener('click', () => {
             menuOpen = !menuOpen;
-            if(menuOpen) {
+            if (menuOpen) {
                 btn.classList.add('active');
                 gsap.to(menu, { y: '0%', duration: 0.8, ease: "power4.inOut" });
                 gsap.fromTo(links, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.4, ease: "power3.out" });
@@ -1221,4 +1359,5 @@
 
     </script>
 </body>
+
 </html>
