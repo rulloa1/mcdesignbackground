@@ -425,9 +425,12 @@
         const statCount = document.getElementById('stat-count');
         statCount.textContent = projectsData.length;
 
+        // IDs already rendered in the featured strip
+        const featuredIds = new Set(featured.map(p => p.id));
+
         function renderGrid(filter) {
             const items = filter === 'all'
-                ? projectsData
+                ? projectsData.filter(p => !featuredIds.has(p.id))
                 : projectsData.filter(p => p.category === filter);
 
             grid.innerHTML = '';

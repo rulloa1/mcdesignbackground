@@ -245,6 +245,21 @@ const projectsData = [
         images: Array.from({length: 4}, (_, i) => `projects/assets/carmel-valley-new-${i + 1}.webp`)
     },
     {
+        id: 'syracuse',
+        title: 'Syracuse House',
+        subtitle: 'Custom Design-Build',
+        category: 'design-build',
+        location: 'Syracuse, UT',
+        role: 'Designer (Structure & Int. Design), Builder, Project Manager',
+        specs: 'Custom Design-Build',
+        featured: false,
+        coverImage: 'projects/assets/syracuse-cover.webp',
+        images: [
+            'projects/assets/syracuse-cover.webp',
+            ...Array.from({length: 51}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
+        ]
+    },
+    {
         id: 'carmel-remodel-23',
         title: 'Carmel Remodel 2023',
         subtitle: 'Modern Coastal Update',
