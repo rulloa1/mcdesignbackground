@@ -22,8 +22,8 @@ const projectsData = [
         role: "Project Management: Final Finish of Main Lodge Addition & Completion of Private Condos' Rep",
         specs: '550,000 sqft • Final Finish of Main Lodge & 48 Private Condos',
         featured: true,
-        coverImage: 'projects/assets/alpine-ranch-cover.webp',
-        images: ['projects/assets/alpine-ranch-cover.webp']
+        coverImage: 'projects/assets/alpine-ranch-1.webp',
+        images: ['projects/assets/alpine-ranch-1.webp']
     },
     {
         id: 'houston-oaks',
@@ -34,8 +34,8 @@ const projectsData = [
         role: "Chief Projects Officer & Owner's Rep",
         specs: 'Country Club Portfolio',
         featured: true,
-        coverImage: 'projects/assets/syracuse-cover.webp',
-        images: ['projects/assets/syracuse-cover.webp']
+        coverImage: 'projects/assets/montana-cover.webp',
+        images: ['projects/assets/montana-cover.webp']
     },
     {
         id: 'mangrove-group',
@@ -109,9 +109,9 @@ const projectsData = [
         specs: '2,300 sqft • 24 months • 2 bed · 2 bath',
         notes: 'Custom Bronze Windows/Doors Crafted in Italy. Mix of Radiant floor heating and custom forced air system for maximum efficiency.',
         featured: true,
-        coverImage: 'projects/assets/alpine-snow.webp',
+        coverImage: 'projects/assets/alpine-ranch-cover.webp',
         images: [
-            'projects/assets/alpine-snow.webp',
+            'projects/assets/alpine-ranch-cover.webp',
             ...Array.from({length: 12}, (_, i) => `projects/assets/alpine-ranch-${i + 1}.webp`)
         ]
     },
@@ -125,9 +125,8 @@ const projectsData = [
         specs: '6,200 sqft • 18 months',
         description: 'Complete two-acre landscape orchestration. Features a 6-car garage/workshop for antique restoration, and a two-stall horse barn + storage, completing the perfect equestrian property.',
         featured: false,
-        coverImage: 'projects/assets/syracuse-night.webp',
+        coverImage: 'projects/assets/syracuse-cover.webp',
         images: [
-            'projects/assets/syracuse-night.webp',
             'projects/assets/syracuse-cover.webp',
             ...Array.from({length: 46}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
         ]
@@ -178,9 +177,8 @@ const projectsData = [
         role: 'Design (Structure & Int. Design), Builder, Project Manager, Owner Representative, Property Manager',
         specs: '3,800 sqft • 16 months',
         featured: true,
-        coverImage: 'projects/assets/southcoast-deck.webp',
+        coverImage: 'projects/assets/southcoast-cover.webp',
         images: [
-            'projects/assets/southcoast-deck.webp',
             'projects/assets/southcoast-cover.webp',
             ...Array.from({length: 52}, (_, i) => `projects/assets/southcoast-${i + 2}.webp`)
         ]
@@ -250,9 +248,8 @@ const projectsData = [
         role: 'Civil Engineering Lead & Site Manager',
         specs: '11 months',
         featured: false,
-        coverImage: 'projects/assets/bigsur-gate.webp',
+        coverImage: 'projects/assets/bigsur-cover.webp',
         images: [
-            'projects/assets/bigsur-gate.webp',
             'projects/assets/bigsur-cover.webp',
             ...Array.from({length: 15}, (_, i) => `projects/assets/bigsur-${i + 1}.webp`)
         ]

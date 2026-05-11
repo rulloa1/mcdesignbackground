@@ -421,6 +421,7 @@
         <div class="font-serif text-xl tracking-widest uppercase pointer-events-auto">MC</div>
         
         <div class="desktop-nav font-sans text-sm tracking-widest uppercase flex gap-8 pointer-events-auto">
+            <a href="#about" class="hover:text-brass transition-colors duration-300">About</a>
             <a href="#works" class="hover:text-brass transition-colors duration-300">Selected Works</a>
             <a href="#philosophy" class="hover:text-brass transition-colors duration-300">Philosophy</a>
             <a href="#contact" class="hover:text-brass transition-colors duration-300">Contact</a>
@@ -436,6 +437,7 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu">
         <div class="flex flex-col items-center gap-8 font-serif text-3xl text-bone uppercase tracking-widest">
+            <a href="#about" class="menu-link hover:text-brass transition-colors">About</a>
             <a href="#works" class="menu-link hover:text-brass transition-colors">Selected Works</a>
             <a href="#philosophy" class="menu-link hover:text-brass transition-colors">Philosophy</a>
             <a href="#process" class="menu-link hover:text-brass transition-colors">Process</a>
@@ -504,6 +506,40 @@
         </div>
     </section>
 
+    <!-- About Me -->
+    <section id="about" class="py-32 px-6 md:px-20 bg-carbon text-bone">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+            <div class="md:w-2/5 gs-reveal">
+                <div class="relative overflow-hidden" style="border: 2px solid var(--brass); padding: 6px;">
+                    <img src="mike-profile.webp" alt="Michael Chandler — Principal, MC Design Build" class="w-full object-cover" style="aspect-ratio: 3/4; filter: grayscale(20%);" loading="lazy">
+                </div>
+            </div>
+            <div class="md:w-3/5 gs-reveal">
+                <h3 class="font-mono text-xs tracking-[0.3em] text-brass uppercase mb-4">About the Principal</h3>
+                <h2 class="font-serif text-4xl md:text-5xl mb-8 split-text">Michael Chandler</h2>
+                <div class="space-y-6 font-sans font-light text-bone/70 text-lg leading-relaxed">
+                    <p>With over 20 years of executive construction leadership, Michael Chandler has managed and delivered more than $500 million in ultra-luxury residential, hospitality, and civil projects across six global regions — from California's coastline to the Caribbean.</p>
+                    <p>As Principal of MC Design Build, Michael brings a rare combination of architectural sensitivity and rigorous project management to every engagement. His portfolio spans Discovery Land Company developments, private island estates, alpine retreats, and complex coastal restorations.</p>
+                    <p>Known for his old-world craftsmanship standards and modern execution methodology, Michael personally curates every trade partner, material selection, and milestone — ensuring on-time, on-budget delivery without compromising design intent.</p>
+                </div>
+                <div class="mt-10 flex flex-wrap gap-8">
+                    <div>
+                        <div class="font-serif text-3xl text-brass">26+</div>
+                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Signature Projects</div>
+                    </div>
+                    <div>
+                        <div class="font-serif text-3xl text-brass">$500M+</div>
+                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Capital Managed</div>
+                    </div>
+                    <div>
+                        <div class="font-serif text-3xl text-brass">6</div>
+                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Global Regions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Selected Works - Asymmetric Grid -->
     <section id="works" class="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
         <div class="mb-20">
@@ -560,7 +596,7 @@
             <!-- Project 4 (Large) — Ultra Luxe Private Club Resort Pool -->
             <a href="project-detail.html?id=hospitality-pool" class="project-card md:col-span-7 h-[60vh] md:h-[90vh] md:-mt-20 gs-reveal">
                 <div class="project-img-container bg-gray-200">
-                    <img src="projects/hospitality-pool-cover-v2.jpg" alt="Ultra Luxe Private Club Resort Pool" class="project-img" loading="lazy">
+                    <img src="projects/assets/pool-design-3.webp" alt="Ultra Luxe Private Club Resort Pool" class="project-img" loading="lazy">
                     <div class="project-overlay"></div>
                     <span class="view-case-study">View Album</span>
                 </div>
@@ -571,15 +607,82 @@
                     </div>
                 </div>
             </a>
+
+            <!-- Project 5 — Bakers Bay Resort -->
+            <a href="project-detail.html?id=bakers-bay" class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
+                <div class="project-img-container bg-gray-200">
+                    <img src="projects/assets/bakers-bay-1.webp" alt="Bakers Bay Resort" class="project-img" loading="lazy">
+                    <div class="project-overlay"></div>
+                    <span class="view-case-study">View Album</span>
+                </div>
+                <div class="mt-4 flex justify-between items-baseline">
+                    <div>
+                        <h4 class="font-serif text-2xl">Bakers Bay Resort</h4>
+                        <p class="font-sans text-sm text-carbon/60 mt-1">Discovery Land Company Rep &bull; Bahamas</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 6 — Syracuse House -->
+            <a href="project-detail.html?id=syracuse" class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
+                <div class="project-img-container bg-gray-200">
+                    <img src="projects/assets/syracuse-cover.webp" alt="Syracuse House" class="project-img" loading="lazy">
+                    <div class="project-overlay"></div>
+                    <span class="view-case-study">View Album</span>
+                </div>
+                <div class="mt-4 flex justify-between items-baseline">
+                    <div>
+                        <h4 class="font-serif text-2xl">Syracuse House</h4>
+                        <p class="font-sans text-sm text-carbon/60 mt-1">Design-Build &bull; Syracuse, UT</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 7 — Coastal Mountain Residence -->
+            <a href="project-detail.html?id=bigsur-civil" class="project-card md:col-span-4 h-[50vh] md:h-[65vh] gs-reveal">
+                <div class="project-img-container bg-gray-200">
+                    <img src="projects/assets/bigsur-cover.webp" alt="Coastal Mountain Residence" class="project-img" loading="lazy">
+                    <div class="project-overlay"></div>
+                    <span class="view-case-study">View Album</span>
+                </div>
+                <div class="mt-4 flex justify-between items-baseline">
+                    <div>
+                        <h4 class="font-serif text-2xl">Coastal Mountain Residence</h4>
+                        <p class="font-sans text-sm text-carbon/60 mt-1">Civil Engineering Lead &bull; Big Sur, CA</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 8 — Yellowstone Club -->
+            <a href="project-detail.html?id=yellowstone-club" class="project-card md:col-span-8 h-[50vh] md:h-[65vh] gs-reveal">
+                <div class="project-img-container bg-gray-200">
+                    <img src="projects/assets/alpine-ranch-1.webp" alt="Yellowstone Club" class="project-img" loading="lazy">
+                    <div class="project-overlay"></div>
+                    <span class="view-case-study">View Album</span>
+                </div>
+                <div class="mt-4 flex justify-between items-baseline">
+                    <div>
+                        <h4 class="font-serif text-2xl">Yellowstone Club</h4>
+                        <p class="font-sans text-sm text-carbon/60 mt-1">Project Management &bull; Montana</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- View Full Portfolio CTA -->
+        <div class="text-center mt-20 gs-reveal">
+            <a href="portfolio.html" class="inline-block border-2 border-carbon/30 px-12 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-carbon hover:text-bone transition-all duration-500">
+                View All 26 Projects &rarr;
+            </a>
         </div>
     </section>
 
     <!-- Featured Case Study - Pinned Sequence -->
     <section id="featured-case" class="pinned-section">
         <!-- Background Images for Crossfade -->
-        <img src="projects/hospitality-pool-cover-v2.jpg" class="pinned-img img-1" alt="Ultra Luxe Pool — Overview">
-        <img src="projects/assets/pool-design-14.webp" class="pinned-img img-2" alt="Ultra Luxe Pool — Construction">
-        <img src="projects/assets/pool-design-24.webp" class="pinned-img img-3" alt="Ultra Luxe Pool — Finished">
+        <img src="projects/assets/pool-design-3.webp" class="pinned-img img-1" alt="Ultra Luxe Pool — Aerial Overview">
+        <img src="projects/assets/pool-design-20.webp" class="pinned-img img-2" alt="Ultra Luxe Pool — Construction Detail">
+        <img src="projects/assets/pool-design-28.webp" class="pinned-img img-3" alt="Ultra Luxe Pool — Finished Resort">
 
         <div class="absolute inset-0 bg-carbon/40 z-20"></div>
 
