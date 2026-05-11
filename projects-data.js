@@ -38,55 +38,6 @@ const projectsData = [
         images: ['projects/assets/montana-cover.webp']
     },
     {
-        id: 'mangrove-group',
-        title: 'Mangrove Group Portfolio',
-        subtitle: 'Luxury Development Portfolio',
-        category: 'owners-representation',
-        location: 'Caribbean & Latin America',
-        role: "Chief Projects Officer & Owner's Rep",
-        specs: 'International Portfolio',
-        featured: true,
-        coverImage: 'projects/assets/miami-beach-1.webp',
-        images: ['projects/assets/miami-beach-1.webp']
-    },
-    {
-        id: 'private-island',
-        title: '$125M Private Island Estate',
-        subtitle: 'Ultra-Luxury Private Island',
-        category: 'owners-representation',
-        location: 'Bahamas',
-        role: "Feasibility Study, Concept Design for Land Development, Utilities, & Logistics's Rep",
-        specs: '$125M Estate',
-        featured: true,
-        coverImage: 'projects/assets/miami-beach-2.webp',
-        images: ['projects/assets/miami-beach-2.webp']
-    },
-    {
-        id: 'private-resort',
-        title: 'Private Resort Development',
-        subtitle: 'High-Value Resort Project',
-        category: 'owners-representation',
-        location: 'International',
-        role: "Design & Construction: Concept Design Management and Feasibility Study's Rep",
-        specs: '$76M Development',
-        featured: false,
-        coverImage: 'projects/assets/miami-beach-3.webp',
-        images: ['projects/assets/miami-beach-3.webp']
-    },
-    {
-        id: 'private-aviation-estate',
-        title: 'Private Aviation Residential Estate',
-        subtitle: 'Specialty Luxury Estate',
-        category: 'owners-representation',
-        location: 'USA',
-        role: "Design (Struct/Int) Build, Owner Representative's Rep",
-        specs: '$18M Estate',
-        featured: false,
-        coverImage: 'projects/assets/miami-beach-4.webp',
-        images: ['projects/assets/miami-beach-4.webp']
-    },
-
-    {
         id: 'miami-beach',
         title: 'S. Florida High Rise Luxe Condo',
         subtitle: 'Oceanfront Luxury Renovation',
@@ -116,39 +67,6 @@ const projectsData = [
         ]
     },
     {
-        id: 'syracuse',
-        title: 'Syracuse House',
-        subtitle: 'N. Utah Craftsman Estate',
-        category: 'design-build',
-        location: 'Syracuse, UT',
-        role: 'Owner Representation, Project Management, Property Management',
-        specs: '6,200 sqft • 18 months',
-        description: 'Complete two-acre landscape orchestration. Features a 6-car garage/workshop for antique restoration, and a two-stall horse barn + storage, completing the perfect equestrian property.',
-        featured: false,
-        coverImage: 'projects/assets/syracuse-cover.webp',
-        images: [
-            'projects/assets/syracuse-cover.webp',
-            ...Array.from({length: 46}, (_, i) => `projects/assets/syracuse-${i + 1}.webp`)
-        ]
-    },
-    {
-        id: 'montana-condo',
-        title: 'Mtn. Mid-Rise Luxe Condo',
-        subtitle: 'Mountain Luxury Condo',
-        category: 'residential-construction',
-        location: 'Montana',
-        role: 'Owner Representation, Project Management, Property Management',
-        specs: '2,800 sqft • 8 months • New Build',
-        notes: 'Selections feature Calacatta marble and warm walnut with special hand-applied wall/ceiling finishes.',
-        featured: false,
-        coverImage: 'projects/assets/montana-cover.webp',
-        images: [
-            'projects/assets/montana-cover.webp',
-            ...Array.from({length: 10}, (_, i) => `projects/assets/montana-${i + 1}.webp`),
-            'projects/assets/montana-11.jpg'
-        ]
-    },
-    {
         id: 'hospitality-pool',
         title: 'Ultra Luxe Private Club Resort Pool',
         subtitle: 'Resort Pool Construction',
@@ -162,11 +80,21 @@ const projectsData = [
         images: [
             'projects/hospitality-pool-cover-v2.jpg',
             'projects/assets/hospitality-pool-1.webp',
-            ...Array.from({length: 28}, (_, i) => {
-                const n = i + 1;
-                return n === 7 ? 'projects/assets/pool-design-6.webp' : `projects/assets/pool-design-${n}.webp`;
-            })
+            ...Array.from({length: 30}, (_, i) => `projects/assets/pool-design-${i + 1}.webp`)
         ]
+    },
+    {
+        id: 'north-florida',
+        title: 'North Florida Renovation/Addition',
+        subtitle: 'Residential Addition',
+        category: 'residential-construction',
+        location: 'N. Florida',
+        role: 'Designer (Manager/Oversight of Architects/Int. Design by others), Project Management, Owner Representative, Craftsmen-Contractor/Contract Coordination, Property Management',
+        specs: '3,600 + 1,200 sqft • 10 months',
+        description: 'Revitalized this 3,600 sq ft home with a 1,200 sq ft addition. Comprehensive approach included new roof, impact windows, updated electrical and plumbing systems. Interior completely refreshed with estate management services ensuring seamless coordination of all trades. Result is a home that is more spacious, modern, fortified, and meticulously detailed.',
+        featured: false,
+        coverImage: 'projects/north-florida/NIMG_9178.jpg',
+        images: Array.from({length: 14}, (_, i) => `projects/assets/nfl-${String(i + 1).padStart(3, '0')}.webp`)
     },
     {
         id: 'southcoast',
@@ -182,62 +110,6 @@ const projectsData = [
             'projects/assets/southcoast-cover.webp',
             ...Array.from({length: 52}, (_, i) => `projects/assets/southcoast-${i + 2}.webp`)
         ]
-    },
-    {
-        id: 'carmel-valley-new',
-        title: 'Carmel Valley New Construction',
-        subtitle: 'Custom Residence',
-        category: 'design-build',
-        location: 'Carmel Valley, CA',
-        role: 'Designer (Structure), Builder, Project Manager, Civil Engineering Contractor',
-        specs: '4,800 sqft • 20 months',
-        featured: false,
-        coverImage: 'projects/assets/carmel-valley-new-cover.webp',
-        images: Array.from({length: 4}, (_, i) => `projects/assets/carmel-valley-new-${i + 1}.webp`)
-    },
-    {
-        id: 'north-florida',
-        title: 'North Florida Renovation/Addition',
-        subtitle: 'Residential Addition',
-        category: 'residential-construction',
-        location: 'N. Florida',
-        role: 'Designer (Manager/Oversight of Architects/Int. Design by others), Project Management, Owner Representative, Craftsmen-Contractor/Contract Coordination, Property Management',
-        specs: '3,600 + 1,200 sqft • 10 months',
-        description: 'Revitalized this 3,600 sq ft home with a 1,200 sq ft addition. Comprehensive approach included new roof, impact windows, updated electrical and plumbing systems. Interior completely refreshed with estate management services ensuring seamless coordination of all trades. Result is a home that is more spacious, modern, fortified, and meticulously detailed.',
-        featured: false,
-        coverImage: 'projects/north-florida/NIMG_9178.jpg',
-        images: [
-            'projects/north-florida/NIMG_9178.jpg',
-            'projects/assets/nfl-001-cover.webp',
-            ...Array.from({length: 12}, (_, i) => `projects/assets/nfl-${String(i + 2).padStart(3, '0')}.webp`)
-        ]
-    },
-    {
-        id: 'abaco-boathouse',
-        title: 'Abaco Luxe Boat House',
-        subtitle: 'Waterfront Construction',
-        category: 'residential-construction',
-        location: 'Abaco, Bahamas',
-        role: 'Project Manager (Foreign Country Project for US Owners)',
-        specs: '1,800 sqft • 6 months',
-        featured: false,
-        coverImage: 'projects/assets/abaco-luxe-boathouse-cover.webp',
-        images: [
-            'projects/assets/abaco-luxe-boathouse-cover.webp',
-            'projects/assets/abaco-luxe-boathouse-1.webp'
-        ]
-    },
-    {
-        id: 'carmel-forest',
-        title: 'Carmel Forest to Ocean View',
-        subtitle: 'Custom Addition',
-        category: 'residential-construction',
-        location: 'Carmel By the Sea, CA',
-        role: 'General Contractor',
-        specs: 'Custom Addition',
-        featured: false,
-        coverImage: 'projects/assets/carmel-2-cover.webp',
-        images: Array.from({length: 6}, (_, i) => `projects/assets/carmel-forest-${i + 1}.webp`)
     },
     {
         id: 'bigsur-civil',
@@ -265,30 +137,6 @@ const projectsData = [
         featured: false,
         coverImage: 'projects/assets/carmel-knolls-cover.webp',
         images: Array.from({length: 10}, (_, i) => `projects/assets/carmel-knolls-${i + 1}.webp`)
-    },
-    {
-        id: 'coastal-restoration',
-        title: 'Coastal Restoration',
-        subtitle: 'Environmental Protection',
-        category: 'civil',
-        location: 'California Coast',
-        role: 'Lead Project Manager & Civil Specialist',
-        specs: 'Coastal Restoration',
-        featured: false,
-        coverImage: 'projects/assets/coastal-restoration-cover.webp',
-        images: Array.from({length: 15}, (_, i) => `projects/assets/coastal-restoration-${i + 1}.webp`)
-    },
-    {
-        id: 'beachfront-estate',
-        title: 'Beachfront Estate Abaco',
-        subtitle: 'Luxury Waterfront Estate',
-        category: 'residential-construction',
-        location: 'Abaco, Bahamas',
-        role: 'Owner Representative & Construction Manager',
-        specs: 'Luxury Waterfront Estate',
-        featured: false,
-        coverImage: 'projects/assets/beachfront-1.webp',
-        images: Array.from({length: 7}, (_, i) => `projects/assets/beachfront-${i + 1}.webp`)
     },
     {
         id: 'development-civil',
@@ -320,18 +168,6 @@ const projectsData = [
         images: Array.from({length: 10}, (_, i) => `projects/assets/pg-${i + 1}.webp`)
     },
     {
-        id: 'hillside-cleanup',
-        title: 'Hillside Cleanup',
-        subtitle: 'Environmental Remediation',
-        category: 'civil',
-        location: 'California',
-        role: 'Lead Manager',
-        specs: 'Environmental Remediation',
-        featured: false,
-        coverImage: 'projects/assets/cleanup-cover.webp',
-        images: Array.from({length: 15}, (_, i) => `projects/assets/cleanup-${i + 1}.webp`)
-    },
-    {
         id: 'laguna-grande',
         title: 'Laguna Grande',
         subtitle: 'Site Development',
@@ -345,6 +181,70 @@ const projectsData = [
         images: Array.from({length: 2}, (_, i) => `projects/assets/laguna-grande-${i + 1}.webp`)
     },
     {
+        id: 'abaco-boathouse',
+        title: 'Abaco Luxe Boat House',
+        subtitle: 'Waterfront Construction',
+        category: 'residential-construction',
+        location: 'Abaco, Bahamas',
+        role: 'Project Manager (Foreign Country Project for US Owners)',
+        specs: '1,800 sqft • 6 months',
+        featured: false,
+        coverImage: 'projects/assets/abaco-luxe-boathouse-cover.webp',
+        images: [
+            'projects/assets/abaco-luxe-boathouse-cover.webp',
+            'projects/assets/abaco-luxe-boathouse-1.webp'
+        ]
+    },
+    {
+        id: 'coastal-restoration',
+        title: 'Coastal Restoration',
+        subtitle: 'Environmental Protection',
+        category: 'civil',
+        location: 'California Coast',
+        role: 'Lead Project Manager & Civil Specialist',
+        specs: 'Coastal Restoration',
+        featured: false,
+        coverImage: 'projects/assets/coastal-restoration-cover.webp',
+        images: Array.from({length: 15}, (_, i) => `projects/assets/coastal-restoration-${i + 1}.webp`)
+    },
+    {
+        id: 'beachfront-estate',
+        title: 'Beachfront Estate Abaco',
+        subtitle: 'Luxury Waterfront Estate',
+        category: 'residential-construction',
+        location: 'Abaco, Bahamas',
+        role: 'Owner Representative & Construction Manager',
+        specs: 'Luxury Waterfront Estate',
+        featured: false,
+        coverImage: 'projects/assets/beachfront-1.webp',
+        images: Array.from({length: 7}, (_, i) => `projects/assets/beachfront-${i + 1}.webp`)
+    },
+    {
+        id: 'montana-condo',
+        title: 'Mtn. Mid-Rise Luxe Condo',
+        subtitle: 'Mountain Luxury Condo',
+        category: 'residential-construction',
+        location: 'Montana',
+        role: 'Owner Representation, Project Management, Property Management',
+        specs: '2,800 sqft • 8 months • New Build',
+        notes: 'Selections feature Calacatta marble and warm walnut with special hand-applied wall/ceiling finishes.',
+        featured: false,
+        coverImage: 'projects/assets/montana-cover.webp',
+        images: Array.from({length: 11}, (_, i) => `projects/assets/montana-${i + 1}.webp`)
+    },
+    {
+        id: 'carmel-valley-new',
+        title: 'Carmel Valley New Construction',
+        subtitle: 'Custom Residence',
+        category: 'design-build',
+        location: 'Carmel Valley, CA',
+        role: 'Designer (Structure), Builder, Project Manager, Civil Engineering Contractor',
+        specs: '4,800 sqft • 20 months',
+        featured: false,
+        coverImage: 'projects/assets/carmel-valley-new-cover.webp',
+        images: Array.from({length: 4}, (_, i) => `projects/assets/carmel-valley-new-${i + 1}.webp`)
+    },
+    {
         id: 'carmel-remodel-23',
         title: 'Carmel Remodel 2023',
         subtitle: 'Modern Coastal Update',
@@ -355,7 +255,7 @@ const projectsData = [
         featured: false,
         coverImage: 'projects/assets/carmel-3-cover.webp',
         images: Array.from({length: 5}, (_, i) => `projects/assets/carmel-3-${i + 1}.webp`)
-    }
+    },
 ];
 
 if (typeof module !== 'undefined' && module.exports) {

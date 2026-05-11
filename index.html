@@ -193,7 +193,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+            filter: grayscale(30%) brightness(.95);
+            transition: transform 1.2s cubic-bezier(.2,.8,.2,1), filter 1.2s cubic-bezier(.2,.8,.2,1);
         }
         
         .project-overlay {
@@ -206,6 +207,7 @@
 
         .project-card:hover .project-img {
             transform: scale(1.05);
+            filter: grayscale(0%) brightness(1.02);
         }
         
         .project-card:hover .project-overlay {
@@ -474,7 +476,7 @@
     <!-- Brand Strip Marquee -->
     <section class="marquee-container">
         <div class="marquee-content">
-            <span class="marquee-item">26 Signature Projects</span>
+            <span class="marquee-item">19 Signature Projects</span>
             <span class="marquee-item">•</span>
             <span class="marquee-item">$500M+ Capital Managed</span>
             <span class="marquee-item">•</span>
@@ -489,7 +491,7 @@
             <span class="marquee-item">Luxury Residential Construction</span>
             <span class="marquee-item">•</span>
             <!-- Duplicate for infinite loop -->
-            <span class="marquee-item">26 Signature Projects</span>
+            <span class="marquee-item">19 Signature Projects</span>
             <span class="marquee-item">•</span>
             <span class="marquee-item">$500M+ Capital Managed</span>
             <span class="marquee-item">•</span>
@@ -523,10 +525,10 @@
                     <p>Known for his old-world craftsmanship standards and modern execution methodology, Michael personally curates every trade partner, material selection, and milestone — ensuring on-time, on-budget delivery without compromising design intent.</p>
                 </div>
                 <div class="mt-10 flex flex-wrap gap-8">
-                    <div>
-                        <div class="font-serif text-3xl text-brass">26+</div>
-                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Signature Projects</div>
-                    </div>
+                     <div>
+                         <div class="font-serif text-3xl text-brass">19+</div>
+                         <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Signature Projects</div>
+                     </div>
                     <div>
                         <div class="font-serif text-3xl text-brass">$500M+</div>
                         <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Capital Managed</div>
@@ -672,7 +674,7 @@
         <!-- View Full Portfolio CTA -->
         <div class="text-center mt-20 gs-reveal">
             <a href="portfolio.html" class="inline-block border-2 border-carbon/30 px-12 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-carbon hover:text-bone transition-all duration-500">
-                View All 26 Projects &rarr;
+                View All 19 Projects &rarr;
             </a>
         </div>
     </section>
