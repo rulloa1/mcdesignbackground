@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC Design | Motion</title>
+    <title>MC Design | Precision Built</title>
+    <meta name="description" content="Ultra-luxury custom homes and historic coastal restorations. Design-build construction management by Michael Chandler — 37+ years, $500M+ portfolio.">
+    <meta property="og:title" content="MC Design | Precision Built">
+    <meta property="og:description" content="Ultra-luxury custom homes and historic coastal restorations. 37+ years, $500M+ portfolio.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0E0E0E">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,126 +18,301 @@
                 extend: {
                     colors: {
                         carbon: '#0E0E0E',
-                        brass: '#C9A961',
-                    }
+                        brass:  '#C9A961',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
-        body { background-color: #0E0E0E; color: white; margin: 0; overflow-x: hidden; }
-        canvas { display: block; width: 100vw; height: 100vh; object-fit: cover; }
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            background-color: #0E0E0E;
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+        }
+
+        /* Loading bar */
+        #load-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 2px;
+            width: 0%;
+            background: #C9A961;
+            z-index: 100;
+            transition: width 0.2s ease;
+        }
+        #load-bar.done { opacity: 0; transition: opacity 0.6s ease 0.3s; }
+
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+        /* Overlay text */
+        .overlay-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            padding: 2.5rem;
+            text-align: center;
+            gap: 1.25rem;
+        }
+
+        #main-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        #sub-title {
+            font-size: clamp(0.9rem, 2vw, 1.125rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0;
+        }
+
+        #scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #scroll-hint span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+        #scroll-hint-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(201,169,97,0.7), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(1); }
+            50%       { opacity: 1;   transform: scaleY(1.2); }
+        }
     </style>
 </head>
+
 <body class="bg-carbon selection:bg-white selection:text-carbon">
 
-    <!-- Scroll Section -->
-    <section class="relative w-full h-[600vh]">
+    <!-- Loading progress bar -->
+    <div id="load-bar" role="progressbar" aria-label="Loading animation frames" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- ── Scroll-driven canvas section ── -->
+    <section class="relative w-full h-[600vh]" aria-label="Portfolio animation">
         <div class="sticky top-0 w-full h-screen overflow-hidden">
-            <canvas id="animation-canvas"></canvas>
-            
-            <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-10 text-center">
-                <h1 class="text-6xl md:text-8xl font-light tracking-tight opacity-0" id="main-title">
-                    Brutal Minimalism.
-                </h1>
-                <p class="mt-4 text-xl font-light text-gray-400 opacity-0" id="sub-title">
-                    Experience Phase 2 performance.
-                </p>
+
+            <canvas id="animation-canvas" aria-hidden="true"></canvas>
+
+            <div class="overlay-text">
+                <h1 id="main-title">Precision Built.</h1>
+                <p id="sub-title">Ultra-luxury design-build &nbsp;·&nbsp; 37+ years</p>
+            </div>
+
+            <div id="scroll-hint" aria-hidden="true">
+                <span>Scroll</span>
+                <div id="scroll-hint-line"></div>
             </div>
         </div>
     </section>
 
-    <!-- Content Section -->
-    <section class="relative z-10 w-full min-h-screen flex items-center justify-center p-20 bg-carbon border-t border-white/5">
-        <div class="max-w-4xl space-y-8">
-            <h2 class="text-4xl md:text-5xl font-light">Engineered for sub-1s load.</h2>
-            <p class="text-lg text-gray-400 leading-relaxed font-light">
-                This canvas pipeline eliminates DOM bloat, rendering each frame of your V-Ray sequence directly to the buffer for a seamless, Apple-grade user experience.
+    <!-- ── Content section ── -->
+    <section class="relative z-10 w-full min-h-screen flex items-center justify-center px-6 py-24 bg-carbon border-t border-white/5">
+        <div class="max-w-3xl space-y-10">
+
+            <h2 class="text-4xl md:text-5xl font-light tracking-tight leading-tight">
+                Engineered for the exceptional.
+            </h2>
+
+            <p class="text-base md:text-lg text-white/50 leading-relaxed font-light">
+                Every project in the MC Design portfolio begins with a single principle: 
+                nothing is built that isn't worth keeping for a century. 
+                From coastal Bahamas estates to Montana mountain retreats, 
+                we deliver design-build construction management with a $500M+ proven record.
             </p>
+
+            <div class="flex flex-wrap gap-6 text-sm text-white/30 font-light tracking-widest uppercase">
+                <span>California</span>
+                <span>Bahamas</span>
+                <span>Texas</span>
+                <span>Montana</span>
+                <span>Florida</span>
+            </div>
+
+            <a href="https://mcdesign.bio"
+               class="inline-flex items-center gap-3 text-brass border border-brass/40 px-6 py-3 text-sm tracking-widest uppercase hover:bg-brass hover:text-carbon transition-all duration-300 pointer-events-auto"
+               rel="noopener">
+                View Portfolio
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M1 7h12M7 1l6 6-6 6"/>
+                </svg>
+            </a>
+
         </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- ── GSAP ── -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        const canvas = document.getElementById("animation-canvas");
-        const context = canvas.getContext("2d");
+        // ── Canvas setup ──────────────────────────────────────────
+        const canvas  = document.getElementById('animation-canvas');
+        const ctx     = canvas.getContext('2d');
+        const loadBar = document.getElementById('load-bar');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const setSize = () => {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        setSize();
 
-        const frameCount = 294;
-        const currentFrame = index => `/frames/frame_${index.toString().padStart(3, '0')}.webp`;
+        // ── Frame sequence ────────────────────────────────────────
+        const FRAME_COUNT = 294;
+        const frameSrc = i => `/frames/frame_${String(i).padStart(3, '0')}.webp`;
 
-        const images = [];
+        const images   = new Array(FRAME_COUNT);
         const sequence = { frame: 0 };
+        let   loadedCount = 0;
 
-        // Preload Logic
-        for (let i = 0; i < frameCount; i++) {
-            const img = new Image();
-            img.src = currentFrame(i);
-            images.push(img);
-        }
-
-        const render = () => {
-            const img = images[sequence.frame];
-            if (!img || !img.complete) return;
-
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            
-            const canvasRatio = canvas.width / canvas.height;
-            const imgRatio = img.width / img.height;
-            let drawWidth, drawHeight, offsetX, offsetY;
-
-            if (canvasRatio > imgRatio) {
-                drawWidth = canvas.width;
-                drawHeight = canvas.width / imgRatio;
-                offsetX = 0;
-                offsetY = (canvas.height - drawHeight) / 2;
-            } else {
-                drawWidth = canvas.height * imgRatio;
-                drawHeight = canvas.height;
-                offsetX = (canvas.width - drawWidth) / 2;
-                offsetY = 0;
+        const updateLoadBar = () => {
+            const pct = Math.round((loadedCount / FRAME_COUNT) * 100);
+            loadBar.style.width = pct + '%';
+            loadBar.setAttribute('aria-valuenow', pct);
+            if (pct === 100) {
+                loadBar.classList.add('done');
+                gsap.to('#scroll-hint', { opacity: 1, duration: 1, delay: 0.4 });
             }
-
-            context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
         };
 
+        // Preload: high-priority first frame, then the rest
+        const preload = (i) => {
+            const img = new Image();
+            img.onload = img.onerror = () => { loadedCount++; updateLoadBar(); };
+            img.src    = frameSrc(i);
+            images[i]  = img;
+        };
+
+        preload(0);
+        for (let i = 1; i < FRAME_COUNT; i++) preload(i);
+
+        // ── Render ────────────────────────────────────────────────
+        const render = () => {
+            const img = images[Math.round(sequence.frame)];
+            if (!img?.complete || !img.naturalWidth) return;
+
+            const cw = canvas.width,  ch = canvas.height;
+            const iw = img.naturalWidth, ih = img.naturalHeight;
+            const cRatio = cw / ch, iRatio = iw / ih;
+            let dw, dh, ox, oy;
+
+            if (cRatio > iRatio) {
+                dw = cw;          dh = cw / iRatio;
+                ox = 0;           oy = (ch - dh) / 2;
+            } else {
+                dw = ch * iRatio; dh = ch;
+                ox = (cw - dw) / 2; oy = 0;
+            }
+
+            ctx.clearRect(0, 0, cw, ch);
+            ctx.drawImage(img, ox, oy, dw, dh);
+        };
+
+        images[0] && (images[0].onload = render);
+
+        // ── GSAP timeline ─────────────────────────────────────────
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: "section",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 0.5,
+                trigger: 'section',
+                start:   'top top',
+                end:     'bottom bottom',
+                scrub:   0.5,
             }
         });
 
+        // Frame scrub
         tl.to(sequence, {
-            frame: frameCount - 1,
-            snap: "frame",
-            ease: "none",
+            frame:    FRAME_COUNT - 1,
+            snap:     'frame',
+            ease:     'none',
             onUpdate: render,
         });
 
-        // Text reveal effects
-        tl.to("#main-title", { opacity: 1, y: -20, duration: 2 }, 0.1);
-        tl.to("#main-title", { opacity: 0, y: -40, duration: 2 }, 0.7);
-        tl.to("#sub-title", { opacity: 1, y: -20, duration: 2 }, 0.2);
-        tl.to("#sub-title", { opacity: 0, y: -40, duration: 2 }, 0.6);
+        // Title reveal / hide
+        tl.fromTo('#main-title',
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0,  duration: 1.5, ease: 'power2.out' },
+            0.05
+        );
+        tl.to('#main-title',
+            { opacity: 0, y: -20, duration: 1.5, ease: 'power2.in' },
+            0.65
+        );
 
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            render();
+        // Subtitle reveal / hide
+        tl.fromTo('#sub-title',
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0,  duration: 1.2, ease: 'power2.out' },
+            0.15
+        );
+        tl.to('#sub-title',
+            { opacity: 0, y: -12, duration: 1.2, ease: 'power2.in' },
+            0.6
+        );
+
+        // Scroll hint hides when scrolling begins
+        ScrollTrigger.create({
+            trigger: 'section',
+            start:   'top+=50 top',
+            onEnter: () => gsap.to('#scroll-hint', { opacity: 0, duration: 0.4 }),
         });
 
-        images[0].onload = render;
+        // ── Resize ────────────────────────────────────────────────
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => { setSize(); render(); }, 150);
+        });
     </script>
+
 </body>
 </html>
