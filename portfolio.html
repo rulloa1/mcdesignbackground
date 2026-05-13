@@ -1,324 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michael Chandler — Portfolio</title>
-    <meta name="description" content="37+ years, $500M+ portfolio. Every project is a testament to precision, craftsmanship, and uncompromising standards.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                    },
-                    colors: {
-                        gold: '#D4AF37',
-                        charcoal: '#1a1a1a',
-                        offwhite: '#FAF9F6',
-                        graytext: '#6B6B6B',
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Michael Chandler — Portfolio</title>
+        <meta name="description" content="37+ years, $500M+ portfolio. Every project is a testament to precision, craftsmanship, and uncompromising standards.">
+        
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+        
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Montserrat', 'sans-serif'],
+                            serif: ['"Cormorant Garamond"', 'serif'],
+                        },
+                        colors: {
+                            gold: '#D4AF37',
+                            charcoal: '#1a1a1a',
+                            offwhite: '#FAF9F6',
+                            graytext: '#6B6B6B',
+                        }
                     }
                 }
             }
-        }
-    </script>
+        </script>
 
-    <style>
-        body {
-            background-color: #FAF9F6;
-            color: #1a1a1a;
-            scroll-behavior: smooth;
-        }
+        <style>
+            body {
+                background-color: #FAF9F6;
+                color: #1a1a1a;
+                scroll-behavior: smooth;
+            }
 
-        /* Navigation */
-        nav.main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(26, 26, 26, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 50;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+            /* Navigation */
+            nav.main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.85);
+                backdrop-filter: blur(12px);
+                z-index: 50;
+                padding: 1rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-        nav.main-nav .logo {
-            font-family: 'Cormorant Garamond', serif;
-            color: #D4AF37;
-            font-size: 1.5rem;
-            text-decoration: none;
-            font-weight: 600;
-        }
+            nav.main-nav .logo {
+                font-family: 'Cormorant Garamond', serif;
+                color: #D4AF37;
+                font-size: 1.5rem;
+                text-decoration: none;
+                font-weight: 600;
+            }
 
-        nav.main-nav .links {
-            display: flex;
-            gap: 2rem;
-        }
+            nav.main-nav .links {
+                display: flex;
+                gap: 2rem;
+            }
 
-        nav.main-nav .links a {
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+            nav.main-nav .links a {
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 0.8rem;
+                letter-spacing: 0.1em;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
 
-        nav.main-nav .links a:hover {
-            color: #D4AF37;
-        }
+            nav.main-nav .links a:hover {
+                color: #D4AF37;
+            }
 
-        /* Hero Stats */
-        .hero-section {
-            padding-top: 120px;
-            padding-bottom: 4rem;
-            text-align: center;
-        }
+            /* Hero Stats */
+            .hero-section {
+                padding-top: 120px;
+                padding-bottom: 4rem;
+                text-align: center;
+            }
 
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
+            .stats-container {
+                display: flex;
+                justify-content: center;
+                gap: 4rem;
+                flex-wrap: wrap;
+                margin-top: 2rem;
+            }
 
-        .stat-item h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-        }
+            .stat-item h3 {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 2.5rem;
+                color: #1a1a1a;
+                margin-bottom: 0.5rem;
+                font-weight: 400;
+            }
 
-        .stat-item p {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #6B6B6B;
-        }
+            .stat-item p {
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: #6B6B6B;
+            }
 
-        /* Featured Projects */
-        .featured-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            padding: 0 2rem;
-            margin-bottom: 4rem;
-        }
-
-        @media (max-width: 768px) {
+            /* Featured Projects */
             .featured-grid {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                padding: 0 2rem;
+                margin-bottom: 4rem;
             }
-        }
 
-        .featured-card {
-            position: relative;
-            height: 75vh;
-            overflow: hidden;
-            display: block;
-            text-decoration: none;
-        }
+            @media (max-width: 768px) {
+                .featured-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
 
-        .featured-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            .featured-card {
+                position: relative;
+                height: 75vh;
+                overflow: hidden;
+                display: block;
+                text-decoration: none;
+            }
 
-        .featured-card:hover img {
-            transform: scale(1.05);
-        }
+            .featured-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 3.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            color: white;
-            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            .featured-card:hover img {
+                transform: scale(1.05);
+            }
 
-        .featured-badge {
-            display: inline-block;
-            background-color: #D4AF37;
-            color: #1a1a1a;
-            padding: 0.4rem 1rem;
-            font-weight: 600;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
+            .card-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 3.5rem;
+                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+                color: white;
+                transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-        .featured-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-        }
+            .featured-badge {
+                display: inline-block;
+                background-color: #D4AF37;
+                color: #1a1a1a;
+                padding: 0.4rem 1rem;
+                font-weight: 600;
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+                margin-bottom: 1rem;
+            }
 
-        .featured-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #e0e0e0;
-        }
+            .featured-title {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 3rem;
+                line-height: 1.1;
+                margin-bottom: 0.5rem;
+            }
 
-        .featured-specs {
-            font-size: 0.9rem;
-            color: #b0b0b0;
-        }
+            .featured-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                color: #e0e0e0;
+            }
 
-        /* Filter System */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 4rem 2rem;
-        }
+            .featured-specs {
+                font-size: 0.9rem;
+                color: #b0b0b0;
+            }
 
-        .filter-btn {
-            border: 1px solid #1a1a1a;
-            background: transparent;
-            color: #1a1a1a;
-            padding: 0.8rem 2rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            /* Filter System */
+            .filter-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                margin: 4rem 2rem;
+            }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: #1a1a1a;
-            color: white;
-        }
+            .filter-btn {
+                border: 1px solid #1a1a1a;
+                background: transparent;
+                color: #1a1a1a;
+                padding: 0.8rem 2rem;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                cursor: pointer;
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-        /* Project Grid */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem 4rem;
-        }
+            .filter-btn.active, .filter-btn:hover {
+                background: #1a1a1a;
+                color: white;
+            }
 
-        @media (max-width: 480px) {
+            /* Project Grid */
             .project-grid {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+                gap: 2rem;
+                padding: 0 2rem 4rem;
             }
-        }
 
-        .project-card {
-            position: relative;
-            aspect-ratio: 3/4;
-            overflow: hidden;
-            display: block;
-            text-decoration: none;
-        }
+            @media (max-width: 480px) {
+                .project-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
 
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            .project-card {
+                position: relative;
+                aspect-ratio: 3/4;
+                overflow: hidden;
+                display: block;
+                text-decoration: none;
+            }
 
-        .project-card:hover img {
-            transform: scale(1.08);
-        }
+            .project-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-        .project-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            color: white;
-            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            .project-card:hover img {
+                transform: scale(1.08);
+            }
 
-        .category-tag {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #D4AF37;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
+            .project-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 2rem;
+                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+                color: white;
+                transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-        .project-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
+            .category-tag {
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: #D4AF37;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
 
-        .project-subtitle {
-            font-size: 1rem;
-            color: #d0d0d0;
-            margin-bottom: 0.5rem;
-        }
+            .project-title {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
 
-        .project-specs {
-            font-size: 0.8rem;
-            color: #a0a0a0;
-        }
+            .project-subtitle {
+                font-size: 1rem;
+                color: #d0d0d0;
+                margin-bottom: 0.5rem;
+            }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
+            .project-specs {
+                font-size: 0.8rem;
+                color: #a0a0a0;
+            }
 
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            color: #D4AF37;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+            /* Footer */
+            footer {
+                background: #1a1a1a;
+                color: white;
+                padding: 4rem 2rem;
+                text-align: center;
+            }
 
-        .regions {
-            color: #D4AF37;
-            letter-spacing: 0.2em;
-            font-size: 0.8rem;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-        }
+            .footer-logo {
+                font-family: 'Cormorant Garamond', serif;
+                color: #D4AF37;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
 
-        .contact-info {
-            font-size: 0.9rem;
-            color: #a0a0a0;
-        }
-    </style>
-</head>
+            .regions {
+                color: #D4AF37;
+                letter-spacing: 0.2em;
+                font-size: 0.8rem;
+                margin-bottom: 2rem;
+                text-transform: uppercase;
+            }
+
+            .contact-info {
+                font-size: 0.9rem;
+                color: #a0a0a0;
+            }
+        </style>
+    </head>
 <body>
 
     <nav class="main-nav">
-        <a href="#" class="logo">mcdesign</a>
+        <a href="/" class="logo">mcdesign</a>
         <div class="links">
-            <a href="#">Home</a>
-            <a href="#">Work</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+ <a href="index.html#about" class="mobile-nav-link">About</a> 
+ <a href="index.html#works" class="mobile-nav-link">Selected Works</a> 
+ <a href="index.html#philosophy" class="mobile-nav-link">Philosophy</a> 
+ <a href="design.html" class="mobile-nav-link">Design</a> 
+ <a href="index.html#contact" class="mobile-nav-link">Contact</a>
         </div>
     </nav>
 
@@ -342,8 +343,8 @@
 
     <!-- Featured Projects -->
     <section class="featured-grid">
-        <a href="#" class="featured-card">
-            <img src="https://mcdesign.bio/projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo">
+        <a href="/portfolio/s-florida" class="featured-card">
+            <img src="/projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo">
             <div class="card-overlay">
                 <div class="featured-badge">★ FEATURED</div>
                 <h2 class="featured-title">S. Florida</h2>
@@ -351,8 +352,8 @@
                 <div class="featured-specs">Oceanfront Luxury Renovation <br> 4,200 sqft • 5 months • 4 bed · 4 bath</div>
             </div>
         </a>
-        <a href="#" class="featured-card">
-            <img src="https://mcdesign.bio/projects/assets/alpine-ranch-cover.webp" alt="High Alpine Mtn. Ranch Luxe Retreat">
+        <a href="/portfolio/high-alpine-mtn-ranch" class="featured-card">
+            <img src="/projects/assets/alpine-ranch-cover.webp" alt="High Alpine Mtn. Ranch Luxe Retreat">
             <div class="card-overlay">
                 <div class="featured-badge">★ FEATURED</div>
                 <h2 class="featured-title">High Alpine Mtn.</h2>
@@ -374,192 +375,7 @@
 
     <!-- Project Grid -->
     <section class="project-grid" id="project-grid">
-        <!-- Project 1 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/syracuse-cover.png" alt="Syracuse House">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">Syracuse House</h3>
-                <div class="project-subtitle">N. Utah Craftsman Estate</div>
-                <div class="project-specs">6,200 sqft • 18 months</div>
-            </div>
-        </a>
-
-        <!-- Project 2 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/montana-cover.webp" alt="Mtn. Mid-Rise Luxe">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Mtn. Mid-Rise Luxe</h3>
-                <div class="project-subtitle">Condo</div>
-                <div class="project-specs">Montana • 2,800 sqft • 8 months</div>
-            </div>
-        </a>
-
-        <!-- Project 3 -->
-        <a href="#" class="project-card" data-category="hospitality">
-            <img src="https://mcdesign.bio/projects/hospitality-pool-cover-v2.jpg" alt="Ultra Luxe Private Club">
-            <div class="project-overlay">
-                <span class="category-tag">Hospitality</span>
-                <h3 class="project-title">Ultra Luxe Private Club</h3>
-                <div class="project-subtitle">Resort Pool</div>
-                <div class="project-specs">SE Texas • 189,000 gal • 18 months</div>
-            </div>
-        </a>
-
-        <!-- Project 4 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/assets/southcoast-cover.webp" alt="South Coast Renovation">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">South Coast Renovation</h3>
-                <div class="project-subtitle">Complete Remodel</div>
-                <div class="project-specs">Big Sur, CA • 3,800 sqft • 16 months</div>
-            </div>
-        </a>
-
-        <!-- Project 5 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/assets/carmel-valley-new-cover.webp" alt="Carmel Valley New">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">Carmel Valley New</h3>
-                <div class="project-subtitle">Custom Residence</div>
-                <div class="project-specs">Carmel Valley, CA • 4,800 sqft • 20 months</div>
-            </div>
-        </a>
-
-        <!-- Project 6 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/north-florida/NIMG_9178.jpg" alt="North Florida Renovation">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">North Florida Renovation/Addition</h3>
-                <div class="project-subtitle">Addition</div>
-                <div class="project-specs">N. Florida • 3,600 + 1,200 sqft • 10 months</div>
-            </div>
-        </a>
-
-        <!-- Project 7 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/abaco-luxe-boathouse-cover.webp" alt="Abaco Luxe Boat House">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Abaco Luxe Boat House</h3>
-                <div class="project-subtitle">Construction</div>
-                <div class="project-specs">Abaco, Bahamas • 1,800 sqft • 6 months</div>
-            </div>
-        </a>
-
-        <!-- Project 8 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/carmel-2-cover.webp" alt="Carmel Forest to Ocean View">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Carmel Forest to Ocean View</h3>
-                <div class="project-subtitle">Custom Addition</div>
-                <div class="project-specs">Carmel By the Sea, CA</div>
-            </div>
-        </a>
-
-        <!-- Project 9 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/assets/bigsur-cover.webp" alt="Coastal Mountain Residence">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Coastal Mountain Residence</h3>
-                <div class="project-subtitle">Civil Site Work</div>
-                <div class="project-specs">Big Sur, CA • 11 months</div>
-            </div>
-        </a>
-
-        <!-- Project 10 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/carmel-knolls/001.10%20COVER.jpg" alt="Carmel Knolls">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Carmel Knolls</h3>
-                <div class="project-subtitle">More Than Lipstick on an Old Lady!</div>
-                <div class="project-specs">Carmel, CA • 2,200 sqft • 12 months</div>
-            </div>
-        </a>
-
-        <!-- Project 11 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/coastal-restoration/001%20COVER.JPG" alt="Coastal Restoration">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Coastal Restoration</h3>
-                <div class="project-subtitle">Erosion Repair</div>
-                <div class="project-specs">Monterey Peninsula, CA • 9 months</div>
-            </div>
-        </a>
-
-        <!-- Project 12 -->
-        <a href="#" class="project-card" data-category="residential-development">
-            <img src="https://mcdesign.bio/projects/assets/beachfront-1.webp" alt="Beachfront Estate">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Development</span>
-                <h3 class="project-title">Beachfront Estate</h3>
-                <div class="project-subtitle">Residence</div>
-                <div class="project-specs">Abaco, Bahamas • 6,800 sqft • 2.5 Acres</div>
-            </div>
-        </a>
-
-        <!-- Project 13 -->
-        <a href="#" class="project-card" data-category="residential-development">
-            <img src="https://mcdesign.bio/projects/development-civil/development%20(1).jpg" alt="Development Civil">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Development</span>
-                <h3 class="project-title">Development Civil</h3>
-                <div class="project-subtitle">Construction</div>
-                <div class="project-specs">SE Texas • 45 Acres • 36 months</div>
-            </div>
-        </a>
-
-        <!-- Project 14 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/pacific-grove/001%20COVER.JPG" alt="New Residential Construction">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">New Residential Construction</h3>
-                <div class="project-subtitle">In Historic Neighborhood</div>
-                <div class="project-specs">Central Coast, CA • 2,600 sqft • 14 months</div>
-            </div>
-        </a>
-
-        <!-- Project 15 -->
-        <a href="#" class="project-card" data-category="civil">
-            <img src="https://mcdesign.bio/projects/hillside-cleanup/001%20COVER.jpg" alt="Hillside Restoration">
-            <div class="project-overlay">
-                <span class="category-tag">Civil</span>
-                <h3 class="project-title">Hillside Restoration & Environmental Cleanup</h3>
-                <div class="project-subtitle">Environmental Cleanup</div>
-                <div class="project-specs">Carmel, CA • 4 months</div>
-            </div>
-        </a>
-
-        <!-- Project 16 -->
-        <a href="#" class="project-card" data-category="design-build">
-            <img src="https://mcdesign.bio/projects/laguna-grande/6.0%20Laguna%20Grande%20Design%20Build_001_COVER.png" alt="Laguna Grande">
-            <div class="project-overlay">
-                <span class="category-tag">Design Build</span>
-                <h3 class="project-title">Laguna Grande</h3>
-                <div class="project-subtitle">Spanish Revival Commercial</div>
-                <div class="project-specs">Seaside, CA • 12,000 sqft • 22 months</div>
-            </div>
-        </a>
-
-        <!-- Project 17 -->
-        <a href="#" class="project-card" data-category="residential-construction">
-            <img src="https://mcdesign.bio/projects/assets/carmel-3-cover.webp" alt="Carmel House Remodel No.23">
-            <div class="project-overlay">
-                <span class="category-tag">Residential Construction</span>
-                <h3 class="project-title">Carmel House Remodel No.23</h3>
-                <div class="project-subtitle">Complete Renovation</div>
-                <div class="project-specs">Carmel By the Sea, CA</div>
-            </div>
-        </a>
+        
     </section>
 
     <footer>
@@ -572,28 +388,187 @@
     </footer>
 
     <script>
-        // Filtering Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
+        // Define project data
+        const projects = [
+    {
+        "category": "design-build",
+        "imgSrc": "/projects/syracuse-cover.png",
+        "title": "Syracuse House",
+        "subtitle": "N. Utah Craftsman Estate",
+        "specs": "6,200 sqft • 18 months",
+        "link": "/portfolio/syracuse-utah"
+    },
+    {
+        "category": "residential-construction",
+        "imgSrc": "/projects/assets/montana-cover.webp",
+        "title": "Mtn. Mid-Rise Luxe",
+        "subtitle": "Condo",
+        "specs": "Montana • 2,800 sqft • 8 months",
+        "link": "/portfolio/mtn-mid-rise-luxe"
+    },
+    {
+        "category": "hospitality",
+        "imgSrc": "/projects/hospitality-pool-cover-v2.jpg",
+        "title": "Ultra Luxe Private Club",
+        "subtitle": "Resort Pool",
+        "specs": "SE Texas • 189,000 gal • 18 months",
+        "link": "/portfolio/ultra-luxe-private-club"
+    },
+    {
+        "category": "design-build",
+        "imgSrc": "/projects/assets/southcoast-cover.webp",
+        "title": "South Coast Renovation",
+        "subtitle": "Complete Remodel",
+        "specs": "Big Sur, CA • 3,800 sqft • 16 months",
+        "link": "/portfolio/south-coast-renovation"
+    },
+    {
+        "category": "design-build",
+        "imgSrc": "/projects/assets/carmel-valley-new-cover.webp",
+        "title": "Carmel Valley New",
+        "subtitle": "Custom Residence",
+        "specs": "Carmel Valley, CA • 4,800 sqft • 20 months",
+        "link": "/portfolio/carmel-valley-new"
+    },
+    {
+        "category": "residential-construction",
+        "imgSrc": "/projects/north-florida/NIMG_9178.jpg",
+        "title": "North Florida Renovation/Addition",
+        "subtitle": "Addition",
+        "specs": "N. Florida • 3,600 + 1,200 sqft • 10 months",
+        "link": "/portfolio/north-florida-renovation"
+    },
+    {
+        "category": "residential-construction",
+        "imgSrc": "/projects/assets/abaco-luxe-boathouse-cover.webp",
+        "title": "Abaco Luxe Boat House",
+        "subtitle": "Construction",
+        "specs": "Abaco, Bahamas • 1,800 sqft • 6 months",
+        "link": "/portfolio/abaco-luxe-boathouse"
+    },
+    {
+        "category": "residential-construction",
+        "imgSrc": "/projects/assets/carmel-2-cover.webp",
+        "title": "Carmel Forest to Ocean View",
+        "subtitle": "Custom Addition",
+        "specs": "Carmel By the Sea, CA",
+        "link": "/portfolio/carmel-forest-to-ocean-view"
+    },
+    {
+        "category": "civil",
+        "imgSrc": "/projects/assets/bigsur-cover.webp",
+        "title": "Coastal Mountain Residence",
+        "subtitle": "Civil Site Work",
+        "specs": "Big Sur, CA • 11 months",
+        "link": "/portfolio/coastal-mountain-residence"
+    },
+    {
+        "category": "civil",
+        "imgSrc": "/projects/carmel-knolls/001.10 COVER.jpg",
+        "title": "Carmel Knolls",
+        "subtitle": "More Than Lipstick on an Old Lady!",
+        "specs": "Carmel, CA • 2,200 sqft • 12 months",
+        "link": "/portfolio/carmel-knolls"
+    },
+    {
+        "category": "civil",
+        "imgSrc": "/projects/coastal-restoration/001 COVER.JPG",
+        "title": "Coastal Restoration",
+        "subtitle": "Erosion Repair",
+        "specs": "Monterey Peninsula, CA • 9 months",
+        "link": "/portfolio/coastal-restoration"
+    },
+    {
+        "category": "residential-development",
+        "imgSrc": "/projects/assets/beachfront-1.webp",
+        "title": "Beachfront Estate",
+        "subtitle": "Residence",
+        "specs": "Abaco, Bahamas • 6,800 sqft • 2.5 Acres",
+        "link": "/portfolio/beachfront-estate"
+    },
+    {
+        "category": "residential-development",
+        "imgSrc": "/projects/development-civil/development (1).jpg",
+        "title": "Development Civil",
+        "subtitle": "Construction",
+        "specs": "SE Texas • 45 Acres • 36 months",
+        "link": "/portfolio/development-civil"
+    },
+    {
+        "category": "design-build",
+        "imgSrc": "/projects/pacific-grove/001 COVER.JPG",
+        "title": "New Residential Construction",
+        "subtitle": "In Historic Neighborhood",
+        "specs": "Central Coast, CA • 2,600 sqft • 14 months",
+        "link": "/portfolio/new-residential-construction"
+    },
+    {
+        "category": "civil",
+        "imgSrc": "/projects/hillside-cleanup/001 COVER.jpg",
+        "title": "Hillside Restoration & Environmental Cleanup",
+        "subtitle": "Environmental Cleanup",
+        "specs": "Carmel, CA • 4 months",
+        "link": "/portfolio/hillside-restoration"
+    },
+    {
+        "category": "design-build",
+        "imgSrc": "/projects/laguna-grande/6.0 Laguna Grande Design Build_001_COVER.png",
+        "title": "Laguna Grande",
+        "subtitle": "Spanish Revival Commercial",
+        "specs": "Seaside, CA • 12,000 sqft • 22 months",
+        "link": "/portfolio/laguna-grande"
+    },
+    {
+        "category": "residential-construction",
+        "imgSrc": "/projects/assets/carmel-3-cover.webp",
+        "title": "Carmel House Remodel No.23",
+        "subtitle": "Complete Renovation",
+        "specs": "Carmel By the Sea, CA",
+        "link": "/portfolio/carmel-house-remodel-23"
+    }
+];
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
 
-                const filterValue = btn.getAttribute('data-filter');
+        // DOM elements
+        const projectGrid = document.getElementById('project-grid');
+        const filterContainer = document.getElementById('filter-container');
 
-                projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+        // Function to create and append project cards
+        function displayProjects(filter = 'all') {
+            projectGrid.innerHTML = '';
+            const filteredProjects = (filter === 'all')
+                ? projects
+                : projects.filter(p => p.category === filter);
+
+            filteredProjects.forEach(project => {
+                const projectCard = `
+                    <a href="${project.link}" class="project-card" data-category="${project.category}">
+                        <img src="${project.imgSrc}" alt="${project.title}">
+                        <div class="project-overlay">
+                            <span class="category-tag">${project.category.replace(/-/g, ' ')}</span>
+                            <h3 class="project-title">${project.title}</h3>
+                            <div class="project-subtitle">${project.subtitle}</div>
+                            <div class="project-specs">${project.specs}</div>
+                        </div>
+                    </a>
+                `;
+                projectGrid.innerHTML += projectCard;
             });
+        }
+
+        // Event listener for filter buttons
+        filterContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                e.target.classList.add('active');
+                displayProjects(e.target.dataset.filter);
+            }
         });
+
+        // Initial display of all projects
+        displayProjects();
+
     </script>
+
 </body>
 </html>
