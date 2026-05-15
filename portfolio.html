@@ -30,510 +30,47 @@
                     }
                 }
             }
-        </script>
+    </script>
 
-        <style>
-            body {
-                background-color: #FAF9F6;
-                color: #1a1a1a;
-                scroll-behavior: smooth;
-            }
-
-            /* Navigation */
-            nav.main-nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                background: rgba(26, 26, 26, 0.85);
-                backdrop-filter: blur(12px);
-                z-index: 50;
-                padding: 1rem 2rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            nav.main-nav .logo {
-                font-family: 'Cormorant Garamond', serif;
-                color: #D4AF37;
-                font-size: 1.5rem;
-                text-decoration: none;
-                font-weight: 600;
-            }
-
-            nav.main-nav .links {
-                display: flex;
-                gap: 2rem;
-            }
-
-            nav.main-nav .links a {
-                color: #fff;
-                text-transform: uppercase;
-                font-size: 0.8rem;
-                letter-spacing: 0.1em;
-                text-decoration: none;
-                transition: color 0.3s;
-            }
-
-            nav.main-nav .links a:hover {
-                color: #D4AF37;
-            }
-
-            /* Hero Stats */
-            .hero-section {
-                padding-top: 120px;
-                padding-bottom: 4rem;
-                text-align: center;
-            }
-
-            .stats-container {
-                display: flex;
-                justify-content: center;
-                gap: 4rem;
-                flex-wrap: wrap;
-                margin-top: 2rem;
-            }
-
-            .stat-item h3 {
-                font-family: 'Cormorant Garamond', serif;
-                font-size: 2.5rem;
-                color: #1a1a1a;
-                margin-bottom: 0.5rem;
-                font-weight: 400;
-            }
-
-            .stat-item p {
-                font-size: 0.85rem;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                color: #6B6B6B;
-            }
-
-            /* Featured Projects */
-            .featured-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-                padding: 0 2rem;
-                margin-bottom: 4rem;
-            }
-
-            @media (max-width: 768px) {
-                .featured-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            .featured-card {
-                position: relative;
-                height: 75vh;
-                overflow: hidden;
-                display: block;
-                text-decoration: none;
-            }
-
-            .featured-card img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .featured-card:hover img {
-                transform: scale(1.05);
-            }
-
-            .card-overlay {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 3.5rem;
-                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-                color: white;
-                transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .featured-badge {
-                display: inline-block;
-                background-color: #D4AF37;
-                color: #1a1a1a;
-                padding: 0.4rem 1rem;
-                font-weight: 600;
-                font-size: 0.75rem;
-                letter-spacing: 0.1em;
-                margin-bottom: 1rem;
-            }
-
-            .featured-title {
-                font-family: 'Cormorant Garamond', serif;
-                font-size: 3rem;
-                line-height: 1.1;
-                margin-bottom: 0.5rem;
-            }
-
-            .featured-subtitle {
-                font-size: 1.2rem;
-                margin-bottom: 1rem;
-                color: #e0e0e0;
-            }
-
-            .featured-specs {
-                font-size: 0.9rem;
-                color: #b0b0b0;
-            }
-
-            /* Filter System */
-            .filter-container {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 1.5rem;
-                margin: 4rem 2rem;
-            }
-
-            .filter-btn {
-                border: 1px solid #1a1a1a;
-                background: transparent;
-                color: #1a1a1a;
-                padding: 0.8rem 2rem;
-                font-size: 0.7rem;
-                text-transform: uppercase;
-                letter-spacing: 0.15em;
-                cursor: pointer;
-                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .filter-btn.active, .filter-btn:hover {
-                background: #1a1a1a;
-                color: white;
-            }
-
-            /* Project Grid */
-            .project-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-                gap: 2rem;
-                padding: 0 2rem 4rem;
-            }
-
-            @media (max-width: 480px) {
-                .project-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            .project-card {
-                position: relative;
-                aspect-ratio: 3/4;
-                overflow: hidden;
-                display: block;
-                text-decoration: none;
-            }
-
-            .project-card img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .project-card:hover img {
-                transform: scale(1.08);
-            }
-
-            .project-overlay {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 2rem;
-                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-                color: white;
-                transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .category-tag {
-                font-size: 0.65rem;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                color: #D4AF37;
-                margin-bottom: 0.5rem;
-                display: block;
-            }
-
-            .project-title {
-                font-family: 'Cormorant Garamond', serif;
-                font-size: 2rem;
-                line-height: 1.2;
-                margin-bottom: 0.5rem;
-            }
-
-            .project-subtitle {
-                font-size: 1rem;
-                color: #d0d0d0;
-                margin-bottom: 0.5rem;
-            }
-
-            .project-specs {
-                font-size: 0.8rem;
-                color: #a0a0a0;
-            }
-
-            /* Footer */
-            footer {
-                background: #1a1a1a;
-                color: white;
-                padding: 4rem 2rem;
-                text-align: center;
-            }
-
-            .footer-logo {
-                font-family: 'Cormorant Garamond', serif;
-                color: #D4AF37;
-                font-size: 2rem;
-                margin-bottom: 1rem;
-            }
-
-            .regions {
-                color: #D4AF37;
-                letter-spacing: 0.2em;
-                font-size: 0.8rem;
-                margin-bottom: 2rem;
-                text-transform: uppercase;
-            }
-
-            .contact-info {
-                font-size: 0.9rem;
-                color: #a0a0a0;
-            }
-        </style>
-    </head>
-<body>
-
-    <nav class="main-nav">
-        <a href="/" class="logo">mcdesign</a>
-        <div class="links">
- <a href="index.html#about" class="mobile-nav-link">About</a> 
- <a href="index.html#works" class="mobile-nav-link">Selected Works</a> 
- <a href="index.html#philosophy" class="mobile-nav-link">Philosophy</a> 
- <a href="design.html" class="mobile-nav-link">Design</a> 
- <a href="index.html#contact" class="mobile-nav-link">Contact</a>
-        </div>
-    </nav>
-
-    <section class="hero-section">
-        <h1 class="font-serif text-5xl md:text-7xl mb-4">Portfolio</h1>
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3>19</h3>
-                <p>Signature Projects</p>
-            </div>
-            <div class="stat-item">
-                <h3>37+</h3>
-                <p>Years Excellence</p>
-            </div>
-            <div class="stat-item">
-                <h3>$500M+</h3>
-                <p>Portfolio Value</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Projects -->
-    <section class="featured-grid">
-        <a href="/portfolio/s-florida" class="featured-card">
-            <img src="/projects/assets/miami-beach-cover.webp" alt="S. Florida High Rise Luxe Condo">
-            <div class="card-overlay">
-                <div class="featured-badge">★ FEATURED</div>
-                <h2 class="featured-title">S. Florida</h2>
-                <div class="featured-subtitle">High Rise Luxe Condo</div>
-                <div class="featured-specs">Oceanfront Luxury Renovation <br> 4,200 sqft • 5 months • 4 bed · 4 bath</div>
-            </div>
-        </a>
-        <a href="/portfolio/high-alpine-mtn-ranch" class="featured-card">
-            <img src="/projects/assets/alpine-ranch-cover.webp" alt="High Alpine Mtn. Ranch Luxe Retreat">
-            <div class="card-overlay">
-                <div class="featured-badge">★ FEATURED</div>
-                <h2 class="featured-title">High Alpine Mtn.</h2>
-                <div class="featured-subtitle">Ranch Luxe Retreat</div>
-                <div class="featured-specs">Montana <br> 2,300 sqft • 24 months • 5 bed · 2 bath</div>
-            </div>
-        </a>
-    </section>
-
-    <!-- Filter System -->
-    <div class="filter-container" id="filter-container">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="residential-construction">Residential Construction</button>
-        <button class="filter-btn" data-filter="design-build">Design Build</button>
-        <button class="filter-btn" data-filter="civil">Civil</button>
-        <button class="filter-btn" data-filter="hospitality">Hospitality</button>
-        <button class="filter-btn" data-filter="residential-development">Residential Development</button>
-    </div>
-
-    <!-- Project Grid -->
-    <section class="project-grid" id="project-grid">
-        
-    </section>
-
-    <footer>
-        <div class="footer-logo">mcdesign</div>
-        <div class="regions">CA • Bahamas • TX • MT • UT • FL</div>
-        <div class="contact-info">
-            <p>Michael Chandler — Strategic Construction Executive</p>
-            <p style="margin-top: 1rem;"><a href="mailto:contact@mcdesign.bio" style="color: #D4AF37; text-decoration: none;">contact@mcdesign.bio</a></p>
-        </div>
-    </footer>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
-        // Define project data
-        const projects = [
-    {
-        "category": "design-build",
-        "imgSrc": "/projects/syracuse-cover.png",
-        "title": "Syracuse House",
-        "subtitle": "N. Utah Craftsman Estate",
-        "specs": "6,200 sqft • 18 months",
-        "link": "/portfolio/syracuse-utah"
-    },
-    {
-        "category": "residential-construction",
-        "imgSrc": "/projects/assets/montana-cover.webp",
-        "title": "Mtn. Mid-Rise Luxe",
-        "subtitle": "Condo",
-        "specs": "Montana • 2,800 sqft • 8 months",
-        "link": "/portfolio/mtn-mid-rise-luxe"
-    },
-    {
-        "category": "hospitality",
-        "imgSrc": "/projects/hospitality-pool-cover-v2.jpg",
-        "title": "Ultra Luxe Private Club",
-        "subtitle": "Resort Pool",
-        "specs": "SE Texas • 189,000 gal • 18 months",
-        "link": "/portfolio/ultra-luxe-private-club"
-    },
-    {
-        "category": "design-build",
-        "imgSrc": "/projects/assets/southcoast-cover.webp",
-        "title": "South Coast Renovation",
-        "subtitle": "Complete Remodel",
-        "specs": "Big Sur, CA • 3,800 sqft • 16 months",
-        "link": "/portfolio/south-coast-renovation"
-    },
-    {
-        "category": "design-build",
-        "imgSrc": "/projects/assets/carmel-valley-new-cover.webp",
-        "title": "Carmel Valley New",
-        "subtitle": "Custom Residence",
-        "specs": "Carmel Valley, CA • 4,800 sqft • 20 months",
-        "link": "/portfolio/carmel-valley-new"
-    },
-    {
-        "category": "residential-construction",
-        "imgSrc": "/projects/north-florida/NIMG_9178.jpg",
-        "title": "North Florida Renovation/Addition",
-        "subtitle": "Addition",
-        "specs": "N. Florida • 3,600 + 1,200 sqft • 10 months",
-        "link": "/portfolio/north-florida-renovation"
-    },
-    {
-        "category": "residential-construction",
-        "imgSrc": "/projects/assets/abaco-luxe-boathouse-cover.webp",
-        "title": "Abaco Luxe Boat House",
-        "subtitle": "Construction",
-        "specs": "Abaco, Bahamas • 1,800 sqft • 6 months",
-        "link": "/portfolio/abaco-luxe-boathouse"
-    },
-    {
-        "category": "residential-construction",
-        "imgSrc": "/projects/assets/carmel-2-cover.webp",
-        "title": "Carmel Forest to Ocean View",
-        "subtitle": "Custom Addition",
-        "specs": "Carmel By the Sea, CA",
-        "link": "/portfolio/carmel-forest-to-ocean-view"
-    },
-    {
-        "category": "civil",
-        "imgSrc": "/projects/assets/bigsur-cover.webp",
-        "title": "Coastal Mountain Residence",
-        "subtitle": "Civil Site Work",
-        "specs": "Big Sur, CA • 11 months",
-        "link": "/portfolio/coastal-mountain-residence"
-    },
-    {
-        "category": "civil",
-        "imgSrc": "/projects/carmel-knolls/001.10 COVER.jpg",
-        "title": "Carmel Knolls",
-        "subtitle": "More Than Lipstick on an Old Lady!",
-        "specs": "Carmel, CA • 2,200 sqft • 12 months",
-        "link": "/portfolio/carmel-knolls"
-    },
-    {
-        "category": "civil",
-        "imgSrc": "/projects/coastal-restoration/001 COVER.JPG",
-        "title": "Coastal Restoration",
-        "subtitle": "Erosion Repair",
-        "specs": "Monterey Peninsula, CA • 9 months",
-        "link": "/portfolio/coastal-restoration"
-    },
-    {
-        "category": "residential-development",
-        "imgSrc": "/projects/assets/beachfront-1.webp",
-        "title": "Beachfront Estate",
-        "subtitle": "Residence",
-        "specs": "Abaco, Bahamas • 6,800 sqft • 2.5 Acres",
-        "link": "/portfolio/beachfront-estate"
-    },
-    {
-        "category": "residential-development",
-        "imgSrc": "/projects/development-civil/development (1).jpg",
-        "title": "Development Civil",
-        "subtitle": "Construction",
-        "specs": "SE Texas • 45 Acres • 36 months",
-        "link": "/portfolio/development-civil"
-    },
-    {
-        "category": "design-build",
-        "imgSrc": "/projects/pacific-grove/001 COVER.JPG",
-        "title": "New Residential Construction",
-        "subtitle": "In Historic Neighborhood",
-        "specs": "Central Coast, CA • 2,600 sqft • 14 months",
-        "link": "/portfolio/new-residential-construction"
-    },
-    {
-        "category": "civil",
-        "imgSrc": "/projects/hillside-cleanup/001 COVER.jpg",
-        "title": "Hillside Restoration & Environmental Cleanup",
-        "subtitle": "Environmental Cleanup",
-        "specs": "Carmel, CA • 4 months",
-        "link": "/portfolio/hillside-restoration"
-    },
-    {
-        "category": "design-build",
-        "imgSrc": "/projects/laguna-grande/6.0 Laguna Grande Design Build_001_COVER.png",
-        "title": "Laguna Grande",
-        "subtitle": "Spanish Revival Commercial",
-        "specs": "Seaside, CA • 12,000 sqft • 22 months",
-        "link": "/portfolio/laguna-grande"
-    },
-    {
-        "category": "residential-construction",
-        "imgSrc": "/projects/assets/carmel-3-cover.webp",
-        "title": "Carmel House Remodel No.23",
-        "subtitle": "Complete Renovation",
-        "specs": "Carmel By the Sea, CA",
-        "link": "/portfolio/carmel-house-remodel-23"
-    }
-];
+        gsap.registerPlugin(ScrollTrigger);
 
+        /* ── Film grain ───────────────────────────────────────────── */
+        const grainCanvas = document.createElement('canvas');
+        grainCanvas.width = grainCanvas.height = 256;
+        const gc  = grainCanvas.getContext('2d');
+        const id  = gc.createImageData(256, 256);
+        const pix = id.data;
+        for (let i = 0; i < pix.length; i += 4) {
+            const v = Math.random() * 255 | 0;
+            pix[i] = pix[i+1] = pix[i+2] = v;
+            pix[i+3] = 20;
+        }
+        gc.putImageData(id, 0, 0);
+        document.getElementById('grain-overlay').style.backgroundImage =
+            `url(${grainCanvas.toDataURL('image/png')})`;
 
-        // DOM elements
-        const projectGrid = document.getElementById('project-grid');
+        /* ── DOM references ─────────────────────────────────────────── */
+        const projectGrid     = document.getElementById('project-grid');
         const filterContainer = document.getElementById('filter-container');
 
-        // Function to create and append project cards
+        /* ── Character split helper ──────────────────────────────────── */
+        const splitChars = (el) => {
+            const raw  = el.textContent.trim();
+            const html = [...raw].map(c =>
+                c === ' '
+                    ? ' '
+                    : `<span class="par-char"><span>${c}</span></span>`
+            ).join('');
+            el.innerHTML = html;
+            return [...el.querySelectorAll('.par-char span')];
+        };
+
+        /* ─ Generate project cards ─── */
         function displayProjects(filter = 'all') {
             projectGrid.innerHTML = '';
             const filteredProjects = (filter === 'all')
@@ -542,7 +79,7 @@
 
             filteredProjects.forEach(project => {
                 const projectCard = `
-                    <a href="${project.link}" class="project-card" data-category="${project.category}">
+                    <a href="${project.link}" class="project-card card-enter" data-category="${project.category}">
                         <img src="${project.imgSrc}" alt="${project.title}">
                         <div class="project-overlay">
                             <span class="category-tag">${project.category.replace(/-/g, ' ')}</span>
@@ -556,7 +93,7 @@
             });
         }
 
-        // Event listener for filter buttons
+        /* ── Event listener for filter buttons ────────────────────── */
         filterContainer.addEventListener('click', (e) => {
             if (e.target.classList.contains('filter-btn')) {
                 document.querySelector('.filter-btn.active').classList.remove('active');
@@ -568,7 +105,206 @@
         // Initial display of all projects
         displayProjects();
 
-    </script>
+        /* ═══════════════════════════════════════════════════════════ */
+        /*  Portfolio animation suite                                   */
+        /* ═══════════════════════════════════════════════════════════ */
+
+        function initPortfolioAnimations() {
+
+            /* ── Hero title text wipe (left→right on load) ── */
+            const heroInner = document.querySelector('#hero-title .text-wipe-inner');
+            if (heroInner) {
+                gsap.to(heroInner, {
+                    scaleX: 1, transformOrigin: 'left center',
+                    duration: 1.3, ease: 'power3.inOut', delay: 0.2,
+                });
+            }
+
+            /* ── Hero title: character stagger after wipe ── */
+            if (heroInner) {
+                const heroChars = splitChars(heroInner);
+                if (heroChars.length) {
+                    gsap.fromTo(heroChars,
+                        { yPercent: 110, opacity: 0 },
+                        {
+                            yPercent: 0, opacity: 1, duration: 0.8,
+                            stagger:  { amount: 0.42 },
+                            ease:     'power2.out', delay: 0.55,
+                        }
+                    );
+                }
+            }
+
+            /* ── Stats: slide-up entrance ── */
+            const statItems = document.querySelectorAll('.stat-slide');
+            gsap.set(statItems, { opacity: 0, y: 44 });
+            gsap.to(statItems, {
+                opacity: 1, y: 0,
+                stagger:  { amount: 0.38 },
+                duration: 0.95,
+                ease:     'power3.out',
+                scrollTrigger: {
+                    trigger: '#stats-trigger',
+                    start:   'top 88%',
+                    toggleActions: 'play none none reverse',
+                }
+            });
+
+            /* ── Featured cards: entrance + parallax ── */
+            const featuredCards = document.querySelectorAll('.featured-card');
+            gsap.set(featuredCards, { opacity: 0, y: 60 });
+            gsap.to(featuredCards, {
+                opacity: 1, y: 0,
+                stagger:  { amount: 0.45 },
+                duration: 1.1,
+                ease:     'power3.out',
+                scrollTrigger: {
+                    trigger: '#featured-trigger',
+                    start:   'top 85%',
+                    toggleActions: 'play none none reverse',
+                }
+            });
+
+            /* Parallax inner overlay labels */
+            gsap.to('.card-overlay', {
+                yPercent: -12,
+                ease:     'none',
+                scrollTrigger: {
+                    trigger: '#featured-trigger',
+                    start:   'top bottom',
+                    end:     'bottom top',
+                    scrub:   1.6,
+                }
+            });
+
+            /* ── Featured card overlay text: character stagger ── */
+            const ftHeadings = document.querySelectorAll('.featured-title[data-split]');
+            ftHeadings.forEach(h => {
+                const chars = splitChars(h);
+                gsap.fromTo(chars,
+                    { yPercent: 120, opacity: 0 },
+                    {
+                        yPercent: 0, opacity: 1, duration: 0.7,
+                        stagger:  { amount: 0.35 },
+                        ease:     'power2.out',
+                        scrollTrigger: {
+                            trigger: h.closest('.featured-card'),
+                            start:   'top 82%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    }
+                );
+            });
+
+            /* ── Filter buttons: staggered entrance ── */
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            gsap.set(filterBtns, { opacity: 0, y: 20 });
+            gsap.to(filterBtns, {
+                opacity: 1, y: 0,
+                stagger:  { amount: 0.35 },
+                duration: 0.65,
+                ease:     'power2.out',
+                scrollTrigger: {
+                    trigger: '#filter-container',
+                    start:   'top 90%',
+                    toggleActions: 'play none none reverse',
+                }
+            });
+
+            /* ── Project grid: staggered card entrance ── */
+            gsap.fromTo('.card-enter',
+                { opacity: 0, y: 50, scale: 0.97 },
+                {
+                    opacity: 1, y: 0, scale: 1,
+                    duration: 0.85,
+                    stagger:  { amount: 0.5, from: 'start' },
+                    ease:     'power3.out',
+                    clearProps: 'transform',
+                    scrollTrigger: {
+                        trigger: '.project-grid',
+                        start:   'top 92%',
+                        toggleActions: 'play none none reverse',
+                    }
+                }
+            );
+
+            /* ── Footer logo: character stagger ── */
+            const footerLogo = document.querySelector('.footer-logo[data-split]');
+            if (footerLogo) {
+                const logoChars = splitChars(footerLogo);
+                gsap.fromTo(logoChars,
+                    { yPercent: 120, opacity: 0 },
+                    {
+                        yPercent: 0, opacity: 1, duration: 0.9,
+                        stagger:  { amount: 0.5 },
+                        ease:     'power3.out',
+                        scrollTrigger: {
+                            trigger: '#footer-trigger',
+                            start:   'top 88%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    }
+                );
+            }
+
+            /* ── Region line: character stagger + floating parallax ── */
+            const regionEl = document.querySelector('[data-par-regions]');
+            if (regionEl) {
+                const regText = regionEl.textContent.trim();
+                const spaced  = [...regText].map(c =>
+                    c === ' ' ? '&nbsp;&nbsp;' : c
+                ).join('');
+                regionEl.innerHTML = `<span class="par-char"><span>${spaced}</span></span>`;
+
+                gsap.fromTo(regionEl.querySelectorAll('.par-char span'),
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1, y: 0, duration: 1.2,
+                        stagger:  { amount: 0.45 },
+                        ease:     'power2.out',
+                        scrollTrigger: {
+                            trigger: '#footer-trigger',
+                            start:   'top 90%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    }
+                );
+
+                gsap.to('[data-par-regions]', {
+                    yPercent: -18,
+                    ease:     'none',
+                    scrollTrigger: {
+                        trigger: '#footer-trigger',
+                        start:   'top bottom',
+                        end:     'bottom top',
+                        scrub:   2,
+                    }
+                });
+            }
+
+            /* ── Contact info: slide entrance ── */
+            const contactEl = document.getElementById('contact-trigger');
+            if (contactEl) {
+                gsap.set(contactEl, { opacity: 0 });
+                gsap.to(contactEl, {
+                    opacity: 1,
+                    duration: 1.0,
+                    ease:     'power2.out',
+                    scrollTrigger: {
+                        trigger: contactEl,
+                        start:   'top 90%',
+                        toggleActions: 'play none none reverse',
+                    }
+                });
+            }
+        }
+
+        /* ── Initialise on DOMContentLoaded ──────────────────────── */
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPortfolioAnimations);
+        } else {
+            initPortfolioAnimations();
+        }
 
 </body>
 </html>

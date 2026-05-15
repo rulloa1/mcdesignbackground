@@ -52,6 +52,34 @@
             inset: 0;
         }
 
+        /* Film grain overlay */
+        #grain-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.03;
+        }
+
+        /* Character-word split utilities */
+        .char-stagger      { display: inline-block; }
+        .word-stagger      { display: inline-block; overflow: hidden; vertical-align: bottom; }
+        .word-stagger > span { display: inline-block; transform: translateY(110%); }
+
+        /* Scroll-reveal entrance base */
+        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: none; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+        /* Clip-path text wipe (left→right) */
+        .text-wipe { overflow: hidden; }
+        .text-wipe > *, .text-wipe { display: inline-block; }
+        .text-wipe-inner {
+            display: inline-block;
+            transform: scaleX(0);
+            transform-origin: left center;
+            will-change: transform;
+        }
+
         /* Loading bar */
         #load-bar {
             position: fixed;
@@ -127,6 +155,224 @@
             0%, 100% { opacity: 0.4; transform: scaleY(1); }
             50%       { opacity: 1;   transform: scaleY(1.2); }
         }
+
+        /* ══ About section ═══════════════════════════════════════ */
+        .about-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,169,97,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,169,97,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .about-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 90vh;
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .about-inner { grid-template-columns: 1fr; }
+        }
+
+        /* Photo column */
+        .about-photo-col {
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        .about-photo-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .about-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            filter: grayscale(12%) contrast(1.04);
+            transition: filter 0.6s ease;
+        }
+        .about-photo:hover { filter: grayscale(0%) contrast(1.06); }
+
+        /* Brass corner accents */
+        .about-corner-tl,
+        .about-corner-br {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            pointer-events: none;
+        }
+        .about-corner-tl {
+            top: 20px; left: 20px;
+            border-top: 1.5px solid #C9A961;
+            border-left: 1.5px solid #C9A961;
+        }
+        .about-corner-br {
+            bottom: 20px; right: 20px;
+            border-bottom: 1.5px solid #C9A961;
+            border-right: 1.5px solid #C9A961;
+        }
+
+        /* Floating badge */
+        .about-badge {
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            background: rgba(14,14,14,0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(201,169,97,0.25);
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            line-height: 1;
+        }
+        .about-badge-num {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #C9A961;
+            letter-spacing: -0.04em;
+        }
+        .about-badge-num sup {
+            font-size: 0.9rem;
+            vertical-align: super;
+        }
+        .about-badge-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+        }
+
+        /* Bio column */
+        .about-bio-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 4rem 5rem 5rem;
+            gap: 0;
+        }
+
+        @media (max-width: 1100px) {
+            .about-bio-col { padding: 4rem 2.5rem; }
+        }
+        @media (max-width: 900px) {
+            .about-bio-col { padding: 3rem 1.5rem; }
+        }
+
+        .about-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #C9A961;
+            margin: 0 0 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .about-heading {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            margin: 0 0 2rem;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .about-rule {
+            width: 48px;
+            height: 1px;
+            background: linear-gradient(to right, #C9A961, transparent);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: left center;
+        }
+
+        .about-body {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.48);
+            font-weight: 300;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        /* Stats */
+        .about-stats {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin: 2.75rem 0 2.5rem;
+            opacity: 0;
+            transform: translateY(18px);
+        }
+        .about-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            flex: 1;
+        }
+        .about-stat-num {
+            font-size: 2.1rem;
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            color: #fff;
+            line-height: 1;
+        }
+        .about-stat-unit {
+            font-size: 1rem;
+            color: #C9A961;
+            font-weight: 300;
+        }
+        .about-stat-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+        .about-stat-divider {
+            width: 1px;
+            height: 44px;
+            background: rgba(255,255,255,0.08);
+            margin: 0 2rem;
+            flex-shrink: 0;
+        }
+
+        /* CTA */
+        .about-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #C9A961;
+            border: 1px solid rgba(201,169,97,0.35);
+            padding: 0.85rem 1.75rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+            align-self: flex-start;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        .about-cta:hover {
+            background: #C9A961;
+            color: #0E0E0E;
+        }
     </style>
 </head>
 
@@ -134,6 +380,7 @@
 
     <!-- Loading progress bar -->
     <div id="load-bar" role="progressbar" aria-label="Loading animation frames" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <span id="grain-overlay" aria-hidden="true"></span>
 
     <!-- ── Scroll-driven canvas section ── -->
     <section class="relative w-full h-[600vh]" aria-label="Portfolio animation">
@@ -157,18 +404,18 @@
     <section class="relative z-10 w-full min-h-screen flex items-center justify-center px-6 py-24 bg-carbon border-t border-white/5">
         <div class="max-w-3xl space-y-10">
 
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight leading-tight">
-                Engineered for the exceptional.
+            <h2 class="text-4xl md:text-5xl font-light tracking-tight leading-tight text-wipe">
+                <span class="text-wipe-inner">Engineered for the exceptional.</span>
             </h2>
 
-            <p class="text-base md:text-lg text-white/50 leading-relaxed font-light">
-                Every project in the MC Design portfolio begins with a single principle: 
-                nothing is built that isn't worth keeping for a century. 
-                From coastal Bahamas estates to Montana mountain retreats, 
+            <p class="text-base md:text-lg text-white/50 leading-relaxed font-light scroll-reveal">
+                Every project in the MC Design portfolio begins with a single principle:
+                nothing is built that isn't worth keeping for a century.
+                From coastal Bahamas estates to Montana mountain retreats,
                 we deliver design-build construction management with a $500M+ proven record.
             </p>
 
-            <div class="flex flex-wrap gap-6 text-sm text-white/30 font-light tracking-widest uppercase">
+            <div class="flex flex-wrap gap-6 text-sm text-white/30 font-light tracking-widest uppercase scroll-reveal-delay-1">
                 <span>California</span>
                 <span>Bahamas</span>
                 <span>Texas</span>
@@ -177,7 +424,7 @@
             </div>
 
             <a href="https://mcdesign.bio"
-               class="inline-flex items-center gap-3 text-brass border border-brass/40 px-6 py-3 text-sm tracking-widest uppercase hover:bg-brass hover:text-carbon transition-all duration-300 pointer-events-auto"
+               class="inline-flex items-center gap-3 text-brass border border-brass/40 px-6 py-3 text-sm tracking-widest uppercase hover:bg-brass hover:text-carbon transition-all duration-300 pointer-events-auto scroll-reveal-delay-2"
                rel="noopener">
                 View Portfolio
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -188,6 +435,91 @@
         </div>
     </section>
 
+    <!-- ── About / Meet Michael ── -->
+    <section id="about" class="relative z-10 w-full bg-carbon border-t border-white/5 overflow-hidden">
+
+        <!-- Decorative background grid lines -->
+        <div class="about-grid-lines" aria-hidden="true"></div>
+
+        <div class="about-inner">
+
+            <!-- Left: Photo column -->
+            <div class="about-photo-col" id="about-photo-wrap">
+                <div class="about-photo-frame">
+                    <img
+                        src="mike-profile.jpeg"
+                        alt="Michael Chandler, Owner of MC Design, reviewing blueprints on-site"
+                        class="about-photo"
+                        id="about-photo"
+                        loading="lazy"
+                    >
+                    <!-- Brass corner accent -->
+                    <span class="about-corner-tl" aria-hidden="true"></span>
+                    <span class="about-corner-br" aria-hidden="true"></span>
+                    <!-- Floating credential badge -->
+                    <div class="about-badge" aria-label="37 plus years experience">
+                        <span class="about-badge-num">37<sup>+</sup></span>
+                        <span class="about-badge-label">Years On-Site</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Bio column -->
+            <div class="about-bio-col">
+
+                <p class="about-eyebrow scroll-reveal-item">Principal & Owner</p>
+
+                <h2 class="about-heading scroll-reveal-item">
+                    Michael<br>Chandler.
+                </h2>
+
+                <div class="about-rule scroll-reveal-item" aria-hidden="true"></div>
+
+                <p class="about-body scroll-reveal-item">
+                    With over three decades commanding ultra-luxury builds across California,
+                    the Bahamas, Texas, Montana, and Florida, Michael brings an architect's eye
+                    and a contractor's precision to every project. His design-build model
+                    eliminates the gap between vision and execution — delivering structures
+                    engineered to stand for a century.
+                </p>
+
+                <p class="about-body scroll-reveal-item" style="margin-top:1.25rem;">
+                    From first blueprint to final walkthrough, Michael is personally present
+                    at every critical milestone, ensuring that no detail is delegated and no
+                    standard is compromised.
+                </p>
+
+                <!-- Stat row -->
+                <div class="about-stats scroll-reveal-item">
+                    <div class="about-stat">
+                        <span class="about-stat-num" data-target="500">0</span><span class="about-stat-unit">M+</span>
+                        <span class="about-stat-label">Portfolio Value</span>
+                    </div>
+                    <div class="about-stat-divider" aria-hidden="true"></div>
+                    <div class="about-stat">
+                        <span class="about-stat-num" data-target="120">0</span><span class="about-stat-unit">+</span>
+                        <span class="about-stat-label">Projects Delivered</span>
+                    </div>
+                    <div class="about-stat-divider" aria-hidden="true"></div>
+                    <div class="about-stat">
+                        <span class="about-stat-num" data-target="5">0</span><span class="about-stat-unit"></span>
+                        <span class="about-stat-label">States &amp; Territories</span>
+                    </div>
+                </div>
+
+                <a href="https://mcdesign.bio"
+                   class="about-cta scroll-reveal-item"
+                   rel="noopener">
+                    View Full Portfolio
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M1 7h12M7 1l6 6-6 6"/>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
     <!-- ── GSAP ── -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -195,7 +527,22 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // ── Canvas setup ──────────────────────────────────────────
+        /* ── Film grain ───────────────────────────────────────────── */
+        const grainCanvas = document.createElement('canvas');
+        grainCanvas.width = grainCanvas.height = 256;
+        const gc  = grainCanvas.getContext('2d');
+        const id  = gc.createImageData(256, 256);
+        const pix = id.data;
+        for (let i = 0; i < pix.length; i += 4) {
+            const v = Math.random() * 255 | 0;
+            pix[i] = pix[i+1] = pix[i+2] = v;
+            pix[i+3] = 20;
+        }
+        gc.putImageData(id, 0, 0);
+        document.getElementById('grain-overlay').style.backgroundImage =
+            `url(${grainCanvas.toDataURL('image/png')})`;
+
+        /* ── Canvas setup ─────────────────────────────────────────── */
         const canvas  = document.getElementById('animation-canvas');
         const ctx     = canvas.getContext('2d');
         const loadBar = document.getElementById('load-bar');
@@ -206,9 +553,11 @@
         };
         setSize();
 
-        // ── Frame sequence ────────────────────────────────────────
+        /* ── Text split helpers ──────────────────────────────────── */
+
+        /* ── Frame sequence ──────────────────────────────────────── */
         const FRAME_COUNT = 294;
-        const frameSrc = i => `/frames/frame_${String(i).padStart(3, '0')}.webp`;
+        const frameSrc = i => `/frames/frame_${String(i).padStart(3,'0')}.webp`;
 
         const images   = new Array(FRAME_COUNT);
         const sequence = { frame: 0 };
@@ -220,11 +569,10 @@
             loadBar.setAttribute('aria-valuenow', pct);
             if (pct === 100) {
                 loadBar.classList.add('done');
-                gsap.to('#scroll-hint', { opacity: 1, duration: 1, delay: 0.4 });
+                initAnimations();
             }
         };
 
-        // Preload: high-priority first frame, then the rest
         const preload = (i) => {
             const img = new Image();
             img.onload = img.onerror = () => { loadedCount++; updateLoadBar(); };
@@ -235,22 +583,20 @@
         preload(0);
         for (let i = 1; i < FRAME_COUNT; i++) preload(i);
 
-        // ── Render ────────────────────────────────────────────────
+        /* ── Render ──────────────────────────────────────────────── */
         const render = () => {
             const img = images[Math.round(sequence.frame)];
             if (!img?.complete || !img.naturalWidth) return;
 
-            const cw = canvas.width,  ch = canvas.height;
+            const cw = canvas.width, ch  = canvas.height;
             const iw = img.naturalWidth, ih = img.naturalHeight;
-            const cRatio = cw / ch, iRatio = iw / ih;
+            const cRatio = cw/ch, iRatio = iw/ih;
             let dw, dh, ox, oy;
 
             if (cRatio > iRatio) {
-                dw = cw;          dh = cw / iRatio;
-                ox = 0;           oy = (ch - dh) / 2;
+                dw = cw; dh = cw/iRatio; ox = 0; oy = (ch-dh)/2;
             } else {
-                dw = ch * iRatio; dh = ch;
-                ox = (cw - dw) / 2; oy = 0;
+                dw = ch*iRatio; dh = ch; ox = (cw-dw)/2; oy = 0;
             }
 
             ctx.clearRect(0, 0, cw, ch);
@@ -259,13 +605,13 @@
 
         images[0] && (images[0].onload = render);
 
-        // ── GSAP timeline ─────────────────────────────────────────
+        /* ── GSAP timeline ───────────────────────────────────────── */
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: 'section',
-                start:   'top top',
-                end:     'bottom bottom',
-                scrub:   0.5,
+                trigger:  'section',
+                start:    'top top',
+                end:      'bottom bottom',
+                scrub:    0.5,
             }
         });
 
@@ -306,12 +652,218 @@
             onEnter: () => gsap.to('#scroll-hint', { opacity: 0, duration: 0.4 }),
         });
 
-        // ── Resize ────────────────────────────────────────────────
+        /* ── Resize ──────────────────────────────────────────────── */
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => { setSize(); render(); }, 150);
         });
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /*  Hero char stagger + scroll-reveal + text-wipe + parallax  */
+        /* ═══════════════════════════════════════════════════════════ */
+
+        function initAnimations() {
+            /* ── Scroll-hint entrance ── */
+            gsap.to('#scroll-hint', { opacity: 1, duration: 1, delay: 0.4 });
+
+            /* ── Character split helpers ── */
+            const splitChars = (el) => {
+                const raw = el.textContent.trim();
+                const html = [...raw].map(c =>
+                    c === ' '
+                    ? ' '
+                    : `<span class="abs-char" style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block">${c}</span></span>`
+                ).join('');
+                el.innerHTML = html;
+                return [...el.querySelectorAll('.abs-char span')];
+            };
+
+            /* ── Hero title: character-level staggered entrance ── */
+            const titleEl = document.getElementById('main-title');
+            const subEl   = document.getElementById('sub-title');
+            const tEls    = splitChars(titleEl);
+            const sEls    = splitChars(subEl);
+
+            /* Start characters hidden below layout edge */
+            gsap.set(tEls, { yPercent: 112, opacity: 0 });
+            gsap.set(sEls, { yPercent: 112, opacity: 0 });
+
+            /* Stagger chars upward with random scatter for organic feel */
+            gsap.to(tEls, {
+                yPercent: 0, opacity: 1, duration: 0.9,
+                stagger:  { amount: 0.55, from: 'center' },
+                ease:     'power3.out', delay: 0.1,
+            });
+            gsap.to(sEls, {
+                yPercent: 0, opacity: 1, duration: 0.8,
+                stagger:  { amount: 0.38, from: 'center' },
+                ease:     'power2.out', delay: 0.3,
+            });
+
+            /* ── Title character-level parallax on scroll ── */
+            gsap.to(tEls, {
+                yPercent:  -18,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: 'section',
+                    start: 'top top',
+                    end:   'bottom center',
+                    scrub: 1.2,
+                }
+            });
+            gsap.to(sEls, {
+                yPercent: -10,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: 'section',
+                    start: 'top top',
+                    end:   'bottom 60%',
+                    scrub: 1.2,
+                }
+            });
+
+            /* ── Content heading: left→right clip-path text wipe ── */
+            const wipeInner = document.querySelector('.text-wipe-inner');
+            if (wipeInner) {
+                gsap.fromTo(wipeInner,
+                    { scaleX: 0, transformOrigin: 'left center' },
+                    {
+                        scaleX: 1,
+                        duration: 1.5,
+                        ease: 'power3.inOut',
+                        scrollTrigger: {
+                            trigger: '.text-wipe',
+                            start:   'top 82%',
+                            end:     'top 20%',
+                            scrub:   1.4,
+                            toggleActions: 'play none none reverse',
+                        }
+                    }
+                );
+            }
+
+            /* ── Content paragraph: opacity + y scroll-reveal ── */
+            const revealEls = document.querySelectorAll('.scroll-reveal');
+            revealEls.forEach((el, i) => {
+                gsap.to(el, {
+                    opacity: 1, y: 0,
+                    duration:    1.05,
+                    ease:        'power3.out',
+                    delay:       i * 0.15,
+                    scrollTrigger: {
+                        trigger:    el,
+                        start:      'top 90%',
+                        end:        'top 30%',
+                        scrub:      1,
+                        toggleActions: 'play none none reverse',
+                    }
+                });
+            });
+
+            /* ── Region tags: staggered entrance + continuous parallax ── */
+            const tags = document.querySelectorAll('[class*="scroll-reveal-delay"] span, .flex.flex-wrap span');
+            if (tags.length) {
+                gsap.set(tags, { opacity: 0, y: 28 });
+                gsap.to(tags, {
+                    opacity: 1, y: 0,
+                    stagger:  { amount: 0.4 },
+                    duration: 0.9,
+                    ease:     'power2.out',
+                    scrollTrigger: {
+                        trigger:    tags[0].parentElement,
+                        start:      'top 90%',
+                        toggleActions: 'play none none reverse',
+                    }
+                });
+
+                /* Floating parallax while tags are in view */
+                gsap.to(tags, {
+                    yPercent: -22,
+                    ease:     'none',
+                    scrollTrigger: {
+                        trigger:    tags[0].parentElement,
+                        start:      'top bottom',
+                        end:        'bottom top',
+                        scrub:      1.8,
+                    }
+                });
+            }
+
+            /* ── CTA button: slide + fade entrance ── */
+            const cta = document.querySelector('[class*="scroll-reveal-delay-2"]');
+            if (cta && !cta.querySelectorAll('span').length) {
+                gsap.set(cta, { opacity: 0, y: 30 });
+                gsap.to(cta, {
+                    opacity: 1, y: 0,
+                    duration: 0.95,
+                    ease:     'power2.out',
+                    scrollTrigger: {
+                        trigger:    cta,
+                        start:      'top 90%',
+                        toggleActions: 'play none none reverse',
+                    }
+                });
+            }
+
+            /* ── About section: scroll-reveal items ── */
+            const aboutRevealItems = document.querySelectorAll('.scroll-reveal-item');
+            aboutRevealItems.forEach((el, i) => {
+                gsap.to(el, {
+                    opacity: 1,
+                    y: 0,
+                    scaleX: el.classList.contains('about-rule') ? 1 : undefined,
+                    duration: 0.9,
+                    ease: 'power3.out',
+                    delay: (i % 6) * 0.1,
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 88%',
+                        toggleActions: 'play none none reverse',
+                    }
+                });
+            });
+
+            /* ── About photo: subtle vertical parallax ── */
+            const aboutPhoto = document.getElementById('about-photo');
+            if (aboutPhoto) {
+                gsap.to(aboutPhoto, {
+                    yPercent: -8,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#about',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1.5,
+                    }
+                });
+            }
+
+            /* ── Animated stat counters ── */
+            const statNums = document.querySelectorAll('.about-stat-num');
+            statNums.forEach(el => {
+                const target = parseInt(el.dataset.target, 10);
+                ScrollTrigger.create({
+                    trigger: el,
+                    start: 'top 85%',
+                    once: true,
+                    onEnter: () => {
+                        const obj = { val: 0 };
+                        gsap.to(obj, {
+                            val: target,
+                            duration: 1.6,
+                            ease: 'power2.out',
+                            onUpdate: () => {
+                                el.textContent = Math.round(obj.val).toLocaleString();
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        /* Triggered automatically by updateLoadBar when all 294
+           animation frames have finished pre-loading.             */
     </script>
 
 </body>
