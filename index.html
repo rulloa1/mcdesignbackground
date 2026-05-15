@@ -4,7 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michael Chandler — MC Design Build</title>
+    <title>Michael Chandler — MC Design Build | Luxury Design-Build Executive</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Michael Chandler — Architectural design-build executive with $500M+ in delivered projects across luxury residential, Caribbean resorts, and bespoke private estates. 20+ years. 6 global regions.">
+    <meta name="author" content="Michael Chandler, MC Design Build">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#0E0E0E">
+    <link rel="canonical" href="https://mcdesign.bio">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mcdesign.bio">
+    <meta property="og:title" content="Michael Chandler — MC Design Build">
+    <meta property="og:description" content="$500M+ portfolio across luxury residential, Caribbean resorts, and private estates. 20+ years of architectural design-build leadership.">
+    <meta property="og:image" content="https://mcdesign.bio/mcdesign-logo.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="MC Design Build">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Michael Chandler — MC Design Build">
+    <meta name="twitter:description" content="$500M+ portfolio. Luxury residential, Caribbean resorts, bespoke estates. 20+ years, 6 global regions.">
+    <meta name="twitter:image" content="https://mcdesign.bio/mcdesign-logo.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0E0E'/><text y='78' x='8' font-size='72' font-family='Georgia,serif' font-weight='700' fill='%23C9A961'>M</text></svg>">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +62,8 @@
         }
     </script>
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
     <style>
         :root {
@@ -467,7 +494,7 @@
     <a href="#main-content" class="skip-nav">Skip to main content</a>
 
     <!-- Cinematic Entrance Overlay -->
-    <div id="entrance-overlay">
+    <div id="entrance-overlay" role="presentation" aria-hidden="true">
         <canvas id="blueprint-canvas"></canvas>
         <div class="text-center flex flex-col items-center">
             <h1 class="name-reveal font-serif text-4xl md:text-6xl tracking-wider uppercase" id="entrance-name">
@@ -482,39 +509,41 @@
     <!-- Navigation -->
     <header>
         <nav
+            aria-label="Main navigation"
             class="fixed w-full top-0 z-50 px-6 py-8 mix-blend-difference text-bone flex justify-between items-center pointer-events-none">
             <div class="font-serif text-xl tracking-widest uppercase pointer-events-auto">MC</div>
 
             <div class="desktop-nav font-sans text-sm tracking-widest uppercase flex gap-8 pointer-events-auto">
-                <a href="index.html#about" class="hover:text-brass transition-colors duration-300">About</a>
-                <a href="index.html#works" class="hover:text-brass transition-colors duration-300">Selected Works</a>
-                <a href="index.html#philosophy" class="hover:text-brass transition-colors duration-300">Philosophy</a>
+                <a href="#about" class="hover:text-brass transition-colors duration-300">About</a>
+                <a href="#works" class="hover:text-brass transition-colors duration-300">Selected Works</a>
+                <a href="#philosophy" class="hover:text-brass transition-colors duration-300">Philosophy</a>
                 <a href="design.html" class="hover:text-brass transition-colors duration-300">Design</a>
-                <a href="index.html#contact" class="hover:text-brass transition-colors duration-300">Contact</a>
+                <a href="#contact" class="hover:text-brass transition-colors duration-300">Contact</a>
             </div>
 
-            <div class="hamburger pointer-events-auto" id="hamburger-btn">
+            <button class="hamburger pointer-events-auto" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
-            </div>
+            </button>
+        </nav>
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu">
+    <div id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
         <div class="flex flex-col items-center gap-8 font-serif text-3xl text-bone uppercase tracking-widest">
-            <a href="index.html#about" class="menu-link hover:text-brass transition-colors">About</a>
-            <a href="index.html#works" class="menu-link hover:text-brass transition-colors">Selected Works</a>
-            <a href="index.html#philosophy" class="menu-link hover:text-brass transition-colors">Philosophy</a>
+            <a href="#about" class="menu-link hover:text-brass transition-colors">About</a>
+            <a href="#works" class="menu-link hover:text-brass transition-colors">Selected Works</a>
+            <a href="#philosophy" class="menu-link hover:text-brass transition-colors">Philosophy</a>
             <a href="design.html" class="menu-link hover:text-brass transition-colors">Design</a>
-            <a href="index.html#contact" class="menu-link hover:text-brass transition-colors">Contact</a>
+            <a href="#contact" class="menu-link hover:text-brass transition-colors">Contact</a>
         </div>
     </div>
 
     <main id="main-content">
         <!-- Hero Section -->
         <section
-            class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 bg-carbon overflow-hidden z-10 pt-20"
+            class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 overflow-hidden z-10 pt-20" style="background-image: linear-gradient(to bottom, rgba(10,10,10,0.60) 0%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.70) 100%), url('projects/assets/alpine-ranch-winter.webp'); background-size: cover; background-position: center; background-color: #0E0E0E;"
             id="hero">
             <canvas id="dust-canvas"></canvas>
 
@@ -980,7 +1009,7 @@
                 </a>
 
                 <div class="mt-20 flex justify-center gap-12 font-mono text-sm text-bone/60">
-                    <a href="https://linkedin.com" class="hover:text-brass transition-colors">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/michael-chandler-construction" class="hover:text-brass transition-colors">LinkedIn</a>
                     <a href="mailto:mike.rcccon@yahoo.com" class="hover:text-brass transition-colors">Email</a>
                     <span class="flex items-center gap-2">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -998,6 +1027,27 @@
     <footer class="py-6 text-center bg-carbon text-bone/40 font-mono text-xs border-t border-bone/10">
         &copy; 2026 Michael Chandler &mdash; MC Design Build. All Rights Reserved.
     </footer>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Michael Chandler",
+        "jobTitle": "Owner, MC Design Build",
+        "description": "Architectural design-build executive with $500M+ in delivered luxury residential, hospitality, and civil projects across 6 global regions.",
+        "url": "https://mcdesign.bio",
+        "sameAs": [
+            "https://www.linkedin.com/in/michael-chandler-construction"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "MC Design Build",
+            "url": "https://mcdesign.bio"
+        },
+        "knowsAbout": ["Design-Build", "Luxury Construction", "Project Management", "Caribbean Real Estate", "Residential Architecture"]
+    }
+    </script>
 
     <!-- GSAP Animations & Logic -->
     <script>
@@ -1055,6 +1105,7 @@
             }
         }
 
+        let blueprintRafId = null;
         function drawBlueprint() {
             blueCtx.clearRect(0, 0, blueCanvas.width, blueCanvas.height);
             blueCtx.strokeStyle = '#C9A961';
@@ -1064,7 +1115,7 @@
                 blueCtx.beginPath();
                 blueCtx.moveTo(line.x, line.y);
 
-                let currentLen = line.length * Math.sin(line.progress * Math.PI); // Fade in and out effect
+                let currentLen = line.length * Math.sin(line.progress * Math.PI);
 
                 if (line.vertical) {
                     blueCtx.lineTo(line.x, line.y + currentLen);
@@ -1080,7 +1131,7 @@
                     line.y = Math.random() * blueCanvas.height;
                 }
             });
-            requestAnimationFrame(drawBlueprint);
+            blueprintRafId = requestAnimationFrame(drawBlueprint);
         }
 
         initBlueprint();
@@ -1112,7 +1163,11 @@
                 yPercent: -100,
                 duration: 2,
                 ease: "power4.inOut",
-                delay: 0.5
+                delay: 0.5,
+                onComplete: () => {
+                    cancelAnimationFrame(blueprintRafId);
+                    blueCtx.clearRect(0, 0, blueCanvas.width, blueCanvas.height);
+                }
             })
             .to('.hero-name', {
                 opacity: 1,
@@ -1340,6 +1395,8 @@
 
         btn.addEventListener('click', () => {
             menuOpen = !menuOpen;
+            btn.setAttribute('aria-expanded', menuOpen);
+            btn.setAttribute('aria-label', menuOpen ? 'Close menu' : 'Open menu');
             if (menuOpen) {
                 btn.classList.add('active');
                 gsap.to(menu, { y: '0%', duration: 0.8, ease: "power4.inOut" });
@@ -1353,6 +1410,8 @@
         links.forEach(l => {
             l.addEventListener('click', () => {
                 menuOpen = false;
+                btn.setAttribute('aria-expanded', 'false');
+                btn.setAttribute('aria-label', 'Open menu');
                 btn.classList.remove('active');
                 gsap.to(menu, { y: '-100%', duration: 0.8, ease: "power4.inOut" });
             });

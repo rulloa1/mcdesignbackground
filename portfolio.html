@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — MC Design Build | Michael Chandler</title>
+
+    <meta name="description" content="Full portfolio of Michael Chandler — 20+ signature projects across luxury residential, hospitality, civil engineering, and design-build. $500M+ capital managed.">
+    <meta name="author" content="Michael Chandler, MC Design Build">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#0E0E0E">
+    <link rel="canonical" href="https://mcdesign.bio/portfolio.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mcdesign.bio/portfolio.html">
+    <meta property="og:title" content="Portfolio — MC Design Build">
+    <meta property="og:description" content="20+ signature projects across luxury residential, hospitality, civil engineering, and design-build. $500M+ capital managed.">
+    <meta property="og:image" content="https://mcdesign.bio/mcdesign-logo.webp">
+    <meta property="og:site_name" content="MC Design Build">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0E0E'/><text y='78' x='8' font-size='72' font-family='Georgia,serif' font-weight='700' fill='%23C9A961'>M</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        carbon: '#0E0E0E',
+                        brass:  '#C9A961',
+                        bone:   '#F4F1EB',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans:  ['"Inter"', 'sans-serif'],
+                        mono:  ['"JetBrains Mono"', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <style>
+        :root {
+            --carbon: #0E0E0E;
+            --brass: #C9A961;
+            --brass-dark: #8E733E;
+            --bone: #F4F1EB;
+        }
+
+        body {
+            background-color: var(--bone);
+            color: var(--carbon);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+        }
+
+        .project-img-container {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%) brightness(.95);
+            transition: transform 1.2s cubic-bezier(.2, .8, .2, 1), filter 1.2s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(201, 169, 97, 0);
+            transition: background-color 0.8s ease;
+            z-index: 10;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+            filter: grayscale(0%) brightness(1.02);
+        }
+
+        .project-card:hover .project-overlay {
+            background-color: rgba(201, 169, 97, 0.15);
+        }
+
+        .view-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            opacity: 0;
+            color: var(--bone);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 20;
+            white-space: nowrap;
+        }
+
+        .project-card:hover .view-label {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(14,14,14,0.85) 0%, transparent 100%);
+            z-index: 15;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 9999;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .desktop-nav { display: none; }
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 1px;
+            background-color: var(--brass);
+            position: absolute;
+            transition: all 0.4s ease;
+        }
+        .hamburger-line:nth-child(1) { top: 0; }
+        .hamburger-line:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        .hamburger-line:nth-child(3) { bottom: 0; }
+        .hamburger.active .hamburger-line:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
+        .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
+        .hamburger.active .hamburger-line:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+
+        #mobile-menu {
+            position: fixed;
+            inset: 0;
+            background-color: var(--carbon);
+            z-index: 9000;
+            transform: translateY(-100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header.scrolled nav {
+            background-color: rgba(14, 14, 14, 0.9);
+            backdrop-filter: blur(10px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--brass);
+            outline-offset: 2px;
+        }
+
+        .skip-nav {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--brass);
+            color: var(--carbon);
+            padding: 8px 16px;
+            z-index: 10000;
+            transition: top 0.3s;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+        .skip-nav:focus { top: 0; }
+
+        .filter-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.25rem;
+            border: 1px solid rgba(14,14,14,0.2);
+            background: transparent;
+            color: rgba(14,14,14,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--brass-dark);
+            color: var(--brass-dark);
+            background: transparent;
+        }
+        .filter-btn.active {
+            background: var(--carbon);
+            color: var(--bone);
+            border-color: var(--carbon);
+        }
+
+        .portfolio-item {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .portfolio-item.hidden {
+            display: none;
+        }
+
+        .gs-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-brass selection:text-carbon overflow-x-hidden">
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header id="site-header">
+        <nav aria-label="Main navigation"
+            class="fixed w-full top-0 z-50 px-6 py-8 mix-blend-difference text-bone flex justify-between items-center pointer-events-none">
+            <a href="index.html" class="font-serif text-xl tracking-widest uppercase pointer-events-auto">MC</a>
+
+            <div class="desktop-nav font-sans text-sm tracking-widest uppercase flex gap-8 pointer-events-auto">
+                <a href="index.html#about" class="hover:text-brass transition-colors duration-300">About</a>
+                <a href="index.html#works" class="hover:text-brass transition-colors duration-300">Selected Works</a>
+                <a href="index.html#philosophy" class="hover:text-brass transition-colors duration-300">Philosophy</a>
+                <a href="portfolio.html" class="text-brass transition-colors duration-300">Portfolio</a>
+                <a href="index.html#contact" class="hover:text-brass transition-colors duration-300">Contact</a>
+            </div>
+
+            <button class="hamburger pointer-events-auto" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+        <div class="flex flex-col items-center gap-8 font-serif text-3xl text-bone uppercase tracking-widest">
+            <a href="index.html#about" class="menu-link hover:text-brass transition-colors">About</a>
+            <a href="index.html#works" class="menu-link hover:text-brass transition-colors">Selected Works</a>
+            <a href="index.html#philosophy" class="menu-link hover:text-brass transition-colors">Philosophy</a>
+            <a href="portfolio.html" class="menu-link text-brass">Portfolio</a>
+            <a href="index.html#contact" class="menu-link hover:text-brass transition-colors">Contact</a>
+        </div>
+    </div>
+
+    <main id="main-content">
+
+        <!-- Page Hero -->
+        <section class="bg-carbon text-bone pt-40 pb-24 px-6 md:px-20 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 bg-cover bg-center"
+                style="background-image: url('projects/assets/southcoast-52.webp')"></div>
+            <div class="max-w-5xl relative z-10">
+                <p class="font-mono text-xs tracking-[0.3em] uppercase text-brass mb-6">MC Design Build</p>
+                <h1 class="font-serif text-5xl md:text-7xl leading-tight mb-8">Complete Portfolio</h1>
+                <p class="font-sans font-light text-bone/60 text-lg md:text-xl max-w-2xl leading-relaxed">
+                    20+ signature projects across luxury residential, civil infrastructure, hospitality, and design-build. Every project personally managed by Michael Chandler.
+                </p>
+                <div class="mt-10 flex flex-wrap gap-10">
+                    <div>
+                        <div class="font-serif text-3xl text-brass">20+</div>
+                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Projects</div>
+                    </div>
+                    <div>
+                        <div class="font-serif text-3xl text-brass">$500M+</div>
+                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Capital Managed</div>
+                    </div>
+                    <div>
+                        <div class="font-serif text-3xl text-brass">6</div>
+                        <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Global Regions</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Bar -->
+        <section class="sticky top-0 z-40 bg-bone/95 backdrop-blur-sm border-b border-carbon/10 py-4 px-6 md:px-20">
+            <div class="max-w-7xl mx-auto flex flex-wrap gap-2" role="group" aria-label="Filter projects by category">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="residential-construction">Residential</button>
+                <button class="filter-btn" data-filter="design-build">Design-Build</button>
+                <button class="filter-btn" data-filter="civil">Civil</button>
+                <button class="filter-btn" data-filter="hospitality">Hospitality</button>
+                <button class="filter-btn" data-filter="owners-representation">Owner's Rep</button>
+            </div>
+        </section>
+
+        <!-- Project Grid -->
+        <section class="py-16 px-6 md:px-12 max-w-[1600px] mx-auto">
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-32 px-6 md:px-20 bg-carbon text-bone text-center">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="font-serif text-4xl md:text-5xl mb-8">Ready to build something exceptional?</h2>
+                <a href="index.html#contact"
+                    class="inline-block border border-brass/50 px-10 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-brass hover:text-carbon transition-colors duration-500">
+                    Begin a Conversation
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-6 text-center bg-carbon text-bone/40 font-mono text-xs border-t border-bone/10">
+        &copy; 2026 Michael Chandler &mdash; MC Design Build. All Rights Reserved.
+    </footer>
+
+    <script src="projects-data.js"></script>
+    <script>
+        // Category label map
+        const catLabels = {
+            'residential-construction': 'Residential Construction',
+            'design-build':             'Design-Build',
+            'civil':                    'Civil',
+            'hospitality':              'Hospitality',
+            'owners-representation':    "Owner's Representation",
+        };
+
+        // Build grid
+        function buildGrid(projects) {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+
+            projects.forEach((p, i) => {
+                const item = document.createElement('div');
+                item.className = 'portfolio-item gs-reveal';
+                item.dataset.category = p.category;
+
+                item.innerHTML = `
+                    <a href="project-detail.html?id=${p.id}" class="project-card block h-[50vh] md:h-[55vh]">
+                        <div class="project-img-container h-full bg-carbon/10">
+                            <img src="${p.coverImage}" alt="${p.title}"
+                                class="project-img" loading="${i < 6 ? 'eager' : 'lazy'}">
+                            <div class="project-overlay"></div>
+                            <span class="view-label">View Album</span>
+                            <div class="card-info">
+                                <p class="font-mono text-xs tracking-widest uppercase text-brass mb-1">${catLabels[p.category] || p.category}</p>
+                                <h3 class="font-serif text-lg text-bone leading-tight">${p.title}</h3>
+                                <p class="font-sans text-xs text-bone/60 mt-1">${p.location}</p>
+                            </div>
+                        </div>
+                    </a>`;
+
+                grid.appendChild(item);
+            });
+        }
+
+        buildGrid(projectsData);
+
+        // Filter logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.portfolio-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Nav hamburger
+        const hamburger = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+            mobileMenu.style.transform = isOpen ? 'translateY(0)' : 'translateY(-100%)';
+        });
+
+        mobileMenu.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.setAttribute('aria-label', 'Open menu');
+                mobileMenu.style.transform = 'translateY(-100%)';
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+
+        // GSAP reveal (runs after defer)
+        window.addEventListener('load', () => {
+            if (typeof gsap === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.gs-reveal').forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: 'top 88%' },
+                    y: 0, opacity: 1, duration: 1.2, ease: 'power3.out'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
