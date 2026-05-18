@@ -85,10 +85,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
-    <!-- Swiper.js -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js" defer></script>
-
     <style>
         :root {
             --carbon: #0E0E0E;
@@ -322,7 +318,7 @@
 
         /* Featured Case Study */
         .pinned-section {
-            height: 100vh;
+            height: 100dvh;
             width: 100%;
             overflow: hidden;
             position: relative;
@@ -528,28 +524,6 @@
             top: 0;
         }
 
-        /* Testimonials Slider */
-        .testimonials-slider {
-            position: relative;
-        }
-
-        .swiper-slide {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: auto;
-            padding: 2rem;
-        }
-
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--brass);
-        }
-
-        .swiper-pagination-bullet-active {
-            background: var(--brass);
-        }
     </style>
 </head>
 
@@ -743,7 +717,7 @@
                 <!-- Project 1 (Large) — S. Florida High Rise Luxe Condo -->
                 <a href="project-detail.html?id=miami-beach"
                     class="project-card md:col-span-8 h-[60vh] md:h-[80vh] gs-reveal">
-                    <div class="project-img-container bg-gray-200">
+                    <div class="project-img-container" style="background-color: rgba(201,169,97,0.06);">
                         <img src="projects/assets/miami-beach-cover-enhanced.png" alt="S. Florida High Rise Luxe Condo"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
@@ -761,7 +735,7 @@
                 <!-- Project 2 (Medium) — High Alpine Mtn. Ranch -->
                 <a href="project-detail.html?id=alpine-ranch"
                     class="project-card md:col-span-4 h-[50vh] md:h-[60vh] md:mt-32 gs-reveal">
-                    <div class="project-img-container bg-gray-200">
+                    <div class="project-img-container" style="background-color: rgba(201,169,97,0.06);">
                         <img src="projects/assets/alpine-ranch-cover-enhanced.png" alt="High Alpine Mtn. Ranch Luxe Retreat"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
@@ -778,7 +752,7 @@
                 <!-- Project 3 (Medium) — South Coast Renovation -->
                 <a href="project-detail.html?id=southcoast"
                     class="project-card md:col-span-5 h-[50vh] md:h-[70vh] gs-reveal">
-                    <div class="project-img-container bg-gray-200">
+                    <div class="project-img-container" style="background-color: rgba(201,169,97,0.06);">
                         <img src="projects/assets/southcoast-cover-enhanced.png" alt="South Coast Renovation"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
@@ -796,7 +770,7 @@
                 <!-- Project 4 (Large) — Ultra Luxe Private Club Resort Pool -->
                 <a href="project-detail.html?id=hospitality-pool"
                     class="project-card md:col-span-7 h-[60vh] md:h-[90vh] md:-mt-20 gs-reveal">
-                    <div class="project-img-container bg-gray-200">
+                    <div class="project-img-container" style="background-color: rgba(201,169,97,0.06);">
                         <img src="projects/assets/hospitality-pool-cover.jpg" alt="Ultra Luxe Private Club Resort Pool"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
@@ -813,7 +787,7 @@
                 <!-- Project 5 — Bakers Bay Resort -->
                 <a href="project-detail.html?id=bakers-bay"
                     class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
-                    <div class="project-img-container bg-gray-200">
+                    <div class="project-img-container" style="background-color: rgba(201,169,97,0.06);">
                         <img src="projects/assets/bakers-bay-cover.png" alt="Bakers Bay Resort" class="project-img"
                             loading="lazy">
                         <div class="project-overlay"></div>
@@ -831,7 +805,7 @@
                 <!-- Project 6 — Syracuse House -->
                 <a href="project-detail.html?id=syracuse"
                     class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
-                    <div class="project-img-container bg-gray-200">
+                    <div class="project-img-container" style="background-color: rgba(201,169,97,0.06);">
                         <img src="projects/assets/syracuse-cover.webp" alt="Syracuse House" class="project-img"
                             loading="lazy">
                         <div class="project-overlay"></div>
@@ -1098,27 +1072,23 @@
 
         <!-- Testimonials -->
         <section class="py-32 px-6 md:px-20 bg-bone">
-            <div class="max-w-6xl mx-auto">
-                <div class="swiper testimonials-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"He brings an architectural sensitivity to raw construction management. Rare to find someone who protects the design intent while fiercely guarding the budget."</p>
-                            <div class="font-sans text-sm font-medium">— Principal Architect, SOM</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"The only executive I trust with a nine-figure development. The risk mitigation and foresight are unparalleled in the industry."</p>
-                            <div class="font-sans text-sm font-medium">— Managing Director, Real Estate Trust</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"An absolute force. Driven, precise, and possesses a commanding authority that makes complex, multi-stakeholder projects move seamlessly."</p>
-                            <div class="font-sans text-sm font-medium">— City Planning Commissioner</div>
-                        </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+            <div class="max-w-5xl mx-auto">
+                <div class="inline-flex items-center rounded-full px-3 py-1 mb-16 border border-carbon/12 bg-carbon/4 font-mono text-[0.6rem] tracking-[0.22em] uppercase text-carbon/60 gs-reveal">
+                    Client Perspectives
+                </div>
+                <div class="divide-y divide-carbon/10">
+                    <blockquote class="py-14 gs-reveal">
+                        <p class="font-serif italic text-2xl md:text-3xl leading-relaxed text-carbon mb-8">"He brings an architectural sensitivity to raw construction management. Rare to find someone who protects the design intent while fiercely guarding the budget."</p>
+                        <footer class="font-mono text-[0.65rem] tracking-[0.22em] uppercase text-carbon/50">— Principal Architect, SOM</footer>
+                    </blockquote>
+                    <blockquote class="py-14 gs-reveal">
+                        <p class="font-serif italic text-2xl md:text-3xl leading-relaxed text-carbon mb-8">"The only executive I trust with a nine-figure development. The risk mitigation and foresight are unparalleled in the industry."</p>
+                        <footer class="font-mono text-[0.65rem] tracking-[0.22em] uppercase text-carbon/50">— Managing Director, Real Estate Trust</footer>
+                    </blockquote>
+                    <blockquote class="py-14 gs-reveal">
+                        <p class="font-serif italic text-2xl md:text-3xl leading-relaxed text-carbon mb-8">"An absolute force. Driven, precise, and possesses a commanding authority that makes complex, multi-stakeholder projects move without friction."</p>
+                        <footer class="font-mono text-[0.65rem] tracking-[0.22em] uppercase text-carbon/50">— City Planning Commissioner</footer>
+                    </blockquote>
                 </div>
             </div>
         </section>
@@ -1628,28 +1598,6 @@
 
         slider.addEventListener('input', updateStats);
 
-        // 10. Testimonials Slider
-        const testimonialsSlider = new Swiper('.testimonials-slider', {
-            // Optional parameters
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pauseOnMouseEnter: true,
-
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
 
         // 9. Mobile Menu
         const btn = document.getElementById('hamburger-btn');
