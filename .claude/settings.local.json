@@ -28,5 +28,10 @@
       "Bash(openssl dgst *)",
       "Bash(openssl base64 *)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "claude-flow",
+    "ruv-swarm",
+    "flow-nexus"
+  ]
 }

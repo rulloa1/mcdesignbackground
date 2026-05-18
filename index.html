@@ -85,6 +85,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js" defer></script>
+
     <style>
         :root {
             --carbon: #0E0E0E;
@@ -100,6 +104,15 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+        }
+
+        /* Noise texture: fixed overlay so it never triggers scroll repaints */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
             background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
         }
 
@@ -294,7 +307,7 @@
             transform: translate(-50%, -40%);
             opacity: 0;
             color: var(--bone);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-size: 0.875rem;
@@ -420,6 +433,9 @@
             z-index: 9999;
             cursor: pointer;
             display: none;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         @media (max-width: 768px) {
@@ -511,6 +527,29 @@
         .skip-nav:focus {
             top: 0;
         }
+
+        /* Testimonials Slider */
+        .testimonials-slider {
+            position: relative;
+        }
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: auto;
+            padding: 2rem;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--brass);
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--brass);
+        }
     </style>
 </head>
 
@@ -547,21 +586,24 @@
                 <a href="#philosophy"
                     class="hover:text-brass hover:opacity-100 transition-all duration-500"
                     style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">Philosophy</a>
+                <a href="#process"
+                    class="hover:text-brass hover:opacity-100 transition-all duration-500"
+                    style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">Process</a>
                 <a href="#contact"
                     class="hover:text-brass hover:opacity-100 transition-all duration-500"
                     style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">Contact</a>
             </div>
 
-            <div class="hamburger" id="hamburger-btn">
+            <button type="button" class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
-            </div>
+            </button>
         </nav>
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu">
+    <div id="mobile-menu" aria-hidden="true">
         <div class="flex flex-col items-center gap-8 font-serif text-3xl text-bone uppercase tracking-widest">
             <a href="#about" class="menu-link hover:text-brass transition-colors">About</a>
             <a href="#works" class="menu-link hover:text-brass transition-colors">Selected Works</a>
@@ -574,8 +616,9 @@
     <main id="main-content">
         <!-- Hero Section -->
         <section
-            class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 bg-carbon overflow-hidden z-10 pt-20"
+            class="relative min-h-[100dvh] flex flex-col justify-center px-6 md:px-20 bg-carbon overflow-hidden z-10 pt-20"
             id="hero">
+            <video autoplay loop muted playsinline poster="mike-profile-photo.webp" class="absolute w-full h-full object-cover"> <source src="production.mp4" type="video/mp4"> </video>
             <canvas id="dust-canvas"></canvas>
 
             <div class="max-w-5xl relative z-20">
@@ -603,7 +646,7 @@
         <!-- Brand Strip Marquee -->
         <section class="marquee-container">
             <div class="marquee-content">
-                <span class="marquee-item">20 Signature Projects</span>
+                <span class="marquee-item">21 Signature Projects</span>
                 <span class="marquee-item">•</span>
                 <span class="marquee-item">$500M+ Capital Managed</span>
                 <span class="marquee-item">•</span>
@@ -618,7 +661,7 @@
                 <span class="marquee-item">Luxury Residential Construction</span>
                 <span class="marquee-item">•</span>
                 <!-- Duplicate for infinite loop -->
-                <span class="marquee-item">20 Signature Projects</span>
+                <span class="marquee-item">21 Signature Projects</span>
                 <span class="marquee-item">•</span>
                 <span class="marquee-item">$500M+ Capital Managed</span>
                 <span class="marquee-item">•</span>
@@ -668,7 +711,7 @@
                     </div>
                     <div class="mt-10 flex flex-wrap gap-8">
                         <div>
-                            <div class="font-serif text-3xl text-brass">20+</div>
+                            <div class="font-serif text-3xl text-brass">21+</div>
                             <div class="font-mono text-xs tracking-widest uppercase text-bone/40 mt-1">Signature
                                 Projects</div>
                         </div>
@@ -809,7 +852,7 @@
                 <a href="portfolio.html"
                     class="group inline-flex items-center gap-5 border border-carbon/25 pl-9 pr-3 py-3 font-sans text-xs tracking-[0.22em] uppercase hover:bg-carbon hover:text-bone transition-all duration-700"
                     style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
-                    <span>View All 20 Projects</span>
+                    <span>View All 21 Projects</span>
                     <span class="w-10 h-10 rounded-full border border-carbon/20 group-hover:border-bone/20 flex items-center justify-center transition-all duration-700 group-hover:bg-bone/10"
                         style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -1056,25 +1099,26 @@
         <!-- Testimonials -->
         <section class="py-32 px-6 md:px-20 bg-bone">
             <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="gs-reveal">
-                        <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"He brings an architectural
-                            sensitivity to raw construction management. Rare to find someone who protects the design
-                            intent while fiercely guarding the budget."</p>
-                        <div class="font-sans text-sm font-medium">— Principal Architect, SOM</div>
+                <div class="swiper testimonials-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"He brings an architectural sensitivity to raw construction management. Rare to find someone who protects the design intent while fiercely guarding the budget."</p>
+                            <div class="font-sans text-sm font-medium">— Principal Architect, SOM</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"The only executive I trust with a nine-figure development. The risk mitigation and foresight are unparalleled in the industry."</p>
+                            <div class="font-sans text-sm font-medium">— Managing Director, Real Estate Trust</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"An absolute force. Driven, precise, and possesses a commanding authority that makes complex, multi-stakeholder projects move seamlessly."</p>
+                            <div class="font-sans text-sm font-medium">— City Planning Commissioner</div>
+                        </div>
                     </div>
-                    <div class="gs-reveal mt-0 md:mt-12">
-                        <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"The only executive I trust with
-                            a nine-figure development. The risk mitigation and foresight are unparalleled in the
-                            industry."</p>
-                        <div class="font-sans text-sm font-medium">— Managing Director, Real Estate Trust</div>
-                    </div>
-                    <div class="gs-reveal mt-0 md:mt-24">
-                        <p class="font-serif text-xl md:text-2xl leading-relaxed mb-6">"An absolute force. Driven,
-                            precise, and possesses a commanding authority that makes complex, multi-stakeholder projects
-                            move seamlessly."</p>
-                        <div class="font-sans text-sm font-medium">— City Planning Commissioner</div>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -1164,6 +1208,7 @@
         const blueCanvas = document.getElementById('blueprint-canvas');
         const blueCtx = blueCanvas.getContext('2d');
         let lines = [];
+        let blueprintRafId;
 
         function initBlueprint() {
             blueCanvas.width = window.innerWidth;
@@ -1206,7 +1251,7 @@
                     line.y = Math.random() * blueCanvas.height;
                 }
             });
-            requestAnimationFrame(drawBlueprint);
+            blueprintRafId = requestAnimationFrame(drawBlueprint);
         }
 
         initBlueprint();
@@ -1238,7 +1283,8 @@
                 yPercent: -100,
                 duration: 1.8,
                 ease: "expo.inOut",
-                delay: 0.6
+                delay: 0.6,
+                onComplete: () => cancelAnimationFrame(blueprintRafId)
             })
             .to('.hero-name', {
                 opacity: 1,
@@ -1284,12 +1330,14 @@
             } else {
                 header.classList.remove('scrolled');
             }
-        });
+        }, { passive: true });
 
-        // 3. Dust Particles Canvas (Hero)
+        // 3. Dust Particles Canvas (Hero) — rAF is paused when hero leaves viewport
         const dustCanvas = document.getElementById('dust-canvas');
         const dustCtx = dustCanvas.getContext('2d');
         let particles = [];
+        let dustRafId = null;
+        let dustRunning = false;
 
         function initDust() {
             dustCanvas.width = window.innerWidth;
@@ -1308,6 +1356,7 @@
         }
 
         function drawDust() {
+            if (!dustRunning) return;
             dustCtx.clearRect(0, 0, dustCanvas.width, dustCanvas.height);
             particles.forEach(p => {
                 dustCtx.fillStyle = `rgba(244, 241, 235, ${p.opacity})`;
@@ -1323,10 +1372,41 @@
                     p.x = Math.random() * dustCanvas.width;
                 }
             });
-            requestAnimationFrame(drawDust);
+            dustRafId = requestAnimationFrame(drawDust);
         }
+
+        function startDust() {
+            if (dustRunning) return;
+            dustRunning = true;
+            dustRafId = requestAnimationFrame(drawDust);
+        }
+
+        function stopDust() {
+            dustRunning = false;
+            if (dustRafId) {
+                cancelAnimationFrame(dustRafId);
+                dustRafId = null;
+            }
+        }
+
+        // Use IntersectionObserver to pause dust canvas when hero is not visible
+        const heroObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startDust();
+                    } else {
+                        stopDust();
+                    }
+                });
+            },
+            { threshold: 0 }
+        );
+        heroObserver.observe(document.getElementById('hero'));
+
         initDust();
-        drawDust();
+        startDust();
+        window.addEventListener('resize', initDust);
 
         // 4. Scroll Animations (General Reveals) — premium spring-like easing
         gsap.utils.toArray('.gs-reveal').forEach(elem => {
@@ -1389,19 +1469,22 @@
             .to('.cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
             .to('#case-title', { y: -100, opacity: 0, duration: 1 }, "<") // Move title out of way
 
-            // Counter Animation
-            .to('#sqft-counter', {
-                innerHTML: 189000,
+            // Counter Animation — textContent used instead of innerHTML for XSS safety
+            .to({ val: 0 }, {
+                val: 189000,
                 duration: 1,
-                snap: { innerHTML: 1 },
+                snap: { val: 1 },
                 onUpdate: function () {
-                    document.getElementById('sqft-counter').innerHTML = Number(this.targets()[0].innerHTML).toLocaleString();
+                    document.getElementById('sqft-counter').textContent = Number(Math.round(this.targets()[0].val)).toLocaleString();
                 }
             }, "<")
-            .to('#budget-counter', {
-                innerHTML: 8,
+            .to({ val: 0 }, {
+                val: 8,
                 duration: 1,
-                snap: { innerHTML: 1 }
+                snap: { val: 1 },
+                onUpdate: function () {
+                    document.getElementById('budget-counter').textContent = Math.round(this.targets()[0].val);
+                }
             }, "<");
 
         // 5b. Alpine Ranch Pinned Sequence
@@ -1429,15 +1512,22 @@
             .to('.case2-cap-2', { opacity: 0, y: -20, duration: 0.5 }, "<")
             .to('.case2-cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
             .to('#case2-title', { y: -100, opacity: 0, duration: 1 }, "<")
-            .to('#ranch-sqft-counter', {
-                innerHTML: 2300,
+            .to({ val: 0 }, {
+                val: 2300,
                 duration: 1,
-                snap: { innerHTML: 1 },
+                snap: { val: 1 },
                 onUpdate: function () {
-                    document.getElementById('ranch-sqft-counter').innerHTML = Number(this.targets()[0].innerHTML).toLocaleString();
+                    document.getElementById('ranch-sqft-counter').textContent = Number(Math.round(this.targets()[0].val)).toLocaleString();
                 }
             }, "<")
-            .to('#ranch-months-counter', { innerHTML: 24, duration: 1, snap: { innerHTML: 1 } }, "<");
+            .to({ val: 0 }, {
+                val: 24,
+                duration: 1,
+                snap: { val: 1 },
+                onUpdate: function () {
+                    document.getElementById('ranch-months-counter').textContent = Math.round(this.targets()[0].val);
+                }
+            }, "<");
 
         // 5c. Miami Beach Pinned Sequence
         const pinTl3 = gsap.timeline({
@@ -1464,15 +1554,22 @@
             .to('.case3-cap-2', { opacity: 0, y: -20, duration: 0.5 }, "<")
             .to('.case3-cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
             .to('#case3-title', { y: -100, opacity: 0, duration: 1 }, "<")
-            .to('#miami-sqft-counter', {
-                innerHTML: 4200,
+            .to({ val: 0 }, {
+                val: 4200,
                 duration: 1,
-                snap: { innerHTML: 1 },
+                snap: { val: 1 },
                 onUpdate: function () {
-                    document.getElementById('miami-sqft-counter').innerHTML = Number(this.targets()[0].innerHTML).toLocaleString();
+                    document.getElementById('miami-sqft-counter').textContent = Number(Math.round(this.targets()[0].val)).toLocaleString();
                 }
             }, "<")
-            .to('#miami-months-counter', { innerHTML: 4, duration: 1, snap: { innerHTML: 1 } }, "<");
+            .to({ val: 0 }, {
+                val: 4,
+                duration: 1,
+                snap: { val: 1 },
+                onUpdate: function () {
+                    document.getElementById('miami-months-counter').textContent = Math.round(this.targets()[0].val);
+                }
+            }, "<");
 
         // 6. Signature Draw
         gsap.from('#signature-path', {
@@ -1516,7 +1613,7 @@
         const pCap = document.getElementById('calc-capital');
 
         function updateStats() {
-            const val = parseInt(slider.value);
+            const val = parseInt(slider.value, 10);
             valDisplay.innerText = val;
 
             // Artificial logic for authority building
@@ -1531,6 +1628,29 @@
 
         slider.addEventListener('input', updateStats);
 
+        // 10. Testimonials Slider
+        const testimonialsSlider = new Swiper('.testimonials-slider', {
+            // Optional parameters
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pauseOnMouseEnter: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
         // 9. Mobile Menu
         const btn = document.getElementById('hamburger-btn');
         const menu = document.getElementById('mobile-menu');
@@ -1539,6 +1659,9 @@
 
         btn.addEventListener('click', () => {
             menuOpen = !menuOpen;
+            btn.setAttribute('aria-expanded', String(menuOpen));
+            btn.setAttribute('aria-label', menuOpen ? 'Close navigation menu' : 'Open navigation menu');
+            menu.setAttribute('aria-hidden', String(!menuOpen));
             if (menuOpen) {
                 btn.classList.add('active');
                 gsap.to(menu, { y: '0%', duration: 0.8, ease: "power4.inOut" });
@@ -1552,6 +1675,9 @@
         links.forEach(l => {
             l.addEventListener('click', () => {
                 menuOpen = false;
+                btn.setAttribute('aria-expanded', 'false');
+                btn.setAttribute('aria-label', 'Open navigation menu');
+                menu.setAttribute('aria-hidden', 'true');
                 btn.classList.remove('active');
                 gsap.to(menu, { y: '-100%', duration: 0.8, ease: "power4.inOut" });
             });

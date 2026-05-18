@@ -1,0 +1,355 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - heading "M I C H A E L C H A N D L E R" [level=1] [ref=e5]:
+      - generic [ref=e6]: M
+      - generic [ref=e7]: I
+      - generic [ref=e8]: C
+      - generic [ref=e9]: H
+      - generic [ref=e10]: A
+      - generic [ref=e11]: E
+      - generic [ref=e12]: L
+      - generic [ref=e14]: C
+      - generic [ref=e15]: H
+      - generic [ref=e16]: A
+      - generic [ref=e17]: "N"
+      - generic [ref=e18]: D
+      - generic [ref=e19]: L
+      - generic [ref=e20]: E
+      - generic [ref=e21]: R
+    - paragraph [ref=e22]: Owner — MC Design Build
+  - banner:
+    - navigation [ref=e23]:
+      - generic [ref=e24]: MC
+      - generic [ref=e25]:
+        - link "About" [ref=e26] [cursor=pointer]:
+          - /url: "#about"
+        - link "Selected Works" [ref=e27] [cursor=pointer]:
+          - /url: "#works"
+        - link "Philosophy" [ref=e28] [cursor=pointer]:
+          - /url: "#philosophy"
+        - link "Process" [ref=e29] [cursor=pointer]:
+          - /url: "#process"
+        - link "Contact" [ref=e30] [cursor=pointer]:
+          - /url: "#contact"
+  - generic [ref=e32]:
+    - link "About" [ref=e33] [cursor=pointer]:
+      - /url: "#about"
+    - link "Selected Works" [ref=e34] [cursor=pointer]:
+      - /url: "#works"
+    - link "Philosophy" [ref=e35] [cursor=pointer]:
+      - /url: "#philosophy"
+    - link "Process" [ref=e36] [cursor=pointer]:
+      - /url: "#process"
+    - link "Contact" [ref=e37] [cursor=pointer]:
+      - /url: "#contact"
+  - main [ref=e38]:
+    - generic [ref=e39]:
+      - generic [ref=e41]:
+        - heading "Michael Chandler" [level=1] [ref=e42]
+        - heading "Building What Others Can't." [level=2] [ref=e43]:
+          - generic [ref=e45]: Building
+          - generic [ref=e47]: What
+          - generic [ref=e49]: Others
+          - generic [ref=e51]: Can't.
+        - paragraph [ref=e52]:
+          - generic [ref=e54]: Construction
+          - generic [ref=e56]: leadership
+          - generic [ref=e58]: across
+          - generic [ref=e60]: 20+
+          - generic [ref=e62]: years
+          - generic [ref=e64]: and
+          - generic [ref=e66]: $500M+
+          - generic [ref=e68]: in
+          - generic [ref=e70]: delivered
+          - generic [ref=e72]: architectural
+          - generic [ref=e74]: landmarks.
+      - generic [ref=e76]: Scroll
+    - generic [ref=e79]:
+      - generic [ref=e80]: 21 Signature Projects
+      - generic [ref=e81]: •
+      - generic [ref=e82]: $500M+ Capital Managed
+      - generic [ref=e83]: •
+      - generic [ref=e84]: 20+ Years Executive Leadership
+      - generic [ref=e85]: •
+      - generic [ref=e86]: Discovery Land Company Rep
+      - generic [ref=e87]: •
+      - generic [ref=e88]: Owner's Representation
+      - generic [ref=e89]: •
+      - generic [ref=e90]: Civil Engineering Excellence
+      - generic [ref=e91]: •
+      - generic [ref=e92]: Luxury Residential Construction
+      - generic [ref=e93]: •
+      - generic [ref=e94]: 21 Signature Projects
+      - generic [ref=e95]: •
+      - generic [ref=e96]: $500M+ Capital Managed
+      - generic [ref=e97]: •
+      - generic [ref=e98]: 20+ Years Executive Leadership
+      - generic [ref=e99]: •
+      - generic [ref=e100]: Discovery Land Company Rep
+      - generic [ref=e101]: •
+      - generic [ref=e102]: Owner's Representation
+      - generic [ref=e103]: •
+      - generic [ref=e104]: Civil Engineering Excellence
+      - generic [ref=e105]: •
+      - generic [ref=e106]: Luxury Residential Construction
+      - generic [ref=e107]: •
+    - generic [ref=e109]:
+      - img "Michael Chandler — Owner, MC Design Build" [ref=e113]
+      - generic [ref=e114]:
+        - generic [ref=e115]: About the Owner
+        - heading "Michael Chandler" [level=2] [ref=e116]:
+          - generic [ref=e118]: Michael
+          - generic [ref=e120]: Chandler
+        - generic [ref=e121]:
+          - paragraph [ref=e122]: With over 20 years of executive construction leadership, Michael Chandler has managed and delivered more than $500 million in ultra-luxury residential, hospitality, and civil projects across six global regions — from California's coastline to the Caribbean.
+          - paragraph [ref=e123]: As Owner of MC Design Build, Michael brings a rare combination of architectural sensitivity and rigorous project management to every engagement. His portfolio spans Discovery Land Company developments, private island estates, alpine retreats, and complex coastal restorations.
+          - paragraph [ref=e124]: Known for his old-world craftsmanship standards and modern execution methodology, Michael personally curates every trade partner, material selection, and milestone — ensuring on-time, on-budget delivery without compromising design intent.
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]: 21+
+            - generic [ref=e128]: Signature Projects
+          - generic [ref=e129]:
+            - generic [ref=e130]: $500M+
+            - generic [ref=e131]: Capital Managed
+          - generic [ref=e132]:
+            - generic [ref=e133]: "6"
+            - generic [ref=e134]: Global Regions
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - generic [ref=e137]: Selected Works
+        - heading "A Legacy of Scale." [level=2] [ref=e138]:
+          - generic [ref=e140]: A
+          - generic [ref=e142]: Legacy
+          - generic [ref=e144]: of
+          - generic [ref=e146]: Scale.
+      - generic [ref=e147]:
+        - link "S. Florida High Rise Luxe Condo View Album S. Florida High Rise Luxe Condo Design-Build & Project Management • Miami Beach, FL" [ref=e148] [cursor=pointer]:
+          - /url: project-detail.html?id=miami-beach
+          - generic [ref=e149]:
+            - img "S. Florida High Rise Luxe Condo" [ref=e150]
+            - generic [ref=e152]: View Album
+          - generic [ref=e154]:
+            - heading "S. Florida High Rise Luxe Condo" [level=4] [ref=e155]
+            - paragraph [ref=e156]: Design-Build & Project Management • Miami Beach, FL
+        - link "High Alpine Mtn. Ranch Luxe Retreat View Album High Alpine Mtn. Ranch Design-Build Lead • Montana" [ref=e157] [cursor=pointer]:
+          - /url: project-detail.html?id=alpine-ranch
+          - generic [ref=e158]:
+            - img "High Alpine Mtn. Ranch Luxe Retreat" [ref=e159]
+            - generic [ref=e161]: View Album
+          - generic [ref=e163]:
+            - heading "High Alpine Mtn. Ranch" [level=4] [ref=e164]
+            - paragraph [ref=e165]: Design-Build Lead • Montana
+        - link "South Coast Renovation View Album South Coast Renovation Complete Coastal Remodel • Big Sur, CA" [ref=e166] [cursor=pointer]:
+          - /url: project-detail.html?id=southcoast
+          - generic [ref=e167]:
+            - img "South Coast Renovation" [ref=e168]
+            - generic [ref=e170]: View Album
+          - generic [ref=e172]:
+            - heading "South Coast Renovation" [level=4] [ref=e173]
+            - paragraph [ref=e174]: Complete Coastal Remodel • Big Sur, CA
+        - link "Ultra Luxe Private Club Resort Pool View Album Ultra Luxe Private Club Resort Pool Construction Manager • SE Texas" [ref=e175] [cursor=pointer]:
+          - /url: project-detail.html?id=hospitality-pool
+          - generic [ref=e176]:
+            - img "Ultra Luxe Private Club Resort Pool" [ref=e177]
+            - generic [ref=e179]: View Album
+          - generic [ref=e181]:
+            - heading "Ultra Luxe Private Club Resort Pool" [level=4] [ref=e182]
+            - paragraph [ref=e183]: Construction Manager • SE Texas
+        - link "Bakers Bay Resort View Album Bakers Bay Resort Discovery Land Company Rep • Bahamas" [ref=e184] [cursor=pointer]:
+          - /url: project-detail.html?id=bakers-bay
+          - generic [ref=e185]:
+            - img "Bakers Bay Resort" [ref=e186]
+            - generic [ref=e188]: View Album
+          - generic [ref=e190]:
+            - heading "Bakers Bay Resort" [level=4] [ref=e191]
+            - paragraph [ref=e192]: Discovery Land Company Rep • Bahamas
+        - link "Syracuse House View Album Syracuse House Design-Build • Syracuse, UT" [ref=e193] [cursor=pointer]:
+          - /url: project-detail.html?id=syracuse
+          - generic [ref=e194]:
+            - img "Syracuse House" [ref=e195]
+            - generic [ref=e197]: View Album
+          - generic [ref=e199]:
+            - heading "Syracuse House" [level=4] [ref=e200]
+            - paragraph [ref=e201]: Design-Build • Syracuse, UT
+      - link "View All 21 Projects" [ref=e203] [cursor=pointer]:
+        - /url: portfolio.html
+        - generic [ref=e204]: View All 21 Projects
+        - img [ref=e206]
+    - generic [ref=e209]:
+      - img "Ultra Luxe Pool — Daylight Overview" [ref=e210]
+      - img "Ultra Luxe Pool — Resort Detail" [ref=e211]
+      - img "Ultra Luxe Pool — Finished Detail" [ref=e212]
+      - generic:
+        - heading "Signature Project — SE Texas" [level=3]
+        - heading "Ultra Luxe Private Club Resort Pool" [level=2]
+      - generic:
+        - generic [ref=e214]:
+          - paragraph [ref=e215]: 01 / The Vision
+          - paragraph [ref=e216]: Delivering a world-class aquatic resort experience for one of Texas's most exclusive private clubs — engineered from the ground up.
+        - generic [ref=e217]:
+          - paragraph [ref=e218]: 02 / The Execution
+          - paragraph [ref=e219]: 18 months of precision civil engineering, coordinating specialty aquatic, structural, and landscape contractors across a complex site.
+        - generic [ref=e220]:
+          - paragraph [ref=e221]: 03 / The Result
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - generic [ref=e224]: "0"
+              - generic [ref=e225]: Gallons Capacity
+            - generic [ref=e226]:
+              - generic [ref=e227]: "0"
+              - generic [ref=e228]: Million Budget
+    - generic [ref=e230]:
+      - img "Alpine Ranch — Mountain Vista" [ref=e231]
+      - img "Alpine Ranch — Craftsmanship Detail" [ref=e232]
+      - img "Alpine Ranch — Finished Retreat" [ref=e233]
+      - generic:
+        - heading "Signature Project — Montana" [level=3]
+        - heading "High Alpine Ranch Luxe Retreat" [level=2]
+      - generic:
+        - generic [ref=e235]:
+          - paragraph [ref=e236]: 01 / The Vision
+          - paragraph [ref=e237]: A secluded Montana mountain ranch engineered for ultimate luxury — where custom bronze windows from Italy meet panoramic alpine vistas.
+        - generic [ref=e238]:
+          - paragraph [ref=e239]: 02 / The Execution
+          - paragraph [ref=e240]: 24 months of high-alpine craftsmanship — exposed timber, custom stone masonry, and radiant systems in one of Montana's most remote settings.
+        - generic [ref=e241]:
+          - paragraph [ref=e242]: 03 / The Result
+          - generic [ref=e243]:
+            - generic [ref=e244]:
+              - generic [ref=e245]: "0"
+              - generic [ref=e246]: Sq Ft
+            - generic [ref=e247]:
+              - generic [ref=e248]: "0"
+              - generic [ref=e249]: Months Build
+    - generic [ref=e251]:
+      - img "Miami Beach — Beachfront Panorama" [ref=e252]
+      - img "Miami Beach — Interior Execution" [ref=e253]
+      - img "Miami Beach — Finished Sanctuary" [ref=e254]
+      - generic:
+        - heading "Signature Project — S. Florida" [level=3]
+        - heading "S. Florida High Rise Luxe Condo" [level=2]
+      - generic:
+        - generic [ref=e256]:
+          - paragraph [ref=e257]: 01 / The Vision
+          - paragraph [ref=e258]: Transforming 4,200 sq ft of raw South Florida high-rise into a beachfront sanctuary — delivered on schedule during the height of the pandemic.
+        - generic [ref=e259]:
+          - paragraph [ref=e260]: 02 / The Execution
+          - paragraph [ref=e261]: Italian marble, hotel-grade bespoke millwork, and integrated smart home systems — zero delays, zero excuses.
+        - generic [ref=e262]:
+          - paragraph [ref=e263]: 03 / The Result
+          - generic [ref=e264]:
+            - generic [ref=e265]:
+              - generic [ref=e266]: "0"
+              - generic [ref=e267]: Sq Ft
+            - generic [ref=e268]:
+              - generic [ref=e269]: "0"
+              - generic [ref=e270]: Months Delivered
+    - generic [ref=e272]:
+      - paragraph [ref=e273]:
+        - generic [ref=e275]: "\"Great"
+        - generic [ref=e277]: architecture
+        - generic [ref=e279]: is
+        - generic [ref=e281]: not
+        - generic [ref=e283]: just
+        - generic [ref=e285]: built;
+        - generic [ref=e287]: it
+        - generic [ref=e289]: is
+        - generic [ref=e291]: rigorously
+        - generic [ref=e293]: orchestrated.
+        - generic [ref=e295]: We
+        - generic [ref=e297]: don't
+        - generic [ref=e299]: construct
+        - generic [ref=e301]: buildings;
+        - generic [ref=e303]: we
+        - generic [ref=e305]: construct
+        - generic [ref=e307]: the
+        - generic [ref=e309]: reality
+        - generic [ref=e311]: of
+        - generic [ref=e313]: a
+        - generic [ref=e315]: vision."
+      - generic [ref=e316]:
+        - img [ref=e317]
+        - paragraph [ref=e319]: Michael Chandler
+    - generic [ref=e321]:
+      - generic [ref=e322]: Methodology
+      - heading "The Architecture of Execution." [level=2] [ref=e323]
+      - generic [ref=e326]:
+        - generic [ref=e327]:
+          - generic [ref=e328]: "01"
+          - heading "Strategize" [level=4] [ref=e329]
+          - paragraph [ref=e330]: Aligning capital vision with structural reality before a single dollar is deployed.
+        - generic [ref=e331]:
+          - generic [ref=e332]: "02"
+          - heading "Assemble" [level=4] [ref=e333]
+          - paragraph [ref=e334]: Curating tier-one architectural, engineering, and contracting talent specific to the asset.
+        - generic [ref=e335]:
+          - generic [ref=e336]: "03"
+          - heading "Orchestrate" [level=4] [ref=e337]
+          - paragraph [ref=e338]: Rigorous milestone management, value engineering, and risk mitigation.
+        - generic [ref=e339]:
+          - generic [ref=e340]: "04"
+          - heading "Deliver" [level=4] [ref=e341]
+          - paragraph [ref=e342]: Handover of a market-defining asset, on budget, to precise specifications.
+    - generic [ref=e344]:
+      - generic [ref=e345]:
+        - heading "Quantifiable Impact." [level=2] [ref=e346]:
+          - generic [ref=e348]: Quantifiable
+          - generic [ref=e350]: Impact.
+        - paragraph [ref=e351]: Use the slider to see the compounding value of experienced leadership.
+        - generic [ref=e352]:
+          - generic [ref=e353]:
+            - generic [ref=e354]: Years in Industry
+            - generic [ref=e355]: "20"
+          - slider [ref=e356] [cursor=pointer]: "20"
+      - generic [ref=e358]:
+        - generic [ref=e359]:
+          - generic [ref=e360]: Projects Led
+          - generic [ref=e361]: "45"
+        - generic [ref=e363]:
+          - generic [ref=e364]: Sq Ft Delivered
+          - generic [ref=e365]: 2.5M
+        - generic [ref=e367]:
+          - generic [ref=e368]: Capital Managed
+          - generic [ref=e369]: $850M
+    - generic [ref=e372]:
+      - generic [ref=e373]:
+        - group "1 / 3" [ref=e374]:
+          - paragraph [ref=e375]: "\"He brings an architectural sensitivity to raw construction management. Rare to find someone who protects the design intent while fiercely guarding the budget.\""
+          - generic [ref=e376]: — Principal Architect, SOM
+        - group "2 / 3" [ref=e377]:
+          - paragraph [ref=e378]: "\"The only executive I trust with a nine-figure development. The risk mitigation and foresight are unparalleled in the industry.\""
+          - generic [ref=e379]: — Managing Director, Real Estate Trust
+        - group "3 / 3" [ref=e380]:
+          - paragraph [ref=e381]: "\"An absolute force. Driven, precise, and possesses a commanding authority that makes complex, multi-stakeholder projects move seamlessly.\""
+          - generic [ref=e382]: — City Planning Commissioner
+      - generic [ref=e383]:
+        - button "Go to slide 1" [ref=e384] [cursor=pointer]
+        - button "Go to slide 2" [ref=e385] [cursor=pointer]
+        - button "Go to slide 3" [ref=e386] [cursor=pointer]
+      - button "Next slide" [ref=e387] [cursor=pointer]: next
+      - button "Previous slide" [ref=e388] [cursor=pointer]: prev
+    - generic [ref=e390]:
+      - heading "For project inquiries, speaking engagements, and board consultations." [level=2] [ref=e391]:
+        - generic [ref=e393]: For
+        - generic [ref=e395]: project
+        - generic [ref=e397]: inquiries,
+        - generic [ref=e399]: speaking
+        - generic [ref=e401]: engagements,
+        - generic [ref=e403]: and
+        - generic [ref=e405]: board
+        - generic [ref=e407]: consultations.
+      - link "Begin a Conversation" [ref=e408] [cursor=pointer]:
+        - /url: mailto:mike.rcccon@yahoo.com
+        - generic [ref=e409]: Begin a Conversation
+        - img [ref=e411]
+      - generic [ref=e413]:
+        - link "LinkedIn" [ref=e414] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/michael-chandler-mc-design-build
+        - link "Email" [ref=e415] [cursor=pointer]:
+          - /url: mailto:mike.rcccon@yahoo.com
+        - generic [ref=e416]:
+          - img [ref=e417]
+          - text: Spring, Texas
+  - contentinfo [ref=e420]: © 2026 Michael Chandler — MC Design Build. All Rights Reserved.
