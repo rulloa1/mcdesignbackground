@@ -26,7 +26,9 @@
       "Bash(ls public/flava-depot/frames/ezgif-frame-*.jpg)",
       "mcp__claude_ai_Cloudflare_Developer_Platform__search_cloudflare_documentation",
       "Bash(openssl dgst *)",
-      "Bash(openssl base64 *)"
+      "Bash(openssl base64 *)",
+      "Bash(python -m http.server 8000)",
+      "Bash(python3)"
     ]
   },
   "enabledMcpjsonServers": [
