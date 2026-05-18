@@ -5,11 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Chandler — MC Design Build</title>
+    <meta name="description" content="Michael Chandler is a strategic construction executive with 20+ years and $500M+ in delivered ultra-luxury residential, hospitality, and civil projects across six global regions.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#0E0E0E">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Michael Chandler — MC Design Build">
+    <meta property="og:description" content="Strategic construction executive. 20+ years. $500M+ delivered. Luxury residential, hospitality, and civil projects across six global regions.">
+    <meta property="og:url" content="https://mcdesign.bio">
+    <meta property="og:site_name" content="MC Design Build">
+    <meta property="og:image" content="https://mcdesign.bio/mike-profile-photo.webp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="1067">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Michael Chandler — MC Design Build">
+    <meta name="twitter:description" content="Strategic construction executive. 20+ years. $500M+ delivered.">
+    <meta name="twitter:image" content="https://mcdesign.bio/mike-profile-photo.webp">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://mcdesign.bio">
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Michael Chandler",
+      "jobTitle": "Owner, Strategic Construction Executive",
+      "url": "https://mcdesign.bio",
+      "email": "mike.rcccon@yahoo.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Spring", "addressRegion": "TX" },
+      "knowsAbout": [
+        "Ultra-luxury residential construction",
+        "Design-build project management",
+        "Civil engineering",
+        "Owner's representation",
+        "Hospitality construction",
+        "Discovery Land Company developments"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Construction Executive",
+        "occupationLocation": { "@type": "Country", "name": "United States" }
+      }
+    }
+    </script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap"
         rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,7 +71,7 @@
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Inter"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     transitionTimingFunction: {
@@ -35,8 +82,8 @@
         }
     </script>
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
     <style>
         :root {
@@ -154,6 +201,13 @@
             background: linear-gradient(to bottom, var(--brass) 50%, transparent 50%);
             background-size: 100% 200%;
             background-position: 100% 100%;
+            animation: scrollPulse 2s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%   { background-position: 100% 100%; }
+            50%  { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
         /* Marquee */
@@ -220,7 +274,7 @@
             position: absolute;
             inset: 0;
             background-color: rgba(201, 169, 97, 0);
-            transition: background-color 0.8s ease;
+            transition: background-color 0.8s cubic-bezier(0.32, 0.72, 0, 1);
             z-index: 10;
         }
 
@@ -411,13 +465,10 @@
             transform: translateY(-9.5px) rotate(-45deg);
         }
 
-        /* Header Scroll Effect */
-        header.scrolled nav {
-            background-color: rgba(14, 14, 14, 0.9);
-            backdrop-filter: blur(10px);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            mix-blend-difference: normal;
+        /* Header Scroll Effect — floating pill darkens slightly */
+        header.scrolled #main-nav {
+            background-color: rgba(14, 14, 14, 0.92);
+            backdrop-filter: blur(24px);
         }
 
         /* Focus-visible styles */
@@ -479,24 +530,34 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <header>
-        <nav
-            class="fixed w-full top-0 z-50 px-6 py-8 mix-blend-difference text-bone flex justify-between items-center pointer-events-none">
-            <div class="font-serif text-xl tracking-widest uppercase pointer-events-auto">MC</div>
+    <!-- Navigation — floating pill -->
+    <header class="fixed top-0 left-0 w-full z-50 pointer-events-none px-6 pt-5">
+        <nav id="main-nav"
+            class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3 rounded-full border border-bone/10 backdrop-blur-xl bg-carbon/72 pointer-events-auto"
+            style="transition: background-color 0.7s cubic-bezier(0.32,0.72,0,1), backdrop-filter 0.7s cubic-bezier(0.32,0.72,0,1);">
+            <div class="font-serif text-lg tracking-widest uppercase text-bone">MC</div>
 
-            <div class="desktop-nav font-sans text-sm tracking-widest uppercase flex gap-8 pointer-events-auto">
-                <a href="#about" class="hover:text-brass transition-colors duration-300">About</a>
-                <a href="#works" class="hover:text-brass transition-colors duration-300">Selected Works</a>
-                <a href="#philosophy" class="hover:text-brass transition-colors duration-300">Philosophy</a>
-                <a href="#contact" class="hover:text-brass transition-colors duration-300">Contact</a>
+            <div class="desktop-nav font-sans text-[0.7rem] tracking-[0.22em] uppercase flex gap-7 text-bone/70">
+                <a href="#about"
+                    class="hover:text-brass hover:opacity-100 transition-all duration-500"
+                    style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">About</a>
+                <a href="#works"
+                    class="hover:text-brass hover:opacity-100 transition-all duration-500"
+                    style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">Selected Works</a>
+                <a href="#philosophy"
+                    class="hover:text-brass hover:opacity-100 transition-all duration-500"
+                    style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">Philosophy</a>
+                <a href="#contact"
+                    class="hover:text-brass hover:opacity-100 transition-all duration-500"
+                    style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">Contact</a>
             </div>
 
-            <div class="hamburger pointer-events-auto" id="hamburger-btn">
+            <div class="hamburger" id="hamburger-btn">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
             </div>
+        </nav>
     </header>
 
     <!-- Mobile Menu Overlay -->
@@ -578,14 +639,20 @@
         <section id="about" class="py-32 px-6 md:px-20 bg-carbon text-bone">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
                 <div class="md:w-2/5 gs-reveal">
-                    <div class="relative overflow-hidden" style="border: 2px solid var(--brass); padding: 6px;">
-                        <img src="mike-profile-photo.webp" alt="Michael Chandler — Owner, MC Design Build"
-                            class="w-full object-cover" style="aspect-ratio: 3/4; filter: grayscale(20%);"
-                            loading="lazy">
+                    <!-- Double-bezel: outer shell → inner core -->
+                    <div class="p-2 border border-brass/20" style="background: rgba(201,169,97,0.04);">
+                        <div class="relative overflow-hidden" style="box-shadow: inset 0 1px 0 rgba(201,169,97,0.12);">
+                            <img src="mike-profile-photo.webp" alt="Michael Chandler — Owner, MC Design Build"
+                                class="w-full object-cover" style="aspect-ratio: 3/4; filter: grayscale(15%);"
+                                loading="lazy">
+                            <div class="absolute inset-0 border border-bone/5 pointer-events-none"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="md:w-3/5 gs-reveal">
-                    <h3 class="font-mono text-xs tracking-[0.3em] text-brass uppercase mb-4">About the Owner</h3>
+                    <div class="inline-flex items-center rounded-full px-3 py-1 mb-5 border border-brass/20 bg-brass/5 font-mono text-[0.6rem] tracking-[0.22em] uppercase text-brass/80">
+                        About the Owner
+                    </div>
                     <h2 class="font-serif text-4xl md:text-5xl mb-8 split-text">Michael Chandler</h2>
                     <div class="space-y-6 font-sans font-light text-bone/70 text-lg leading-relaxed">
                         <p>With over 20 years of executive construction leadership, Michael Chandler has managed and
@@ -623,8 +690,9 @@
         <!-- Selected Works - Asymmetric Grid -->
         <section id="works" class="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
             <div class="mb-20">
-                <h3 class="font-sans text-xs tracking-[0.3em] text-carbon/80 font-bold uppercase mb-4 split-text">
-                    Selected Works</h3>
+                <div class="inline-flex items-center rounded-full px-3 py-1 mb-6 border border-carbon/12 bg-carbon/4 font-mono text-[0.6rem] tracking-[0.22em] uppercase text-carbon/60">
+                    Selected Works
+                </div>
                 <h2 class="font-serif text-4xl md:text-6xl split-text">A Legacy of Scale.</h2>
             </div>
 
@@ -633,7 +701,7 @@
                 <a href="project-detail.html?id=miami-beach"
                     class="project-card md:col-span-8 h-[60vh] md:h-[80vh] gs-reveal">
                     <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/miami-beach-27.webp" alt="S. Florida High Rise Luxe Condo"
+                        <img src="projects/assets/miami-beach-cover-enhanced.png" alt="S. Florida High Rise Luxe Condo"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
                         <span class="view-case-study">View Album</span>
@@ -651,7 +719,7 @@
                 <a href="project-detail.html?id=alpine-ranch"
                     class="project-card md:col-span-4 h-[50vh] md:h-[60vh] md:mt-32 gs-reveal">
                     <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/alpine-ranch-2.webp" alt="High Alpine Mtn. Ranch Luxe Retreat"
+                        <img src="projects/assets/alpine-ranch-cover-enhanced.png" alt="High Alpine Mtn. Ranch Luxe Retreat"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
                         <span class="view-case-study">View Album</span>
@@ -668,7 +736,7 @@
                 <a href="project-detail.html?id=southcoast"
                     class="project-card md:col-span-5 h-[50vh] md:h-[70vh] gs-reveal">
                     <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/southcoast-52.webp" alt="South Coast Renovation"
+                        <img src="projects/assets/southcoast-cover-enhanced.png" alt="South Coast Renovation"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
                         <span class="view-case-study">View Album</span>
@@ -686,7 +754,7 @@
                 <a href="project-detail.html?id=hospitality-pool"
                     class="project-card md:col-span-7 h-[60vh] md:h-[90vh] md:-mt-20 gs-reveal">
                     <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/pool-design-25.webp" alt="Ultra Luxe Private Club Resort Pool"
+                        <img src="projects/assets/hospitality-pool-cover.jpg" alt="Ultra Luxe Private Club Resort Pool"
                             class="project-img" loading="lazy">
                         <div class="project-overlay"></div>
                         <span class="view-case-study">View Album</span>
@@ -703,7 +771,7 @@
                 <a href="project-detail.html?id=bakers-bay"
                     class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
                     <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/bakers-bay-1.webp" alt="Bakers Bay Resort" class="project-img"
+                        <img src="projects/assets/bakers-bay-cover.png" alt="Bakers Bay Resort" class="project-img"
                             loading="lazy">
                         <div class="project-overlay"></div>
                         <span class="view-case-study">View Album</span>
@@ -721,7 +789,7 @@
                 <a href="project-detail.html?id=syracuse"
                     class="project-card md:col-span-6 h-[50vh] md:h-[70vh] gs-reveal">
                     <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/syracuse-12.webp" alt="Syracuse House" class="project-img"
+                        <img src="projects/assets/syracuse-cover.webp" alt="Syracuse House" class="project-img"
                             loading="lazy">
                         <div class="project-overlay"></div>
                         <span class="view-case-study">View Album</span>
@@ -734,47 +802,23 @@
                     </div>
                 </a>
 
-                <!-- Project 7 — Coastal Mountain Residence -->
-                <a href="project-detail.html?id=bigsur-civil"
-                    class="project-card md:col-span-4 h-[50vh] md:h-[65vh] gs-reveal">
-                    <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/bigsur-3.webp" alt="Coastal Mountain Residence"
-                            class="project-img" loading="lazy">
-                        <div class="project-overlay"></div>
-                        <span class="view-case-study">View Album</span>
-                    </div>
-                    <div class="mt-4 flex justify-between items-baseline">
-                        <div>
-                            <h4 class="font-serif text-2xl">Coastal Mountain Residence</h4>
-                            <p class="font-sans text-sm text-carbon/60 mt-1">Civil Engineering Lead &bull; Big Sur, CA
-                            </p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 8 — Yellowstone Club -->
-                <a href="project-detail.html?id=yellowstone-club"
-                    class="project-card md:col-span-8 h-[50vh] md:h-[65vh] gs-reveal">
-                    <div class="project-img-container bg-gray-200">
-                        <img src="projects/assets/alpine-ranch-3.webp" alt="Yellowstone Club" class="project-img"
-                            loading="lazy">
-                        <div class="project-overlay"></div>
-                        <span class="view-case-study">View Album</span>
-                    </div>
-                    <div class="mt-4 flex justify-between items-baseline">
-                        <div>
-                            <h4 class="font-serif text-2xl">Yellowstone Club</h4>
-                            <p class="font-sans text-sm text-carbon/60 mt-1">Project Management &bull; Montana</p>
-                        </div>
-                    </div>
-                </a>
             </div>
 
             <!-- View Full Portfolio CTA -->
             <div class="text-center mt-20 gs-reveal">
                 <a href="portfolio.html"
-                    class="inline-block border-2 border-carbon/30 px-12 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-carbon hover:text-bone transition-all duration-500">
-                    View All 20 Projects &rarr;
+                    class="group inline-flex items-center gap-5 border border-carbon/25 pl-9 pr-3 py-3 font-sans text-xs tracking-[0.22em] uppercase hover:bg-carbon hover:text-bone transition-all duration-700"
+                    style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
+                    <span>View All 20 Projects</span>
+                    <span class="w-10 h-10 rounded-full border border-carbon/20 group-hover:border-bone/20 flex items-center justify-center transition-all duration-700 group-hover:bg-bone/10"
+                        style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="transition-transform duration-500 group-hover:translate-x-px group-hover:-translate-y-px"
+                            style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
+                            <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5"/>
+                        </svg>
+                    </span>
                 </a>
             </div>
         </section>
@@ -782,12 +826,12 @@
         <!-- Featured Case Study - Pinned Sequence -->
         <section id="featured-case" class="pinned-section">
             <!-- Background Images for Crossfade -->
-            <img src="projects/assets/pool-design-36.webp" class="pinned-img img-1"
-                alt="Ultra Luxe Pool — Aerial Overview">
-            <img src="projects/assets/pool-design-25.webp" class="pinned-img img-2"
-                alt="Ultra Luxe Pool — Construction Detail">
-            <img src="projects/assets/pool-design-15.webp" class="pinned-img img-3"
-                alt="Ultra Luxe Pool — Finished Resort">
+            <img src="projects/assets/houston-oaks-cover.png" class="pinned-img img-1"
+                alt="Ultra Luxe Pool — Daylight Overview">
+            <img src="projects/assets/hospitality-pool-1.webp" class="pinned-img img-2"
+                alt="Ultra Luxe Pool — Resort Detail">
+            <img src="projects/assets/pool-design-36.webp" class="pinned-img img-3"
+                alt="Ultra Luxe Pool — Finished Detail">
 
             <div class="absolute inset-0 bg-carbon/40 z-20"></div>
 
@@ -828,6 +872,76 @@
             </div>
         </section>
 
+        <!-- Featured Case Study 2 - Alpine Ranch -->
+        <section id="featured-case-2" class="pinned-section">
+            <img src="projects/assets/alpine-ranch-cover-enhanced.png" class="pinned-img case2-img-1" alt="Alpine Ranch — Mountain Vista">
+            <img src="projects/assets/alpine-ranch-3.webp" class="pinned-img case2-img-2" alt="Alpine Ranch — Craftsmanship Detail">
+            <img src="projects/assets/alpine-ranch-7.webp" class="pinned-img case2-img-3" alt="Alpine Ranch — Finished Retreat">
+            <div class="absolute inset-0 bg-carbon/40 z-20"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center pointer-events-none w-full px-6">
+                <h3 class="font-sans text-xs tracking-[0.3em] text-brass uppercase mb-6" id="case2-subtitle">Signature Project &mdash; Montana</h3>
+                <h2 class="font-serif text-5xl md:text-8xl text-bone" id="case2-title">High Alpine Ranch Luxe Retreat</h2>
+            </div>
+            <div class="pinned-content">
+                <div class="pinned-caption case2-cap-1">
+                    <p class="font-mono text-brass text-sm mb-2">01 / The Vision</p>
+                    <p class="font-serif text-2xl md:text-3xl text-bone">A secluded Montana mountain ranch engineered for ultimate luxury — where custom bronze windows from Italy meet panoramic alpine vistas.</p>
+                </div>
+                <div class="pinned-caption case2-cap-2">
+                    <p class="font-mono text-brass text-sm mb-2">02 / The Execution</p>
+                    <p class="font-serif text-2xl md:text-3xl text-bone">24 months of high-alpine craftsmanship — exposed timber, custom stone masonry, and radiant systems in one of Montana's most remote settings.</p>
+                </div>
+                <div class="pinned-caption case2-cap-3">
+                    <p class="font-mono text-brass text-sm mb-2">03 / The Result</p>
+                    <div class="flex items-end gap-6">
+                        <div>
+                            <div class="stats-counter" id="ranch-sqft-counter">0</div>
+                            <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Sq Ft</div>
+                        </div>
+                        <div>
+                            <div class="stats-counter" id="ranch-months-counter">0</div>
+                            <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Months Build</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Case Study 3 - Miami Beach -->
+        <section id="featured-case-3" class="pinned-section">
+            <img src="projects/assets/miami-beach-cover-enhanced.png" class="pinned-img case3-img-1" alt="Miami Beach — Beachfront Panorama">
+            <img src="projects/assets/miami-beach-10.webp" class="pinned-img case3-img-2" alt="Miami Beach — Interior Execution">
+            <img src="projects/assets/miami-beach-27.webp" class="pinned-img case3-img-3" alt="Miami Beach — Finished Sanctuary">
+            <div class="absolute inset-0 bg-carbon/40 z-20"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center pointer-events-none w-full px-6">
+                <h3 class="font-sans text-xs tracking-[0.3em] text-brass uppercase mb-6" id="case3-subtitle">Signature Project &mdash; S. Florida</h3>
+                <h2 class="font-serif text-5xl md:text-8xl text-bone" id="case3-title">S. Florida High Rise Luxe Condo</h2>
+            </div>
+            <div class="pinned-content">
+                <div class="pinned-caption case3-cap-1">
+                    <p class="font-mono text-brass text-sm mb-2">01 / The Vision</p>
+                    <p class="font-serif text-2xl md:text-3xl text-bone">Transforming 4,200 sq ft of raw South Florida high-rise into a beachfront sanctuary — delivered on schedule during the height of the pandemic.</p>
+                </div>
+                <div class="pinned-caption case3-cap-2">
+                    <p class="font-mono text-brass text-sm mb-2">02 / The Execution</p>
+                    <p class="font-serif text-2xl md:text-3xl text-bone">Italian marble, hotel-grade bespoke millwork, and integrated smart home systems — zero delays, zero excuses.</p>
+                </div>
+                <div class="pinned-caption case3-cap-3">
+                    <p class="font-mono text-brass text-sm mb-2">03 / The Result</p>
+                    <div class="flex items-end gap-6">
+                        <div>
+                            <div class="stats-counter" id="miami-sqft-counter">0</div>
+                            <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Sq Ft</div>
+                        </div>
+                        <div>
+                            <div class="stats-counter" id="miami-months-counter">0</div>
+                            <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Months Delivered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Philosophy -->
         <section id="philosophy" class="py-40 px-6 md:px-20 bg-bone relative overflow-hidden">
             <!-- Faint bg texture -->
@@ -856,7 +970,9 @@
         <!-- The Process -->
         <section id="process" class="py-32 px-6 md:px-20 bg-carbon text-bone">
             <div class="max-w-7xl mx-auto">
-                <h3 class="font-sans text-xs tracking-[0.3em] text-brass uppercase mb-4">Methodology</h3>
+                <div class="inline-flex items-center rounded-full px-3 py-1 mb-6 border border-brass/20 bg-brass/5 font-mono text-[0.6rem] tracking-[0.22em] uppercase text-brass/80">
+                    Methodology
+                </div>
                 <h2 class="font-serif text-4xl md:text-5xl mb-24">The Architecture of Execution.</h2>
 
                 <div class="relative">
@@ -965,8 +1081,8 @@
 
         <!-- Contact -->
         <section id="contact" class="py-40 px-6 md:px-20 bg-carbon text-bone text-center relative overflow-hidden">
-            <div
-                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920')] opacity-5 bg-cover bg-center mix-blend-luminosity">
+            <div class="absolute inset-0 opacity-5 pointer-events-none"
+                style="background-image: radial-gradient(circle at 2px 2px, var(--bone) 1px, transparent 0); background-size: 32px 32px;">
             </div>
 
             <div class="max-w-3xl mx-auto relative z-10">
@@ -974,12 +1090,22 @@
                     and board consultations.</h2>
 
                 <a href="mailto:mike.rcccon@yahoo.com"
-                    class="inline-block mt-8 border border-brass/50 px-10 py-5 font-sans text-sm tracking-[0.2em] uppercase hover:bg-brass hover:text-carbon transition-colors duration-500">
-                    Begin a Conversation
+                    class="group inline-flex items-center gap-5 mt-8 border border-brass/40 pl-9 pr-3 py-3 font-sans text-xs tracking-[0.22em] uppercase hover:bg-brass hover:text-carbon transition-all duration-700"
+                    style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
+                    <span>Begin a Conversation</span>
+                    <span class="w-10 h-10 rounded-full border border-brass/30 group-hover:border-carbon/20 flex items-center justify-center transition-all duration-700 group-hover:bg-carbon/10"
+                        style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="transition-transform duration-500 group-hover:translate-x-px group-hover:-translate-y-px"
+                            style="transition-timing-function: cubic-bezier(0.32,0.72,0,1);">
+                            <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5"/>
+                        </svg>
+                    </span>
                 </a>
 
                 <div class="mt-20 flex justify-center gap-12 font-mono text-sm text-bone/60">
-                    <a href="https://linkedin.com" class="hover:text-brass transition-colors">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/michael-chandler-mc-design-build" target="_blank" rel="noopener noreferrer" class="hover:text-brass transition-colors">LinkedIn</a>
                     <a href="mailto:mike.rcccon@yahoo.com" class="hover:text-brass transition-colors">Email</a>
                     <span class="flex items-center gap-2">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1000,6 +1126,7 @@
 
     <!-- GSAP Animations & Logic -->
     <script>
+    document.addEventListener('DOMContentLoaded', function () {
         // Register ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
 
@@ -1092,53 +1219,56 @@
         tlEntrance.to('#entrance-name .char', {
             y: 0,
             opacity: 1,
-            duration: 1.5,
-            stagger: 0.05,
+            duration: 1.6,
+            stagger: 0.045,
             ease: "expo.out",
-            delay: 0.2
+            delay: 0.3
         })
             .to('.brass-underline-draw', {
                 width: '100%',
-                duration: 1.5,
-                ease: "power3.inOut"
+                duration: 1.4,
+                ease: "expo.inOut"
             }, "-=1")
             .to('.title-reveal', {
                 opacity: 1,
-                duration: 1.5,
-                ease: "power2.out"
+                duration: 1.4,
+                ease: "expo.out"
             }, "-=0.5")
             .to('#entrance-overlay', {
                 yPercent: -100,
-                duration: 2,
-                ease: "power4.inOut",
-                delay: 0.5
+                duration: 1.8,
+                ease: "expo.inOut",
+                delay: 0.6
             })
             .to('.hero-name', {
                 opacity: 1,
                 y: 0,
                 duration: 1,
-                ease: "power2.out"
-            }, "-=1.5")
+                ease: "expo.out"
+            }, "-=1.4")
             .to('.hero-headline .word span', {
                 y: 0,
                 opacity: 1,
-                duration: 1.5,
-                stagger: 0.05,
-                ease: "power4.out"
-            }, "-=1.2")
+                duration: 1.4,
+                stagger: 0.04,
+                ease: "expo.out"
+            }, "-=1.1")
             .to('.hero-line', {
                 width: '100%',
-                duration: 1.5,
-                ease: "power3.inOut"
+                duration: 1.4,
+                ease: "expo.inOut"
             }, "-=1.2")
             .to('#hero p.split-text .word span', {
                 y: 0,
                 opacity: 1,
-                duration: 1.2,
+                duration: 1.1,
+                stagger: 0.015,
+                ease: "expo.out"
             }, "-=1")
             .to('.scroll-indicator', {
                 opacity: 1,
-                duration: 1
+                duration: 0.8,
+                ease: "expo.out"
             });
 
         // Failsafe visibility
@@ -1198,32 +1328,32 @@
         initDust();
         drawDust();
 
-        // 4. Scroll Animations (General Reveals)
+        // 4. Scroll Animations (General Reveals) — premium spring-like easing
         gsap.utils.toArray('.gs-reveal').forEach(elem => {
             gsap.from(elem, {
                 scrollTrigger: {
                     trigger: elem,
-                    start: "top 85%",
+                    start: "top 88%",
                 },
-                y: 50,
+                y: 40,
                 opacity: 0,
-                duration: 1.5,
-                ease: "power3.out"
+                duration: 1.4,
+                ease: "expo.out"
             });
         });
 
         gsap.utils.toArray('.split-text').forEach(elem => {
-            if (elem.closest('#hero')) return; // skip hero, already animated
+            if (elem.closest('#hero')) return;
             gsap.to(elem.querySelectorAll('.word span'), {
                 scrollTrigger: {
                     trigger: elem,
-                    start: "top 85%",
+                    start: "top 88%",
                 },
                 y: 0,
                 opacity: 1,
-                duration: 1.2,
-                stagger: 0.02,
-                ease: "power3.out"
+                duration: 1.1,
+                stagger: 0.025,
+                ease: "expo.out"
             });
         });
 
@@ -1273,6 +1403,76 @@
                 duration: 1,
                 snap: { innerHTML: 1 }
             }, "<");
+
+        // 5b. Alpine Ranch Pinned Sequence
+        const pinTl2 = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#featured-case-2",
+                start: "top top",
+                end: "+=3000",
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1
+            }
+        });
+        gsap.set('.case2-img-1', { opacity: 1, scale: 1 });
+        gsap.set('.case2-cap-1', { opacity: 1, y: 0 });
+        gsap.set('.case2-cap-2, .case2-cap-3', { opacity: 0, y: 20 });
+        gsap.set('#case2-title', { y: 0, opacity: 1 });
+        pinTl2
+            .to('.case2-img-1', { opacity: 0, scale: 1.05, duration: 1 })
+            .to('.case2-img-2', { opacity: 1, scale: 1, duration: 1 }, "<")
+            .to('.case2-cap-1', { opacity: 0, y: -20, duration: 0.5 }, "<")
+            .to('.case2-cap-2', { opacity: 1, y: 0, duration: 0.5 }, ">")
+            .to('.case2-img-2', { opacity: 0, scale: 1.05, duration: 1 }, "+=0.5")
+            .to('.case2-img-3', { opacity: 1, scale: 1, duration: 1 }, "<")
+            .to('.case2-cap-2', { opacity: 0, y: -20, duration: 0.5 }, "<")
+            .to('.case2-cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
+            .to('#case2-title', { y: -100, opacity: 0, duration: 1 }, "<")
+            .to('#ranch-sqft-counter', {
+                innerHTML: 2300,
+                duration: 1,
+                snap: { innerHTML: 1 },
+                onUpdate: function () {
+                    document.getElementById('ranch-sqft-counter').innerHTML = Number(this.targets()[0].innerHTML).toLocaleString();
+                }
+            }, "<")
+            .to('#ranch-months-counter', { innerHTML: 24, duration: 1, snap: { innerHTML: 1 } }, "<");
+
+        // 5c. Miami Beach Pinned Sequence
+        const pinTl3 = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#featured-case-3",
+                start: "top top",
+                end: "+=3000",
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1
+            }
+        });
+        gsap.set('.case3-img-1', { opacity: 1, scale: 1 });
+        gsap.set('.case3-cap-1', { opacity: 1, y: 0 });
+        gsap.set('.case3-cap-2, .case3-cap-3', { opacity: 0, y: 20 });
+        gsap.set('#case3-title', { y: 0, opacity: 1 });
+        pinTl3
+            .to('.case3-img-1', { opacity: 0, scale: 1.05, duration: 1 })
+            .to('.case3-img-2', { opacity: 1, scale: 1, duration: 1 }, "<")
+            .to('.case3-cap-1', { opacity: 0, y: -20, duration: 0.5 }, "<")
+            .to('.case3-cap-2', { opacity: 1, y: 0, duration: 0.5 }, ">")
+            .to('.case3-img-2', { opacity: 0, scale: 1.05, duration: 1 }, "+=0.5")
+            .to('.case3-img-3', { opacity: 1, scale: 1, duration: 1 }, "<")
+            .to('.case3-cap-2', { opacity: 0, y: -20, duration: 0.5 }, "<")
+            .to('.case3-cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
+            .to('#case3-title', { y: -100, opacity: 0, duration: 1 }, "<")
+            .to('#miami-sqft-counter', {
+                innerHTML: 4200,
+                duration: 1,
+                snap: { innerHTML: 1 },
+                onUpdate: function () {
+                    document.getElementById('miami-sqft-counter').innerHTML = Number(this.targets()[0].innerHTML).toLocaleString();
+                }
+            }, "<")
+            .to('#miami-months-counter', { innerHTML: 4, duration: 1, snap: { innerHTML: 1 } }, "<");
 
         // 6. Signature Draw
         gsap.from('#signature-path', {
@@ -1357,7 +1557,9 @@
             });
         });
 
+    }); // end DOMContentLoaded
     </script>
+
 </body>
 
 </html>
