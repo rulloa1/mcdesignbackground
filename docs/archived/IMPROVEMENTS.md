@@ -158,38 +158,3 @@ Use DevTools Performance tab:
 **Status**: ✅ All improvements applied and tested  
 **No Breaking Changes**: All functionality preserved  
 **Backwards Compatible**: Existing users see no difference (internal improvements only)
-
----
-
-## 🚀 Recent Improvements (2026-04-18) ✅
-
-### 11. **SEO & Social Metadata Excellence** ✅
-- Added missing `og:image`, `og:url`, `og:site_name`, and `twitter:image` tags.
-- Fixed broken "smart quotes" in meta tags that prevented correct parsing by some crawlers.
-- Added `theme-color` for mobile browser integration.
-- Added canonical URL and referrer policy (`strict-origin-when-cross-origin`).
-- **Impact**: Professional social sharing previews and improved search engine indexing.
-
-### 12. **JSON-LD Structured Data** ✅
-- Implemented `Person` schema for Michael Chandler.
-- Includes `jobTitle`, `url`, and `knowsAbout` (expertise areas).
-- **Impact**: Eligible for rich snippets in Google search results, strengthening personal brand authority.
-
-### 13. **Accessibility (A11y) Hardening** ✅
-- Added `<main>` landmark to wrap primary content.
-- Added "Skip to main content" link for keyboard/screen-reader users.
-- Implemented `focus-visible` styles for better keyboard navigation visibility.
-- Improved contrast ratios for scroll cues and labels (WCAG AA compliance).
-- Normalized all smart quotes (`”`) to regular quotes (`"`) throughout the HTML.
-- **Impact**: Wider audience reach and compliance with accessibility standards.
-
-### 14. **Performance & Rendering Optimization** ✅
-- Added `defer` to GSAP and ScrollTrigger scripts to prevent render-blocking.
-- **Canvas Render Loop Optimization**: Added `lastDrawnFrame` check to skip redundant `drawFrameIndex` calls when the scroll position hasn't moved.
-- **Memory Leak Fix**: Resolved `showImage` (lightbox) creating a new `Image` object on every navigation by reusing a single `nextPreload` instance.
-- **Impact**: Reduced GPU/CPU usage during idle scroll and lower memory footprint during gallery browsing.
-
-### 15. **UX & Security Polish** ✅
-- Removed `!important` from form error styles for better CSS maintainability.
-- Added favicon and apple-touch-icon links.
-- **Impact**: Cleaner codebase and professional browser tab branding.
