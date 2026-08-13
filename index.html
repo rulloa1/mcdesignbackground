@@ -875,12 +875,12 @@
                     <p class="font-mono text-brass text-sm mb-2">03 / The Result</p>
                     <div class="flex items-end gap-6">
                         <div>
-                            <div class="stats-counter" id="sqft-counter">0</div>
+                            <div class="stats-counter" id="pool-capacity">189,000</div>
                             <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Gallons Capacity
                             </div>
                         </div>
                         <div>
-                            <div class="stats-counter" id="budget-counter">0</div>
+                            <div class="stats-counter" id="pool-budget">8</div>
                             <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Million Budget
                             </div>
                         </div>
@@ -912,11 +912,11 @@
                     <p class="font-mono text-brass text-sm mb-2">03 / The Result</p>
                     <div class="flex items-end gap-6">
                         <div>
-                            <div class="stats-counter" id="ranch-sqft-counter">0</div>
+                            <div class="stats-counter" id="ranch-area">2,300</div>
                             <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Sq Ft</div>
                         </div>
                         <div>
-                            <div class="stats-counter" id="ranch-months-counter">0</div>
+                            <div class="stats-counter" id="ranch-duration">24</div>
                             <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Months Build</div>
                         </div>
                     </div>
@@ -947,11 +947,11 @@
                     <p class="font-mono text-brass text-sm mb-2">03 / The Result</p>
                     <div class="flex items-end gap-6">
                         <div>
-                            <div class="stats-counter" id="miami-sqft-counter">0</div>
+                            <div class="stats-counter" id="miami-area">4,200</div>
                             <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Sq Ft</div>
                         </div>
                         <div>
-                            <div class="stats-counter" id="miami-months-counter">0</div>
+                            <div class="stats-counter" id="miami-duration">4</div>
                             <div class="font-sans text-xs tracking-[0.2em] uppercase text-bone/60 mt-2">Months Delivered</div>
                         </div>
                     </div>
@@ -1439,23 +1439,7 @@
             .to('.cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
             .to('#case-title', { y: -100, opacity: 0, duration: 1 }, "<") // Move title out of way
 
-            // Counter Animation — textContent used instead of innerHTML for XSS safety
-            .to({ val: 0 }, {
-                val: 189000,
-                duration: 1,
-                snap: { val: 1 },
-                onUpdate: function () {
-                    document.getElementById('sqft-counter').textContent = Number(Math.round(this.targets()[0].val)).toLocaleString();
-                }
-            }, "<")
-            .to({ val: 0 }, {
-                val: 8,
-                duration: 1,
-                snap: { val: 1 },
-                onUpdate: function () {
-                    document.getElementById('budget-counter').textContent = Math.round(this.targets()[0].val);
-                }
-            }, "<");
+            // Portfolio metrics are factual static content so they remain accurate without motion or script execution.
 
         // 5b. Alpine Ranch Pinned Sequence
         const pinTl2 = gsap.timeline({
@@ -1481,23 +1465,7 @@
             .to('.case2-img-3', { opacity: 1, scale: 1, duration: 1 }, "<")
             .to('.case2-cap-2', { opacity: 0, y: -20, duration: 0.5 }, "<")
             .to('.case2-cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
-            .to('#case2-title', { y: -100, opacity: 0, duration: 1 }, "<")
-            .to({ val: 0 }, {
-                val: 2300,
-                duration: 1,
-                snap: { val: 1 },
-                onUpdate: function () {
-                    document.getElementById('ranch-sqft-counter').textContent = Number(Math.round(this.targets()[0].val)).toLocaleString();
-                }
-            }, "<")
-            .to({ val: 0 }, {
-                val: 24,
-                duration: 1,
-                snap: { val: 1 },
-                onUpdate: function () {
-                    document.getElementById('ranch-months-counter').textContent = Math.round(this.targets()[0].val);
-                }
-            }, "<");
+            .to('#case2-title', { y: -100, opacity: 0, duration: 1 }, "<");
 
         // 5c. Miami Beach Pinned Sequence
         const pinTl3 = gsap.timeline({
@@ -1523,23 +1491,7 @@
             .to('.case3-img-3', { opacity: 1, scale: 1, duration: 1 }, "<")
             .to('.case3-cap-2', { opacity: 0, y: -20, duration: 0.5 }, "<")
             .to('.case3-cap-3', { opacity: 1, y: 0, duration: 0.5 }, ">")
-            .to('#case3-title', { y: -100, opacity: 0, duration: 1 }, "<")
-            .to({ val: 0 }, {
-                val: 4200,
-                duration: 1,
-                snap: { val: 1 },
-                onUpdate: function () {
-                    document.getElementById('miami-sqft-counter').textContent = Number(Math.round(this.targets()[0].val)).toLocaleString();
-                }
-            }, "<")
-            .to({ val: 0 }, {
-                val: 4,
-                duration: 1,
-                snap: { val: 1 },
-                onUpdate: function () {
-                    document.getElementById('miami-months-counter').textContent = Math.round(this.targets()[0].val);
-                }
-            }, "<");
+            .to('#case3-title', { y: -100, opacity: 0, duration: 1 }, "<");
 
         // 6. Signature Draw
         gsap.from('#signature-path', {
