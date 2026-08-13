@@ -22,7 +22,18 @@
       "Bash(cp \"c:/Users/roryu/mcdesign/constructiondesignnew/src/assets/projects/\"* \"c:/Users/roryu/OneDrive/Desktop/mcdesignbackground/projects/assets/\")",
       "Bash(echo \"Done: $?\")",
       "Bash(node -e ':*)",
-      "Bash(node -c index.html)"
+      "Bash(node -c index.html)",
+      "Bash(ls public/flava-depot/frames/ezgif-frame-*.jpg)",
+      "mcp__claude_ai_Cloudflare_Developer_Platform__search_cloudflare_documentation",
+      "Bash(openssl dgst *)",
+      "Bash(openssl base64 *)",
+      "Bash(python -m http.server 8000)",
+      "Bash(python3)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "claude-flow",
+    "ruv-swarm",
+    "flow-nexus"
+  ]
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>RV Park Map</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+html,body{margin:0;padding:0;height:100%}
+#map{width:100%;height:100vh}
+#sidebar{position:absolute;top:10px;left:10px;z-index:1000;background:rgba(255,255,255,0.95);padding:14px 18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.25);font-family:sans-serif;max-width:220px}
+#sidebar h2{margin:0 0 4px;font-size:17px;color:#333}
+#sidebar p{margin:0;font-size:12px;color:#666}
+#counter{font-weight:bold;color:#f57f17;font-size:14px;margin-top:6px}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="sidebar">
+<h2>RV Park Map</h2>
+<p>Click any site for details</p>
+<div id="counter"></div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var geojsonData = {"type":"FeatureCollection","features":[
+
+var map = L.map("map");
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+  maxZoom:22,
+  attribution:"&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+}).addTo(map);
+
+var siteCount = 0;
+var layer = L.geoJSON(geojsonData,{
+  pointToLayer:function(f,ll){
+    siteCount++;
+    return L.circleMarker(ll,{
+      radius:8,
+      fillColor:"#fbc02d",
+      color:"#f57f17",
+      weight:2,
+      opacity:1,
+      fillOpacity:0.9
+    });
+  },
+  onEachFeature:function(f,l){
+    var name = f.properties&&f.properties.name?f.properties.name:"RV Site";
+    l.bindPopup("<b>"+name+"</b>");
+  }
+}).addTo(map);
+
+document.getElementById("counter").textContent = siteCount + " sites loaded";
+
+if(layer.getLayers().length>0){
+  map.fitBounds(layer.getBounds(),{padding:[40,40]});
+} else {
+  map.setView([30.1302,-95.7317],18);
+}
+</script>
+</body>
+</html>
