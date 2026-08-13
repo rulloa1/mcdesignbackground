@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>MC Design Build</title>
+  <rect width="64" height="64" rx="8" fill="#0E0E0E"/>
+  <path d="M14 46V18h7l11 16 11-16h7v28h-7V29L32 45 21 29v17z" fill="#C9A961"/>
+</svg>
