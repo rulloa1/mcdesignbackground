@@ -91,6 +91,12 @@ for (const [file, keys] of Object.entries(targets)) {
             console.error(`${file}: missing marker for "${key}"`);
             process.exit(2);
         }
+        // An end marker sitting before its start would splice from the wrong
+        // offset and silently corrupt the page rather than failing.
+        if (j < i + start.length) {
+            console.error(`${file}: "${key}" end marker precedes its start marker`);
+            process.exit(2);
+        }
         html = html.slice(0, i + start.length) + '\n' + blocks[key] + '\n' + html.slice(j);
     }
     if (html === before) continue;

@@ -33,6 +33,18 @@
     <!-- Only app.js takes the loader down; without JS it would seal the page. -->
     <noscript>
         <style>
+            /* The burger needs JavaScript. Without it, show the links inline and
+               let the bar sit in flow so a taller nav cannot cover the hero. */
+            @media (max-width: 999px) {
+                .nav { position: static; }
+                .nav-inner { flex-wrap: wrap; row-gap: .55rem; }
+                .nav-links { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; order: 3; width: 100%; }
+                .burger { display: none; }
+                /* The first section reserves space for a fixed nav; in flow it
+                   would leave a blank screen. Inline styles need !important. */
+                main > section:first-of-type,
+                main noscript > .shell { padding-top: 2.5rem !important; }
+            }
             #loader { display: none; }
         </style>
     </noscript>
