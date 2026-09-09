@@ -30,6 +30,7 @@ Fonts CDN are, matching the root site's delivery model.
 | `data.js` | Single source of truth — projects, brands, capabilities, vacancies, and the NL/EN dictionary |
 | `app.js` | Language switching, procedural plate artwork, rendering, GSAP scroll choreography |
 | `styles.css` | Design tokens and component layer |
+| `tools/render-noscript.js` | Regenerates the `<noscript>` fallbacks from `data.js` |
 
 `data.js` mirrors the root site's `projects-data.js` pattern: one array of records, loaded
 by every page via `<script src>` and consumed at runtime.
@@ -81,9 +82,15 @@ on timeout; a `<noscript>` rule hides the loader outright for visitors without J
   **both** `gsap` and `ScrollTrigger`, never one of the two. If either script fails, a
   `no-gsap` class restores every `.reveal` to full opacity and the loader is removed. A
   2.5s timeout catches a slow or blocked CDN.
-- Renders fully with JavaScript disabled? No — the project lists are client-rendered, as
-  they are on the root site's portfolio page. But the page never *hides* content it then
-  fails to reveal, and never leaves an overlay in the way.
+- The project lists, capabilities, brands and vacancies are client-rendered, as they are
+  on the root site's portfolio page, so each of those sections carries a `<noscript>`
+  fallback with the same content in Dutch. Without JavaScript the homepage and the project
+  index still read as complete pages; a detail page cannot know which project is wanted,
+  so it says so and links to the index, which lists all twelve with their intros.
+- `tools/render-noscript.js` generates those fallbacks from `data.js` so they cannot drift
+  from the data. **Run it after editing `data.js`:** `node smeulders/tools/render-noscript.js`
+  (`--check` exits non-zero if the committed HTML is stale). This is not a build step — the
+  output is committed and the site is still served directly.
 - The mobile drawer is a modal: Escape closes it, focus moves in on open and back to the
   burger on close, the content behind it is `inert`, and a `matchMedia` listener closes it
   (clearing the body scroll lock) if the viewport crosses to desktop while it is open.
