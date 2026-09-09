@@ -282,6 +282,10 @@ section { position: relative; z-index: 2; }
 @media (min-width: 1000px) { .burger { display: none; } }
 .burger span { display: block; width: 15px; height: 1px; background: var(--ink); transition: transform .4s var(--ease), opacity .3s; }
 .burger span + span { margin-top: 4px; }
+/* Open, the burger sits on top of the dark drawer — keep the close icon and
+   its border legible by inverting both. */
+.burger[aria-expanded="true"] { border-color: var(--line-inv); }
+.burger[aria-expanded="true"] span { background: var(--paper); }
 .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
 .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }

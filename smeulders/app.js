@@ -190,7 +190,7 @@
             '<span class="plate-tag">' + escapeAttr(p.year) + '</span></div>' +
             '<div class="proj-meta">' +
             '<span class="proj-title">' + escapeAttr(pick(p.title)) + '</span>' +
-            '<span class="proj-sub">' + escapeAttr(p.location) + '</span>' +
+            '<span class="proj-sub">' + escapeAttr(pick(p.location)) + '</span>' +
             '</div></a>';
     }
 
@@ -286,9 +286,9 @@
     // First paint reveals on scroll; a filter change restaggers immediately.
     function animateIndex(onScroll) {
         const items = document.querySelectorAll('#index-grid .reveal-item');
-        if (!items.length || !window.gsap || reduced()) return;
+        if (!items.length || !motionReady() || reduced()) return;
 
-        if (onScroll && window.ScrollTrigger) {
+        if (onScroll) {
             gsap.registerPlugin(ScrollTrigger);
             items.forEach(function (el, i) {
                 gsap.fromTo(el, { opacity: 0, y: 30 }, {
@@ -337,7 +337,7 @@
                     escapeAttr(t('detail.back')) +
                 '</a>' +
                 '<header style="margin-top:2.6rem">' +
-                    '<span class="mono" style="color:var(--oak-deep)">' + escapeAttr(p.location) + ' &middot; ' + escapeAttr(p.year) + '</span>' +
+                    '<span class="mono" style="color:var(--oak-deep)">' + escapeAttr(pick(p.location)) + ' &middot; ' + escapeAttr(p.year) + '</span>' +
                     '<h1 class="display" style="margin-top:1rem">' + escapeAttr(pick(p.title)) + '</h1>' +
                     '<p class="lede" style="margin-top:1.8rem;max-width:52ch">' + escapeAttr(pick(p.intro)) + '</p>' +
                 '</header>' +
@@ -383,6 +383,36 @@
         return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
 
+    // Every reveal is driven by ScrollTrigger, so GSAP alone is not enough:
+    // if either script is missing the page must fall back, not stay hidden.
+    function motionReady() {
+        return !!(window.gsap && window.ScrollTrigger);
+    }
+
+    // The loader is a full-viewport overlay. Anything that ends the intro —
+    // success, fallback or timeout — has to take it down, or the page is sealed.
+    function dismissLoader(animate) {
+        const loader = document.getElementById('loader');
+        if (!loader) return;
+        if (!animate || !window.gsap || reduced()) {
+            loader.remove();
+            if (window.ScrollTrigger) ScrollTrigger.refresh();
+            return;
+        }
+        gsap.timeline()
+            .to('#loader .bar', { width: '100%', duration: .85, ease: 'power2.inOut' })
+            .to('#loader .mark', { yPercent: -110, duration: .55, ease: 'power3.in' }, '-=.15')
+            .to(loader, {
+                yPercent: -100, duration: .8, ease: 'power3.inOut',
+                onComplete: function () { loader.remove(); ScrollTrigger.refresh(); }
+            }, '-=.2');
+    }
+
+    function noMotion() {
+        document.documentElement.classList.add('no-gsap');
+        dismissLoader(false);
+    }
+
     function initNav() {
         const nav = document.querySelector('.nav');
         const burger = document.querySelector('.burger');
@@ -395,18 +425,49 @@
         }
 
         if (burger && drawer) {
-            burger.addEventListener('click', function () {
-                const open = drawer.classList.toggle('is-open');
+            // Everything behind the open drawer is made inert so focus cannot
+            // tab into content the overlay is covering.
+            const behind = [document.querySelector('main'), document.querySelector('.foot')]
+                .filter(Boolean);
+
+            function setDrawer(open) {
+                if (drawer.classList.contains('is-open') === open) return;
+                drawer.classList.toggle('is-open', open);
                 burger.setAttribute('aria-expanded', String(open));
                 document.body.style.overflow = open ? 'hidden' : '';
-            });
-            drawer.querySelectorAll('a').forEach(function (a) {
-                a.addEventListener('click', function () {
-                    drawer.classList.remove('is-open');
-                    burger.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
+                behind.forEach(function (el) {
+                    if (open) el.setAttribute('inert', '');
+                    else el.removeAttribute('inert');
                 });
+                if (open) {
+                    const first = drawer.querySelector('a');
+                    if (first) first.focus();
+                } else {
+                    burger.focus();
+                }
+            }
+
+            burger.addEventListener('click', function () {
+                setDrawer(!drawer.classList.contains('is-open'));
             });
+
+            drawer.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () { setDrawer(false); });
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key !== 'Escape' || !drawer.classList.contains('is-open')) return;
+                setDrawer(false);
+            });
+
+            // The burger is hidden from 1000px up. Without this, a drawer left
+            // open across a resize traps the desktop layout with no way to close
+            // it and body scrolling still locked.
+            const wide = window.matchMedia('(min-width: 1000px)');
+            const onWide = function (e) { if (e.matches) setDrawer(false); };
+            if (wide.addEventListener) wide.addEventListener('change', onWide);
+            else wide.addListener(onWide);
+            onWide(wide);
         }
 
         document.querySelectorAll('.lang button').forEach(function (b) {
@@ -442,8 +503,7 @@
     let revealsMounted = new WeakSet();
 
     function mountReveals() {
-        if (!window.gsap) return;
-        if (!window.ScrollTrigger) return;
+        if (!motionReady()) return;
         gsap.registerPlugin(ScrollTrigger);
 
         if (reduced()) {
@@ -466,7 +526,7 @@
     }
 
     function initCounters() {
-        if (!window.gsap || !window.ScrollTrigger) return;
+        if (!motionReady()) return;
         document.querySelectorAll('[data-count]').forEach(function (el) {
             const target = parseFloat(el.dataset.count);
             if (isNaN(target)) return;
@@ -481,29 +541,17 @@
     }
 
     function initHero() {
-        if (!window.gsap) return;
-        const loader = document.getElementById('loader');
-        const tl = gsap.timeline();
+        if (!motionReady()) return;
 
-        if (loader) {
-            if (reduced()) {
-                loader.remove();
-            } else {
-                tl.to('#loader .bar', { width: '100%', duration: .85, ease: 'power2.inOut' })
-                  .to('#loader .mark', { yPercent: -110, duration: .55, ease: 'power3.in' }, '-=.15')
-                  .to(loader, {
-                      yPercent: -100, duration: .8, ease: 'power3.inOut',
-                      onComplete: function () { loader.remove(); ScrollTrigger && ScrollTrigger.refresh(); }
-                  }, '-=.2');
-            }
-        }
+        dismissLoader(true);
 
         const lines = document.querySelectorAll('[data-hero-line]');
-        if (lines.length && !reduced()) {
-            tl.fromTo(lines, { yPercent: 115 }, { yPercent: 0, duration: 1.05, stagger: .08, ease: 'power4.out' }, '-=.35')
-              .fromTo('[data-hero-fade]', { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: .8, stagger: .09, ease: 'power3.out' }, '-=.6')
-              .fromTo('#hero-plate', { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1.3, ease: 'power3.out' }, '-=1');
-        }
+        if (!lines.length || reduced()) return;
+
+        gsap.timeline({ delay: document.getElementById('loader') ? 1.05 : 0 })
+            .fromTo(lines, { yPercent: 115 }, { yPercent: 0, duration: 1.05, stagger: .08, ease: 'power4.out' })
+            .fromTo('[data-hero-fade]', { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: .8, stagger: .09, ease: 'power3.out' }, '-=.6')
+            .fromTo('#hero-plate', { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1.3, ease: 'power3.out' }, '-=1');
     }
 
     /* ------------------------------------------------------------ boot --- */
@@ -514,8 +562,8 @@
         initMarquee();
         initMagnetic();
 
-        if (!window.gsap) {
-            document.documentElement.classList.add('no-gsap');
+        if (!motionReady()) {
+            noMotion();
             return;
         }
         initHero();
@@ -532,8 +580,9 @@
         boot();
     }
 
-    // Safety net: if GSAP never arrives, make sure nothing stays invisible.
+    // Safety net: if either script never arrives, drop the overlay and reveal
+    // everything rather than leaving the page hidden behind a stalled intro.
     window.setTimeout(function () {
-        if (!window.gsap) document.documentElement.classList.add('no-gsap');
+        if (!motionReady()) noMotion();
     }, 2500);
 })();

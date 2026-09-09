@@ -30,6 +30,13 @@
     <script src="data.js" defer></script>
     <script src="app.js" defer></script>
 
+    <!-- Only app.js takes the loader down; without JS it would seal the page. -->
+    <noscript>
+        <style>
+            #loader { display: none; }
+        </style>
+    </noscript>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,7 +57,7 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Naar hoofdinhoud</a>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Naar hoofdinhoud</a>
 
     <div id="loader" aria-hidden="true">
         <div class="mark">Smeulders</div>
@@ -65,7 +72,7 @@
                 <span>Interieurgroep</span>
             </a>
 
-            <nav class="nav-links" aria-label="Hoofdnavigatie">
+            <nav class="nav-links" aria-label="Hoofdnavigatie" data-i18n-aria="a11y.nav">
                 <a class="nav-link" href="projecten.html" data-i18n="nav.projects">Projecten</a>
                 <a class="nav-link" href="#about" data-i18n="nav.about">Over Smeulders</a>
                 <a class="nav-link" href="#sustain" data-i18n="nav.sustain">Duurzaamheid</a>
@@ -74,12 +81,12 @@
             </nav>
 
             <div style="display:flex;align-items:center;gap:1rem">
-                <div class="lang" role="group" aria-label="Taal / Language">
+                <div class="lang" role="group" aria-label="Taal / Language" data-i18n-aria="a11y.lang">
                     <button type="button" data-lang="nl" aria-pressed="true">NL</button>
                     <i aria-hidden="true">/</i>
                     <button type="button" data-lang="en" aria-pressed="false">EN</button>
                 </div>
-                <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
+                <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu" data-i18n-aria="a11y.menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -331,8 +338,8 @@
                     <div class="contact-item reveal">
                         <div class="mono" style="color:var(--oak);margin-bottom:.7rem" data-i18n="contact.address">Adres
                         </div>
-                        <address style="font-style:normal;line-height:1.5">Collse Heide 2<br>5674 VN Nuenen<br>Nederland
-                        </address>
+                        <address style="font-style:normal;line-height:1.5">Collse Heide 2<br>5674 VN Nuenen<br><span
+                                data-i18n="contact.country">Nederland</span></address>
                     </div>
                     <div class="contact-item reveal">
                         <div class="mono" style="color:var(--oak);margin-bottom:.7rem" data-i18n="contact.phone">

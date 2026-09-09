@@ -73,14 +73,25 @@ Drop-in replacement with real photography is a two-line change in `app.js`
 
 ## Progressive enhancement
 
+The intro loader is a fixed full-viewport overlay, so every path that ends the intro has
+to take it down. `dismissLoader()` is that single exit, called on success, on fallback and
+on timeout; a `<noscript>` rule hides the loader outright for visitors without JavaScript.
+
+- Reveals are driven by ScrollTrigger, so the capability check is `motionReady()` —
+  **both** `gsap` and `ScrollTrigger`, never one of the two. If either script fails, a
+  `no-gsap` class restores every `.reveal` to full opacity and the loader is removed. A
+  2.5s timeout catches a slow or blocked CDN.
 - Renders fully with JavaScript disabled? No — the project lists are client-rendered, as
   they are on the root site's portfolio page. But the page never *hides* content it then
-  fails to reveal: if GSAP does not load, a `no-gsap` class restores every `.reveal` to
-  full opacity, and a 2.5s timeout catches a slow or blocked CDN.
+  fails to reveal, and never leaves an overlay in the way.
+- The mobile drawer is a modal: Escape closes it, focus moves in on open and back to the
+  burger on close, the content behind it is `inert`, and a `matchMedia` listener closes it
+  (clearing the body scroll lock) if the viewport crosses to desktop while it is open.
 - `prefers-reduced-motion` is honoured throughout: no loader wipe, no reveal offsets, no
   marquee, counters jump straight to their final value.
-- Verified with Playwright at 390px, 768px and 1440px — no horizontal overflow, no console
-  errors, no elements left invisible.
+- Verified with Playwright at 390px, 768px and 1440px, including runs with GSAP blocked,
+  with ScrollTrigger alone blocked, and with JavaScript disabled — no horizontal overflow,
+  no console errors, no elements left invisible, no overlay left covering the page.
 
 ## Content provenance
 
