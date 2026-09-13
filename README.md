@@ -36,3 +36,17 @@ When adding or updating a project, maintain valid image paths in `projects-data.
 ## Deployment
 
 The repository is configured for Cloudflare Pages with the repository root as the output directory. See [DEPLOYMENT.md](DEPLOYMENT.md) for deployment and verification guidance.
+
+## Agent Skills
+
+The repository carries two sets of agent skills used while working on the site: `.agents/skills/` (design, image-generation and Supabase skills) and `skills/` (`calibrate`, `personalise`, `tweak`). They are not part of the deployed site.
+
+To install them into a coding tool:
+
+```bash
+./scripts/install.sh --list                 # show what is available
+./scripts/install.sh --tool antigravity     # install all of them
+./scripts/install.sh --tool claude --scope project --skills tweak,calibrate
+```
+
+Supported `--tool` values are `claude`, `antigravity`, `cursor`, `codex` and `agents`, each resolving to that tool's `~/.<tool>/skills` directory (`--scope project` targets the current directory instead). Pass `--dest <dir>` for any other location, `--link` to symlink back to this checkout rather than copy, and `--dry-run` to preview. Run `./scripts/install.sh --help` for the full option list.
