@@ -102,17 +102,14 @@ case "$SCOPE" in
   *) die "--scope must be global or project (got '$SCOPE')" ;;
 esac
 
-# Resolve the destination directory.
+# Map the tool to its config directory. The destination itself is resolved later,
+# after --list, so listing works even in an environment without HOME.
+tool_dir=""
 if [ -z "$DEST" ]; then
   case "$TOOL" in
     claude|antigravity|cursor|codex|agents) tool_dir=".$TOOL" ;;
     *) die "Unknown --tool '$TOOL'. Use claude, antigravity, cursor, codex, agents, or pass --dest." ;;
   esac
-  if [ "$SCOPE" = global ]; then
-    DEST="$HOME/$tool_dir/skills"
-  else
-    DEST="$PWD/$tool_dir/skills"
-  fi
 fi
 
 # Roots to scan, paired by index with the set name each one contributes.
@@ -160,6 +157,19 @@ if [ "$DO_LIST" -eq 1 ]; then
   info ""
   info "${DIM}Install all: ./scripts/install.sh --tool $TOOL${RESET}"
   exit 0
+fi
+
+# Resolve the destination. Only a global-scope install reads HOME, so an unset
+# HOME is an error only where it is actually required.
+if [ -z "$DEST" ]; then
+  if [ "$SCOPE" = global ]; then
+    if [ -z "${HOME:-}" ]; then
+      die "--scope global needs HOME to be set. Pass --dest <dir>, or use --scope project."
+    fi
+    DEST="$HOME/$tool_dir/skills"
+  else
+    DEST="$PWD/$tool_dir/skills"
+  fi
 fi
 
 # Narrow to --skills, rejecting names that do not exist.
