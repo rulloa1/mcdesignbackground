@@ -32,6 +32,15 @@ info() { printf '%s\n' "$*"; }
 warn() { printf '%s%s%s\n' "$YELLOW" "$*" "$RESET" >&2; }
 die()  { printf '%s%s%s\n' "$RED" "$*" "$RESET" >&2; exit 1; }
 
+# Half-built copies are cleaned up however the script exits.
+STAGING=""
+cleanup() {
+  if [ -n "$STAGING" ]; then
+    rm -rf "$STAGING"
+  fi
+}
+trap cleanup EXIT
+
 usage() {
   cat <<EOF
 ${BOLD}install.sh${RESET} — install this repo's agent skills into a coding tool.
@@ -205,6 +214,40 @@ else
   dest_abs=$DEST
 fi
 
+# Build the new copy beside the target and swap it in, so a copy that fails
+# part way never leaves the destination without the skill it already had.
+install_skill() {
+  local src=$1 target=$2 label=$3 backup
+
+  STAGING="$dest_abs/.${label}.incoming.$$"
+  rm -rf "$STAGING"
+
+  if [ "$LINK" -eq 1 ]; then
+    ln -s "$src" "$STAGING"
+  else
+    cp -R "$src" "$STAGING"
+  fi
+
+  backup=""
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    backup="$dest_abs/.${label}.previous.$$"
+    rm -rf "$backup"
+    mv "$target" "$backup"
+  fi
+
+  if mv "$STAGING" "$target"; then
+    STAGING=""
+    if [ -n "$backup" ]; then
+      rm -rf "$backup"
+    fi
+  else
+    if [ -n "$backup" ]; then
+      mv "$backup" "$target"
+    fi
+    die "Could not install $label into $target; the previous copy is intact."
+  fi
+}
+
 installed=0; skipped=0; replaced=0
 
 while IFS=$'\t' read -r name set_name path; do
@@ -222,18 +265,11 @@ while IFS=$'\t' read -r name set_name path; do
       skipped=$((skipped + 1))
       continue
     fi
-    if [ "$DRY_RUN" -eq 0 ]; then
-      rm -rf "$target"
-    fi
     replaced=$((replaced + 1))
   fi
 
   if [ "$DRY_RUN" -eq 0 ]; then
-    if [ "$LINK" -eq 1 ]; then
-      ln -s "$path" "$target"
-    else
-      cp -R "$path" "$target"
-    fi
+    install_skill "$path" "$target" "$name"
   fi
   printf '  %s+ %s%s %s(%s)%s\n' "$GREEN" "$name" "$RESET" "$DIM" "$set_name" "$RESET"
   installed=$((installed + 1))
