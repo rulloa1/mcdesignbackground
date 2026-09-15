@@ -115,14 +115,24 @@ if [ -z "$DEST" ]; then
   fi
 fi
 
+# Roots to scan, paired by index with the set name each one contributes.
+roots=()
+set_names=()
+if [ "$SOURCE" = all ] || [ "$SOURCE" = agents ]; then
+  roots+=("$REPO_ROOT/.agents/skills")
+  set_names+=("agents")
+fi
+if [ "$SOURCE" = all ] || [ "$SOURCE" = local ]; then
+  roots+=("$REPO_ROOT/skills")
+  set_names+=("local")
+fi
+
 # Collect skills as "name<TAB>set<TAB>path" lines; a skill is any directory holding SKILL.md.
 collect() {
-  local root set_name entry
-  for root in "$@"; do
-    case "$root" in
-      "$REPO_ROOT/.agents/skills") set_name=agents ;;
-      *) set_name=local ;;
-    esac
+  local i root set_name entry
+  for i in "${!roots[@]}"; do
+    root=${roots[$i]}
+    set_name=${set_names[$i]}
     [ -d "$root" ] || continue
     for entry in "$root"/*/; do
       [ -f "${entry}SKILL.md" ] || continue
@@ -131,16 +141,7 @@ collect() {
   done
 }
 
-roots=""
-if [ "$SOURCE" = all ] || [ "$SOURCE" = agents ]; then
-  roots="$roots $REPO_ROOT/.agents/skills"
-fi
-if [ "$SOURCE" = all ] || [ "$SOURCE" = local ]; then
-  roots="$roots $REPO_ROOT/skills"
-fi
-
-# shellcheck disable=SC2086
-AVAILABLE=$(collect $roots | sort)
+AVAILABLE=$(collect | sort)
 [ -n "$AVAILABLE" ] || die "No skills found under $REPO_ROOT (looked for */SKILL.md)."
 
 # First `description:` line of the skill's YAML frontmatter, trimmed for display.
