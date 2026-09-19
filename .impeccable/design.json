@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-16T00:00:00Z",
+  "title": "Design System: Michael Chandler — Strategic Construction Executive",
+  "extensions": {
+    "colorMeta": {
+      "struck-brass": {
+        "role": "primary",
+        "displayName": "Struck Brass",
+        "canonical": "#d4a574",
+        "note": "Graphic material only — 1.96:1 on bone, fails as text at every size.",
+        "tonalRamp": ["#2E2213", "#4A3720", "#674C2C", "#8E733E", "#B08E55", "#d4a574", "#E3C29C", "#F2E2CE"]
+      },
+      "struck-brass-deep": {
+        "role": "primary",
+        "displayName": "Struck Brass Deep",
+        "canonical": "#8E733E",
+        "note": "Text-capable brass at 3.95:1 on bone — large text only (24px+, or 19px bold).",
+        "tonalRamp": ["#1F1A0E", "#372C17", "#4F4021", "#67532B", "#8E733E", "#B39560", "#D2BA92", "#EEE3CE"]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "#F4F0E8",
+        "note": "Primary ground. Warm off-white, never white and never grey.",
+        "tonalRamp": ["#26241F", "#3E3B34", "#57534A", "#736E63", "#9A9488", "#C2BCB0", "#E0DBD2", "#F4F0E8"]
+      },
+      "bone-raised": {
+        "role": "neutral",
+        "displayName": "Bone Raised",
+        "canonical": "#FAF8F4",
+        "note": "Card and panel fill. The only resting elevation signal in the system.",
+        "tonalRamp": ["#292723", "#413E38", "#5A564E", "#767065", "#9E988C", "#C6C0B4", "#E4E0D8", "#FAF8F4"]
+      },
+      "bone-sunk": {
+        "role": "neutral",
+        "displayName": "Bone Sunk",
+        "canonical": "#EBE6DC",
+        "note": "Alternating section bands — separates without a border.",
+        "tonalRamp": ["#232119", "#3A372D", "#524E42", "#6E6859", "#968F7C", "#BEB6A2", "#D9D2C2", "#EBE6DC"]
+      },
+      "bone-muted": {
+        "role": "neutral",
+        "displayName": "Bone Muted",
+        "canonical": "#E5E0D6",
+        "note": "Inset wells and the lighter of the two rule weights.",
+        "tonalRamp": ["#211F17", "#38352B", "#504C40", "#6B6657", "#938C79", "#BBB39F", "#D5CEBE", "#E5E0D6"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1C1916",
+        "note": "Primary text and display headings. 15.40:1 on bone.",
+        "tonalRamp": ["#0B0A08", "#1C1916", "#332E28", "#4C453C", "#6B6356", "#948B7B", "#C0B8A8", "#E8E3D9"]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#6B6660",
+        "note": "Secondary text, metadata, specs. 5.00:1 — the contrast floor for prose.",
+        "tonalRamp": ["#1A1917", "#2E2C29", "#43403B", "#57534D", "#6B6660", "#928D85", "#BAB5AD", "#E2DED8"]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "#9C978E",
+        "note": "2.56:1 — NOT a text colour. Rules, dividers and decorative marks only.",
+        "tonalRamp": ["#1F1E1B", "#35332F", "#4B4843", "#615D57", "#7C776F", "#9C978E", "#C3BFB8", "#E7E4DF"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#D8D3CA",
+        "note": "The 1px structural line that does the work cards would otherwise do.",
+        "tonalRamp": ["#1E1C18", "#33302B", "#48443D", "#615C53", "#8A8478", "#B3ACA0", "#D8D3CA", "#F0EDE8"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Section-opening statements. One per viewport, never two." },
+      "headline": { "displayName": "Headline", "purpose": "Sub-section openers and pinned-panel headings." },
+      "title": { "displayName": "Title", "purpose": "Project names, card headings, work rows." },
+      "body": { "displayName": "Body", "purpose": "Paragraph text. Hold to 56–62ch on the warm ground." },
+      "label": { "displayName": "Label", "purpose": "Uppercase wide-tracked eyebrows, metadata keys and stat captions — the system's connective tissue." }
+    },
+    "shadows": [
+      { "name": "lift-low", "value": "0 10px 28px rgba(0, 0, 0, .18)", "purpose": "Filled buttons on hover. Never at rest." },
+      { "name": "lift-soft", "value": "0 20px 60px rgba(0, 0, 0, .10)", "purpose": "Cards and panels on hover. Never at rest." },
+      { "name": "focus-ring", "value": "0 0 0 3px rgba(0, 0, 0, .05)", "purpose": "Input focus. Ink-based, never brass." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(.4, 0, .2, 1)", "purpose": "Default easing for state transitions (hover, colour, border)." },
+      { "name": "ease-entrance", "value": "cubic-bezier(.2, .8, .2, 1)", "purpose": "Scroll-reveal entrances and staggered cascades." },
+      { "name": "duration-state", "value": "250ms", "purpose": "Border and colour state changes." },
+      { "name": "duration-lift", "value": "400ms", "purpose": "Hover translate and shadow fade." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "720px" },
+      { "name": "md", "value": "860px" },
+      { "name": "lg", "value": "900px" },
+      { "name": "container", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Dark)",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "The system's primary action. Ink fill, white text, square corners, lifts on hover.",
+      "html": "<button class=\"ds-btn-dark\">Start a Project</button>",
+      "css": ".ds-btn-dark { background: #1C1916; color: #fff; font-family: Inter, system-ui, sans-serif; font-size: .86rem; font-weight: 700; letter-spacing: .02em; padding: 14px 28px; border: none; border-radius: 0; cursor: pointer; transition: background 250ms cubic-bezier(.4,0,.2,1), transform 400ms cubic-bezier(.4,0,.2,1), box-shadow 400ms cubic-bezier(.4,0,.2,1); } .ds-btn-dark:hover { background: #2a2a2a; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.18); } .ds-btn-dark:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,.05); }"
+    },
+    {
+      "name": "Secondary Button (Outline)",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action. Never takes a fill — the border resolves to ink instead.",
+      "html": "<button class=\"ds-btn-outline\">View Portfolio</button>",
+      "css": ".ds-btn-outline { background: transparent; color: #1C1916; font-family: Inter, system-ui, sans-serif; font-size: .86rem; font-weight: 700; letter-spacing: .02em; padding: 14px 28px; border: 1.5px solid #d0d0d0; border-radius: 0; cursor: pointer; transition: border-color 250ms cubic-bezier(.4,0,.2,1), transform 400ms cubic-bezier(.4,0,.2,1); } .ds-btn-outline:hover { border-color: #1C1916; transform: translateY(-1px); } .ds-btn-outline:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,.05); }"
+    },
+    {
+      "name": "Option Chip",
+      "kind": "chip",
+      "refersTo": "option-chip",
+      "description": "Service-type and budget-tier selection in the inquiry form. Selection reads as contrast gain, not as a fill colour.",
+      "html": "<button class=\"ds-chip\">Design-Build</button><button class=\"ds-chip ds-chip-selected\">Ultra-Luxury Custom Home</button>",
+      "css": ".ds-chip { background: #fff; color: #6B6660; font-family: Inter, system-ui, sans-serif; font-size: .82rem; font-weight: 700; letter-spacing: .04em; padding: 14px 18px; border: 1.5px solid #D8D3CA; border-radius: 0; cursor: pointer; margin-right: 8px; transition: border-color 250ms cubic-bezier(.4,0,.2,1), color 250ms cubic-bezier(.4,0,.2,1), background 250ms cubic-bezier(.4,0,.2,1); } .ds-chip:hover { border-color: #9C978E; } .ds-chip-selected { border-color: #1C1916; color: #1C1916; background: #F4F0E8; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Portfolio grid unit. Square, bordered, flat at rest; image desaturated until hover.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-media\"></div><div class=\"ds-card-body\"><p class=\"ds-card-label\">Bahamas</p><h3 class=\"ds-card-title\">Bakers Bay Resort</h3><p class=\"ds-card-meta\">Luxury Resort Development</p></div></article>",
+      "css": ".ds-card { background: #fff; border: 1px solid #D8D3CA; border-radius: 0; overflow: hidden; transition: border-color 250ms cubic-bezier(.4,0,.2,1), transform 400ms cubic-bezier(.4,0,.2,1), box-shadow 400ms cubic-bezier(.4,0,.2,1); } .ds-card:hover { border-color: #1C1916; transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.10); } .ds-card-media { height: 150px; background: linear-gradient(135deg, #E5E0D6, #D8D3CA); filter: grayscale(30%) brightness(.95); transition: filter 600ms cubic-bezier(.4,0,.2,1); } .ds-card:hover .ds-card-media { filter: none; } .ds-card-body { padding: 28px; font-family: Inter, system-ui, sans-serif; } .ds-card-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8E733E; margin: 0 0 10px; } .ds-card-title { font-size: 1.28rem; font-weight: 600; letter-spacing: -.015em; color: #1C1916; margin: 0 0 6px; } .ds-card-meta { font-size: .88rem; color: #6B6660; margin: 0; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": null,
+      "description": "Inquiry form field. Square, 1.5px border, ink-based focus ring — never brass.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Full Name</span><input class=\"ds-input\" type=\"text\" placeholder=\"Your name\"></label>",
+      "css": ".ds-field { display: block; font-family: Inter, system-ui, sans-serif; } .ds-field-label { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6B6660; margin-bottom: 8px; } .ds-input { width: 100%; background: #fff; color: #1C1916; font-family: inherit; font-size: 1rem; padding: 14px 16px; border: 1.5px solid #D8D3CA; border-radius: 0; transition: border-color 250ms cubic-bezier(.4,0,.2,1), box-shadow 250ms cubic-bezier(.4,0,.2,1); } .ds-input::placeholder { color: #9C978E; } .ds-input:focus { outline: none; border-color: #1C1916; box-shadow: 0 0 0 3px rgba(0,0,0,.05); } .ds-input.ds-input-error { border-color: #d44; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Nav item. Muted at rest, resolving to full ink on hover; brass underline marks the active section.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Selected Work</a><a class=\"ds-nav-link ds-nav-link-active\" href=\"#\">About</a><a class=\"ds-nav-link\" href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 32px; font-family: Inter, system-ui, sans-serif; padding: 16px 0; border-bottom: 1px solid #D8D3CA; } .ds-nav-link { position: relative; font-size: .82rem; font-weight: 600; letter-spacing: .04em; color: #6B6660; text-decoration: none; padding-bottom: 6px; transition: color 250ms cubic-bezier(.4,0,.2,1); } .ds-nav-link:hover { color: #1C1916; } .ds-nav-link-active { color: #1C1916; } .ds-nav-link-active::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: #d4a574; }"
+    },
+    {
+      "name": "Stat Block",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Portfolio figure with an uppercase caption. One of the few places brass is allowed to appear.",
+      "html": "<div class=\"ds-stat\"><span class=\"ds-stat-figure\">$500M+</span><span class=\"ds-stat-label\">Portfolio Value</span></div>",
+      "css": ".ds-stat { font-family: Inter, system-ui, sans-serif; padding: 28px 0; border-top: 1px solid #D8D3CA; } .ds-stat-figure { display: block; font-size: 2.6rem; font-weight: 900; letter-spacing: -.04em; line-height: 1; color: #d4a574; } .ds-stat-label { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6B6660; margin-top: 12px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Quiet Authority",
+    "overview": "Restraint is the flex. This is the visual language of someone who has delivered a $500M+ portfolio over thirty-seven years and feels no need to raise their voice about it. Every corner is square, every division is a hairline, and the single warm colour appears perhaps four times on a page. The confidence is in what has been left out.\n\nThe surface is bone paper, not a screen: a warm off-white that never goes stark, holding near-black ink text at newspaper contrast. Structure comes from 1px rules and generous negative space rather than from boxes, fills or shadows. Photography of the built work is the only saturated thing in the system, which is the point — the projects are the argument and the interface is the mount they hang on.\n\nWhere warmth enters it is brass, and it enters sparingly: a rule under a heading, a figure in a statistic, the state of an active filter. Brass is never asked to carry a sentence. The system's whole tension is the discipline of leaving it alone.",
+    "keyCharacteristics": [
+      "Bone-and-ink ground with a single brass accent used at roughly 5% of any screen",
+      "Zero-radius form language — square corners are the default, not a variant",
+      "Hairline rules and negative space in place of cards, fills and containers",
+      "Flat at rest; depth appears only as a response to intent",
+      "Uppercase, wide-tracked labels as the system's structural voice"
+    ],
+    "rules": [
+      { "name": "The One Warmth Rule", "body": "Brass is the only colour in the system. Adding a second accent — a success green, a destructive red, a category hue — breaks the whole argument. States are carried by ink weight, border strength and position, not by new colour.", "section": "colors" },
+      { "name": "The Brass Never Speaks Rule", "body": "struck-brass is a graphic material, never a text colour. If brass must be read, it is struck-brass-deep at large size or it is ink. This is measured, not stylistic: 1.96:1 fails at every size.", "section": "colors" },
+      { "name": "The Two-Ink Floor Rule", "body": "Body and secondary text stop at ink-muted (5.00:1). ink-faint draws lines; it does not form words.", "section": "colors" },
+      { "name": "The Tracking Split Rule", "body": "Type either pulls in or spreads out; nothing sits at neutral tracking except body copy. Display and headline take -0.02em. Labels take 0.08em to 0.12em and uppercase. A 700-weight heading at default tracking belongs to no level of this system.", "section": "typography" },
+      { "name": "The One Family Rule", "body": "Inter carries every role. Adding a display serif or a second grotesque does not enrich this system, it dilutes the weight-driven hierarchy that replaces it.", "section": "typography" },
+      { "name": "The Flat-At-Rest Rule", "body": "No element carries a shadow in its default state. If a surface needs to separate from the ground, it takes a 1px rule border or a tonal band — not a shadow. Shadows are reserved for hover and focus, and they leave when the state does.", "section": "elevation" },
+      { "name": "The Lift-On-Intent Rule", "body": "Every interactive surface moves toward the viewer on hover, between -1px and -8px depending on mass. Elements that do not move are, by that fact, declaring themselves non-interactive.", "section": "elevation" },
+      { "name": "The Square Corner Rule", "body": "Radius is 0 unless the element is a dot. A rounded card in this system reads as borrowed from somewhere else.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do let brass appear roughly four times per screen and no more — a heading rule, a statistic, an active state, a mark. Its rarity is the entire effect.",
+      "Do use struck-brass-deep (#8E733E) when brass must be read, and only at 24px+ or 19px bold.",
+      "Do separate surfaces with a 1px rule border or an alternating bone band.",
+      "Do carry hierarchy with weight and tracking — 300 to 900, -0.02em to 0.12em — rather than by introducing a second typeface.",
+      "Do keep uppercase wide-tracked labels as the connective tissue between sections.",
+      "Do let project photography be the only saturated thing on the page."
+    ],
+    "donts": [
+      "Don't set text in struck-brass (1.96:1) or ink-faint (2.56:1). Both fail at every size. This is measured, not a preference.",
+      "Don't add a resting shadow. Shadows belong to hover and focus, and they leave with the state.",
+      "Don't round a corner. Radius is 0 unless the element is a dot.",
+      "Don't introduce a second accent colour for status, category or emphasis. Ink weight, border strength and position carry those jobs.",
+      "Don't add a display serif. Weight-driven hierarchy in one family is the system.",
+      "Don't put a vignette, darkening gradient, or single wrapper panel behind hero text over the frame sequence.",
+      "Don't trust this repository's other documents. README.md, the previous DESIGN.md and CLAUDE.md each describe palettes and stacks that do not ship. Read the CSS."
+    ]
+  }
+}

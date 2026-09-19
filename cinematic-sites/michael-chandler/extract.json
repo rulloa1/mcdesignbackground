@@ -1,0 +1,65 @@
+{
+  "business": {
+    "name": "Michael Chandler",
+    "entity": "Michael Chandler Design + Construction",
+    "title": "Strategic Construction Executive",
+    "category": "Ultra-luxury design-build construction / owner's representation",
+    "founded": "1989",
+    "canonical": "https://mcdesign.bio",
+    "priceRange": "$$$$"
+  },
+  "source": {
+    "method": "local repository source-of-truth extraction",
+    "files": ["index.html", "projects-data.js", "DESIGN.md", "CLAUDE.md"],
+    "note": "No network fetch. Palette and type read from the shipped tailwind.config and :root block in index.html."
+  },
+  "palette": {
+    "bone":        { "hex": "#F4F0E8", "role": "primary background",        "onBoneContrast": null },
+    "boneAlt":     { "hex": "#EBE6DC", "role": "alternating section fill",  "onBoneContrast": null },
+    "boneCard":    { "hex": "#FAF8F4", "role": "card surface",              "onBoneContrast": null },
+    "carbon":      { "hex": "#100E0B", "role": "deepest surface (gray-950)","onBoneContrast": 18.6 },
+    "ink":         { "hex": "#1C1916", "role": "primary text / gray-900",   "onBoneContrast": 15.40 },
+    "steel":       { "hex": "#6B6660", "role": "secondary text / gray-500", "onBoneContrast": 5.00 },
+    "faint":       { "hex": "#9C978E", "role": "captions only / gray-400",  "onBoneContrast": 2.56 },
+    "border":      { "hex": "#D8D3CA", "role": "1px dividers",              "onBoneContrast": null },
+    "brass":       { "hex": "#d4a574", "role": "sole accent",               "onBoneContrast": 1.96, "onCarbonContrast": 8.66 }
+  },
+  "typography": {
+    "shipped": "Inter (300-900)",
+    "shippedConflict": "DESIGN.md explicitly bans Inter; the live site uses it anyway.",
+    "recommended": { "display": "Outfit", "mono": "JetBrains Mono" }
+  },
+  "copy": {
+    "h1Candidates": ["37 Years. Built by Hand.", "Uncompromising Precision.", "Built to Last Generations."],
+    "body": "From coastal high-rises to alpine estates - I deliver spaces engineered to outperform expectations for decades. On time. On budget. Built to endure.",
+    "positioning": "37 years as a Business, Design and Construction executive. $500M+ portfolio.",
+    "stats": { "years": "37", "portfolio": "$500M+", "projects": "21", "regions": "6" }
+  },
+  "projects": {
+    "total": 21,
+    "featured": 6,
+    "byCategory": {
+      "residential-construction": 9,
+      "civil": 4,
+      "design-build": 4,
+      "owners-representation": 3,
+      "hospitality": 1
+    },
+    "marquee": ["Bakers Bay Resort", "Yellowstone Club", "Houston Oaks", "Abaco Luxe Boat House", "Carmel Knolls", "Laguna Grande"]
+  },
+  "regions": ["California", "Bahamas", "Texas", "Montana", "Utah", "Florida"],
+  "contact": {
+    "telephone": null,
+    "email": null,
+    "note": "No tel: or mailto: links exist in the source. Contact is a client-side form with simulated submission and no backend."
+  },
+  "recommendedTheme": {
+    "mode": "dark",
+    "rationale": "The brass accent #d4a574 scores 1.96:1 on bone (fails WCAG for any text) but 8.66:1 on carbon. Dark is the only surface where the brand's single accent is usable as text, and it is what a scroll-scrubbed video hero needs.",
+    "tokens": {
+      "bg": "#100E0B", "card": "#1C1916", "text": "#F4F0E8",
+      "muted": "#9C978E", "accent": "#d4a574", "border": "rgba(244,240,232,0.10)"
+    }
+  },
+  "banned": ["Inter", "#000000", "emojis", "neon/outer glow", "3-column equal grids", "Elevate", "Seamless", "Unleash", "centered hero layouts", "custom cursors"]
+}

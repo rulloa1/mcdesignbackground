@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cinematic-mc",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4173", "--directory", "cinematic-sites/michael-chandler"],
+      "port": 4173
+    }
+  ]
+}
